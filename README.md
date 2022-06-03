@@ -7,6 +7,7 @@
 
 **Further, Sentimo would recommend certain blogs or movies, based on the user's emotions.**
 
+## Git instructions
 
 ``No need to fork for the contributors, directly clone the repo``
 ### git clone https://github.com/dakshgupta2002/sentimo.git
