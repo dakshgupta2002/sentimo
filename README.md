@@ -1,4 +1,12 @@
-# sentimo
+# Sentimo
+
+## About Sentimo 
+**Sentimo is a web-application in which the user can write their daily diary on the basis of experiences and emotions.**
+
+**Our application would recognise the emotion of the user who has either typed notes in his diary or has recorded their own speech and entered in the diary.** 
+
+**Further, Sentimo would recommend certain blogs or movies, based on the user's emotions.**
+
 
 ``No need to fork for the contributors, directly clone the repo``
 ### git clone https://github.com/dakshgupta2002/sentimo.git
