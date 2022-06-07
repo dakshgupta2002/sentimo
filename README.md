@@ -11,6 +11,9 @@
 
 ``No need to fork for the contributors, directly clone the repo``
 ### git clone https://github.com/dakshgupta2002/sentimo.git
+``Now you need to add a origin to look at this repository``
+### git remote add origin https://github.com/dakshgupta2002/sentimo.git
+``You can now directly pull and push to various branches``   
 
 ``after cloning install the dependencies and run the servers``
 
