@@ -1,9 +1,13 @@
-import Carousel from './components/Carousel/Carousel.jsx'
+import Carousel, {CarouselItem} from './components/Carousel/Carousel.jsx'
 
 function App() {
   return (
     <div className="App">
-      <Carousel />
+      <Carousel>
+        <CarouselItem />
+        <CarouselItem />
+        <CarouselItem />
+      </Carousel>
     </div>
   );
 }
