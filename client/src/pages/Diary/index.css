@@ -1,0 +1,13 @@
+.diary-container {
+    height: 100vh;
+    background-color: red;
+    display: flex;
+}
+
+.indicator > Button {
+    margin: 5px 10px 10px 5px;
+}
+
+.xx {
+    align-self: center;
+}

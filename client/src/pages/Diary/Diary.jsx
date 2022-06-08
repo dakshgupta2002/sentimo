@@ -1,25 +1,39 @@
-import { Button } from '@mui/material';
-import React from 'react'
-import { useDate } from '../../utils/hooks/useDate'
+import { Button } from "@mui/material";
+import React from "react";
+import { useDate } from "../../utils/hooks/useDate";
+import "./index.css";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
 
   return (
     <div>
-      hello diary
-      <h2>Date is : {date}</h2>
-      <Button onClick = {() => {previous()}}>
-        Previous
-      </Button> 
+      <div className="diary-container">
+        <h2 className="xx"> Date is : {date.toDateString()} </h2>
+      </div>
 
-      <Button onClick = {() => {next()}}>
-        Next
-      </Button> 
+      <div className='indicator'>
+        <Button
+          onClick={() => {previous();}}
+          variant="contained"
+        >
+          Previous
+        </Button>
 
-      <Button onClick = {() => {reset()}}>
-        Reset
-      </Button> 
+        <Button
+          onClick={() => {next();}}
+          variant="contained"
+        >
+          Next
+        </Button>
+
+        <Button
+          onClick={() => {reset();}}
+          variant="contained"
+        >
+          Reset
+        </Button>
+      </div>
     </div>
-  )
+  );
 }

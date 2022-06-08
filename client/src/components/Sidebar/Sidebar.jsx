@@ -114,7 +114,7 @@ export default function Sidebar() {
           <Divider />
 
           <List>
-            {['Home', 'About', 'Team'].map((text, index) => (
+            {['Home', 'Diary'].map((text, index) => (
                 <Link to = {`/${text}`}> 
                   <ListItem button key={text}>
                     <ListItemIcon>
