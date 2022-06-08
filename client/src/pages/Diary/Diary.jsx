@@ -1,5 +1,6 @@
-import { Button } from "@mui/material";
+import { Button } from "@mui/material/";
 import React from "react";
+import Page from "../../components/Page/Page";
 import { useDate } from "../../utils/hooks/useDate";
 import "./index.css";
 
@@ -8,31 +9,51 @@ export default function Diary() {
 
   return (
     <div>
+      
       <div className="diary-container">
-        <h2 className="xx"> Date is : {date.toDateString()} </h2>
+
+        <div className='prev-arrow-btn diary-item'>
+          <Button variant='contained' onClick={() =>{ previous();}}> &lt; </Button>
+        </div>
+
+        <div className='page-container diary-item'>
+          <h1>{date.toDateString()}</h1>
+          <Page title='noo' content='yesss' />
+        </div>
+
+        <div className="next-arrow-btn diary-item">
+          <Button variant='contained' onClick={() =>{ next();}}> &gt; </Button>
+        </div>
+
       </div>
 
       <div className='indicator'>
-        <Button
-          onClick={() => {previous();}}
-          variant="contained"
-        >
-          Previous
-        </Button>
+        <div className='indicator-btn'>
+          <Button
+            onClick={() => {previous();}}
+            variant="contained"
+          >
+            Previous
+          </Button>
+        </div>
 
-        <Button
-          onClick={() => {next();}}
-          variant="contained"
-        >
-          Next
-        </Button>
-
-        <Button
-          onClick={() => {reset();}}
-          variant="contained"
-        >
-          Reset
-        </Button>
+        <div className='indicator-btn'>
+          <Button
+            onClick={() => {reset();}}
+            variant="contained"
+          >
+            Reset
+          </Button>
+        </div>
+        
+        <div className='indicator-btn'>
+          <Button
+            onClick={() => {next();}}
+            variant="contained"
+          >
+            Next
+          </Button>
+        </div>
       </div>
     </div>
   );
