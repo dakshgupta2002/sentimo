@@ -3,6 +3,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import db from './config/db.js'
 import { corsOptions } from './config/cors.js';
+import userRouter from './routers/user/index.js';
 
 const port = process.env.PORT;
 const app = express();
@@ -16,7 +17,7 @@ app.get("/", (req, res) => {
 })
 
 //setup login routes 
-// app.use("/user ")
+app.use("/user", userRouter)
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
