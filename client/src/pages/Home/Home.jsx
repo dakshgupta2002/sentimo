@@ -1,7 +1,15 @@
-import React from 'react'
+import React from "react";
+import { Sidebar, Carousel, CarouselItem } from "../../components";
 
 export default function Home() {
   return (
-    <div>Home</div>
-  )
+    <>
+      <Sidebar/>
+      <Carousel>
+        <CarouselItem />
+        <CarouselItem />
+        <CarouselItem />
+      </Carousel>
+    </>
+  );
 }
