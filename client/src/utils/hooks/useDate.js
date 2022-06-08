@@ -13,9 +13,8 @@ export const useDate = () => {
     }
 
     const previous = () => {
-        date.setDate(date.getDate() - 1);
-        console.log(date.toDateString());
-        setDate(date);
+        const prevDate = new Date(date.setDate(date.getDate() - 1));
+        setDate(prevDate);
     }
 
     const next = () => {
@@ -23,10 +22,10 @@ export const useDate = () => {
         var sameMonth = (date.getMonth() === new Date().getMonth());
         var sameYear = (date.getFullYear() === new Date().getFullYear());
 
-        if (!sameDate || !sameMonth || !sameYear)
-            date.setDate(date.getDate() + 1);
-
-        setDate(date);
+        if (!sameDate || !sameMonth || !sameYear) {
+            const nextDate = new Date(date.setDate(date.getDate() + 1));
+            setDate(nextDate);
+        }
     }
 
     return [date, setDate, reset, previous, next];
