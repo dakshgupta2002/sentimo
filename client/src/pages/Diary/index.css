@@ -3,11 +3,21 @@
 }
 
 .diary-container {
-  background-color: red;
+  border: 1px solid black;
+  background-color: grey;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+}
+
+.prev-arrow-and-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.prev-arrow-and-modal-container > Button {
+
 }
 
 .page-container {
