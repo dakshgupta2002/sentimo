@@ -73,7 +73,7 @@ export default function Sidebar() {
     const handleDrawerClose = () => {
       setOpen(false);
     };
-  
+    
     return (
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
@@ -114,8 +114,16 @@ export default function Sidebar() {
           <Divider />
 
           <List>
-            {['Home', 'Diary', 'Statistics', 'About Us'].map((text, index) => (
-                <Link to = {`/${text}`}> 
+            {['Home', 'Diary', 'Statistics', 'About Us'].map((text, index) =>{ 
+              let link = "";
+              for(let i=0; i<text.length; i++){
+                if (text[i] === " ") continue;
+                else if (i!==0 && text[i-1]===" ") link += text[i].toUpperCase();
+                else link += text[i].toLowerCase();
+              }
+              console.log(link)
+              return (
+                <Link to = {`/${link}`}> 
                   <ListItem button key={text}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <Inbox/> : <Mail/>}
@@ -124,7 +132,7 @@ export default function Sidebar() {
                   </ListItem>
                 </Link>
 
-            ))}
+            )})}
           </List>
               
           <Divider />
