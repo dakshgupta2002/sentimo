@@ -18,7 +18,7 @@ export default function Diary() {
 
         <div className='page-container diary-item'>
           <h1>{date.toDateString()}</h1>
-          <Page title='noo' content='yesss' />
+          <Page date={date}/>
         </div>
 
         <div className="next-arrow-btn diary-item">

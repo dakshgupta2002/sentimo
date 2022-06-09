@@ -1,28 +1,36 @@
 //each individual Page comprises of Notes
 //each Page will be shown as it is in a Carousel
 
-import React from 'react'
-import {post} from './../../utils/api/post.js'
-import Notes from './Notes.jsx'
+import React, { useEffect, useState } from 'react'
+import { get } from './../../utils/api/get.js'
+import Note from './Note.jsx'
 
-export default function Page() {
-    //fetch notes of current date
+export default function Page({date, setIsLoading}) {
+  
+  const [notes, setNotes] = useState([]);
 
-  // const response = post("/notes");
+  const fetchNotes = async () => {
+    setIsLoading(true); //set page loading to true
 
-  // Temporary jugaad
-  const response = 
-  [
-    {
-      title: "title-1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque, consequatur cupiditate optio exercitationem quaerat, id soluta a iste laborum distinctio voluptatem voluptatibus labore dolorum qui temporibus minus quas, nulla eum. Dolore ipsa dolor recusandae nemo aliquid explicabo eos perferendis iusto eius vitae magni, corporis voluptates illo? Porro laboriosam nam doloremque, nesciunt fugit sed accusantium tempora?" 
-    },
-  ]
+    const notes = await get(`/notes/${date}`); //get notes for the date
+    setNotes(notes);  
+
+    setIsLoading(false); 
+  }
+  
+  useEffect( () => {
+    fetchNotes();
+  }, [date]); //call fetchNotes when date changes
+
   return (
     <div>
-      {response.map(({title, content}) => {
-        return <Notes title = {title} content = {content} />
-      })}
+      {notes.length === 0 ? 
+        <h1>No notes for this date</h1> :
+
+        notes.map(({title, content}) => {
+          return <Note title = {title} content = {content} />
+        })
+      }
       
     </div>
   )

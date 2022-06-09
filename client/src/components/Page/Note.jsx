@@ -1,7 +1,7 @@
 import React from 'react'
-import './Notes.css'
+import './Page.css'
 
-export default function Notes({title, content}) {
+export default function Note({title, content}) {
   return (
     <div>
       <div className='title-container'>
