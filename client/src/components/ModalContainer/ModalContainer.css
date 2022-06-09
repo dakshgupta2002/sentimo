@@ -1,0 +1,30 @@
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    padding: 5px 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.modalBox {
+    position: relative;
+    z-index: 2001;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: fit-content;
+    max-width: 400px;
+    border-radius: 16px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+    background-color: white;
+}
