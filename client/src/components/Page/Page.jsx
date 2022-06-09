@@ -2,20 +2,21 @@
 //each Page will be shown as it is in a Carousel
 
 import React, { useEffect, useState } from 'react'
+import { useLoading } from '../../utils/hooks/useLoading.js';
 import { get } from './../../utils/api/get.js'
 import Note from './Note.jsx'
 
-export default function Page({date, setIsLoading}) {
-  
+export default function Page({date}) {
+  const {setLoading} = useLoading();
   const [notes, setNotes] = useState([]);
 
   const fetchNotes = async () => {
-    setIsLoading(true); //set page loading to true
+    setLoading(true); //set page loading to true
 
     const notes = await get(`/notes/${date}`); //get notes for the date
     setNotes(notes);  
 
-    setIsLoading(false); 
+    setLoading(false); 
   }
   
   useEffect( () => {
