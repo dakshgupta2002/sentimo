@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import './ModalContainer.css'
 const ModalContainer = ({
     isOpen = true,
@@ -9,11 +9,23 @@ const ModalContainer = ({
     style
 }) => {
     const modstyle={padding: padding, ...style}
+    const [onOutside, setOnOutside] = useState(true);
+    useEffect( () => {
+        console.log(onOutside);
+    }, [onOutside])
     return (
         <>
             {isOpen &&
-                <div className="modalContainer">
-                    <div className={`modalBox ${className}`} style={modstyle}>
+                <div 
+                    className="modalContainer"
+                    onMouseDown={() => onOutside && close()}
+                >
+                    <div 
+                        className={`modalBox ${className}`} 
+                        style={modstyle} 
+                        onMouseEnter={() => setOnOutside(false)}
+                        onMouseLeave={() => setOnOutside(true)}
+                    >
                         {children}
                     </div>
                 </div>

@@ -10,12 +10,12 @@ export default function Diary() {
 
   return (
     <div>
-      <ModalContainer>
+      <ModalContainer isOpen={open} close={() => setOpen(false)}>
         make form here
       </ModalContainer>
       
       <div className="diary-container full-cover">
-        
+        <Button onClick={() => setOpen(true)}>Add</Button>
         
         <div className="full-cover arrow left" onClick={() =>{ previous();}}>
         </div>
