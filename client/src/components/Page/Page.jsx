@@ -15,13 +15,14 @@ export default function Page() {
   [
     {
       title: "title-1",
-      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque, consequatur cupiditate optio exercitationem quaerat, id soluta a iste laborum distinctio voluptatem voluptatibus labore dolorum qui temporibus minus quas, nulla eum. Dolore ipsa dolor recusandae nemo aliquid explicabo eos perferendis iusto eius vitae magni, corporis voluptates illo? Porro laboriosam nam doloremque, nesciunt fugit sed accusantium tempora?" 
+      content: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed doloremque, consequatur cupiditate optio exercitationem quaerat, id soluta a iste laborum distinctio voluptatem voluptatibus labore dolorum qui temporibus minus quas, nulla eum. Dolore ipsa dolor recusandae nemo aliquid explicabo eos perferendis iusto eius vitae magni, corporis voluptates illo? Porro laboriosam nam doloremque, nesciunt fugit sed accusantium tempora?",
+      id: 1,
     },
   ]
   return (
     <div>
-      {response.map(({title, content}) => {
-        return <Notes title = {title} content = {content} />
+      {response.map(({title, content, id}) => {
+        return <Notes title = {title} content = {content} key={id} />
       })}
       
     </div>

@@ -10,19 +10,17 @@ export default function Diary() {
   return (
     <div>
       
-      <div className="diary-container">
+      <div className="diary-container full-cover">
 
-        <div className='prev-arrow-btn diary-item'>
-          <Button variant='contained' onClick={() =>{ previous();}}> &lt; </Button>
+        <div className="full-cover arrow left" onClick={() =>{ previous();}}>
         </div>
 
-        <div className='page-container diary-item'>
+        <div className='page-container full-cover diary-item'>
           <h1>{date.toDateString()}</h1>
           <Page title='noo' content='yesss' />
         </div>
 
-        <div className="next-arrow-btn diary-item">
-          <Button variant='contained' onClick={() =>{ next();}}> &gt; </Button>
+        <div className="full-cover arrow right" onClick={() =>{ next();}}>
         </div>
 
       </div>
