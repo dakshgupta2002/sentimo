@@ -27,8 +27,8 @@ export default function Page({date, setIsLoading}) {
       {notes.length === 0 ? 
         <h1>No notes for this date</h1> :
 
-        notes.map(({title, content}) => {
-          return <Note title = {title} content = {content} />
+        notes.map(({title, content, noteId}) => {
+          return <Note title = {title} content = {content} noteId={noteId}/>
         })
       }
       

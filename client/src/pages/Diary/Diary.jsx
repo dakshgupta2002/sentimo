@@ -1,28 +1,26 @@
 import { Button } from "@mui/material/";
-import React from "react";
+import React, { useState } from "react";
 import Page from "../../components/Page/Page";
 import { useDate } from "../../utils/hooks/useDate";
 import "./index.css";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
-
+  
   return (
     <div>
       
-      <div className="diary-container">
+      <div className="diary-container full-cover">
 
-        <div className='prev-arrow-btn diary-item'>
-          <Button variant='contained' onClick={() =>{ previous();}}> &lt; </Button>
+        <div className="full-cover arrow left" onClick={() =>{ previous();}}>
         </div>
 
-        <div className='page-container diary-item'>
+        <div className='page-container full-cover diary-item'>
           <h1>{date.toDateString()}</h1>
           <Page date={date}/>
         </div>
 
-        <div className="next-arrow-btn diary-item">
-          <Button variant='contained' onClick={() =>{ next();}}> &gt; </Button>
+        <div className="full-cover arrow right" onClick={() =>{ next();}}>
         </div>
 
       </div>
