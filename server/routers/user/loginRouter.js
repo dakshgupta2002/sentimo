@@ -2,7 +2,7 @@ import { Router } from 'express';
 import User from '../../models/user.js';
 const loginRouter = Router();
 import bcrypt from 'bcrypt';
-import { jwtGenerator } from '../../auth/authencticate.js';
+import { jwtGenerator } from '../../auth/authenticate.js';
 
 
 loginRouter.route("/")
