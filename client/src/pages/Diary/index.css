@@ -12,12 +12,12 @@
 }
 
 .prev-arrow-and-modal-container {
-  display: flex;
-  flex-direction: column;
+  display: inline;
 }
 
-.prev-arrow-and-modal-container > Button {
-
+.add-btn {
+  position: absolute;
+  top: 20px;
 }
 
 .page-container {
@@ -38,36 +38,7 @@
   margin: 10px 20px;
 }
 
-.arrow {
-  width: 40px;
-  height: 18px;
-  background: transparent;
-  border-top: 1vmin solid white;
-  border-right: 1vmin solid white;
-  box-shadow: 0 0 0 lightgray;
-  transition: all 200ms ease;
-}
-
-.arrow:hover {
-  border-color: orange;
-  box-shadow: 0.5vmin -0.5vmin 0 white;
-}
-
-.arrow::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-40%, -60%) rotate(45deg);
-  width: 200%;
-  height: 200%;
-}
-.left {
-  left: 0;
-  transform: translate3d(0, -50%, 0) rotate(225deg);
-}
-
-.right {
-  right: 0;
-  transform: translate3d(0, -50%, 0) rotate(45deg);
+/* Form */
+.form-container {
+    padding: 15px;
 }

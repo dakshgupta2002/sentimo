@@ -1,4 +1,8 @@
-import { Button } from "@mui/material/";
+import { Button, FormControl, TextField, IconButton } from "@mui/material/";
+import {
+  AccountCircle,
+  EnhancedEncryptionOutlined,
+} from "@mui/icons-material/";
 import React, { useState } from "react";
 import { Page, ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
@@ -12,18 +16,36 @@ export default function Diary() {
     <div>
       <div className="diary-container full-cover">
         <ModalContainer isOpen={open} close={() => setOpen(false)}>
-          make form here
+            <div className="form-container">
+              <div className="">
+                <TextField
+                  id="outlined-basic"
+                  label="Title"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+
+              <div className="">
+                <TextField
+                  id="outlined-basic"
+                  label="Content"
+                  variant="outlined"
+                  fullWidth
+                />
+              </div>
+              <div className="form-footer">
+                <Button>Close</Button>
+              </div>
+            </div>
         </ModalContainer>
-        <div className='prev-arrow-and-modal-container'>
-          <Button onClick={() => setOpen(true)}>
-            Add
+        <div className="prev-arrow-and-modal-container">
+          <div className="add-btn">
+            <Button onClick={() => setOpen(true)}>Add</Button>
+          </div>
+          <Button variant="contained" onClick={() => previous()}>
+            &lt;
           </Button>
-          <div
-            className="full-cover arrow left"
-            onClick={() => {
-              previous();
-            }}
-          ></div>
         </div>
 
         <div className="page-container full-cover diary-item">
@@ -31,12 +53,11 @@ export default function Diary() {
           <Page date={date} />
         </div>
 
-        <div
-          className="full-cover arrow right"
-          onClick={() => {
-            next();
-          }}
-        ></div>
+        <div>
+          <Button variant="contained" onClick={() => next()}>
+            &gt;
+          </Button>
+        </div>
       </div>
     </div>
   );
