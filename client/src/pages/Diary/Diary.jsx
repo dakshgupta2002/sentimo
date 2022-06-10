@@ -1,5 +1,8 @@
 import { Button, FormControl, TextField, IconButton } from "@mui/material/";
-import {AccountCircle, EnhancedEncryptionOutlined} from "@mui/icons-material/";
+import {
+  AccountCircle,
+  EnhancedEncryptionOutlined,
+} from "@mui/icons-material/";
 import React, { useState } from "react";
 import { Page, ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
@@ -12,15 +15,18 @@ export default function Diary() {
 
   return (
     <div>
+      <ModalContainer isOpen={open} close={() => setOpen(false)}>
+        <NoteInput />
+      </ModalContainer>
+
       <div className="diary-container full-cover">
-        <ModalContainer isOpen={open} close={() => setOpen(false)}>
-          <NoteInput/>
-        </ModalContainer>
-        
+        <div className="add-btn">
+          <Button variant="outlines" onClick={() => setOpen(true)}>
+            Add
+          </Button>
+        </div>
+
         <div className="prev-arrow-and-modal-container">
-          <div className="add-btn">
-            <Button onClick={() => setOpen(true)}>Add</Button>
-          </div>
           <Button variant="contained" onClick={() => previous()}>
             &lt;
           </Button>

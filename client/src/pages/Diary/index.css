@@ -22,7 +22,7 @@
 
 .page-container {
   border: 3px solid yellow;
-  
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,11 +34,14 @@
   justify-content: space-between;
 }
 
-.indicator > .indicator-btn {
+.indicator>.indicator-btn {
   margin: 10px 20px;
 }
 
 /* Form */
 .form-container {
-    padding: 15px;
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  padding: 15px;
 }
