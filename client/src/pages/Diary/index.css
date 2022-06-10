@@ -45,3 +45,19 @@
   height: 90vh;
   padding: 15px;
 }
+
+.title-container {
+  border: 2px solid black;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+  text-transform: capitalize;
+
+  margin: 3px;
+}
+
+.content-container {
+  border: 4px solid green;
+  justify-content: center;
+}

@@ -1,5 +1,5 @@
 import React from 'react'
-import './Page.css'
+import './index.css'
 
 export default function Note({title, content}) {
   return (

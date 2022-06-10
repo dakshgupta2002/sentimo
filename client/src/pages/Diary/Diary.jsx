@@ -4,10 +4,11 @@ import {
   EnhancedEncryptionOutlined,
 } from "@mui/icons-material/";
 import React, { useState } from "react";
-import { Page, ModalContainer } from "../../components";
+import { ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import "./index.css";
 import NoteInput from "./NoteInput";
+import Page from "./Page";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
@@ -16,7 +17,7 @@ export default function Diary() {
   return (
     <div>
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput />
+        <NoteInput close={()=>setOpen(false)} />
       </ModalContainer>
 
       <div className="diary-container full-cover">

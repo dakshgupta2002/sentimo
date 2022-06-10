@@ -3,33 +3,31 @@
 
 import React, { useEffect, useState } from 'react'
 import { useLoading } from '../../utils/hooks/useLoading.js';
-import { get } from './../../utils/api/get.js'
 import Note from './Note.jsx'
+import { fetchNotes } from '../../utils/api/notes.js';
 
 export default function Page({date}) {
   const {setLoading} = useLoading();
   const [notes, setNotes] = useState([]);
 
-  const fetchNotes = async () => {
-    setLoading(true); //set page loading to true
-
-    const notes = await get(`notes?date=${date.toDateString()}`); //get notes for the date
-    setNotes(notes);  
-
-    setLoading(false); 
-  }
-  
   useEffect( () => {
-    fetchNotes();
+    setLoading(true);
+    setNotes(fetchNotes(date));
+    setLoading(false);
+
   }, [date]); //call fetchNotes when date changes
 
   return (
     <div>
-      {notes.length === 0 ? 
+      {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
 
-        notes.map(({title, content, noteId}) => {
-          return <Note title = {title} content = {content} noteId={noteId}/>
+        notes?.notes?.map(({title, content, noteId}) => {
+          return <div>
+
+            <Note title = {title} content = {content} noteId={noteId}/>
+
+          </div>
         })
       }
       
