@@ -35,6 +35,7 @@ export default function Resgiter() {
 
   return (
     <div className="register-form-container">
+      <div>SIGN IN</div>
       <div className="register-form-image">
         <img src={welldoing} alt="man woman and brain" />
       </div>
