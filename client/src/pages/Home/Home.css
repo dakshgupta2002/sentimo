@@ -1,0 +1,42 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-heading {
+    display: flex;
+    height: 85vh;
+}
+
+.home-title-container {
+    color: black;
+    flex-basis: 60%;
+    margin: 0 0 0 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-title {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 70px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    line-height: 100px;
+    margin: 0px;
+}
+
+.home-title-desc {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.sign-in-button-container {
+    display: flex;
+    width: 100%;
+    margin-top: 30px;
+    justify-content: space-around;
+}

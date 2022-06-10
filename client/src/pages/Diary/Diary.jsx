@@ -1,6 +1,6 @@
 import { Button, FormControl, TextField, IconButton } from "@mui/material/";
 import React, { useState } from "react";
-import { ModalContainer } from "../../components";
+import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import NoteInput from "./NoteInput";
 import Page from "./Page";
@@ -13,6 +13,7 @@ export default function Diary() {
 
   return (
     <div>
+      <Sidebar />
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
         <NoteInput close={() => setOpen(false)} />
       </ModalContainer>

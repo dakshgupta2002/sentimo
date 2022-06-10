@@ -66,7 +66,7 @@ export default function Login(props) {
 
           <div className="button-container">
             <button type="submit" onClick={submitButtonClick}>LOG IN</button>
-            <button onClick={signUpButtonClick}>DON't HAVE AN ACCOUNT SIGN UP!</button>
+            <button onClick={signUpButtonClick}>DON'T HAVE AN ACCOUNT SIGN UP!</button>
           </div>
 
         </form>
