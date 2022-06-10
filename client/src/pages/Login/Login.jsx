@@ -8,7 +8,7 @@ export default function Login() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  
+
   var navigate = useNavigate();
 
   const handleSubmit = async (event) => {
@@ -53,7 +53,7 @@ export default function Login() {
 
           <div className="button-container">
             <button type="submit" onClick={submitButtonClick}>LOG IN</button>
-            <button onClick={signUpButtonClick}>SIGN UP</button>
+            <button onClick={signUpButtonClick}>DON't HAVE AN ACCOUNT SIGN UP!</button>
           </div>
 
         </form>
