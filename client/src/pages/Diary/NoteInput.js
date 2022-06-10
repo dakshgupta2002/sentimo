@@ -38,6 +38,7 @@ export default function NoteInput(props) {
                 variant="outlined"
                 fullWidth
                 multiline
+                rows = {4}
                 margin="normal"
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}
@@ -45,7 +46,6 @@ export default function NoteInput(props) {
             <div className="form-footer" onClick={addNote}>
                 <Button>Submit</Button>
             </div>
-
         </div>
     )
 }

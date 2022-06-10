@@ -1,8 +1,4 @@
 import { Button, FormControl, TextField, IconButton } from "@mui/material/";
-import {
-  AccountCircle,
-  EnhancedEncryptionOutlined,
-} from "@mui/icons-material/";
 import React, { useState } from "react";
 import { ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";

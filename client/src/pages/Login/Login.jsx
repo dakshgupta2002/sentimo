@@ -1,51 +1,54 @@
-import React from "react";
-import { TextField, Button, IconButton } from "@mui/material";
-import {
-  AccountCircle,
-  EnhancedEncryptionOutlined,
-} from "@mui/icons-material/";
+import React, { useState } from "react";
 import "./index.css";
 
 const welldoing = require("../../assets/images/welldoing.webp");
 
 export default function Login() {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    var username = event.target[0].value;
+    var password = event.target[1].value;
+    console.log("username and password: ", username, password);
+
+    // Verify username and password form database (await isValidForm function) (TODO)
+
+    // if correct set isSubmitted to true (TODO)
+    setIsSubmitted(true);
+    console.table("Submitted Login Form got: ", event)    
+
+    // else console log some error message and setIsSubmitted to false; (TODO)
+  }
+
+  const submitButtonClick = (event) => {
+    console.log(isSubmitted)
+  }
+
   return (
-    <div className="login-page-container">
-      <div className="login-page-image">
+    <div className="login-form-container">
+      <div className="login-form-image">
         <img src={welldoing} alt="man woman and brain" />
       </div>
       <div className="login-container">
-        <div className="username-field">
+        <form onSubmit={handleSubmit} action="a.php" method="post">
 
-          <IconButton>
-            <AccountCircle style={{fontSize: "30px"}} />
-          </IconButton>
+          <div className="input-container">
+            <label>Username: </label>
+            <input Text="username" name="username" autoComplete="false" required />
+          </div>
 
-          <TextField
-            id="outlined-basic"
-            label="Username"
-            variant="outlined"
-            helperText="Enter your username"
-          />
-        </div>
+          <div className="input-container">
+            <label>Password: </label>
+            <input Text="password" name="password" type="password" required />
+          </div>
 
-        <div className="password-field">
+          <div className="button-container">
+            <button type="submit" onClick={submitButtonClick}>LOG IN</button>
+          </div>
 
-          <IconButton>
-            <EnhancedEncryptionOutlined style={{fontSize: "30px"}}/>
-          </IconButton>
-
-          <TextField
-            id="outlined-basic"
-            label="Password"
-            variant="outlined"
-            type="password"
-            helperText="Enter your password"
-          />
-        </div>
-        <div className="login-btn">
-          <Button variant="contained">LOG IN</Button>
-        </div>
+        </form>
       </div>
     </div>
   );
