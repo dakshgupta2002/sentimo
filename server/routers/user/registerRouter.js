@@ -1,8 +1,8 @@
 import { Router } from 'express';
 const registerRouter = Router();
-import User from '../../models/user.js';
+import User from '../../models/User.js';
 import bcrypt from 'bcrypt';
-import { jwtGenerator } from '../../auth/authencticate.js';
+import { jwtGenerator } from '../../auth/authenticate.js';
 
 registerRouter.route("/")
     .post( (req, res) => {
@@ -10,7 +10,7 @@ registerRouter.route("/")
         User.findOne({username}, (err, user) => {
             if (err){ res.status(500).end(err); return;};
             if (user){ res.status(400).end("Username already used"); return; }
-            
+
             const hashedPassword = bcrypt.hashSync(password, 10);
             const newUser = new User({username, password: hashedPassword});
             newUser.save((err, user) => {

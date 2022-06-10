@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import User from '../../models/user.js';
+import User from '../../models/User.js';
 const loginRouter = Router();
 import bcrypt from 'bcrypt';
 import { jwtGenerator } from '../../auth/authenticate.js';

@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-const { Schema } = mongoose();
+const { Schema } = mongoose;
 
 //this is a basic struct of a note 
 
