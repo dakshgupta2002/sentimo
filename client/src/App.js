@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import { Diary, Home, Login } from './pages';
+import { Diary, Home, Login, Register } from './pages';
 import { useLoading } from './utils/hooks/useLoading';
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
         <Route path="/diary" element={<Diary/>} />
         {/* <Route path="/aboutUs" element={<AboutUs />} /> */}
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </div>
   );

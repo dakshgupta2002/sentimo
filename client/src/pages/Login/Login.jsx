@@ -1,16 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./index.css";
 
 const welldoing = require("../../assets/images/welldoing.webp");
 
 export default function Login() {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  
+  var navigate = useNavigate();
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    var username = event.target[0].value;
-    var password = event.target[1].value;
     console.log("username and password: ", username, password);
 
     // Verify username and password form database (await isValidForm function) (TODO)
@@ -26,27 +29,31 @@ export default function Login() {
     console.log(isSubmitted)
   }
 
+  const signUpButtonClick = (event) => {
+      navigate("/register", { replace: true });
+  }
+
   return (
     <div className="login-form-container">
       <div className="login-form-image">
         <img src={welldoing} alt="man woman and brain" />
       </div>
       <div className="login-container">
-        <form onSubmit={handleSubmit} action="a.php" method="post">
+        <form onSubmit={handleSubmit} action="" method="post">
 
           <div className="input-container">
             <label>Username: </label>
-            <input Text="username" name="username" autoComplete="false" required />
+            <input Text="username" name="username" autoComplete="false" onChange={e => setUsername(e.target.value)} value={username} required />
           </div>
 
           <div className="input-container">
             <label>Password: </label>
-            <input Text="password" name="password" type="password" required />
+            <input Text="password" name="password" type="password" onChange={e => setPassword(e.target.value)} required value={password} />
           </div>
 
           <div className="button-container">
             <button type="submit" onClick={submitButtonClick}>LOG IN</button>
-            <button onClick={submitButtonClick}>SIGN UP</button>
+            <button onClick={signUpButtonClick}>SIGN UP</button>
           </div>
 
         </form>
