@@ -9,6 +9,9 @@ export const jwtGenerator = (_id) => {
 export const authenticate = (req, res, next) => {
     const token = req.headers.authorization || req.body.token || req.query.token;
 
+    if (!token){
+        res.sendStatus(401);
+    }
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         
         if (err) {

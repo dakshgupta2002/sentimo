@@ -25,8 +25,8 @@ export default function Diary() {
 
         <div className="page-container full-cover diary-item">
           <div>
-            <h1>{date.toDateString()}</h1>
-            <Button variant="outlined" onClick={() => setOpen(true)}>
+            <h1>{date.toLocaleDateString()}</h1>
+            <Button variant="outlines" onClick={() => setOpen(true)}>
               Add
             </Button>
           </div>
