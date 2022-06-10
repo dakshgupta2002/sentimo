@@ -13,7 +13,7 @@ export default function Page({date}) {
   const fetchNotes = async () => {
     setLoading(true); //set page loading to true
 
-    const notes = await get(`/notes/${date}`); //get notes for the date
+    const notes = await get(`notes?date=${date.toDateString()}`); //get notes for the date
     setNotes(notes);  
 
     setLoading(false); 

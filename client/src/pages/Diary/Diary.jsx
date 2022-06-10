@@ -1,12 +1,10 @@
 import { Button, FormControl, TextField, IconButton } from "@mui/material/";
-import {
-  AccountCircle,
-  EnhancedEncryptionOutlined,
-} from "@mui/icons-material/";
+import {AccountCircle, EnhancedEncryptionOutlined} from "@mui/icons-material/";
 import React, { useState } from "react";
 import { Page, ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import "./index.css";
+import NoteInput from "./NoteInput";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
@@ -16,29 +14,9 @@ export default function Diary() {
     <div>
       <div className="diary-container full-cover">
         <ModalContainer isOpen={open} close={() => setOpen(false)}>
-            <div className="form-container">
-              <div className="">
-                <TextField
-                  id="outlined-basic"
-                  label="Title"
-                  variant="outlined"
-                  fullWidth
-                />
-              </div>
-
-              <div className="">
-                <TextField
-                  id="outlined-basic"
-                  label="Content"
-                  variant="outlined"
-                  fullWidth
-                />
-              </div>
-              <div className="form-footer">
-                <Button>Close</Button>
-              </div>
-            </div>
+          <NoteInput/>
         </ModalContainer>
+        
         <div className="prev-arrow-and-modal-container">
           <div className="add-btn">
             <Button onClick={() => setOpen(true)}>Add</Button>
