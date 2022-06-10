@@ -1,15 +1,29 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
+import { userRegister } from '../../utils/api/userPost'
 
 import './Register.css'
 const welldoing = require("../../assets/images/welldoing.webp");
 
-export default function Resgiter() {
+export default function Resgiter(props) {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   
   var navigate = useNavigate();
+
+  const register = async () => {
+    const res = await userRegister(username, password);
+    if (res.status === 200)
+    {
+        console.log("Registration successful");
+        props.close();
+    }
+    else
+    {
+        console.log("Registration NOT Successful");
+    }
+}
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -30,7 +44,7 @@ export default function Resgiter() {
   }
 
   const submitButtonClick = (event) => {
-      // TODO
+      register();
   }
 
   return (

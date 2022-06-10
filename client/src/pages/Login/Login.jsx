@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { userLogin } from '../../utils/api/userPost'
+
 import "./index.css";
 
 const welldoing = require("../../assets/images/welldoing.webp");
 
-export default function Login() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
+export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   var navigate = useNavigate();
+
+    const login = async () => {
+        const res = await userLogin(username, password);
+        if (res.status === 200)
+        {
+            console.log("Logged in");
+            props.close();
+        }
+        else
+        {
+            console.log("Not Logged in");
+        }
+    }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -19,14 +33,13 @@ export default function Login() {
     // Verify username and password form database (await isValidForm function) (TODO)
 
     // if correct set isSubmitted to true (TODO)
-    setIsSubmitted(true);
     console.table("Submitted Login Form got: ", event)    
 
     // else console log some error message and setIsSubmitted to false; (TODO)
   }
 
   const submitButtonClick = (event) => {
-    console.log(isSubmitted)
+    login();
   }
 
   const signUpButtonClick = (event) => {
