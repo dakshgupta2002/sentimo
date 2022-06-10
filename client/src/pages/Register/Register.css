@@ -1,0 +1,27 @@
+.register-form-container {
+    border: 2px solid blue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.register-form-image {
+    border: 2px solid red; 
+
+    display: block;
+    align-items: center;
+}
+
+.register-form-image > img {
+    width: 50vw;
+}
+
+.register-container {
+    /* CSS To REMOVE */
+    border: 2px solid grey;
+    padding: 10px;
+
+    /* CSS To KEEP */
+}
