@@ -1,28 +1,32 @@
 .full-cover {
-  height: 100vh;
+  height: 90vh;
 }
 
 .diary-container {
   border: 1px solid black;
-  background-color: grey;
+  background-color: lightgrey;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
 }
-
-.prev-arrow-and-modal-container {
-  display: inline;
+.date-but:hover{
+  background-color: rgba(0, 0 ,0, 0.1);
 }
 
-.add-btn {
-  position: absolute;
-  top: 20px;
+.prev-date-but {
+  height: 100%;
+  width: 30vw;
+}
+
+.next-date-but{
+  height: 100%;
+  width: 30vw;
 }
 
 .page-container {
-  border: 3px solid yellow;
-
+  border: 1px solid black;
+  width: 60vw;
   display: flex;
   flex-direction: column;
   align-items: center;

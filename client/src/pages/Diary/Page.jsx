@@ -8,18 +8,21 @@ import { fetchNotes } from '../../utils/api/notes.js';
 
 export default function Page({date}) {
   const {setLoading} = useLoading();
-  const [notes, setNotes] = useState([]);
+  const [notes, setNotes] = useState({notes: []});
 
   useEffect( () => {
-    setLoading(true);
-    setNotes(fetchNotes(date));
-    setLoading(false);
-
+    const getNotes = async () => {
+      setLoading(true);
+      setNotes(await fetchNotes(date));
+      setLoading(false);
+    }
+    getNotes();
+    
   }, [date]); //call fetchNotes when date changes
 
   return (
     <div>
-      {notes?.length === 0 ? 
+      {notes?.notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
 
         notes?.notes?.map(({title, content, noteId}) => {

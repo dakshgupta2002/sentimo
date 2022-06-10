@@ -12,37 +12,32 @@ import Page from "./Page";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   return (
     <div>
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput close={()=>setOpen(false)} />
+        <NoteInput close={() => setOpen(false)} />
       </ModalContainer>
 
       <div className="diary-container full-cover">
-        <div className="add-btn">
-          <Button variant="outlines" onClick={() => setOpen(true)}>
-            Add
-          </Button>
-        </div>
-
-        <div className="prev-arrow-and-modal-container">
-          <Button variant="contained" onClick={() => previous()}>
-            &lt;
-          </Button>
-        </div>
+        <div
+          className="date-but prev-date-but"
+          onClick={() => previous()}
+        ></div>
 
         <div className="page-container full-cover diary-item">
-          <h1>{date.toDateString()}</h1>
+          <div>
+            <h1>{date.toDateString()}</h1>
+            <Button variant="outlines" onClick={() => setOpen(true)}>
+              Add
+            </Button>
+          </div>
+          
           <Page date={date} />
         </div>
 
-        <div>
-          <Button variant="contained" onClick={() => next()}>
-            &gt;
-          </Button>
-        </div>
+        <div className="date-but next-date-but" onClick={() => next()}></div>
       </div>
     </div>
   );
