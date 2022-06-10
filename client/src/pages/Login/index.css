@@ -1,4 +1,4 @@
-.login-page-container {
+.login-form-container {
     border: 2px solid blue;
 
     display: flex;
@@ -7,29 +7,21 @@
     height: 100vh;
 }
 
-.login-page-image {
+.login-form-image {
     border: 2px solid red; 
 
     display: block;
     align-items: center;
 }
 
-.login-page-image > img {
+.login-form-image > img {
     width: 50vw;
 }
 
 .login-container {
-    border: 2px solid green;
+    /* CSS To REMOVE */
+    border: 2px solid grey;
     padding: 10px;
 
-    width: 50vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* CSS To KEEP */
 }
-
-.login-btn {
-    display: inline;
-}
-
