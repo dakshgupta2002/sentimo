@@ -46,6 +46,7 @@ export default function Login() {
 
           <div className="button-container">
             <button type="submit" onClick={submitButtonClick}>LOG IN</button>
+            <button onClick={submitButtonClick}>SIGN UP</button>
           </div>
 
         </form>

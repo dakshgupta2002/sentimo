@@ -1,7 +1,8 @@
 import React from 'react'
 import { TextField, Button } from '@mui/material'
-import "./index.css";
 import { postNote } from '../../utils/api/notes';
+
+import "./Diary.css";
 
 export default function NoteInput(props) {
     const [title, setTitle] = React.useState("");
@@ -16,7 +17,6 @@ export default function NoteInput(props) {
         }else{
             console.log("Note not posted");
         }
-
     }
 
     return (

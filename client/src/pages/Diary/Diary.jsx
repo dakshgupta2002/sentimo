@@ -2,9 +2,10 @@ import { Button, FormControl, TextField, IconButton } from "@mui/material/";
 import React, { useState } from "react";
 import { ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
-import "./index.css";
 import NoteInput from "./NoteInput";
 import Page from "./Page";
+
+import "./Diary.css";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
@@ -25,7 +26,7 @@ export default function Diary() {
         <div className="page-container full-cover diary-item">
           <div>
             <h1>{date.toDateString()}</h1>
-            <Button variant="outlines" onClick={() => setOpen(true)}>
+            <Button variant="outlined" onClick={() => setOpen(true)}>
               Add
             </Button>
           </div>
