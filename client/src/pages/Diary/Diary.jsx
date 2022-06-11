@@ -6,6 +6,7 @@ import NoteInput from "./NoteInput";
 import Page from "./Page";
 
 import "./Diary.css";
+import { AddCircleOutline } from "@mui/icons-material";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
@@ -18,24 +19,34 @@ export default function Diary() {
         <NoteInput close={() => setOpen(false)} />
       </ModalContainer>
 
-      <div className="diary-container full-cover">
-        <div
-          className="date-but prev-date-but"
-          onClick={() => previous()}
-        ></div>
-
-        <div className="page-container full-cover diary-item">
-          <div>
-            <h1>{date.toLocaleDateString()}</h1>
-            <Button variant="outlines" onClick={() => setOpen(true)}>
-              Add
-            </Button>
+      <div className="diary-container">
+        {/* Flex Item-1 (DATE, ARROW KEY, blank space) */}
+        <div className="diary-left-container">
+          <div className="date-show">
+            <Button variant="contained">{date.toLocaleDateString()}</Button>
           </div>
-          
+
+          <div className="arrow left" onClick={() => previous()}></div>
+
+          <div></div>
+        </div>
+
+        {/* Flex Item-2 (Title Content) */}
+        <div>
           <Page date={date} />
         </div>
 
-        <div className="date-but next-date-but" onClick={() => next()}></div>
+        {/* Flex Item-3 (Fiteness Quotient, Next, ADD BUTTON) */}
+        <div className="diary-right-container">
+          <Button variant="contained">Fitness Quotient</Button>
+          <div className="arrow right" onClick={() => next()}></div>
+          <div class="add-icon-container">
+            <AddCircleOutline
+              className="add-icon"
+              onClick={() => setOpen(true)}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
