@@ -9,14 +9,12 @@ export default function NoteInput(props) {
     const [content, setContent] = React.useState("");
 
     const addNote = async () => {
-        const res = await postNote(title, content);
-        console.log(res)
-        if (res.status === 200){
+        const res = await postNote(title, content, props.date);
+        if (res.response.status === 200 || res.response.status === 201) {
             console.log("Note posted");
             props.close();
-            // note post karke phirse fetch karna padega
         }else{
-            console.log("Note not posted");
+            console.log("err", res.data.msg);
         }
     }
 

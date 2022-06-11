@@ -15,7 +15,7 @@ export default function Diary() {
     <div>
       <Sidebar />
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput close={() => setOpen(false)} />
+        <NoteInput close={() => setOpen(false)} date={date} />
       </ModalContainer>
 
       <div className="diary-container full-cover">

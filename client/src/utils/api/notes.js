@@ -6,9 +6,9 @@ export const fetchNotes = async (date) => {
     return notes.notes;
 }
 
-export const postNote = async (title, content) => {
+export const postNote = async (title, content, date) => {
     const res = await post("notes", { title, content }, 'POST');
-    fetchNotes();
+    fetchNotes(date);
     return res;
 }
 // user/login 

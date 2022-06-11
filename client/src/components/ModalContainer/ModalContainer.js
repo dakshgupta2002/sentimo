@@ -10,9 +10,7 @@ const ModalContainer = ({
 }) => {
     const modstyle={padding: padding, ...style}
     const [onOutside, setOnOutside] = useState(true);
-    useEffect( () => {
-        console.log(onOutside);
-    }, [onOutside])
+
     return (
         <>
             {isOpen &&

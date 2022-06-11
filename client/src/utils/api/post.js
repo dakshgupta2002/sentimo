@@ -5,7 +5,7 @@ export const post = async (url, data, method) => {
         method: method,
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            "Authorization": localStorage.getItem("jwt")
         },
         body: JSON.stringify(data)
     });

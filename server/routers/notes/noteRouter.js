@@ -48,7 +48,7 @@ noteRouter.route("/")
     .post(async (req, res) => {
         const { title, content } = req.body;
         if (!title || !content) {
-            res.status(400).end("Missing title or content");
+            res.status(400).json({"msg": "Missing title or content"});
             return;
         }
         const userId = req.user._id;

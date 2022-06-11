@@ -8,6 +8,7 @@ export const jwtGenerator = (_id) => {
 
 export const authenticate = (req, res, next) => {
     const token = req.headers.authorization || req.body.token || req.query.token;
+    console.log(token)
 
     if (!token){
         res.sendStatus(401);
@@ -15,11 +16,11 @@ export const authenticate = (req, res, next) => {
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         
         if (err) {
-            //token not valid
-            return err;
+            res.status(401).json({"msg":"Token not valid", err});
         } else {
             //add the _id to the req parameter and move forward
             req.user = decoded;
+            console.log(decoded)
             next();
         }
     });

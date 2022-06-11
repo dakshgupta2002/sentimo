@@ -15,7 +15,7 @@ export default function Page({date}) {
       setLoading(true);
       setNotes(await fetchNotes(date));
       setLoading(false);
-    }
+    }   
     getNotes();
     
   }, [date]); //call fetchNotes when date changes
