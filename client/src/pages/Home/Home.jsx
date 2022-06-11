@@ -4,7 +4,7 @@ import { Sidebar } from "../../components";
 import { Button } from "@mui/material";
 import LoginIcon from '@mui/icons-material/Login';
 import { useNavigate } from "react-router-dom";
-import diaryLottie from "../../assets/lottieSvg/diaryLottie.json";
+import sliderMan from "../../assets/lottieSvg/sliderMan.json";
 
 import "./Home.css";
 
@@ -17,7 +17,7 @@ export default function Home() {
         <div className="home-heading">
           <Lottie
             className="diary-woman-svg"
-            animationData={diaryLottie}
+            animationData={sliderMan}
             loop
             play
           />
