@@ -11,7 +11,7 @@ loginRouter.route("/")
 
         User.findOne({username}, (err, user) => {            
             if (err){
-                res.status(500).end(err);
+                res.status(500).json({err});
                 return;
             }else{
                 if (user){
@@ -19,10 +19,10 @@ loginRouter.route("/")
                         const token = jwtGenerator(user._id);
                         res.json({token}).status(201);
                     }else{
-                        res.status(400).end("Incorrect password");
+                        res.status(400).json({"msg": "Incorrect password"});
                     }
                 }else{
-                    res.status(400).end("Username not found");
+                    res.status(400).json({"msg":"Username not found"});
                 }
             }
         })

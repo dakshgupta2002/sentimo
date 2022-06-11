@@ -10,12 +10,11 @@ noteRouter.route("/")
         const userId = req?.user?._id;
         const date = req?.query?.date;
 
-        Diary.findOne({ user: userId }, (err, diary) => {
+        Diary.findOne({ user: userId }, async (err, diary) => {
             if (err) { res.status(500).end(err); return; };
             if (!diary) { res.status(200).end("No diary found"); return; }
 
-            const filteredNotes = [];
-            diary.notes.map(noteId => {
+            const filteredNotes = await diary.notes.map(noteId => {
                 Note.findById(noteId, (err, note) => {
                     if (err) { res.status(500).end(err); return; };
                     if (!note) { res.status(200).end("No note found"); return; }
@@ -36,7 +35,10 @@ noteRouter.route("/")
                     }
                 });
             });
-            console.log({ filteredNotes })
+            setTimeout( () => {
+                console.log({ filteredNotes })
+
+            }, 2000)
 
             // filteredNotes.sort((a,b) => {a.noteTime - b.noteTime});
 

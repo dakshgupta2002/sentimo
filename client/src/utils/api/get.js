@@ -8,5 +8,6 @@ export const get = async (url) => {
             "Authorization": `Bearer ${localStorage.getItem("token")}`
         }
     });
-    return await response.json();
+    const json = await response.json();
+    return {"data": json, response};
 }

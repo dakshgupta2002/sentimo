@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from '../../utils/api/userPost'
-
+import { Button } from '@mui/material';
 import "./index.css";
 
 const welldoing = require("../../assets/images/welldoing.webp");
@@ -12,8 +12,10 @@ export default function Login(props) {
 
   var navigate = useNavigate();
 
-    const login = async () => {
+    const login = async (e) => {
+        e.preventDefault();
         const res = await userLogin(username, password);
+        console.log(res);
         if (res.status === 200)
         {
             console.log("Logged in");
@@ -25,23 +27,6 @@ export default function Login(props) {
         }
     }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    console.log("username and password: ", username, password);
-
-    // Verify username and password form database (await isValidForm function) (TODO)
-
-    // if correct set isSubmitted to true (TODO)
-    console.table("Submitted Login Form got: ", event)    
-
-    // else console log some error message and setIsSubmitted to false; (TODO)
-  }
-
-  const submitButtonClick = (event) => {
-    login();
-  }
-
   const signUpButtonClick = (event) => {
       navigate("/register", { replace: true });
   }
@@ -52,8 +37,8 @@ export default function Login(props) {
         <img src={welldoing} alt="man woman and brain" />
       </div>
       <div className="login-container">
-        <form onSubmit={handleSubmit} action="" method="post">
-
+        <form>
+          <h3>Login to an existing account!</h3>
           <div className="input-container">
             <label>Username: </label>
             <input Text="username" name="username" autoComplete="false" onChange={e => setUsername(e.target.value)} value={username} required />
@@ -65,8 +50,8 @@ export default function Login(props) {
           </div>
 
           <div className="button-container">
-            <button type="submit" onClick={submitButtonClick}>LOG IN</button>
-            <button onClick={signUpButtonClick}>DON'T HAVE AN ACCOUNT SIGN UP!</button>
+            <Button variant="contained" onClick={login}>LOG IN</Button>
+            <Button variant="outlined" onClick={signUpButtonClick}>DON'T HAVE AN ACCOUNT SIGN UP!</Button>
           </div>
 
         </form>

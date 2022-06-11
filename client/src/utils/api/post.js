@@ -9,5 +9,7 @@ export const post = async (url, data, method) => {
         },
         body: JSON.stringify(data)
     });
-    return await response.json();
+
+    const json = await response.json();
+    return {"data": json, response};
 }
