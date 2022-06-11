@@ -26,32 +26,7 @@ export default function Home() {
             <div className="home-title-desc">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
               similique!
-            </div>
-            <div className="sign-in-button-container">
-              {/* LOG IN */}
-              <Button
-                variant="outlined"
-                size="large"
-                startIcon={<LoginIcon />}
-                onClick={() => {
-                  navigate("/login", { replace: true });
-                }}
-              >
-                LOG IN
-              </Button>
-              
-              {/* SIGN UP (REGISTER) */}
-              <Button
-                variant="outlined"
-                size="large"
-                endIcon={<LoginIcon />}
-                onClick={() => {
-                  navigate("/register", { replace: true });
-                }}
-              >
-                SIGN UP
-              </Button>
-            </div>
+            </div>            
           </div>
         </div>
       </div>
