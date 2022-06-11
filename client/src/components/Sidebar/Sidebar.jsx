@@ -121,7 +121,6 @@ export default function Sidebar() {
                 else if (i!==0 && text[i-1]===" ") link += text[i].toUpperCase();
                 else link += text[i].toLowerCase();
               }
-              console.log(link)
               return (
                 <Link to = {`/${link}`}> 
                   <ListItem button key={text}>
@@ -138,7 +137,9 @@ export default function Sidebar() {
           <Divider />
           <List>
             <ListItem>
-              <Button  variant="contained" color="secondary" href="login">Login/Signup</Button>
+              <Button variant="contained" color="secondary" href="login" onClick={()=>localStorage.removeItem("jwt")}>
+                {localStorage.getItem("jwt") ? "Logout" : "Login"}                
+              </Button>
             </ListItem>
           </List>
      
