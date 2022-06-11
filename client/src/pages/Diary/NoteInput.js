@@ -10,6 +10,7 @@ export default function NoteInput(props) {
 
     const addNote = async () => {
         const res = await postNote(title, content);
+        console.log(res)
         if (res.status === 200){
             console.log("Note posted");
             props.close();
@@ -43,8 +44,8 @@ export default function NoteInput(props) {
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}
             />
-            <div className="form-footer" onClick={addNote}>
-                <Button>Submit</Button>
+            <div className="form-footer">
+                <Button onClick={addNote}>Submit</Button>
             </div>
         </div>
     )
