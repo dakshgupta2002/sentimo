@@ -11,7 +11,6 @@ import { AddCircleOutline } from "@mui/icons-material";
 export default function Diary() {
   const [date, setDate, reset, previous, next] = useDate();
   const [open, setOpen] = useState(true);
-
   return (
     <div>
       <Sidebar />
@@ -40,12 +39,14 @@ export default function Diary() {
         <div className="diary-right-container">
           <Button variant="contained">Fitness Quotient</Button>
           <div className="arrow right" onClick={() => next()}></div>
-          <div class="add-icon-container">
+
+          {new Date(date).toLocaleDateString() === (new Date()).toLocaleDateString() ? 
             <AddCircleOutline
               className="add-icon"
               onClick={() => setOpen(true)}
             />
-          </div>
+          : null}
+
         </div>
       </div>
     </div>

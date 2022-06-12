@@ -5,10 +5,10 @@ export default function Note({title, content}) {
   return (
     <div>
       <div className='title-container'>
-        {title}
+        TITLE: {title}
       </div>
       <div className='content-container'>
-        {content}
+        CONTENT: {content}
       </div>
     </div>
   )

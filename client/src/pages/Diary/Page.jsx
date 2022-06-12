@@ -8,7 +8,7 @@ import { fetchNotes } from '../../utils/api/notes.js';
 
 export default function Page({date}) {
   const {setLoading} = useLoading();
-  const [notes, setNotes] = useState({notes: []});
+  const [notes, setNotes] = useState([]);
 
   useEffect( () => {
     const getNotes = async () => {
