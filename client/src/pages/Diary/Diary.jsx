@@ -11,11 +11,12 @@ import { AddCircleOutline } from "@mui/icons-material";
 export default function Diary() {
   const [date, setDate, reset, previous, next, today] = useDate();
   const [open, setOpen] = useState(true);
+  const [notesAdded, setNotesAdded] = useState(0)
   return (
     <div>
       <Sidebar />
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput close={() => setOpen(false)} date={date} />
+        <NoteInput close={() => setOpen(false)} date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
       </ModalContainer>
 
       <div className="diary-container">
@@ -32,7 +33,7 @@ export default function Diary() {
 
         {/* Flex Item-2 (Title Content) */}
         <div style={{width: '70%', height: '80vh', overflow: 'hidden'}}>
-          <Page date={date} />
+          <Page date={date} notesAdded={notesAdded}/>
         </div>
 
         {/* Flex Item-3 (Fiteness Quotient, Next, ADD BUTTON) */}
