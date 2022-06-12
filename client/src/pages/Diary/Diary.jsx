@@ -31,7 +31,7 @@ export default function Diary() {
         </div>
 
         {/* Flex Item-2 (Title Content) */}
-        <div>
+        <div style={{width: '70%'}}>
           <Page date={date} />
         </div>
 
@@ -44,6 +44,7 @@ export default function Diary() {
             <AddCircleOutline
               className="add-icon"
               onClick={() => setOpen(true)}
+              display={false}
             />
           : null}
 

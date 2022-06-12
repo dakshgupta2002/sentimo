@@ -1,15 +1,53 @@
-import React from 'react'
-import './Diary.css'
+import React from "react";
+import "./Diary.css";
+import { Box, TextField, Typography } from "@mui/material";
 
-export default function Note({title, content}) {
+export default function Note({ title, content }) {
   return (
-    <div>
-      <div className='title-container'>
-        TITLE: {title}
-      </div>
-      <div className='content-container'>
-        CONTENT: {content}
-      </div>
-    </div>
-  )
+    <Box style={{ width: '100%' }}>
+      <Typography variant="h6">Title</Typography>
+      <Box
+        component="span"
+        sx={{
+          display: "block",
+          p: 1,
+          m: 1,
+          bgcolor: "#101010",
+          color: "grey.300",
+          border: "1px solid",
+          borderColor: "grey.800",
+          borderRadius: 2,
+          fontSize: "0.875rem",
+          fontWeight: "700",
+        }}
+      >
+        <Typography>
+          <span>{title}</span>
+        </Typography>
+      </Box>
+
+      <Typography variant="h6">Content</Typography>
+
+      <Box
+        component="span"
+        sx={{
+          display: "block",
+          p: 1,
+          m: 1,
+          bgcolor: "#101010",
+          color: "grey.300",
+          border: "1px solid",
+          borderColor: "grey.800",
+          borderRadius: 2,
+          fontSize: "0.875rem",
+          fontWeight: "700",
+          height: '10em'
+        }}
+      >
+        <Typography>
+          <span>{content}</span>
+        </Typography>
+      </Box>
+    </Box>
+  );
 }
