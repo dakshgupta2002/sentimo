@@ -3,7 +3,7 @@ import { post } from './post';
 
 export const fetchNotes = async (date) => {
     const notes = await get(`notes?date=${date.toLocaleDateString()}`); //get notes for the date
-    return notes.notes;
+    return notes;
 }
 
 export const postNote = async (title, content, date) => {

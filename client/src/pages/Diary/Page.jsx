@@ -13,7 +13,10 @@ export default function Page({date}) {
   useEffect( () => {
     const getNotes = async () => {
       setLoading(true);
-      setNotes(await fetchNotes(date));
+      const res = await fetchNotes(date);
+      if (res.response.status ===200){
+        setNotes(res.data.notes);
+      }
       setLoading(false);
     }   
     getNotes();
@@ -22,10 +25,10 @@ export default function Page({date}) {
 
   return (
     <div>
-      {notes?.notes?.length === 0 ? 
+      {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
 
-        notes?.notes?.map(({title, content, noteId}) => {
+        notes?.map(({title, content, noteId}) => {
           return <div>
 
             <Note title = {title} content = {content} noteId={noteId}/>

@@ -11,13 +11,12 @@ noteRouter.route("/")
         const date = req?.query?.date;
         const diary = await Diary.findOne({user: userId}).exec();
         if (!diary) res.status(200).json({notes: []});
-        const notes = await diary.notes.map(noteId => {
-            return Note.findById(noteId).exec();
-        })
+        const notes = await diary.notes.map(noteId => Note.findById(noteId).exec())
+        //notes is an array of promises 
         const filteredNotes = await Promise.all(notes).then(notes => {
-            return notes.filter(note => {
-                return new Date(note.createdAt).toLocaleDateString() === date;
-            })
+            //recieved all of the note document, all promises resolved
+            return notes.filter(note => 
+                new Date(date).toLocaleDateString()===new Date(note.createdAt).toLocaleDateString())
             .sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt));
         });
 
