@@ -46,7 +46,7 @@ export default function Diary() {
               onClick={() => setOpen(true)}
               display={false}
             />
-          : null}
+          : <div></div>}
 
         </div>
       </div>

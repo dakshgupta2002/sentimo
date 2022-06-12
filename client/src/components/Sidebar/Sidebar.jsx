@@ -122,7 +122,7 @@ export default function Sidebar() {
                 else link += text[i].toLowerCase();
               }
               return (
-                <Link to = {`/${link}`}> 
+                <Link to = {`/${link}`} key={index} > 
                   <ListItem button key={text}>
                     <ListItemIcon>
                       {index % 2 === 0 ? <Inbox/> : <Mail/>}

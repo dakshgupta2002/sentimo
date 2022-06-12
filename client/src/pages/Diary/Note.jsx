@@ -1,6 +1,6 @@
 import React from "react";
 import "./Diary.css";
-import { Box, TextField, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 export default function Note({ title, content }) {
   return (
