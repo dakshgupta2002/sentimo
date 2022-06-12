@@ -18,7 +18,8 @@
 .diary-mid-container {
   display: flex;
   flex-direction: column;
-  height: 90vh;
+  height: 80vh;
+  width: 70%;
   justify-content: space-around;
   align-items: center;
 }
@@ -31,14 +32,10 @@
   align-items: center;
 }
 
-/* .arrow {
-  cursor: pointer;
-  border: 2px solid black;
+.page-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-basis: 40%;
-} */
+  scroll-snap-type: y mandatory;
+}
 
 .arrow {
   box-sizing: border-box;

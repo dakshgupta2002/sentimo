@@ -32,7 +32,7 @@ export default function Diary() {
         </div>
 
         {/* Flex Item-2 (Title Content) */}
-        <div style={{width: '70%', height: '80vh', overflow: 'hidden'}}>
+        <div className="diary-mid-container" >
           <Page date={date} notesAdded={notesAdded}/>
         </div>
 

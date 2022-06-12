@@ -41,7 +41,8 @@ export default function Note({ title, content }) {
           borderRadius: 2,
           fontSize: "0.875rem",
           fontWeight: "700",
-          height: '10em'
+          height: '20em',
+          overflowY: "scroll"
         }}
       >
         <Typography>

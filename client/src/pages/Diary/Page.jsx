@@ -27,9 +27,9 @@ export default function Page({date, notesAdded}) {
     <div style={{height: '100%', overflowY: 'scroll'}}>
       {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
-
+        
         notes?.map(({title, content, noteId}) => {
-          return <div>
+          return <div className="page-container">
 
             <Note title = {title} content = {content} noteId={noteId}/>
 
