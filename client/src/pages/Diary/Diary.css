@@ -1,3 +1,11 @@
+html body {
+  overflow: hidden;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
 .diary-container {
   border: 1px solid black;
   background-color: lightgrey;
@@ -22,6 +30,7 @@
   width: 70%;
   justify-content: space-around;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .diary-right-container {
@@ -34,7 +43,9 @@
 
 .page-container {
   display: flex;
+  flex-direction: column;
   scroll-snap-type: y mandatory;
+  overflow-y: scroll;
 }
 
 .arrow {
@@ -75,10 +86,9 @@
   transition: transform 300ms ease-in-out;
 }
 
-.notes-container{
-  height: 100%;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
+section {
+  height: 100vh;
+  scroll-snap-align: start;
+  position: relative;
 }
+
