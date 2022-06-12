@@ -24,16 +24,12 @@ export default function Page({date, notesAdded}) {
   }, [date, notesAdded]); //call fetchNotes when date changes
 
   return (
-    <div style={{height: '100%', overflowY: 'scroll'}}>
+    <div className='notes-container'>
       {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
         
         notes?.map(({title, content, noteId}) => {
-          return <div className="page-container">
-
-            <Note title = {title} content = {content} noteId={noteId}/>
-
-          </div>
+          return <Note title = {title} content = {content} noteId={noteId}/>
         })
       }
       
