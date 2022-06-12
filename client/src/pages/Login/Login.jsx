@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
 import { Button } from "@mui/material";
 import "./index.css";
+import { toast } from "react-toastify";
 
 const welldoing = require("../../assets/images/welldoing.webp");
 
@@ -18,6 +19,7 @@ export default function Login(props) {
     console.log(res);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
+      toast.success("Login Successful")
       navigate("/");
     } else {
       console.log("error: ", res.data.msg);
