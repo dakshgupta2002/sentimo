@@ -21,17 +21,18 @@ export const isNoteOwner = async (req, res, next) => {
     //check if the note that the user is trying to access is owned by the user
     const _id = req.user?._id;
     const noteId = req.query?.noteId || req.body?.note?._id;
-
     const diary = await Diary.findOne({user: _id}).exec();
+
     if (!diary) {res.status(403).json({"msg": "You are not the owner of this note"}); return;}
     const notes = diary.notes;
-
+    console.log(notes[3].toString() === noteId);
     for (let i = 0; i < notes.length; i++) {
-        if (notes[i]._id === noteId) {
+        if (notes[i].toString() === noteId) {
             next();
             return;
         }
     }
+
     
     res.status(403).json({"msg":"You are not the owner of this note"});
     return;

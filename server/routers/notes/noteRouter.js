@@ -18,7 +18,7 @@ noteRouter.route("/")
         const filteredNotes = await Promise.all(notes).then(notes => {
             //recieved all of the note document, all promises resolved
             return notes.filter(note => 
-                new Date(date).toLocaleDateString()===new Date(note.createdAt).toLocaleDateString())
+                new Date(date).toLocaleDateString()===new Date(note?.createdAt).toLocaleDateString())
             .sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt));
         });
 
@@ -48,13 +48,15 @@ noteRouter.route("/")
 
         res.status(201).json(note);
     })
+
+noteRouter.use(isNoteOwner);
+noteRouter.route("/")
     .delete( async (req, res) => {
-        isNoteOwner();
+        const noteId = req.query.noteId;
 
         const diary = await Diary.findOne({ user: req.user._id }).exec();
-        diary.notes.remove(req.query.noteId);
+        diary.notes.remove(noteId);
         //remove id from notes
-        const noteId = req.query.noteId;
         await Note.deleteOne({ _id: noteId }).exec();
         //remove document from collection
         res.status(200).json({"msg": "Note deleted"});
