@@ -88,14 +88,7 @@ html body {
 
 section {
   height: 100vh;
-<<<<<<< HEAD
-  width: 60vw;
-  scroll-snap-align: start;
-  position: relative;
-}
-=======
   width: 60vw; /* need to change wen responsive */
   scroll-snap-align: start;
   position: relative;
 }
->>>>>>> ca2073721c1d291aa79850006f9494c45d06adb8
