@@ -1,33 +1,59 @@
 import React from "react";
 import Lottie from "react-lottie-player";
 import { Sidebar } from "../../components";
-import { Button } from "@mui/material";
-import LoginIcon from '@mui/icons-material/Login';
-import { useNavigate } from "react-router-dom";
-import sliderMan from "../../assets/lottieSvg/sliderMan.json";
+import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
+import whatWeDoAnimation from "../../assets/lottieSvg/whatWeDoAnimation.json";
 
 import "./Home.css";
 
 export default function Home() {
-  var navigate = useNavigate();
   return (
     <>
       <div className="home-container">
         <Sidebar />
         <div className="home-heading">
           <Lottie
-            className="diary-woman-svg"
-            animationData={sliderMan}
+            animationData={landingPageAnimation}
             loop
             play
           />
           <div className="home-title-container">
-            <div className="home-title">SENTIMO</div>
-            <div className="home-title-desc">
+            <div className="home-title popup-anim">SENTIMO</div>
+            <div className="home-title-desc popup-anim">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
               similique!
-            </div>            
+            </div>
           </div>
+        </div>
+
+        <div className="home-diary-info-container">
+          <div className="home-diary-info-heading home-title">What We Do?</div>
+            <div className="home-diary-info">
+              <div className="problem-list">
+                <ul>
+                  <li>Problem Solve-1</li>
+                  <li>Problem Solve-2</li>
+                  <li>Problem Solve-3</li>
+                </ul>
+              </div>
+
+            <div className="diary-info-svg">
+              <Lottie
+                className="what-we-do-lottie"
+                animationData={whatWeDoAnimation}
+                loop
+                play
+              />
+            </div>
+
+              <div className="problem-list">
+                <ul>
+                  <li>Problem Solve-1</li>
+                  <li>Problem Solve-2</li>
+                  <li>Problem Solve-3</li>
+                </ul>
+              </div>
+            </div>
         </div>
       </div>
     </>

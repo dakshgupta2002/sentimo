@@ -1,7 +1,3 @@
-.full-cover {
-  height: 90vh;
-}
-
 .diary-container {
   border: 1px solid black;
   background-color: lightgrey;
@@ -9,59 +5,76 @@
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
-}
-.date-but:hover{
-  background-color: rgba(0, 0 ,0, 0.1);
+  height: 90vh;
 }
 
-.prev-date-but {
-  height: 100%;
-  width: 30vw;
-}
-
-.next-date-but{
-  height: 100%;
-  width: 30vw;
-}
-
-.page-container {
-  border: 1px solid black;
-  width: 60vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px 20px;
-}
-
-.indicator {
-  display: flex;
-  justify-content: space-between;
-}
-
-.indicator>.indicator-btn {
-  margin: 10px 20px;
-}
-
-/* Form */
-.form-container {
+.diary-left-container {
   display: flex;
   flex-direction: column;
   height: 90vh;
-  padding: 15px;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.title-container {
+.diary-mid-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.diary-right-container {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* .arrow {
+  cursor: pointer;
   border: 2px solid black;
   display: flex;
   justify-content: center;
-  font-size: 2rem;
-  font-weight: bold;
-  text-transform: capitalize;
+  align-items: center;
+  flex-basis: 40%;
+} */
 
-  margin: 3px;
+.arrow {
+  box-sizing: border-box;
+  height: 8vmin;
+  width: 8vmin;
+  border: 0 solid #2155CD;
+  border-width: 0px 6px 6px 0px;
+  transition: border-width 200ms ease-in-out;
+  padding: 10px;
 }
 
-.content-container {
-  border: 4px solid green;
-  justify-content: center;
+.arrow:hover {
+  border-bottom-width: 10px;
+  border-right-width: 10px;
+}
+
+.left {
+  transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+}
+
+.add-icon-container {
+  border: 2px solid red;
+  padding: 10px;
+}
+
+.add-icon {
+  transform: scale(1.3);
+  color: #2155CD;
+}
+
+.add-icon-container:hover{
+  transform: scale(1.8);
+  transition: transform 300ms ease-in-out;
 }

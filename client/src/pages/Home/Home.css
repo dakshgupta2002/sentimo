@@ -3,6 +3,28 @@
     flex-direction: column;
 }
 
+@keyframes popup {
+    0% {
+        opacity: 0;
+        transform: translateY(80%);
+    }
+    20% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}
+
+.popup-anim {
+    animation: popup 2s ease-out;
+}
+
 .home-heading {
     display: flex;
     height: 85vh;
@@ -38,4 +60,44 @@
     width: 100%;
     margin-top: 30px;
     justify-content: space-around;
+}
+
+.home-diary-info-container {
+    display: flex;
+    background-color: #bfd8f0;
+    flex-direction: column;
+    align-items: center;
+    margin: 0px 10px;
+}
+
+.home-diary-info-list {
+    display: flex;
+}
+
+.home-diary-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.home-diary-info-heading {
+    font-size: xx-large;
+    letter-spacing: 2px;
+}
+
+.diary-info-svg {
+    flex-basis: 50%;
+}
+
+.what-we-do-lottie {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    top: -80px;
+}
+
+.problem-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px 10px;
 }
