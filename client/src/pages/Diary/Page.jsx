@@ -6,7 +6,7 @@ import { useLoading } from '../../utils/hooks/useLoading.js';
 import Note from './Note.jsx'
 import { fetchNotes } from '../../utils/api/notes.js';
 
-export default function Page({date}) {
+export default function Page({date, notesAdded}) {
   const {setLoading} = useLoading();
   const [notes, setNotes] = useState([]);
 
@@ -21,7 +21,7 @@ export default function Page({date}) {
     }   
     getNotes();
     
-  }, [date]); //call fetchNotes when date changes
+  }, [date, notesAdded]); //call fetchNotes when date changes
 
   return (
     <div style={{height: '100%', overflowY: 'scroll'}}>
