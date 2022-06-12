@@ -24,7 +24,7 @@ export default function Page({date}) {
   }, [date]); //call fetchNotes when date changes
 
   return (
-    <div>
+    <div style={{height: '100%', overflowY: 'scroll'}}>
       {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
 

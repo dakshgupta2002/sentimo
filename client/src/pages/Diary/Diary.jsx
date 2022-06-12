@@ -9,7 +9,7 @@ import "./Diary.css";
 import { AddCircleOutline } from "@mui/icons-material";
 
 export default function Diary() {
-  const [date, setDate, reset, previous, next] = useDate();
+  const [date, setDate, reset, previous, next, today] = useDate();
   const [open, setOpen] = useState(true);
   return (
     <div>
@@ -31,7 +31,7 @@ export default function Diary() {
         </div>
 
         {/* Flex Item-2 (Title Content) */}
-        <div style={{width: '70%'}}>
+        <div style={{width: '70%', height: '80vh', overflow: 'hidden'}}>
           <Page date={date} />
         </div>
 
@@ -40,7 +40,7 @@ export default function Diary() {
           <Button variant="contained">Fitness Quotient</Button>
           <div className="arrow right" onClick={() => next()}></div>
 
-          {new Date(date).toLocaleDateString() === (new Date()).toLocaleDateString() ? 
+          {today ? 
             <AddCircleOutline
               className="add-icon"
               onClick={() => setOpen(true)}

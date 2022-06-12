@@ -17,6 +17,7 @@
     "react-scripts": "5.0.1",
     "react-swipeable": "^7.0.0",
     "react-toastify": "^9.0.4",
+    "surge": "^0.23.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
