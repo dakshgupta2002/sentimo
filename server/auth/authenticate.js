@@ -8,7 +8,6 @@ export const jwtGenerator = (_id) => {
 
 export const authenticate = (req, res, next) => {
     const token = req.headers.authorization || req.body.token || req.query.token;
-    console.log(token)
 
     if (!token){
         res.sendStatus(401);
@@ -20,7 +19,6 @@ export const authenticate = (req, res, next) => {
         } else {
             //add the _id to the req parameter and move forward
             req.user = decoded;
-            console.log(decoded)
             next();
         }
     });

@@ -9,41 +9,19 @@ noteRouter.route("/")
     .get(async (req, res) => {
         const userId = req?.user?._id;
         const date = req?.query?.date;
-
-        Diary.findOne({ user: userId }, async (err, diary) => {
-            if (err) { res.status(500).end(err); return; };
-            if (!diary) { res.status(200).end("No diary found"); return; }
-
-            const filteredNotes = await diary.notes.map(noteId => {
-                Note.findById(noteId, (err, note) => {
-                    if (err) { res.status(500).end(err); return; };
-                    if (!note) { res.status(200).end("No note found"); return; }
-
-                    const noteDate = new Date(note.createdAt).toLocaleDateString();
-                    const noteTime = new Date(note.createdAt).toLocaleTimeString();
-
-                    if (noteDate === date) {
-                        filteredNotes.push({
-                            _id: noteId,
-                            title: note.title,
-                            content: note.content,
-                            noteTime: noteTime,
-                            noteDate: noteDate,
-                            favourite: note.favourite,
-                            private: note.private
-                        })
-                    }
-                });
-            });
-            setTimeout( () => {
-                console.log({ filteredNotes })
-
-            }, 2000)
-
-            // filteredNotes.sort((a,b) => {a.noteTime - b.noteTime});
-
-            res.json({ filteredNotes }).status(200);
+        const diary = await Diary.findOne({user: userId}).exec();
+        if (!diary) res.status(200).json({notes: []});
+        const notes = await diary.notes.map(noteId => {
+            return Note.findById(noteId).exec();
+        })
+        const filteredNotes = await Promise.all(notes).then(notes => {
+            return notes.filter(note => {
+                return new Date(note.createdAt).toLocaleDateString() === date;
+            })
+            .sort((a,b) => new Date(a.createdAt) - new Date(b.createdAt));
         });
+
+        res.status(200).json({notes: filteredNotes});
     })
     .post(async (req, res) => {
         const { title, content } = req.body;
