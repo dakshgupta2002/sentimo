@@ -1,11 +1,19 @@
 import React from "react";
 import "./Diary.css";
 import { Box, Typography } from "@mui/material";
+import {DeleteRounded} from '@mui/icons-material';
+import { removeNote } from "../../utils/api/notes";
 
-export default function Note({ title, content }) {
+export default function Note({ title, content, noteId, notesAdded, setNotesAdded }) {
+  const deleteNote = () => {
+    removeNote(noteId, notesAdded, setNotesAdded);
+  }
+
   return (
     <Box style={{ width: '100%', height: '100vh', justifyContent: 'center' }}>
-      <Typography variant="h6">Title</Typography>
+      <Typography variant="h6"> Title
+        <DeleteRounded onClick={deleteNote}/>
+      </Typography>
       <Box
         component="span"
         sx={{

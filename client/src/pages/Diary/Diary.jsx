@@ -33,7 +33,7 @@ export default function Diary() {
 
         {/* Flex Item-2 (Title Content) */}
         <div className="diary-mid-container" >
-          <Page date={date} notesAdded={notesAdded}/>
+          <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
         </div>
 
         {/* Flex Item-3 (Fiteness Quotient, Next, ADD BUTTON) */}

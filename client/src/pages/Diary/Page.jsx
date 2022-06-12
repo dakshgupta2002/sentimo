@@ -6,7 +6,7 @@ import { useLoading } from '../../utils/hooks/useLoading.js';
 import Note from './Note.jsx'
 import { fetchNotes } from '../../utils/api/notes.js';
 
-export default function Page({date, notesAdded}) {
+export default function Page({date, notesAdded, setNotesAdded}) {
   const {setLoading} = useLoading();
   const [notes, setNotes] = useState([]);
 
@@ -28,8 +28,9 @@ export default function Page({date, notesAdded}) {
       {notes?.length === 0 ? 
         <h1>No notes for this date</h1> :
         
-        notes?.map(({title, content, noteId}) => {
-          return <Note title = {title} content = {content} noteId={noteId}/>
+        notes?.map(({title, content, _id}) => {
+          return <Note title = {title} content = {content} noteId={_id}
+          notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
         })
       }
       

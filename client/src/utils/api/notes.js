@@ -11,4 +11,8 @@ export const postNote = async (title, content, date, notesAdded, setNotesAdded) 
     setNotesAdded(notesAdded + 1);      
     return res;
 }
-// user/login 
+export const removeNote = async (id, notesAdded, setNotesAdded) => {
+    const res = await post(`notes?noteId=${id}`, {}, 'DELETE');
+    setNotesAdded(notesAdded-1);
+    return res;
+}
