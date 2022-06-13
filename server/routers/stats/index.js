@@ -1,8 +1,9 @@
 import { Router } from "express";
 import { authenticate } from "../../auth/authenticate.js";
 import statRouter from "./statRoutes.js";
-const statsRouter = Router();
+import statNoteRouter from "./statNoteRouter.js";
 
+const statsRouter = Router();
 statsRouter.use(authenticate); // add user params 
 
 statsRouter.route('*')
@@ -15,6 +16,6 @@ statsRouter.route('*')
     });
 
 statsRouter.use("/", statRouter);
-
+statsRouter.use("/note", statNoteRouter);
 
 export default statsRouter;
