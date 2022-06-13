@@ -1,3 +1,17 @@
+/*
+1. First Name Last Name User Name
+#f3f6fb background
+#050516 text
+#dadce2 label
+
+2. Password 
+white background
+
+3. Button (Create Account)
+#edf6fe text
+#1d90f5 Background color
+*/
+
 .register-form-container {
     border: 2px solid blue;
 
@@ -7,21 +21,10 @@
     height: 100vh;
 }
 
-.register-form-image {
-    border: 2px solid red; 
-
-    display: block;
-    align-items: center;
-}
-
-.register-form-image > img {
-    width: 50vw;
-}
-
 .register-container {
     /* CSS To REMOVE */
     border: 2px solid grey;
     padding: 10px;
-
+    color: rgb(106, 101, 101);
     /* CSS To KEEP */
 }

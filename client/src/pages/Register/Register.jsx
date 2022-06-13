@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { useNavigate } from "react-router-dom";
 import { userRegister } from '../../utils/api/userPost'
-import { Button } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 
 import './Register.css'
 const welldoing = require("../../assets/images/welldoing.webp");
@@ -29,9 +29,6 @@ export default function Resgiter(props) {
 
   return (
     <div className="register-form-container">
-      <div className="register-form-image">
-        <img src={welldoing} alt="man woman and brain" />
-      </div>
       <div className="register-container">
         <form>
           <h3>Create a new account!</h3>
@@ -52,6 +49,16 @@ export default function Resgiter(props) {
 
         </form>
       </div>
+    <Box
+      sx={{
+        '& > :not(style)': { m: 1, width: '25ch' },
+      }}
+      noValidate
+      autoComplete="off"
+    >
+      <TextField id="filled-basic" label="Filled" variant="filled" sx={{input: {color: "#fdfdfd", backgroundColor: "#323644"} }}
+      InputLabelProps={{style: {color: "grey"}}} />
+    </Box>
     </div>
   )
 }
