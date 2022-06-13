@@ -7,24 +7,90 @@
 2. Password 
 white background
 
-3. Button (Create Account)
+3. Button (Create Account (dot))
 #edf6fe text
 #1d90f5 Background color
 */
+
+.register-container {
+    display: flex;
+    border: 2px solid green;
+    padding: 10px;
+}
 
 .register-form-container {
     border: 2px solid blue;
 
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    height: 100vh;
+    height: 90vh;
 }
 
-.register-container {
-    /* CSS To REMOVE */
-    border: 2px solid grey;
-    padding: 10px;
-    color: rgb(106, 101, 101);
-    /* CSS To KEEP */
+.register-header {
+    border: 2px solid burlywood;
+    width: 100%;
+}
+
+.register-text-container {
+    width: 100%;
+}
+
+.login-container {
+    border: none;
+    padding: 0;
+}
+
+
+.name-data-container {
+    display: flex;
+}
+
+.input-container {
+    border: 2px solid black;
+}
+
+.register-side-image {
+    background-image: url("../../assets/images/welldoing.webp");
+    height: 80vh;
+    width: 55vw;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.button-container {
+    border: 2px solid rgb(123, 95, 150);
+}
+
+/* Small useful classes */
+.mv {
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.mh {
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
+.small-text {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.medium-text {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.large-text {
+    font-size: 60px;
+    letter-spacing: 2px;
+    line-height: 70px;
+}
+
+.dot {
+    font-size: 70px;
+    color: #508afa;
 }
