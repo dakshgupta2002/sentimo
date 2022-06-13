@@ -11,16 +11,26 @@ white background
 #edf6fe text
 #1d90f5 Background color
 */
+body {
+    margin: 0px;
+}
 
 .register-container {
     display: flex;
-    border: 2px solid green;
     padding: 10px;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-between;
+    height: 90vh;
+}
+
+.header {
+    margin: 10px;
+    margin-right: 0px;
+    margin-left: 20px;
 }
 
 .register-form-container {
-    border: 2px solid blue;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -29,7 +39,6 @@ white background
 }
 
 .register-header {
-    border: 2px solid burlywood;
     width: 100%;
 }
 
@@ -45,49 +54,51 @@ white background
 
 .name-data-container {
     display: flex;
-}
-
-.input-container {
-    border: 2px solid black;
+    margin-top: 30px;
 }
 
 .register-side-image {
     background-image: url("../../assets/images/welldoing.webp");
-    height: 80vh;
-    width: 55vw;
-    background-size:contain;
+    background-size: cover;
+    overflow: hidden;
     background-repeat: no-repeat;
 }
 
 .button-container {
-    border: 2px solid rgb(123, 95, 150);
+    display: flex;
+    justify-content: center;
 }
 
 /* Small useful classes */
 .mv {
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .mh {
-    margin-left: 6px;
-    margin-right: 6px;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.heading {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 1000;
 }
 
 .small-text {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 20px;
 }
 
 .medium-text {
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 18px;
+    line-height: 20px;
 }
 
 .large-text {
-    font-size: 60px;
+    font-size: 40px;
     letter-spacing: 2px;
-    line-height: 70px;
+    line-height: 40px;
 }
 
 .dot {
