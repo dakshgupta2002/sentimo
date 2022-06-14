@@ -8,8 +8,6 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 
 import "./Register.css";
 import {
-  AccountCircleOutlined,
-  ContactlessSharp,
   ContactMailSharp,
   PasswordSharp,
 } from "@mui/icons-material";
@@ -67,16 +65,16 @@ export default function Resgiter(props) {
         </div>
 
         {/* Create Account Headings mv = margin vertical */}
-        <div>
+        <div className="only-form">
           <div className="register-text-container">
-            <div className="medium-text mv">START FOR FREE</div>
+            <div className="medium-text mv mob-mid">START FOR FREE</div>
 
-            <div className="large-text heading mv">
+            <div className="large-text heading mv mob-mid">
               Create new account
               <span className="dot">.</span>
             </div>
 
-            <div className="login-container mv">
+            <div className="login-container mv mob-mid">
               <span className="small-text">Already a member? </span>
               <Button
                 variant="standard"
@@ -108,6 +106,7 @@ export default function Resgiter(props) {
                         ),
                       }}
                       required
+                      fullWidth
                     />
                   </div>
 
@@ -127,6 +126,7 @@ export default function Resgiter(props) {
                         ),
                       }}
                       required
+                      fullWidth
                     />
                   </div>
                 </div>
