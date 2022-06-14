@@ -151,17 +151,17 @@
     font-size: 40px;
     color: #508afa;
   }
+
+  .register-container {
+    margin: 3px;
+    padding: 5px;
+  }
 }
 
 @media (max-width: 460px) {
   .register-form-container {
     margin-left: 10px;
     margin-right: 10px;
-  }
-
-  .register-container {
-    margin: 0px;
-    padding: 5px;
   }
 
   .large-text {

@@ -5,8 +5,6 @@ import { Button } from "@mui/material";
 import "./index.css";
 import { toast } from "react-toastify";
 
-const welldoing = require("../../assets/images/welldoing.webp");
-
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -32,11 +30,13 @@ export default function Login(props) {
     navigate("/register", { replace: true });
   };
 
+  // Mobile: background IMG, Desktop show on left
   return (
     <div className="login-form-container">
-      <div className="login-form-image">
-        <img src={welldoing} alt="man woman and brain" />
-      </div>
+      
+      {/* Hidden in Mobile */}
+      <section className="login-form-image"></section>
+
       <div className="login-container">
         <form>
           <h3>Login to an existing account!</h3>

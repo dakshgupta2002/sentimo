@@ -55,7 +55,7 @@ export default function Resgiter(props) {
 
   return (
     // Main container contains image and form
-    <div className="register-container header">
+    <div className="register-container header mv">
       {/* Form Container contains logo and necessary textfield and buttons */}
       <div className="register-form-container">
         {/* Contains Logo and App Name */}
