@@ -16,4 +16,6 @@ const statSchema = new Schema({
         required: true
     }
     
-})
+});
+
+export default mongoose.model("Stat", statSchema);
