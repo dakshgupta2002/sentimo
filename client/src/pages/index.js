@@ -4,3 +4,4 @@ export { Login } from './Login';
 export { Register } from './Register';
 export { Statistics, NoteStat } from './Statistics'
 export { Profile } from './Profile';
+export { AboutUs } from './AboutUs';

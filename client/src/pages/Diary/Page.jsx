@@ -31,7 +31,7 @@ export default function Page({date, notesAdded, setNotesAdded}) {
         notes?.map(({ title, content, _id, favourite, createdAt, updatedAt }) => {
           return (
             <section>
-              <Note title={title} content={content} noteId={_id} 
+              <Note key={_id} title={title} content={content} noteId={_id} 
               favourite={favourite} createdAt={createdAt} updatedAt={updatedAt}
               notesAdded={notesAdded} setNotesAdded={setNotesAdded} />
             </section>
