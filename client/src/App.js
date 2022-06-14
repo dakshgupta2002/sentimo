@@ -1,10 +1,11 @@
 import {Routes, Route} from 'react-router-dom'
-import { Diary, Home, Login, Register, Statistics } from './pages';
+import { Diary, Home, Login, Register, Statistics, NoteStat } from './pages';
 import { useLoading } from './utils/hooks/useLoading';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
+
 
 function App() {
   const {loading, error} = useLoading();
@@ -21,7 +22,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/statistics" element={<Statistics />} />
-        
+        <Route path="/statistics/note/:noteId" element={<NoteStat />} />
       </Routes>
     </div>
   );

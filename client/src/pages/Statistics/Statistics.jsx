@@ -5,7 +5,7 @@ import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from "../../utils/api/stats";
 
 export default function Statistics() {
-  const [date, setDate, reset, previous, next, today] = useDate();
+  const [date] = useDate();
   
   useEffect( () => {
     const res = fetchStats(date);
@@ -19,7 +19,7 @@ export default function Statistics() {
   return (
     <div>
       <Sidebar />
-
+      <h1>Statistics for date</h1>
     </div>
   )
 }
