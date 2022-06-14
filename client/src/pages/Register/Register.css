@@ -1,27 +1,90 @@
-.register-form-container {
-    border: 2px solid blue;
+.register-container {
+    display: flex;
+    padding: 10px;
+    overflow: hidden;
+    position: relative;
+    justify-content: space-between;
+    height: 90vh;
+}
 
+.header {
+    margin: 10px;
+    margin-right: 0px;
+    margin-left: 20px;
+}
+
+.register-form-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
+}
+
+.register-header {
+    width: 100%;
+}
+
+.register-text-container {
+    width: 100%;
+}
+
+.login-container {
+    border: none;
+    padding: 0;
+}
+
+
+.name-data-container {
+    display: flex;
+    margin-top: 30px;
+}
+
+.register-side-image {
+    background-image: url("../../assets/images/welldoing.webp");
+    background-size: cover;
+    overflow: hidden;
+    background-repeat: no-repeat;
+}
+
+.button-container {
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
-.register-form-image {
-    border: 2px solid red; 
-
-    display: block;
-    align-items: center;
+/* Small useful classes */
+.mv {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
-.register-form-image > img {
-    width: 50vw;
+.mh {
+    margin-left: 8px;
+    margin-right: 8px;
 }
 
-.register-container {
-    /* CSS To REMOVE */
-    border: 2px solid grey;
-    padding: 10px;
+.heading {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 1000;
+}
 
-    /* CSS To KEEP */
+.small-text {
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.medium-text {
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.large-text {
+    font-size: 40px;
+    letter-spacing: 2px;
+    line-height: 40px;
+}
+
+.dot {
+    font-size: 70px;
+    color: #508afa;
 }
