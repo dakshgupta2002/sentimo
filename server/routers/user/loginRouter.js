@@ -17,7 +17,7 @@ loginRouter.route("/")
                 if (user){
                     if (bcrypt.compareSync(password, user.password)){
                         const token = jwtGenerator(user._id);
-                        res.json({token}).status(201);
+                        res.json({token, username, firstName: user.firstName, lastName: user.lastName}).status(201);
                     }else{
                         res.status(400).json({"msg": "Incorrect password"});
                     }

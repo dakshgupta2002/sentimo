@@ -19,6 +19,8 @@ export default function Login(props) {
     console.log(res);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
+      const name = (((res?.data?.firstName || "") + " "+ (res?.data?.lastName || "")).trim() || res?.data?.username)
+      localStorage.setItem("name", name);
       toast.success("Login Successful")
       navigate("/");
     } else {
@@ -44,7 +46,7 @@ export default function Login(props) {
               Text="username"
               name="username"
               autoComplete="false"
-              onChange={(e) => setUsername(e.target.value)}
+              onChange={(e) => setUsername(e.target.value.trim())}
               value={username}
               required
             />
@@ -56,7 +58,7 @@ export default function Login(props) {
               Text="password"
               name="password"
               type="password"
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value.trim())}
               required
               value={password}
             />

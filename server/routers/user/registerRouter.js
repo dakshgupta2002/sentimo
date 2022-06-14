@@ -18,7 +18,7 @@ registerRouter.route("/")
                 if (err){ res.status(500).json({err}); return;};
 
                 const token = jwtGenerator(user._id);
-                res.json({token}).status(201);
+                res.json({token, username, firstName, lastName}).status(201);
             });
         });
     })

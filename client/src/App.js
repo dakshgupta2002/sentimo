@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import { Diary, Home, Login, Register, Statistics, NoteStat } from './pages';
+import { Diary, Home, Login, Register, Statistics, NoteStat, Profile } from './pages';
 import { useLoading } from './utils/hooks/useLoading';
 import { ToastContainer } from 'react-toastify';
 
@@ -16,6 +16,7 @@ function App() {
       {loading && <div>{error || `Loading...`}</div>}
       <Routes>
         <Route path="/" element={<Home/>} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="/home" element={<Home/>} />
         <Route path="/diary" element={<Diary/>} />
         {/* <Route path="/aboutUs" element={<AboutUs />} /> */}
