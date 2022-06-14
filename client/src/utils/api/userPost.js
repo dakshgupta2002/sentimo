@@ -5,7 +5,7 @@ export const userLogin = async (username, password) => {
     return res;
 }
 
-export const userRegister = async (username, password) => {
-    const res = await post("user/register", { username, password }, 'POST');
+export const userRegister = async (username, password, firstName, lastName) => {
+    const res = await post("user/register", { username, password, firstName, lastName }, 'POST');
     return res;
 }

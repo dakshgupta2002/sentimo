@@ -11,6 +11,8 @@ import { AccountCircleOutlined, ContactlessSharp, ContactMailSharp, PasswordShar
 export default function Resgiter(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   /* <TextField id="filled-basic" label="Filled" variant="filled" sx={{input: {color: "#fdfdfd", backgroundColor: "#323644"} }}
       InputLabelProps={{style: {color: "grey"}}} /> */
   var navigate = useNavigate();
@@ -27,7 +29,7 @@ export default function Resgiter(props) {
 
   const register = async (e) => {
     e.preventDefault();
-    const res = await userRegister(username, password);
+    const res = await userRegister(username, password, firstName, lastName);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
       navigate("/");
@@ -82,6 +84,8 @@ export default function Resgiter(props) {
                       label="First name"
                       variant="outlined"
                       sx={normalTextField}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                       InputLabelProps={normalLabel}
                       InputProps={{
                         startAdornment: (
@@ -98,6 +102,8 @@ export default function Resgiter(props) {
                     <TextField
                       label="Last name"
                       variant="outlined"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                       sx={normalTextField}
                       InputLabelProps={normalLabel}
                       InputProps={{
