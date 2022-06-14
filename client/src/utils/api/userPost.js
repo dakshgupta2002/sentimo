@@ -1,4 +1,4 @@
-import { post } from './post';
+import { post } from './rest';
 
 export const userLogin = async (username, password) => {
     const res = await post("user/login", { username, password }, 'POST');

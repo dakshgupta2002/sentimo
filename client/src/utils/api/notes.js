@@ -1,5 +1,4 @@
-import { get } from './get';
-import { post } from './post';
+import { get, post } from './rest';
 
 export const fetchNotes = async (date) => {
     const notes = await get(`notes?date=${date.toLocaleDateString()}`); //get notes for the date
