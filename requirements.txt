@@ -1,0 +1,3 @@
+SpeechRecognition==3.8.1
+text2emotion==0.0.5
+PyAudio==0.2.11

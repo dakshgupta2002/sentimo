@@ -1,15 +1,16 @@
-# import text2emotion as te 
+import text2emotion as te 
+ 
+text = input()
 
-# text = input()
-# def emotion_output(text):
-# 	result = te.get_emotion(text)
+def emotion_output(text):
+	result = te.get_emotion(text)
 
-# 	return result
+	return result
 
-# print(emotion_output(text))
+print(emotion_output(text))
 
 
-print("JAJAJAJAJJAJAJA")
+#print("JAJAJAJAJJAJAJA")
 
 # import sys
 # print('First param:'+sys.argv[1]+'#')
