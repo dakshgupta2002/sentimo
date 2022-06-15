@@ -1,90 +1,182 @@
 .register-container {
-    display: flex;
-    padding: 10px;
-    overflow: hidden;
-    position: relative;
-    justify-content: space-between;
-    height: 90vh;
+  display: flex;
+  padding: 10px;
+  overflow: hidden;
+  position: relative;
+  justify-content: space-between;
+  height: 90vh;
 }
 
 .header {
-    margin: 10px;
-    margin-right: 0px;
-    margin-left: 20px;
+  margin: 10px;
+  margin-right: 0px;
+  margin-left: 20px;
 }
 
 .register-form-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 90vh;
 }
 
 .register-header {
-    width: 100%;
+  width: 100%;
 }
 
 .register-text-container {
-    width: 100%;
+  width: 100%;
 }
 
 .login-container {
-    border: none;
-    padding: 0;
+  border: none;
+  padding: 0;
 }
 
-
 .name-data-container {
-    display: flex;
-    margin-top: 30px;
+  display: flex;
+  margin-top: 30px;
 }
 
 .register-side-image {
-    background-image: url("../../assets/images/welldoing.webp");
-    background-size: cover;
-    overflow: hidden;
-    background-repeat: no-repeat;
+  background-image: url("../../assets/images/welldoing.webp");
+  background-size: cover;
+  overflow: hidden;
+  background-repeat: no-repeat;
 }
 
 .button-container {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 /* Small useful classes */
 .mv {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .mh {
-    margin-left: 8px;
-    margin-right: 8px;
+  margin-left: 8px;
+  margin-right: 8px;
 }
 
 .heading {
-    font-family: 'Ubuntu', sans-serif;
-    font-weight: 1000;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: 1000;
 }
 
 .small-text {
-    font-size: 16px;
-    line-height: 20px;
+  font-size: 16px;
+  line-height: 20px;
 }
 
 .medium-text {
-    font-size: 18px;
-    line-height: 20px;
+  font-size: 18px;
+  line-height: 20px;
 }
 
 .large-text {
-    font-size: 40px;
-    letter-spacing: 2px;
-    line-height: 40px;
+  font-size: 40px;
+  letter-spacing: 2px;
+  line-height: 40px;
 }
 
 .dot {
-    font-size: 70px;
+  font-size: 70px;
+  color: #508afa;
+}
+
+@media (max-width: 780px) {
+  .register-form-container {
+    margin-left: 60px;
+    margin-right: 60px;
+  }
+
+  .only-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .name-data-container {
+    flex-direction: column;
+  }
+
+  .register-container {
+    overflow: scroll;
+  }
+
+  .fname-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .lname-field {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .register-side-image {
+    background-image: none;
+    overflow: hidden;
+    height: 0vh;
+    width: 0vw;
+    flex-basis: 0%;
+  }
+
+  .header {
+    margin: 5px;
+  }
+
+  .register-form-container {
+    flex-basis: 100%;
+  }
+
+  .mob-mid {
+    display: flex;
+    justify-content: center;
+  }
+
+  .large-text {
+    font-size: 30px;
+    letter-spacing: 1px;
+    line-height: 40px;
+  }
+
+  .dot {
+    font-size: 40px;
     color: #508afa;
+  }
+}
+
+@media (max-width: 460px) {
+  .register-form-container {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .register-container {
+    margin: 0px;
+    padding: 5px;
+  }
+
+  .large-text {
+    font-size: 18px;
+    letter-spacing: 1px;
+    line-height: 20px;
+  }
+
+  .medium-text {
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  .dot {
+    font-size: 30px;
+    color: #508afa;
+  }
 }

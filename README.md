@@ -38,3 +38,7 @@ _______________________________________________
   ``To keep your branch ahead of the main branch, so you dont miss on other updates``
 ### git push origin dakshgupta_setup (and wait for review and merge)
 ``if you are confident in your work, you can also push directly to main``
+ 
+ ### To install the Python dependencies 
+ ``pip install -r requirements.txt``
+ 
