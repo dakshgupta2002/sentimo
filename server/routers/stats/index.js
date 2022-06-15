@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { authenticate } from "../../auth/authenticate.js";
-import statRouter from "./statRoutes.js";
+import statRouter from "./statRouter.js";
 import statNoteRouter from "./statNoteRouter.js";
 
 const statsRouter = Router();

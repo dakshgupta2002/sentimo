@@ -9,29 +9,29 @@ statRouter.route("/")
         const text = req.body.text;
         const date = req.body.date;
 
-        var dataToSend;
+        var emotion;
         // spawn new child process to call the python script
-        const python = spawn('python', ['scripts/emotion.py', 'Text from Title', 'Text from content']);
+        const python = spawn('python', ['scripts/emotion.py', text]);
 
         // collect data from script
         python.stdout.on('data', function (data) {
             console.log('Pipe data from python script ...');
-            dataToSend = data.toString();
-            console.log(dataToSend);
+            emotion = data.toString();
+            console.log(emotion);
         });
         // in close event we are sure that stream from child process is closed
         python.on('close', (code) => {
             console.log(`child process close all stdio with code ${code}`);
             // send data to browser
-            res.send({dataToSend})
+            res.send({emotion})
         });
 
         //obtain emotions 
-        // const newStat = await new Stat({
-        //     user: req.user._id,
-        //     emotion: emotions,
-        //     date
-        // });
+        const newStat = await new Stat({
+            user: req.user._id,
+            emotion,
+            date
+        });
         // newStat.save().then(stat => {
         //     res.status(201).json({stat});
         // }).catch( () => {
