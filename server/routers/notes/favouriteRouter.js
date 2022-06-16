@@ -15,8 +15,7 @@ favouriteRouter.route("/")
             note.favourite = !note.favourite;     
             // toggle the favourite status
             await note.save();
-            console.log(note.favourite);
-            res.status(204).json(note); //resource updated
+            res.status(200).json({favourite: note.favourite}); //resource updated
         }catch{
             res.status(500).json({"msg":"failed"});
         }

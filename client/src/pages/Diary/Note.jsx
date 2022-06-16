@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import "./Diary.css";
 import { Box, Typography, Button } from "@mui/material";
 import {
@@ -6,8 +6,9 @@ import {
   EnhancedEncryption,
   Favorite,
 } from "@mui/icons-material";
-import { removeNote } from "../../utils/api/notes";
+import { removeNote, updateFav } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 export default function Note({
   title,
@@ -20,10 +21,22 @@ export default function Note({
   updatedAt,
 }) {
   const navigate = useNavigate();
+  const [fav, setFav] = useState(favourite);
+
   const deleteNote = () => {
     removeNote(noteId, notesAdded, setNotesAdded);
   };
 
+  const handleFavourite = async () => {
+    const res = await updateFav(noteId) //update on BE for future ref
+    
+    if (res?.response?.status === 200){
+      if (!fav) toast.success("Note added to your likes!")
+      else toast.success("Note removed from your likes!")
+    }
+    
+    setFav(!fav); // update on FE, to show chage
+  }
   return (
     <Box style={{ width: "100%", height: "auto", justifyContent: "center" }}>
       <Typography variant="h6">Title</Typography>
@@ -84,7 +97,7 @@ export default function Note({
           <Button variant="contained" color="secondary" onClick={()=>navigate(`/statistics/note/${noteId}`)}>
             View Stats
           </Button>
-          <Favorite sx={favourite ? { color: "red" } : { color: "black" }} />
+          <Favorite onClick={handleFavourite} sx={fav ? { color: "red" } : { color: "black" }} />
         </Box>
 
         <Box>

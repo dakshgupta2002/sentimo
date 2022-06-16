@@ -15,3 +15,8 @@ export const removeNote = async (id, notesAdded, setNotesAdded) => {
     setNotesAdded(notesAdded-1);
     return res;
 }
+
+export const updateFav = async (noteId) => {
+    const res = await post(`notes/favourite`, {noteId}, 'PUT');
+    return res;
+}
