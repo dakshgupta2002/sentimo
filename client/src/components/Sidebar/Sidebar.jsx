@@ -23,7 +23,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
   ({ theme, open }) => ({
@@ -128,7 +128,7 @@ export default function Sidebar() {
             </ListItem>
           </Link>
 
-          {["Home", "Diary", "Statistics", "About Us"].map((text, index) => {
+          {["Home", "Diary", "Favorites", "Statistics", "About Us"].map((text, index) => {
             let link = "";
             for (let i = 0; i < text.length; i++) {
               if (text[i] === " ") continue;

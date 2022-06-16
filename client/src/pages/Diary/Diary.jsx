@@ -1,12 +1,12 @@
-import { Button, FormControl, TextField, IconButton } from "@mui/material/";
 import React, { useState } from "react";
+import { Button, FormControl, TextField, IconButton } from "@mui/material/";
 import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
+import { AddCircleOutline } from "@mui/icons-material";
 import NoteInput from "./NoteInput";
 import Page from "./Page";
 
 import "./Diary.css";
-import { AddCircleOutline } from "@mui/icons-material";
 
 export default function Diary() {
   const [date, setDate, reset, previous, next, today] = useDate();
@@ -36,9 +36,9 @@ export default function Diary() {
           <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
         </div>
 
-        {/* Flex Item-3 (Fiteness Quotient, Next, ADD BUTTON) */}
+        {/* Flex Item-3 (Filter, Next, ADD BUTTON) */}
         <div className="diary-right-container">
-          <Button variant="contained">Fitness Quotient</Button>
+          <Button variant="contained">Filter</Button>
           <div className="arrow right" onClick={() => next()}></div>
 
           {today ? 

@@ -75,7 +75,7 @@ export default function Note({
           borderRadius: 2,
           fontSize: "0.875rem",
           fontWeight: "700",
-          height: "55vh",
+          height: "52vh",
           overflowY: "scroll",
         }}
       >
