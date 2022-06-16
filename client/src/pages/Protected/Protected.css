@@ -1,0 +1,9 @@
+.protected-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.protected-container > * {
+    margin: 1em 0;
+}

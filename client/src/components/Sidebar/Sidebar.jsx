@@ -128,7 +128,7 @@ export default function Sidebar() {
             </ListItem>
           </Link>
 
-          {["Home", "Diary", "Favorites", "Statistics", "About Us"].map((text, index) => {
+          {["Home", "Diary", "Favorites", "Protected", "Statistics", "About Us"].map((text, index) => {
             let link = "";
             for (let i = 0; i < text.length; i++) {
               if (text[i] === " ") continue;
