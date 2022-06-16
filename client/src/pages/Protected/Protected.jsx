@@ -3,6 +3,8 @@ import { Sidebar } from "../../components";
 import { Cards } from "../../elements";
 import { fetchProtected } from "../../utils/api/notes";
 
+import './Protected.css';
+
 export default function Protected({ setLoading }) {
   const [notes, setNotes] = useState([]);
 
