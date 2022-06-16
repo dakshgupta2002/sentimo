@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import PrivateRoute from './PrivateRoute';
+import Favorite from './pages/Favorite/Favorite';
 
 function App() {
   const {loading, error} = useLoading();
@@ -32,6 +33,10 @@ function App() {
 
         <Route path="/statistics" location="/statistics" element={<PrivateRoute/>} >
           <Route path="/statistics" element={<Statistics />} />
+        </Route>
+
+        <Route path="/favorites" location="/favorites" element={<PrivateRoute/>} >
+          <Route path="/favorites" element={<Favorite />} />
         </Route>
 
         <Route path="/statistics/note/:noteId" location="/diary" element={<PrivateRoute/>} >
