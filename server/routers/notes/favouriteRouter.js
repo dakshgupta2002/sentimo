@@ -5,6 +5,17 @@ const favouriteRouter = Router();
 
 favouriteRouter.use(isNoteOwner);
 favouriteRouter.route("/")
+    .get(async (req, res) => {
+        try{
+            const filteredNotes = req?.notes?.filter(note => {
+                return note && note?.favourite;
+            });
+
+            res.status(200).json({ notes: filteredNotes });
+        }catch(err) {
+            res.status(500).json({ "msg": err });
+        }
+    })
 
     .put( async (req, res) => {
         // negate the favourite status of the note
