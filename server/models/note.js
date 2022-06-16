@@ -16,7 +16,7 @@ const noteSchema = new Schema({
         type: Boolean,
         default: false
     },
-    private:{
+    protect: {
         type: Boolean,
         default: false
     }

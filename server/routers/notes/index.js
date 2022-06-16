@@ -3,6 +3,7 @@ import { authenticate } from '../../auth/authenticate.js';
 import { UserNotes } from '../../middlewares/UserNotes.js';
 import favouriteRouter from './favouriteRouter.js';
 import noteRouter from './noteRouter.js';
+import protectRouter from './protectRouter.js';
 
 const notesRouter = Router();
 notesRouter.use(authenticate); //add the _id param to every request
@@ -20,5 +21,5 @@ notesRouter.route("*")
 // noteRouter
 notesRouter.use("/", noteRouter);
 notesRouter.use("/favourite", favouriteRouter);
-
+notesRouter.use("/protect", protectRouter);
 export default notesRouter;
