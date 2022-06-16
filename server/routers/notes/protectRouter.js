@@ -8,7 +8,7 @@ protectRouter.route("/")
     .get(async (req, res) => {
         try{
             const filteredNotes = req?.notes?.filter(note => {
-                return note && note?.protected;
+                return note && note?.protect;
             });
 
             res.status(200).json({ notes: filteredNotes });

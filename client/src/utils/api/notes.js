@@ -25,3 +25,13 @@ export const updateProtect = async (noteId) => {
     const res = await post(`notes/protect`, {noteId}, 'PUT');
     return res;
 }
+
+export const fetchFavourite = async () => {
+    const notes = await get(`notes/favourite`); //get all fav notes
+    return notes;
+}
+
+export const fetchProtected = async () => {
+    const notes = await get(`notes/protect`); //get all protected notes
+    return notes;
+}
