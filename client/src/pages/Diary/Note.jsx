@@ -6,7 +6,7 @@ import {
   EnhancedEncryption,
   Favorite,
 } from "@mui/icons-material";
-import { removeNote, updateFav } from "../../utils/api/notes";
+import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
@@ -17,11 +17,13 @@ export default function Note({
   notesAdded,
   setNotesAdded,
   favourite,
+  protect,
   createdAt,
   updatedAt,
 }) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
+  const [prot, setProt] = useState(protect);
 
   const deleteNote = () => {
     removeNote(noteId, notesAdded, setNotesAdded);
@@ -37,6 +39,22 @@ export default function Note({
     
     setFav(!fav); // update on FE, to show chage
   }
+
+  const handleProtect = async () => {
+    //update on backend 
+    const res = await updateProtect(noteId);
+    if (res?.response?.status === 200){
+      if (!prot) toast.success("Note protected!")
+      else toast.success("Note removed from your likes!")
+    }
+
+    setProt(!prot);
+  }
+  
+  if (prot){
+    return <></>
+  }
+
   return (
     <Box style={{ width: "100%", height: "auto", justifyContent: "center" }}>
       <Typography variant="h6">Title</Typography>
@@ -101,7 +119,7 @@ export default function Note({
         </Box>
 
         <Box>
-          <EnhancedEncryption />
+          <EnhancedEncryption onClick={handleProtect}/>
           <DeleteRounded onClick={deleteNote} />
         </Box>
       </Box>

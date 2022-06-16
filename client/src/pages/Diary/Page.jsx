@@ -28,12 +28,12 @@ export default function Page({date, notesAdded, setNotesAdded}) {
       {notes?.length === 0 ? (
         <h1>No notes for this date</h1>
       ) : (
-        notes?.map(({ title, content, _id, favourite, createdAt, updatedAt }) => {
+        notes?.map(({ title, content, _id, favourite, protect, createdAt, updatedAt }) => {
           return (
             <section>
               <Note key={_id} title={title} content={content} noteId={_id} 
               favourite={favourite} createdAt={createdAt} updatedAt={updatedAt}
-              notesAdded={notesAdded} setNotesAdded={setNotesAdded} />
+              notesAdded={notesAdded} setNotesAdded={setNotesAdded} protect={protect}/>
             </section>
           );
         })
