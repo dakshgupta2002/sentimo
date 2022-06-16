@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../utils/api/userPost";
-import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -55,7 +55,7 @@ export default function Resgiter(props) {
 
   return (
     // Main container contains image and form
-    <div className="register-container header">
+    <div className="register-container header mv">
       {/* Form Container contains logo and necessary textfield and buttons */}
       <div className="register-form-container">
         {/* Contains Logo and App Name */}
