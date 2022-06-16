@@ -20,3 +20,8 @@ export const updateFav = async (noteId) => {
     const res = await post(`notes/favourite`, {noteId}, 'PUT');
     return res;
 }
+
+export const updateProtect = async (noteId) => {
+    const res = await post(`notes/protect`, {noteId}, 'PUT');
+    return res;
+}
