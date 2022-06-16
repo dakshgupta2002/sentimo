@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { authenticate } from '../../auth/authenticate.js';
+import favouriteRouter from './favouriteRouter.js';
 import noteRouter from './noteRouter.js';
 
 const notesRouter = Router();
@@ -16,5 +17,6 @@ notesRouter.route("*")
 
 // noteRouter
 notesRouter.use("/", noteRouter);
+notesRouter.use("/favourite", favouriteRouter);
 
 export default notesRouter;
