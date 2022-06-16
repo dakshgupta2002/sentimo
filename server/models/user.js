@@ -18,7 +18,17 @@ const userSchema = new Schema({
     lastName: String,
     phone: String,
     address: String,
-    
+    image: String,
+    gender: {
+        type: String,
+        enum: ['Male', 'Female']
+    },
+    age: {
+        type: Number,
+        range:{
+            min: { type: Number, min: 5 }
+        }
+    },
     //mandatory for authorization roles
     admin: {
         type: Boolean,

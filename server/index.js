@@ -6,6 +6,7 @@ import { corsOptions } from './config/cors.js';
 import userRouter from './routers/user/index.js';
 import notesRouter from './routers/notes/index.js';
 import statsRouter from './routers/stats/index.js';
+import profileRouter from './routers/profile/index.js';
 
 const port = process.env.PORT;
 const app = express();
@@ -23,7 +24,7 @@ app.get("/", (req, res) => {
 app.use("/user", userRouter);
 app.use("/notes", notesRouter);
 app.use("/stats", statsRouter);
-
+app.use("/profile", profileRouter);
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
