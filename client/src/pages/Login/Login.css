@@ -17,6 +17,12 @@
   transform: scaleX(-1);
 }
 
+.login-logo-header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
 .login-input-container {
   height: 95vh;
   display: flex;
@@ -44,6 +50,11 @@
   align-items: center;
 }
 
+.sign-up-text {
+    margin-top: 5px;
+    margin-bottom: 0;
+}
+
 .heading {
   font-family: "Ubuntu", sans-serif;
   font-weight: 1000;
@@ -59,10 +70,15 @@
   line-height: 20px;
 }
 
-.large-text {
+.large-login-text {
   font-size: 40px;
   letter-spacing: 2px;
   line-height: 40px;
+}
+
+.login-dot {
+    font-size: 40px;
+    color: #508afa;
 }
 
 @media (max-width: 780px) {
@@ -70,8 +86,31 @@
         flex-basis: 0%;
         width: 0%;
     }
+
+    .login-input-container {
+        flex-basis: 80%;
+    }
 }
 
-@media (max-width: 460) {
+@media (max-width: 460px) {
+    .login-input-container {
+        flex-basis: 100%;
+    }
+}
 
+@media (max-width: 460px) {
+    .login-input-container {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 270) {
+    .sign-up-button {
+        display: inline;
+        align-self: center;
+    }
+
+    .login-dot {
+        font-size: 50px;
+    }
 }

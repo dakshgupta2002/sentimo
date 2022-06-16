@@ -3,10 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
 import { Button, InputAdornment, TextField } from "@mui/material";
 import { toast } from "react-toastify";
-import {
-  ContactMailSharp,
-  PasswordSharp,
-} from "@mui/icons-material";
+import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 
 import "./Login.css";
 
@@ -45,13 +42,15 @@ export default function Login(props) {
     <div className="login-form-container">
       {/* Hidden in Mobile */}
       <div className="login-form-header">
-        <section className="login-form-image"></section> {/* This class Only for Desktop */}
+        <section className="login-form-image"></section>{" "}
+        {/* This class Only for Desktop */}
       </div>
 
       <div className="login-input-container">
-        
         <div className="login-logo-header">LOGO SENTIMO</div>
-        <div className="login-text-header heading large-text">Login<span className="dot">.</span></div>
+        <div className="login-text-header heading large-login-text">
+          Login<span className="login-dot">.</span>
+        </div>
         <div className="input-field-container medium-text">
           <div>Log in to your account</div>
           <div>&nbsp;</div>
@@ -100,12 +99,19 @@ export default function Login(props) {
               LOG IN
             </Button>
           </div>
+        </div>
+
+        <div className="sign-up-btn">
+          <div className="sign-up-text">Don't Have an account yet? &nbsp;</div>
+          <Button
+            onClick={signUpButtonClick}
+            sx={{ color: "#508afa", margin: "0", padding: "0" }}
+            fullWidth
+          >
+            Register
+          </Button>
+        </div>
       </div>
-          
-          <div className="sign-up-btn">
-            Don't Have an account yet? <Button onClick={signUpButtonClick}>Join Sentimo Today</Button>
-          </div>
     </div>
-  </div>
   );
 }
