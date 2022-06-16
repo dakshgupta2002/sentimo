@@ -1,7 +1,7 @@
 .register-container {
   display: flex;
   padding: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   justify-content: space-between;
   height: 90vh;

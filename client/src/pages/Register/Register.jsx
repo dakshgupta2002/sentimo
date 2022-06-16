@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../utils/api/userPost";
-import { Button, IconButton, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { toast } from "react-toastify";
 
 import AccountCircle from "@mui/icons-material/AccountCircle";

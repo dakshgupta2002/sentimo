@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
-import { Button } from "@mui/material";
-import "./index.css";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { toast } from "react-toastify";
+import {
+  ContactMailSharp,
+  PasswordSharp,
+} from "@mui/icons-material";
+
+import "./Login.css";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
@@ -17,9 +22,14 @@ export default function Login(props) {
     console.log(res);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
-      const name = (((res?.data?.firstName || "") + " "+ (res?.data?.lastName || "")).trim() || res?.data?.username)
+      const name =
+        (
+          (res?.data?.firstName || "") +
+          " " +
+          (res?.data?.lastName || "")
+        ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
-      toast.success("Login Successful")
+      toast.success("Login Successful");
       navigate("/");
     } else {
       console.log("error: ", res.data.msg);
@@ -33,47 +43,69 @@ export default function Login(props) {
   // Mobile: background IMG, Desktop show on left
   return (
     <div className="login-form-container">
-      
       {/* Hidden in Mobile */}
-      <section className="login-form-image"></section>
+      <div className="login-form-header">
+        <section className="login-form-image"></section> {/* This class Only for Desktop */}
+      </div>
 
-      <div className="login-container">
-        <form>
-          <h3>Login to an existing account!</h3>
+      <div className="login-input-container">
+        
+        <div className="login-logo-header">LOGO SENTIMO</div>
+        <div className="login-text-header heading large-text">Login<span className="dot">.</span></div>
+        <div className="input-field-container medium-text">
+          <div>Log in to your account</div>
+          <div>&nbsp;</div>
           <div className="input-container">
-            <label>Username: </label>
-            <input
+            <TextField
+              label="Username"
               Text="username"
               name="username"
               autoComplete="false"
               onChange={(e) => setUsername(e.target.value.trim())}
               value={username}
               required
+              fullWidth
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <ContactMailSharp color="primary" />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
 
           <div className="input-container">
-            <label>Password: </label>
-            <input
+            <TextField
+              label="Password"
               Text="password"
               name="password"
               type="password"
               onChange={(e) => setPassword(e.target.value.trim())}
               required
+              fullWidth
               value={password}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PasswordSharp color="primary" />
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
 
-          <div className="button-container">
-            <Button variant="contained" onClick={login}>
+          <div className="login-button-container">
+            <Button variant="contained" onClick={login} fullWidth>
               LOG IN
             </Button>
-            <Button variant="outlined" onClick={signUpButtonClick}>
-              DON'T HAVE AN ACCOUNT SIGN UP!
-            </Button>
           </div>
-        </form>
       </div>
+          
+          <div className="sign-up-btn">
+            Don't Have an account yet? <Button onClick={signUpButtonClick}>Join Sentimo Today</Button>
+          </div>
     </div>
+  </div>
   );
 }
