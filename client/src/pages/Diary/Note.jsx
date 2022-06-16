@@ -45,7 +45,7 @@ export default function Note({
     const res = await updateProtect(noteId);
     if (res?.response?.status === 200){
       if (!prot) toast.success("Note protected!")
-      else toast.success("Note removed from your likes!")
+      else toast.success("Note removed from protected!")
     }
 
     setProt(!prot);

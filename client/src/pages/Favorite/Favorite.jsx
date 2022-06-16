@@ -34,6 +34,7 @@ export default function Favorite({ setLoading }) {
                   key={_id} noteId={_id}
                   title={title} content={content}
                   favourite={favourite}
+                  protect = {-1}
                   date={new Date(createdAt).toLocaleDateString()}
                   time={new Date(updatedAt).toLocaleTimeString()}
                 />

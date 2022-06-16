@@ -27,12 +27,13 @@ export default function Protected({ setLoading }) {
           <h1>No notes added in favourites</h1>
         ) : (
           notes?.map(
-            ({ title, content, _id, favorite, createdAt, updatedAt }) => {
+            ({ title, content, _id, protect, createdAt, updatedAt }) => {
               return (
                 <Cards
                   key={_id} noteId={_id}
                   title={title} content={content}
-                  favorite={favorite}
+                  favourite={-1}
+                  protect = {protect?1:0}
                   date={new Date(createdAt).toLocaleDateString()}
                   time={new Date(updatedAt).toLocaleTimeString()}
                 />
