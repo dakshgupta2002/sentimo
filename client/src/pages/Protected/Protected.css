@@ -5,5 +5,26 @@
 }
 
 .protected-container > * {
-    margin: 1em 0;
+    margin: 1rem 1rem;
+    flex-basis: 33%;
+}
+
+@media (max-width: 900px) {
+    .protected-container > * {
+        flex-basis: 40%;
+    }
+}
+
+@media (max-width: 600px)
+{
+    .protected-container > * {
+        flex-basis: 80%;
+    }
+}
+
+@media (max-width: 400px)
+{
+    .protected-container > * {
+        flex-basis: 90%;
+    }
 }

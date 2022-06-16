@@ -31,6 +31,7 @@ export default function Protected({ setLoading }) {
           notes?.map(
             ({ title, content, _id, protect, createdAt, updatedAt }) => {
               return (
+              <div className="card-container">
                 <Cards
                   key={_id} noteId={_id}
                   title={title} content={content}
@@ -39,6 +40,7 @@ export default function Protected({ setLoading }) {
                   date={new Date(createdAt).toLocaleDateString()}
                   time={new Date(updatedAt).toLocaleTimeString()}
                 />
+                </div>
               );
             }
           )

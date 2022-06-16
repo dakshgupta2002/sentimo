@@ -96,15 +96,13 @@
     .login-input-container {
         flex-basis: 100%;
     }
-}
 
-@media (max-width: 460px) {
     .login-input-container {
-        flex-basis: 100%;
-    }
+      flex-basis: 100%;
+  }
 }
 
-@media (max-width: 270) {
+@media (max-width: 270px) {
     .sign-up-button {
         display: inline;
         align-self: center;

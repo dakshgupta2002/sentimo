@@ -5,5 +5,26 @@
 }
 
 .favorite-container > * {
-    margin: 1em 0;
+    margin: 1rem 1rem;
+    flex-basis: 33%;
+}
+
+@media (max-width: 900px) {
+    .favorite-container > * {
+        flex-basis: 40%;
+    }
+}
+
+@media (max-width: 600px)
+{
+    .favorite-container > * {
+        flex-basis: 80%;
+    }
+}
+
+@media (max-width: 400px)
+{
+    .favorite-container > * {
+        flex-basis: 90%;
+    }
 }

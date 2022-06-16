@@ -67,7 +67,7 @@ export default function RecipeReviewCard({
   }
 
   return (
-    <Card sx={{ maxWidth: "45%" }}>
+    <Card sx={{ maxWidth: "100%" }}>
       <CardHeader title={date} subheader={`Last updated: ${time}`} />
 
       <CardContent>
