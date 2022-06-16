@@ -1,10 +1,12 @@
 import { Router } from 'express';
 import { authenticate } from '../../auth/authenticate.js';
+import { UserNotes } from '../../middlewares/UserNotes.js';
 import favouriteRouter from './favouriteRouter.js';
 import noteRouter from './noteRouter.js';
 
 const notesRouter = Router();
 notesRouter.use(authenticate); //add the _id param to every request
+notesRouter.use(UserNotes); //add the notes to the request
 
 notesRouter.route("*")
     .all((req, res, next) => {
