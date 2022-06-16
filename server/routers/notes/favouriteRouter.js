@@ -16,7 +16,7 @@ favouriteRouter.route("/")
             res.status(500).json({ "msg": err });
         }
     })
-
+    
     .put( async (req, res) => {
         // negate the favourite status of the note
         const userId = req?.user?._id;
