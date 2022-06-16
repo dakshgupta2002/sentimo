@@ -19,7 +19,7 @@ protectRouter.route("/")
     .put( async (req, res) => {
         try{
             const note = await Note.findById(req?.body?.noteId).exec();
-            note.protect = !note.protected;
+            note.protect = !note.protect;
             await note.save();
             res.status(200).json({protected: note.protected});
         }catch(err){
