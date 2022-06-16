@@ -156,7 +156,7 @@ export default function Sidebar() {
               variant="contained"
               color="secondary"
               href="login"
-              onClick={() => localStorage.removeItem("jwt")}
+              onClick={() => localStorage.clear()}
             >
               {localStorage.getItem("jwt") ? "Logout" : "Login"}
             </Button>
