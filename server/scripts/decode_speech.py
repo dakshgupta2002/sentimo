@@ -8,7 +8,7 @@ def emotion_speech():
 
 	with sr.Microphone() as source:
 
-		audio_text = r.listen(source, phrase_time_limit = 5)
+		audio_text = r.listen(source, phrase_time_limit = 60)
 
 		try:
 			speech_text = r.recognize_google(audio_text)
