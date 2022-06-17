@@ -45,6 +45,13 @@ ___
 ### git push origin dakshgupta_setup (and wait for review and merge)
 `if you are confident in your work, you can also push directly to main`
  
+ ## Python
+ ___
  ### To install the Python dependencies 
  `pip install -r requirements.txt`
+ 
+ ### Install NLTK resource
+ `import nltk`
+
+ `nltk.download('omw-1.4')`
  
