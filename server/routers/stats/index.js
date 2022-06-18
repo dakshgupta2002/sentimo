@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { authenticate } from "../../auth/authenticate.js";
 import statRouter from "./statRouter.js";
-import statNoteRouter from "./statNoteRouter.js";
 
 const statsRouter = Router();
 statsRouter.use(authenticate); // add user params 
@@ -16,7 +15,6 @@ statsRouter.route('*')
     });
 
 statsRouter.use("/", statRouter); //complete history
-statsRouter.use("/date", statRouter); //only of that date (query)
 statsRouter.use("/note", statRouter); //of a single note (body)
 
 export default statsRouter;

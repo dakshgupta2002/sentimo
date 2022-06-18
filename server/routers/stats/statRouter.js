@@ -54,7 +54,8 @@ statRouter.route("/note")
 
 statRouter.route("/")
     .get((req, res) => {
-        Stat.find({ user: req.user._id })
+        const timespan = req.body.timespan;
+        //give the stats of the user of given time span
     })
 
 
