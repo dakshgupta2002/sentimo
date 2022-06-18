@@ -15,7 +15,8 @@ statsRouter.route('*')
         next();
     });
 
-statsRouter.use("/", statRouter);
-statsRouter.use("/note", statNoteRouter);
+statsRouter.use("/", statRouter); //complete history
+statsRouter.use("/date", statRouter); //only of that date (query)
+statsRouter.use("/note", statRouter); //of a single note (body)
 
 export default statsRouter;

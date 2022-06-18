@@ -1,30 +1,44 @@
 import { Router } from "express";
 const statRouter = Router();
 import Stat from '../../models/Stat.js';
-import { spawn } from 'child_process';
-import { atob } from "buffer";
+import { spawn } from "child_process";
 
-//stat of a user only for single a date 
-statRouter.route("/")
-    .post(async (req, res) => {
-        let text = req.body.text;
+statRouter.route("/note")
+.get((req, res) => {
+    const { userId, date } = req.query;
+    Stat.find({ userId, date })
+    
+})
+
+//stat of a user of a particular date 
+statRouter.route("/date")
+.post( async (req, res) => {
+        const text = req.body.text;
         const date = req.body.date;
-        text = encodeURI(text);
+        let emotion;
 
-        var emotion;
+        let data = encodeURI(text);
         // spawn new child process to call the python script
-        const python = spawn('python', ['scripts/emotion.py', text]);
-
-        // collect data from script
-        python.stdout.on('data',  (data) => {
-            emotion = decodeURI(data);
+        const python = spawn('python', ['scripts/emotion.py', data]);
+    
+        python.stdout.on('data',  data => { 
+            emotion = data.toString();
         });
-        // in close event we are sure that stream from child process is closed
+        
         python.on('close', () => {
-            res.send(emotion)
+            var obj="";
+            for (var i =0; i<emotion.length; i++){
+                if (emotion[i]==="'"){
+                    obj += '"';
+                }else obj+=emotion[i];
+            }
+
+            obj = (JSON.parse(obj));
+            console.log(obj.Happy)
         });
 
-        //obtain emotions 
+
+
         const newStat = await new Stat({
             user: req.user._id,
             emotion,
@@ -37,4 +51,12 @@ statRouter.route("/")
         // })
     })
 
+
+statRouter.route("/")
+    .get((req, res) => {
+        Stat.find({ user: req.user._id })
+    })
+    
+
+        
 export default statRouter;
