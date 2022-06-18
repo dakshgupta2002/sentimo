@@ -6,10 +6,11 @@ def emotion_output(text):
     dcde = urllib.parse.unquote(text)
     emotion_dict = te.get_emotion(dcde)
 
-    return emotion_dict
+    result = urllib.parse.urlencode(emotion_dict)
+
+    return result
 
 
 text = sys.argv[1]
-text.replace('\r', '')
-text.replace('\n', '')
+
 print(emotion_output(text))
