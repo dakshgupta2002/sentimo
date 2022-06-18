@@ -5,9 +5,9 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('59 59 23 * * *', async () => {
-  const date = (new Date()).toLocaleDateString();
-  //at 11:59:59 pm of every day
+var dailyStat = schedule('59 23 * * *', async () => {
+  const date = new Date();
+  //at 11:59pm of every day
   //create and save emotions of every user 
   //for that date
   const users = await User.find({}).exec(); //get all users
@@ -19,11 +19,12 @@ var dailyStat = schedule('59 59 23 * * *', async () => {
         //notes is an array of promises, resolve all 
         await Promise.all(notes).then(notes => {
           notes.filter(note => {
-            return (new Date(note.createdAt)).toLocaleDateString() === date
+            return (new Date(note?.createdAt)).toLocaleDateString() === date.toLocaleDateString();
           });
+
           let text = "";
           notes.forEach(note => {
-            text += note.title + " " + note.content + " ";
+            text += note?.title + " " + note?.content + " ";
           })
 
           let data = encodeURI(text);
@@ -45,10 +46,10 @@ var dailyStat = schedule('59 59 23 * * *', async () => {
             }
             // emotion is a string, parse it to JSON
             obj = JSON.parse(obj);
-            // save the emotion to the database
+            // save the stat of the date to the database
             const dailyStat = new Stat({
               user: user._id,
-              date: date,
+              date: (new Date(date)).toISOString(),
               emotion: obj
             });
             await dailyStat.save();
