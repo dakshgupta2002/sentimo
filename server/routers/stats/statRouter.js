@@ -34,11 +34,12 @@ statRouter.route("/note")
                     obj += '"';
                 } else obj += emotion[i];
             }
-
-            obj = (JSON.parse(obj));
+            // emotion is a string, parse it to JSON
+            obj = JSON.parse(obj);
+            // save the emotion to the database
             const newNoteEmotion = await new NoteEmotion({
                 note: noteId,
-                emotion
+                emotion: obj
             });
 
             newNoteEmotion.save().then(noteEmotion => {
