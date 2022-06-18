@@ -8,9 +8,14 @@ export const fetchStats = async (date) => {
     //convert notes object to text 
     var text = "";
     notes?.data?.notes.forEach(note => text += note.title + " " + note.content + " ");
-    console.log(text);
 
     //spawn new child process to call the python script
     const res = await post("stats", {text, date}, 'POST');    
+    return res;
+}
+
+export const fetchNoteStats = async (noteId) => {
+    // fetch stats of this noteId;
+    const res = await post("stats/note", {noteId}, 'POST');
     return res;
 }
