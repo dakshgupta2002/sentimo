@@ -37,8 +37,8 @@ export default function Favorite({ setLoading }) {
                     title={title} content={content}
                     favourite={favourite}
                     protect={-1}
-                    date={new Date(updatedAt).toLocaleDateString()}
-                    time={new Date(updatedAt).toLocaleTimeString()}
+                    date={new Date(updatedAt).toLocaleDateString("en-GB")}
+                    time={new Date(updatedAt).toLocaleTimeString("en-GB")}
                   />
                 );
               }

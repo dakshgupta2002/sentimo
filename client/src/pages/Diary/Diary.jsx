@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "@mui/material/";
 import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
@@ -7,22 +7,33 @@ import NoteInput from "./NoteInput";
 import Page from "./Page";
 
 import "./Diary.css";
+import NoteEdit from "./NoteEdit";
 
 export default function Diary() {
   document.body.style.overflow = "hidden";
 
   const [date, setDate, reset, previous, next, today] = useDate();
-  const [open, setOpen] = useState(true);
+  const [inputOpen, setInputOpen] = useState(true);
+  const [editOpen, setEditOpen] = useState(false);
   const [notesAdded, setNotesAdded] = useState(0);
+  const [editNoteId, setEditNoteId] = useState(null);
+
   return (
     <div>
       <Sidebar />
-      <ModalContainer isOpen={open} close={() => setOpen(false)}>
+      <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
         <NoteInput
-          close={() => setOpen(false)}
+          close={() => setInputOpen(false)}
           date={date}
           notesAdded={notesAdded}
           setNotesAdded={setNotesAdded}
+        />
+      </ModalContainer>
+
+      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
+        <NoteEdit
+          close={() => {setEditNoteId(null); setEditOpen(false)}}
+          editNoteId={editNoteId}
         />
       </ModalContainer>
 
@@ -45,8 +56,9 @@ export default function Diary() {
           <Page
             date={date}
             notesAdded={notesAdded}
-            setNotesAdded={setNotesAdded}
-          ></Page>
+            setNotesAdded={setNotesAdded} setEditNoteId={setEditNoteId}
+            setEditOpen={setEditOpen}
+          />
         </div>
 
         {/* Flex Item-3 (Filter, Next, ADD BUTTON) */}
@@ -56,7 +68,7 @@ export default function Diary() {
           {today ? (
             <AddBoxRoundedIcon
               className="add-icon"
-              onClick={() => setOpen(true)}
+              onClick={() => setInputOpen(true)}
               display={false}
             />
           ) : (

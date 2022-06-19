@@ -1,28 +1,19 @@
 import React, { useState } from "react";
-import { Box, Typography, Button, IconButton, Icon } from "@mui/material";
+import { Box, Typography, Button, IconButton } from "@mui/material";
 import {
   FavoriteBorderOutlined,
   EnhancedEncryption,
 } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import EditIcon from '@mui/icons-material/Edit';
 import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import "./Diary.css";
 
-export default function Note({
-  title,
-  content,
-  noteId,
-  notesAdded,
-  setNotesAdded,
-  favourite,
-  protect,
-  createdAt,
-  updatedAt,
-}) {
+export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt, setEditNoteId, setEditOpen}) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
@@ -33,32 +24,14 @@ export default function Note({
 
   const handleFavourite = async () => {
     const res = await updateFav(noteId); //update on BE for future ref
-
-    // No Toast needed to show success message
-    // if (!fav) toast.success("Note added to your likes!")
-    // else toast.success("Note removed from your likes!")
-
     if (res?.response?.status !== 200) {
-      // var msg = (fav ? "Removing notes from likes failed! <br /> Try again" : "Adding Note in likes failed! <br /> Try again");
       toast.error(
-        fav ? (
-          <div>
-            Failed to remove note from likes. <br /> Try again
-          </div>
-        ) : (
-          <div>
-            Failed to add note in likes. <br /> Try again
-          </div>
-        ),
-        {
+        fav ? (<div>Failed to remove note from likes. <br /> Try again</div>
+        ) : (<div>Failed to add note in likes. <br /> Try again</div> ), {
           duration: 2000,
           style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
           icon: "❌",
-
-          ariaProps: {
-            role: "status",
-            "aria-live": "polite",
-          },
+          ariaProps: {role: "status", "aria-live": "polite"},
         }
       );
     } // Note change success so change icon color
@@ -77,10 +50,7 @@ export default function Note({
         duration: 2000,
         style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
         icon: "✅",
-        ariaProps: {
-          role: "status",
-          "aria-live": "polite",
-        },
+        ariaProps: { role: "status", "aria-live": "polite", },
       });
 
       setProt(!prot);
@@ -92,11 +62,7 @@ export default function Note({
         duration: 2000,
         style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
         icon: "❌",
-
-        ariaProps: {
-          role: "status",
-          "aria-live": "polite",
-        },
+        ariaProps: { role: "status", "aria-live": "polite"},
       });
     }
   };
@@ -104,7 +70,6 @@ export default function Note({
   if (prot) {
     return <></>;
   }
-
   return (
     <Box
       sx={{
@@ -114,45 +79,25 @@ export default function Note({
         height: "100vh",
       }}
     >
-      <Typography variant="h6">Title</Typography>
+      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Typography variant="h6">Title</Typography>
+        {new Date(createdAt).toDateString() === new Date().toDateString() ? <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
+          <EditIcon sx={{ fontSize: "2.4rem" }} />
+        </IconButton> : null }
+      </Box>
       <Box
         component="span"
-        sx={{
-          display: "flex",
-          p: 1,
-          m: 1,
-          bgcolor: "#101010",
-          color: "grey.300",
-          border: "1px solid",
-          borderColor: "grey.800",
-          borderRadius: 2,
-          fontSize: "0.875rem",
-          fontWeight: "700",
-        }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700" }}
       >
-        <Typography>
-          <span>{title}</span>
-        </Typography>
+        <Typography>{title}</Typography>
       </Box>
+
 
       <Typography variant="h6">Content</Typography>
 
       <Box
         component="span"
-        sx={{
-          display: "flex",
-          p: 1,
-          m: 1,
-          bgcolor: "#101010",
-          color: "grey.300",
-          border: "1px solid",
-          borderColor: "grey.800",
-          borderRadius: 2,
-          fontSize: "0.875rem",
-          fontWeight: "700",
-          flex: "0.75 1 auto",
-          overflowY: "scroll",
-        }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "0.75 1 auto", overflowY: "scroll" }}
       >
         <Typography>
           <span>{content}</span>
@@ -186,17 +131,15 @@ export default function Note({
           </Button>
 
           {fav ? (
-            <IconButton sx={{marginLeft: "10px"}}>
+            <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
               <FavoriteRoundedIcon
-                onClick={handleFavourite}
                 color="error"
                 sx={{ fontSize: "2.4rem" }}
               />
             </IconButton>
           ) : (
-            <IconButton sx={{marginLeft: "10px"}}>
+            <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
               <FavoriteBorderOutlined
-                onClick={handleFavourite}
                 sx={{ fontSize: "2.4rem" }}
               />
             </IconButton>
@@ -204,7 +147,7 @@ export default function Note({
         </Box>
 
         <Box style={{ display: "flex", justifyContent: "space-around" }}>
-          <IconButton sx={{marginLeft: "10px"}}>
+          <IconButton sx={{ marginLeft: "10px" }}>
             <EnhancedEncryption
               onClick={handleProtect}
               sx={{ fontSize: "2.4rem" }}

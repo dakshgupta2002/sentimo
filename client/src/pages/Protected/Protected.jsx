@@ -26,7 +26,7 @@ export default function Protected({ setLoading }) {
 
       <div className="protected-container">
         {notes?.length === 0 ? (
-          <h1>No notes added in favourites</h1>
+          <h1>No notes to display</h1>
         ) : (
           <div className="card-container">
             {notes?.map(
@@ -37,8 +37,8 @@ export default function Protected({ setLoading }) {
                     title={title} content={content}
                     favourite={-1}
                     protect={protect ? 1 : 0}
-                    date={new Date(updatedAt).toLocaleDateString()}
-                    time={new Date(updatedAt).toLocaleTimeString()}
+                    date={new Date(updatedAt).toLocaleDateString("en-GB")}
+                    time={new Date(updatedAt).toLocaleTimeString("en-GB")}
                   />
                 );
               }

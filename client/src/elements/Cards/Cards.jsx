@@ -71,20 +71,16 @@ export default function RecipeReviewCard({
 
       <CardActions disableSpacing>
         {fav === -1 ? null : (
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon
-              onClick={handleFavourite}
-              sx={fav ? { color: "red" } : { color: "black" }}
-            />
+          <IconButton aria-label="add to favorites" onClick={handleFavourite}>
+            <FavoriteIcon sx={fav ? { color: "red" } : { color: "black" }}/>
           </IconButton>
         )}
 
-        {prot === -1 ? null:
-        <IconButton aria-label="add to private">
-          {prot===1 ? 
-            <EnhancedEncryption onClick={handleProtected} sx={{color:"black"}}/> 
-            : <LockOpen onClick={handleProtected} sx={{color:"black"}}/>}
-        </IconButton>
+        {prot === -1 ? 
+          null:
+          prot===1 ? 
+          <IconButton onClick={handleProtected}><EnhancedEncryption sx={{color:"black"}}/></IconButton> :
+          <IconButton onClick={handleProtected}><LockOpen sx={{color:"black"}}/></IconButton>
         }
 
         <ExpandMore
