@@ -1,5 +1,5 @@
 *::-webkit-scrollbar {
-  /* display: none; */
+  display: none;
 }
 
 .diary-container {
@@ -89,5 +89,3 @@
   scroll-snap-align: start;
   position: relative;
 }
-
-/* max-width: 780 change */

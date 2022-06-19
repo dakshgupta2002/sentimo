@@ -3,7 +3,6 @@ import { Box, Typography, Button } from "@mui/material";
 import {
   FavoriteBorderOutlined,
   EnhancedEncryption,
-  EnhancedEncryptionOutlined,
 } from "@mui/icons-material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
@@ -100,12 +99,18 @@ export default function Note({
   }
 
   return (
-    <Box style={{ width: "100%", height: "100vh" }}>
+    <Box sx = 
+        {{ display: "flex", 
+        flexFlow: "column",
+        width: "100%", 
+        height: "100vh"
+        }}>
+
       <Typography variant="h6">Title</Typography>
       <Box
         component="span"
         sx={{
-          display: "block",
+          display: "flex",
           p: 1,
           m: 1,
           bgcolor: "#101010",
@@ -127,7 +132,7 @@ export default function Note({
       <Box
         component="span"
         sx={{
-          display: "block",
+          display: "flex",
           p: 1,
           m: 1,
           bgcolor: "#101010",
@@ -137,7 +142,7 @@ export default function Note({
           borderRadius: 2,
           fontSize: "0.875rem",
           fontWeight: "700",
-          height: "30vh", // For testing
+          flex: "0.75 1 auto",
           overflowY: "scroll",
         }}
       >
@@ -154,9 +159,15 @@ export default function Note({
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
+          // flex: "0 1 40px"
         }}
       >
-        <Box style={{ display: "flex", justifyContent: "space-evenly", marginBottom: "20px", marginTop: "5px" }}>
+        <Box style={{
+           display: "flex", 
+           justifyContent: "space-evenly", 
+           marginBottom: "20px", 
+           marginTop: "5px",
+           flex: "0 1 auto"}}>
           <Button
             variant="contained"
             color="secondary"
@@ -181,7 +192,7 @@ export default function Note({
 
         <Box style={{display: "flex", justifyContent: "space-around"}}>
           <EnhancedEncryption onClick={handleProtect} sx={{ fontSize: "2.4rem", marginRight: "10px" }} />
-          <DeleteIcon onClick={deleteNote} sx={{ fontSize: "2.4rem" }} />
+          <DeleteIcon onClick={deleteNote} sx={{ fontSize: "2.4rem", color: "#398AB9" }} />
         </Box>
       </Box>
     </Box>
