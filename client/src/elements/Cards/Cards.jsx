@@ -1,19 +1,12 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Collapse from "@mui/material/Collapse";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
+import {Card, CardHeader, CardContent, CardActions, Collapse, IconButton, Typography} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { EnhancedEncryption } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Box } from "@mui/material";
-import { useState } from "react";
 import { updateFav, updateProtect } from "../../utils/api/notes";
 import { toast } from "react-toastify";
+import './Cards.css';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -67,7 +60,7 @@ export default function RecipeReviewCard({
   }
 
   return (
-    <Card sx={{ maxWidth: "100%" }}>
+    <Card className="card">
       <CardHeader title={date} subheader={`Last updated: ${time}`} />
 
       <CardContent>
