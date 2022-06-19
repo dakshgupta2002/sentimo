@@ -55,7 +55,7 @@ export default function Login(props) {
     <div className="login-form-container">
       {/* Hidden in Mobile */}
       <div className="login-form-header">
-        <section className="login-form-image"></section>{" "}
+        <section className="login-form-image"></section>
         {/* This class Only for Desktop */}
       </div>
 
@@ -70,7 +70,7 @@ export default function Login(props) {
           <div className="input-container">
             <TextField
               label="Username"
-              Text="username"
+              text="username"
               name="username"
               autoComplete="false"
               onChange={(e) => setUsername(e.target.value.trim())}
@@ -90,7 +90,7 @@ export default function Login(props) {
           <div className="input-container">
             <TextField
               label="Password"
-              Text="password"
+              text="password"
               name="password"
               type="password"
               onChange={(e) => setPassword(e.target.value.trim())}
