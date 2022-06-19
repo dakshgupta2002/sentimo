@@ -1,9 +1,9 @@
-import { schedule } from 'node-cron';
-import User from '../models/User.js';
-import Stat from '../models/Stat.js';
-import Diary from '../models/Diary.js';
-import Note from '../models/Note.js';
-import { spawn } from 'child_process';
+const { schedule } = require('node-cron');
+const User = require('../models/User.js');
+const Stat = require('../models/Stat.js');
+const Diary = require('../models/Diary.js');
+const Note = require('../models/Note.js');
+const { spawn } = require('child_process');
 
 var dailyStat = schedule('59 23 * * *', async () => {
   const date = new Date();

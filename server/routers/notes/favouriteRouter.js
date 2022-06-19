@@ -1,6 +1,6 @@
-import { Router } from "express";
-import { isNoteOwner } from "../../auth/authorize.js";
-import Note from "../../models/Note.js";
+const { Router } = require('express');
+const isNoteOwner = require("../../auth/authorize.js").isNoteOwner;
+const Note = require("../../models/Note.js");
 const favouriteRouter = Router();
 
 favouriteRouter.use(isNoteOwner);
@@ -33,4 +33,4 @@ favouriteRouter.route("/")
         
     })
 
-export default favouriteRouter;
+module.exports = favouriteRouter;

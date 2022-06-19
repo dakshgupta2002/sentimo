@@ -1,16 +1,16 @@
-import jwt from "jsonwebtoken";
-import 'dotenv/config'
+const jwt = require("jsonwebtoken");
+require('dotenv').config()
 
-export const jwtGenerator = (_id) => {
+module.jwtGenerator  = (_id) => {
     const token = jwt.sign({ _id }, process.env.JWT_SECRET, { expiresIn: "24h" });
     return token;
 }
 
-export const authenticate = (req, res, next) => {
-    const token = req.headers.authorization || req.body.token || req.query.token;
+module.authenticate = (req, res, next) => {
+    const token = req?.headers?.authorization || req?.body?.token || req?.query?.token;
 
     if (!token){
-        res.sendStatus(401);
+        res.status(401);
     }
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
         

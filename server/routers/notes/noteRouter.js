@@ -1,8 +1,7 @@
-import { Router } from "express";
-import User from '../../models/User.js';
-import Note from '../../models/Note.js';
-import Diary from '../../models/Diary.js';
-import { isNoteOwner } from '../../auth/authorize.js';
+const { Router } = require("express");
+const Note = require('../../models/Note.js');
+const Diary = require('../../models/Diary.js');
+const isNoteOwner = require('../../auth/authorize.js');
 
 const noteRouter = Router();
 
@@ -54,4 +53,4 @@ noteRouter.route("/")
         res.status(200).json({ "msg": "Note deleted" });
 
     })
-export default noteRouter;
+module.exports = noteRouter;

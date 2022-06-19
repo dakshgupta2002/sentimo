@@ -1,6 +1,6 @@
-import { Router } from "express";
-import { isNoteOwner } from "../../auth/authorize.js";
-import Note from "../../models/Note.js";
+const { Router } = require("express");
+const isNoteOwner = require("../../auth/authorize.js");
+const Note = require("../../models/Note.js");
 const protectRouter = Router();
 
 protectRouter.use(isNoteOwner);
@@ -27,4 +27,4 @@ protectRouter.route("/")
         }
     })
 
-export default protectRouter;
+module.exports = protectRouter;

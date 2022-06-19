@@ -1,6 +1,6 @@
 const whitelist = ['http://localhost:3000', 'http://localhost:3001'];
 
-export const corsOptions = {
+module.corsOptions  = {
     origin: (origin, callback) => {
         if (whitelist.indexOf(origin) !== -1){ //found this origin in my whitelist
             callback(null, true);

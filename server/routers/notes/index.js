@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { authenticate } from '../../auth/authenticate.js';
-import { UserNotes } from '../../middlewares/UserNotes.js';
-import favouriteRouter from './favouriteRouter.js';
-import noteRouter from './noteRouter.js';
-import protectRouter from './protectRouter.js';
+const { Router } = require('express');
+const authenticate = require('../../auth/authenticate.js');
+const UserNotes = require('../../middlewares/UserNotes.js');
+const favouriteRouter = require('./favouriteRouter.js');
+const noteRouter = require('./noteRouter.js');
+const protectRouter = require('./protectRouter.js');
 
 const notesRouter = Router();
 notesRouter.use(authenticate); //add the _id param to every request
@@ -22,4 +22,5 @@ notesRouter.route("*")
 notesRouter.use("/", noteRouter);
 notesRouter.use("/favourite", favouriteRouter);
 notesRouter.use("/protect", protectRouter);
-export default notesRouter;
+
+module.exports = notesRouter;

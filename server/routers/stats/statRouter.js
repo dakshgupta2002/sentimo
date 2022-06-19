@@ -1,8 +1,8 @@
-import { Router } from "express";
-import { spawn } from "child_process";
-import Note from '../../models/Note.js';
-import Stat from '../../models/Stat.js';
-import NoteEmotion from '../../models/NoteEmotion.js';
+const { Router } = require("express");
+const { spawn } = require("child_process");
+const Note = require('../../models/Note.js');
+const Stat = require('../../models/Stat.js');
+const NoteEmotion = require('../../models/NoteEmotion.js');
 
 const statRouter = Router();
 
@@ -60,4 +60,4 @@ statRouter.route("/")
 
 
 
-export default statRouter;
+module.exports = statRouter;

@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 //this is a basic struct of a note 
@@ -22,4 +22,4 @@ const noteSchema = new Schema({
     }
 }, {timestamps: true});
 
-export default mongoose.model("Note", noteSchema);
+module.Note = mongoose.model("Note", noteSchema);

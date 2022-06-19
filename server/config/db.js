@@ -1,6 +1,6 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-export default function db(uri) {
+module.db = (uri) => {
     mongoose.connect(uri, {
         useNewUrlParser: true
     }).then(() => {

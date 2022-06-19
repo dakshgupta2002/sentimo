@@ -1,7 +1,7 @@
-import User from "../models/User.js";
-import Diary from "../models/Diary.js";
+const User = require("../models/User.js");
+const Diary = require("../models/Diary.js");
 
-export const isAdmin = async (req, res, next) => {
+module.isAdmin = async (req, res, next) => {
     const _id = req.user._id;
     User.findById(_id, (err, user) => {
         if (err) {
@@ -17,7 +17,7 @@ export const isAdmin = async (req, res, next) => {
     })  
 };
 
-export const isNoteOwner = async (req, res, next) => {
+module.isNoteOwner = async (req, res, next) => {
     //check if the note that the user is trying to access is owned by the user
     const _id = req.user?._id;
     const noteId = req.query?.noteId || req.body?.note?._id || req.body?.noteId;

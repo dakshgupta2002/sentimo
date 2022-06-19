@@ -1,8 +1,7 @@
-import { Router } from 'express';
+const { Router } = require('express');
 const userRouter = Router();
-
-import loginRouter from './loginRouter.js';
-import registerRouter from './registerRouter.js';
+const loginRouter = require('./loginRouter.js')
+const registerRouter = require('./registerRouter.js');
 
 userRouter.route("*")
     .all((req, res, next) => {
@@ -20,4 +19,4 @@ userRouter.use("/login", loginRouter);
 // userRouter.use("/reset-password", resetPasswordRouter);
 // userRouter.use("/change-password", changePasswordRouter);
 
-export default userRouter;
+module.exports = userRouter;

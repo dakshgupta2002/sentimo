@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const NoteEmotion = new Schema({
@@ -12,4 +12,4 @@ const NoteEmotion = new Schema({
     }
 })
 
-export default mongoose.model('NoteEmotion', NoteEmotion);
+module.NoteEmotion = mongoose.model('NoteEmotion', NoteEmotion);

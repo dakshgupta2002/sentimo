@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 const statSchema = new Schema({
@@ -18,4 +18,4 @@ const statSchema = new Schema({
     
 }, {timestamps: true});
 
-export default mongoose.model("Stat", statSchema);
+module.Stat = mongoose.model("Stat", statSchema);

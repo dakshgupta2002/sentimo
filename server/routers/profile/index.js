@@ -1,7 +1,7 @@
-import { Router } from 'express';
-import { authenticate } from '../../auth/authenticate.js';
-import imageRouter from './imageRouter.js';
-import infoRouter from './infoRouter.js';
+const { Router } = require('express');
+const authenticate = require('../../auth/authenticate.js');
+const imageRouter = require('./imageRouter.js');
+const infoRouter = require('./infoRouter.js');
 
 const profileRouter = Router();
 profileRouter.use(authenticate)
@@ -22,4 +22,4 @@ profileRouter.use('/info', infoRouter);
 //allow edit note 
 //upload image so create multer
 
-export default profileRouter;
+module.exports = profileRouter;

@@ -1,13 +1,13 @@
-import express from 'express';
-import 'dotenv/config';
-import cors from 'cors';
-import db from './config/db.js'
-import { corsOptions } from './config/cors.js';
-import userRouter from './routers/user/index.js';
-import notesRouter from './routers/notes/index.js';
-import statsRouter from './routers/stats/index.js';
-import profileRouter from './routers/profile/index.js';
-import './crons/DailyStat.js';
+const express = require('express');
+require('dotenv').config()
+const cors = require('cors');
+const db = require('./config/db.js');
+const { corsOptions } = require('./config/cors.js');
+const userRouter = require('./routers/user/index.js');
+const notesRouter = require('./routers/notes/index.js');
+const statsRouter = require('./routers/stats/index.js');
+const profileRouter = require('./routers/profile/index.js');
+require('./crons/DailyStat.js');
 
 const port = process.env.PORT;
 const app = express();

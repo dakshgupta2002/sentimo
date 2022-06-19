@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
 //this diary contains all the notes 
@@ -15,4 +15,4 @@ const diarySchema = new Schema({
     }
 })
 
-export default mongoose.model("Diary", diarySchema);
+module.Diary = mongoose.model("Diary", diarySchema);

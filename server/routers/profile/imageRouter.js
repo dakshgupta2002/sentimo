@@ -1,4 +1,4 @@
-import { Router } from "express";
+const { Router } = require('express');
 
 const imageRouter = Router();
 //input image from the user
@@ -10,4 +10,4 @@ imageRouter.route("/")
     })
 
 
-export default imageRouter;
+module.exports = imageRouter;

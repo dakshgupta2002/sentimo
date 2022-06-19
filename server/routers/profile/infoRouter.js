@@ -1,5 +1,5 @@
-import { Router } from "express";
-import User from "../../models/User.js";
+const { Router } = require('express');
+const User = require("../../models/User.js");
 
 const infoRouter = Router();
 
@@ -14,4 +14,4 @@ infoRouter.route("/")
     })
 
 
-export default infoRouter;
+module.exports = infoRouter;

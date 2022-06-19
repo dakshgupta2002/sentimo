@@ -1,8 +1,9 @@
-import { Router } from 'express';
+const { Router } = require('express');
+const jwtGenerator = require('../../auth/authenticate.js');
+const User = require('../../models/User.js');
+const bcrypt = require('bcrypt');
+
 const registerRouter = Router();
-import User from '../../models/User.js';
-import bcrypt from 'bcrypt';
-import { jwtGenerator } from '../../auth/authenticate.js';
 
 registerRouter.route("/")
     .post( (req, res) => {
@@ -23,4 +24,4 @@ registerRouter.route("/")
         });
     })
 
-export default registerRouter;
+module.exports = registerRouter;
