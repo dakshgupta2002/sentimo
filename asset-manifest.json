@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/dakshgupta2002.github.io/sentimo/static/css/main.1b261e69.css",
+    "main.js": "/dakshgupta2002.github.io/sentimo/static/js/main.94c3a8f2.js",
+    "static/media/selftimeisolation.jpg": "/dakshgupta2002.github.io/sentimo/static/media/selftimeisolation.66cae175fe6123f4ba7a.jpg",
+    "static/media/welldoing.webp": "/dakshgupta2002.github.io/sentimo/static/media/welldoing.daf033c24a2fc981516e.webp",
+    "index.html": "/dakshgupta2002.github.io/sentimo/index.html",
+    "main.1b261e69.css.map": "/dakshgupta2002.github.io/sentimo/static/css/main.1b261e69.css.map",
+    "main.94c3a8f2.js.map": "/dakshgupta2002.github.io/sentimo/static/js/main.94c3a8f2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b261e69.css",
+    "static/js/main.94c3a8f2.js"
+  ]
+}
