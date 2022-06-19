@@ -26,3 +26,5 @@ package-lock.json
 .env
 
 /py-js
+
+*.pem
