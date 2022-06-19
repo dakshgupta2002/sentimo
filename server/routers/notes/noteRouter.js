@@ -27,7 +27,7 @@ noteRouter.route("/")
         const note = new Note({ title, content });
         const noteId = note._id;
         await note.save()
-
+        console.log("note", note);
         const diary = await Diary.findOne({ user: userId }).exec();
 
         if (diary) {
