@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material/";
 import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
-import AddBoxRoundedIcon from '@mui/icons-material/AddBoxRounded';
+import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import NoteInput from "./NoteInput";
 import Page from "./Page";
 
@@ -13,19 +13,26 @@ export default function Diary() {
 
   const [date, setDate, reset, previous, next, today] = useDate();
   const [open, setOpen] = useState(true);
-  const [notesAdded, setNotesAdded] = useState(0)
+  const [notesAdded, setNotesAdded] = useState(0);
   return (
     <div>
       <Sidebar />
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput close={() => setOpen(false)} date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded} />
+        <NoteInput
+          close={() => setOpen(false)}
+          date={date}
+          notesAdded={notesAdded}
+          setNotesAdded={setNotesAdded}
+        />
       </ModalContainer>
 
       <div className="diary-container">
         {/* Flex Item-1 (DATE, ARROW KEY, blank space) */}
         <div className="diary-left-container">
           <div className="date-show">
-            <Button variant="contained">{date.toLocaleDateString()}</Button>
+            <Button variant="contained">
+              {date.toLocaleDateString("en-GB")}
+            </Button>
           </div>
 
           <div className="arrow left" onClick={() => previous()}></div>
@@ -34,24 +41,27 @@ export default function Diary() {
         </div>
 
         {/* Flex Item-2 (Title Content) */}
-        <div className="diary-mid-container" >
-          <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}>
-          </Page>
+        <div className="diary-mid-container">
+          <Page
+            date={date}
+            notesAdded={notesAdded}
+            setNotesAdded={setNotesAdded}
+          ></Page>
         </div>
 
         {/* Flex Item-3 (Filter, Next, ADD BUTTON) */}
         <div className="diary-right-container">
           <Button variant="contained">Filter</Button>
-          <div className="arrow right" onClick={() => next()}></div>
 
-          {today ? 
+          {today ? (
             <AddBoxRoundedIcon
               className="add-icon"
               onClick={() => setOpen(true)}
               display={false}
             />
-          : <div></div>}
-
+          ) : (
+            <div className="arrow right" onClick={() => next()}></div>
+          )}
         </div>
       </div>
     </div>
