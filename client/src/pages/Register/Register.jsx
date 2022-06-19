@@ -34,7 +34,31 @@ export default function Resgiter(props) {
   const register = async (e) => {
     e.preventDefault();
     if (!username || !password || !firstName || !lastName) {
-      toast.error("Please fill in all fields");
+      var missing = [];
+
+      if (!firstName)
+      missing.push("First Name");
+      if (!lastName)
+      missing.push("Last Name");
+      if (!username) 
+      missing.push("Username");
+      if (!password)
+      missing.push("Password");
+
+      var errorMsg = `Missing:`;
+      for (var i = 0; i < missing.length; i++)
+        errorMsg += ` ${missing[i]}` + (i !== missing.length - 1 ? ", " : ".");
+
+      toast.error(errorMsg, {
+        duration: 2500,
+        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
+        icon: '❌',
+
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      });
       return;
     }
     const res = await userRegister(username, password, firstName, lastName);
@@ -42,10 +66,31 @@ export default function Resgiter(props) {
       localStorage.setItem("jwt", res.data.token);
       const name = (((res?.data?.firstName || "") + " "+ (res?.data?.lastName || "")).trim() || res?.data?.username)
       localStorage.setItem("name", name);
-      toast.success("Registration Successful");
+
+      toast.success("Registration Successful", {
+        duration: 2000,
+        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
+        icon: '✅',
+
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      });
+
       navigate("/");
     } else {
       console.log("error", res.data.msg);
+      toast.error("Username already Taken", {
+        duration: 2000,
+        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
+        icon: '❌',
+        
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      });
     }
   };
 

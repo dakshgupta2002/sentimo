@@ -26,10 +26,23 @@ export default function Login(props) {
           (res?.data?.lastName || "")
         ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
-      toast.success("Login Successful");
+      
+      // don't keep any toast for successful login!
+
       navigate("/");
     } else {
       console.log("error: ", res.data.msg);
+
+      toast.error("Incorrect Username or Password", {
+        duration: 2500,
+        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
+        icon: '❌',
+
+        ariaProps: {
+          role: 'status',
+          'aria-live': 'polite',
+        },
+      });
     }
   };
 
