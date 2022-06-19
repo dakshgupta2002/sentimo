@@ -9,7 +9,11 @@ export default function NoteEdit({ close, editNoteId }) {
 
     const editNote = async () => {
         const res = await updateNoteSingle(title, content, editNoteId);
-        if (res?.response?.status === 200){
+        if (res?.response?.status===200){
+            toast.error("No updates made. Please try again.");
+            return;
+        }
+        if (res?.response?.status === 201){
             toast.success('Note updated successfully');
             fetchNotes(); //fetch today's notes again to update the note
         }else{

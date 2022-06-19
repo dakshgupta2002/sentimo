@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button } from "@mui/material/";
 import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import NoteInput from "./NoteInput";
 import Page from "./Page";
-
 import "./Diary.css";
-import NoteEdit from "./NoteEdit";
 
 export default function Diary() {
   document.body.style.overflow = "hidden";
 
-  const [date, setDate, reset, previous, next, today] = useDate();
+  const {date, previous, next, today} = useDate();
   const [inputOpen, setInputOpen] = useState(true);
-  const [editOpen, setEditOpen] = useState(false);
   const [notesAdded, setNotesAdded] = useState(0);
-  const [editNoteId, setEditNoteId] = useState(null);
 
   return (
     <div>
@@ -27,13 +23,6 @@ export default function Diary() {
           date={date}
           notesAdded={notesAdded}
           setNotesAdded={setNotesAdded}
-        />
-      </ModalContainer>
-
-      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
-        <NoteEdit
-          close={() => {setEditNoteId(null); setEditOpen(false)}}
-          editNoteId={editNoteId}
         />
       </ModalContainer>
 
@@ -56,8 +45,7 @@ export default function Diary() {
           <Page
             date={date}
             notesAdded={notesAdded}
-            setNotesAdded={setNotesAdded} setEditNoteId={setEditNoteId}
-            setEditOpen={setEditOpen}
+            setNotesAdded={setNotesAdded}
           />
         </div>
 

@@ -30,5 +30,5 @@ export const useDate = () => {
 
     const today = new Date(date).toLocaleDateString() === (new Date()).toLocaleDateString();
 
-    return [date, setDate, reset, previous, next, today];
+    return {date, setDate, reset, previous, next, today};
 }

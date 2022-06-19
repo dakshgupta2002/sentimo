@@ -10,13 +10,16 @@ import EditIcon from '@mui/icons-material/Edit';
 import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { ModalContainer } from "../../components";
+import NoteEdit from "./NoteEdit";
 import "./Diary.css";
 
-export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt, setEditNoteId, setEditOpen}) {
+export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt}) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
+  const [editOpen, setEditOpen] = useState(false);
+  const [editNoteId, setEditNoteId] = useState(null);
 
   const deleteNote = () => {
     removeNote(noteId, notesAdded, setNotesAdded);
@@ -79,6 +82,14 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
         height: "100vh",
       }}
     >
+      
+      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
+        <NoteEdit
+          close={() => {setEditNoteId(null); setEditOpen(false)}}
+          editNoteId={editNoteId}
+        />
+      </ModalContainer>
+
       <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
         <Typography variant="h6">Title</Typography>
         {new Date(createdAt).toDateString() === new Date().toDateString() ? <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>

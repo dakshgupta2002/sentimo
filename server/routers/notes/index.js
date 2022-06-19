@@ -3,6 +3,7 @@ import { authenticate } from '../../auth/authenticate.js';
 import { UserNotes } from '../../middlewares/UserNotes.js';
 import favouriteRouter from './favouriteRouter.js';
 import noteRouter from './noteRouter.js';
+import noteSingleRouter from './noteSingleRouter.js';
 import protectRouter from './protectRouter.js';
 
 const notesRouter = Router();
@@ -22,4 +23,6 @@ notesRouter.route("*")
 notesRouter.use("/", noteRouter);
 notesRouter.use("/favourite", favouriteRouter);
 notesRouter.use("/protect", protectRouter);
+notesRouter.use("/note", noteSingleRouter);
+
 export default notesRouter;
