@@ -139,25 +139,17 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
             </IconButton>
           ) : (
             <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
-              <FavoriteBorderOutlined
-                sx={{ fontSize: "2.4rem" }}
-              />
+              <FavoriteBorderOutlined sx={{ fontSize: "2.4rem" }} />
             </IconButton>
           )}
         </Box>
 
         <Box style={{ display: "flex", justifyContent: "space-around" }}>
-          <IconButton sx={{ marginLeft: "10px" }}>
-            <EnhancedEncryption
-              onClick={handleProtect}
-              sx={{ fontSize: "2.4rem" }}
-            />
+          <IconButton sx={{ marginLeft: "10px" }} onClick={handleProtect}>
+            <EnhancedEncryption sx={{ fontSize: "2.4rem" }} />
           </IconButton>
-          <IconButton>
-            <DeleteIcon
-              onClick={deleteNote}
-              sx={{ fontSize: "2.4rem", color: "#398AB9" }}
-            />
+          <IconButton onClick={deleteNote}>
+            <DeleteIcon sx={{ fontSize: "2.4rem", color: "#398AB9" }} />
           </IconButton>
         </Box>
       </Box>
