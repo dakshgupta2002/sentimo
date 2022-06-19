@@ -16,7 +16,7 @@ export default function Diary() {
     <div>
       <Sidebar />
       <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <NoteInput close={() => setOpen(false)} date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
+        <NoteInput close={() => setOpen(false)} date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded} />
       </ModalContainer>
 
       <div className="diary-container">
@@ -34,6 +34,7 @@ export default function Diary() {
         {/* Flex Item-2 (Title Content) */}
         <div className="diary-mid-container" >
           <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}/>
+          <div style={{height: "100vh"}}></div>
         </div>
 
         {/* Flex Item-3 (Filter, Next, ADD BUTTON) */}
