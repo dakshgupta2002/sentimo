@@ -40,6 +40,7 @@ export default function NoteInput(props) {
                 onChange={(e) => { setTitle(e.target.value) }}
                 margin="normal"
             />
+
             <TextField
                 id="outlined-basic"
                 label="Content"
@@ -47,7 +48,7 @@ export default function NoteInput(props) {
                 color="secondary"
                 fullWidth
                 multiline
-                rows = {18}
+                rows={15}
                 margin="normal"
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}
