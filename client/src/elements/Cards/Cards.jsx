@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import {Card, CardHeader, CardContent, CardActions, Collapse, IconButton, Typography} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { EnhancedEncryption } from "@mui/icons-material";
+import { EnhancedEncryption, LockOpen } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { updateFav, updateProtect } from "../../utils/api/notes";
 import { toast } from "react-toastify";
@@ -61,13 +61,14 @@ export default function RecipeReviewCard({
 
   return (
     <Card className="card">
-      <CardHeader title={date} subheader={`Last updated: ${time}`} />
+      <CardHeader title={title} subheader={`Last updated: ${date} ${time}`} />
 
-      <CardContent>
-        <Typography variant="h6" gutterbottom>
-          {title}
+      {!expanded? <CardContent>
+        <Typography className="previewContent" gutterbottom>
+          {content}
         </Typography>
-      </CardContent>
+      </CardContent> : null}
+
       <CardActions disableSpacing>
         {fav === -1 ? null : (
           <IconButton aria-label="add to favorites">
@@ -80,9 +81,9 @@ export default function RecipeReviewCard({
 
         {prot === -1 ? null:
         <IconButton aria-label="add to private">
-          <EnhancedEncryption
-            onClick={handleProtected}
-          />
+          {prot===1 ? 
+            <EnhancedEncryption onClick={handleProtected} sx={{color:"black"}}/> 
+            : <LockOpen onClick={handleProtected} sx={{color:"black"}}/>}
         </IconButton>
         }
 
