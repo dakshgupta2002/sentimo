@@ -28,4 +28,3 @@ package-lock.json
 /py-js
 
 *.pem
-#secret key value keys to connect to the VMs
