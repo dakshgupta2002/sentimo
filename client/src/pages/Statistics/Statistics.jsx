@@ -9,8 +9,9 @@ export default function Statistics() {
   //recommendation is major here
   useEffect( () => {
     const res = fetchStats(date);
-    if (res?.response?.status === 200){
-      console.log(res?.data);
+    console.log(res);
+    if (res?.response?.status === 201 || res?.response?.status === 200){
+      console.log(res?.data?.emotion);
     }else{
       console.log(res?.data?.msg);
     }

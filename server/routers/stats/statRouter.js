@@ -10,12 +10,13 @@ statRouter.route("/note")
     .post(async (req, res) => {
         const noteId = req.body.noteId;
         const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
+        const note = await Note.findById(noteId).exec();
+        
         if (noteStat) {
-            res.status(200).json({emotion: noteStat.emotion});
+            res.status(200).json({emotion: noteStat.emotion, title: note.title, content: note.content});
             return;
         }
 
-        const note = await Note.findById(noteId).exec();
         let text = note.title + " " + note.content;
         let data = encodeURI(text);
         let emotion;
@@ -37,13 +38,13 @@ statRouter.route("/note")
             // emotion is a string, parse it to JSON
             obj = JSON.parse(obj);
             // save the emotion to the database
-            const newNoteEmotion = await new NoteEmotion({
+            const newNoteEmotion = new NoteEmotion({
                 note: noteId,
                 emotion: obj
             });
 
             newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion.emotion });
+                res.status(201).json({ emotion: noteEmotion.emotion, title: note.title, content: note.content });
                 return;
             }).catch(() => {
                 res.status(400).json({ message: "Error generating emotion" });
