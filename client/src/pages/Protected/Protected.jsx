@@ -3,7 +3,7 @@ import { Sidebar } from "../../components";
 import { Cards } from "../../elements";
 import { fetchProtected } from "../../utils/api/notes";
 
-import './Protected.css';
+import "./Protected.css";
 
 export default function Protected({ setLoading }) {
   const [notes, setNotes] = useState([]);
@@ -28,22 +28,22 @@ export default function Protected({ setLoading }) {
         {notes?.length === 0 ? (
           <h1>No notes added in favourites</h1>
         ) : (
-          notes?.map(
-            ({ title, content, _id, protect, createdAt, updatedAt }) => {
-              return (
-              <div className="card-container">
-                <Cards
-                  key={_id} noteId={_id}
-                  title={title} content={content}
-                  favourite={-1}
-                  protect = {protect?1:0}
-                  date={new Date(createdAt).toLocaleDateString()}
-                  time={new Date(updatedAt).toLocaleTimeString()}
-                />
-                </div>
-              );
-            }
-          )
+          <div className="card-container">
+            {notes?.map(
+              ({ title, content, _id, protect, createdAt, updatedAt }) => {
+                return (
+                  <Cards
+                    key={_id} noteId={_id}
+                    title={title} content={content}
+                    favourite={-1}
+                    protect={protect ? 1 : 0}
+                    date={new Date(updatedAt).toLocaleDateString()}
+                    time={new Date(updatedAt).toLocaleTimeString()}
+                  />
+                );
+              }
+            )}
+          </div>
         )}
       </div>
     </div>

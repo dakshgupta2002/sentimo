@@ -24,24 +24,26 @@ export default function Favorite({ setLoading }) {
     <div>
       <Sidebar />
 
-      <div className="favorite-container">
+      <div className="favourite-container">
         {notes?.length === 0 ? (
           <h1>No notes added in favourites</h1>
         ) : (
-          notes?.map(
-            ({ title, content, _id, favourite, createdAt, updatedAt }) => {
-              return (
-                <Cards
-                  key={_id} noteId={_id}
-                  title={title} content={content}
-                  favourite={favourite}
-                  protect = {-1}
-                  date={new Date(createdAt).toLocaleDateString()}
-                  time={new Date(updatedAt).toLocaleTimeString()}
-                />
-              );
-            }
-          )
+          <div className="card-container">
+            {notes?.map(
+              ({ title, content, _id, favourite, createdAt, updatedAt }) => {
+                return (
+                  <Cards
+                    key={_id} noteId={_id}
+                    title={title} content={content}
+                    favourite={favourite}
+                    protect={-1}
+                    date={new Date(updatedAt).toLocaleDateString()}
+                    time={new Date(updatedAt).toLocaleTimeString()}
+                  />
+                );
+              }
+            )}
+          </div>
         )}
       </div>
     </div>
