@@ -10,7 +10,7 @@ export const fetchNoteSingle = async (noteId) => {
 }
 
 export const updateNoteSingle = async (title, content, noteId) => {
-    const res = await post(`/notes/note?noteId=${noteId}`, { content, title }); //update note of this id
+    const res = await post(`notes/note?noteId=${noteId}`, { content, title }, 'PUT'); //update note of this id
     return res;
 }
 

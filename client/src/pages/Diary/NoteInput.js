@@ -33,7 +33,7 @@ export default function NoteInput(props) {
             <TextField
                 id="outlined-basic"
                 variant="outlined"
-                label="Title" 
+                placeholder="Title" 
                 color="secondary"
                 fullWidth
                 value={title}
@@ -43,7 +43,7 @@ export default function NoteInput(props) {
 
             <TextField
                 id="outlined-basic"
-                label="Content"
+                placeholder="Content"
                 variant="outlined"
                 color="secondary"
                 fullWidth
