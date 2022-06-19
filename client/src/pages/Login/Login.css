@@ -7,6 +7,7 @@
 .login-form-header {
   display: flex;
   flex-direction: column;
+  width: 50vw;
 }
 
 .login-form-image {
@@ -21,15 +22,15 @@
     display: flex;
     justify-content: flex-start;
     width: 100%;
-}
-
-.login-input-container {
-  height: 95vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  flex-basis: 50%;
+  }
+  
+  .login-input-container {
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-basis: 50%;
 }
 
 .login-input-container * {
@@ -82,8 +83,11 @@
 }
 
 @media (max-width: 780px) {
+    .login-form-header {
+      width: 0vw;
+    }
     .login-form-image {
-        flex-basis: 0%;
+        flex-basis: 0;
         width: 0%;
     }
 

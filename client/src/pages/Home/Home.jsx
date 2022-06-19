@@ -7,6 +7,8 @@ import whatWeDoAnimation from "../../assets/lottieSvg/whatWeDoAnimation.json";
 import "./Home.css";
 
 export default function Home() {
+  document.body.style.overflow = "scroll";
+  
   return (
     <>
       <div className="home-container">
