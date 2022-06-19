@@ -3,12 +3,20 @@ import { TextField, Button } from '@mui/material'
 import { postNote } from '../../utils/api/notes';
 
 import "./Diary.css";
+import { toast } from 'react-toastify';
 
 export default function NoteInput(props) {
     const [title, setTitle] = React.useState("");
     const [content, setContent] = React.useState("");
 
     const addNote = async () => {
+        if (title.trim()==="" || content.trim()===""){
+            toast.error("Title and content are required", {
+                duration: 2500,
+                style: {fontWeight: 800, fontFamily: `"Ubuntu", sans-serif`},
+                icon: '❌',
+            });
+        }
         const res = await postNote(title, content, props.date, props.notesAdded, props.setNotesAdded);
         if (res.response.status === 200 || res.response.status === 201) {
             console.log("Note posted");
@@ -19,13 +27,14 @@ export default function NoteInput(props) {
     }
 
     return (
-        <div className="form-container">
-            <h3>Add a note</h3>
+        <div className="noteInputForm">
+            <h2>Add a new note</h2>
 
             <TextField
                 id="outlined-basic"
-                placeholder="Title"
                 variant="outlined"
+                label="Title" 
+                color="secondary"
                 fullWidth
                 value={title}
                 onChange={(e) => { setTitle(e.target.value) }}
@@ -33,17 +42,19 @@ export default function NoteInput(props) {
             />
             <TextField
                 id="outlined-basic"
-                placeholder="Content"
+                label="Content"
                 variant="outlined"
+                color="secondary"
                 fullWidth
                 multiline
-                rows = {4}
+                rows = {18}
                 margin="normal"
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}
             />
+            <br/>
             <div className="form-footer">
-                <Button onClick={addNote}>Submit</Button>
+                <Button size="large" color="secondary" variant='outlined' onClick={addNote}>Submit</Button>
             </div>
         </div>
     )
