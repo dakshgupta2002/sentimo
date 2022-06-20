@@ -9,8 +9,12 @@ const statRouter = Router();
 statRouter.route("/note")
     .post(async (req, res) => {
         const noteId = req.body.noteId;
-        const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
         const note = await Note.findById(noteId).exec();
+        if (!note){
+            res.status(404).json({ "msg": "Note not found" });
+            return;
+        }
+        const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
         
         if (noteStat) {
             res.status(200).json({emotion: noteStat.emotion});

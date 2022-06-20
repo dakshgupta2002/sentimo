@@ -2,6 +2,7 @@ import { Router } from "express";
 import User from '../../models/User.js';
 import Note from '../../models/Note.js';
 import Diary from '../../models/Diary.js';
+import NoteEmotion from '../../models/NoteEmotion.js';
 import { isNoteOwner } from '../../auth/authorize.js';
 
 const noteRouter = Router();
@@ -13,7 +14,7 @@ noteRouter.route("/")
             return new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
         })
             
-        filteredNotes.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
+        filteredNotes.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).reverse();
         res.status(200).json({ notes: filteredNotes });
     })
     .post(async (req, res) => {
@@ -50,6 +51,7 @@ noteRouter.route("/")
         diary.notes.remove(noteId);
         //remove id from notes
         await Note.deleteOne({ _id: noteId }).exec();
+        await NoteEmotion.deleteOne({ note: noteId }).exec();
         //remove document from collection
         res.status(200).json({ "msg": "Note deleted" });
 

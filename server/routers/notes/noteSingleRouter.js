@@ -6,6 +6,10 @@ noteSingleRouter.route("/")
     .get(async (req, res) => {
         const noteId = req.query.noteId;
         const note = await Note.findOne({ _id: noteId }).exec();
+        if (!note){
+            res.status(404).json({ "msg": "Note not found" });
+            return;
+        }
         res.status(200).json(note);
     })
     .put(async (req, res) => {

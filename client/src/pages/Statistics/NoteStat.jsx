@@ -28,6 +28,9 @@ export default function NoteStat() {
   useEffect(() => {
     const fetchStat = async () => {
       const note = await fetchNoteSingle(noteId);
+      if (note?.response?.status === 404){
+        //no such note exist, redirect to error page
+      }
       setNote(note?.data);
       const res = await fetchNoteStats(noteId);
       if (res?.response?.status === 201 || res?.response?.status === 200) {
@@ -79,8 +82,8 @@ export default function NoteStat() {
       <div className="noteInfo">
         <Cards
           noteId={noteId}
-          date={new Date(note?.updatedAt).toLocaleDateString()}
-          time={new Date(note?.updatedAt).toLocaleTimeString()}
+          date={new Date(note?.updatedAt).toLocaleDateString('en-GB')}
+          time={new Date(note?.updatedAt).toLocaleTimeString('en-GB')}
           title={note?.title}
           content={note?.content}
           favourite={-1}
