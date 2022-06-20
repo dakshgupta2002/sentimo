@@ -4,8 +4,8 @@ import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../utils/api/n
 import { toast } from 'react-toastify';
 
 export default function NoteEdit({ close, editNoteId }) {
-    const [title, setTitle] = useState();
-    const [content, setContent] = useState();
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     const editNote = async () => {
         const res = await updateNoteSingle(title, content, editNoteId);
@@ -15,7 +15,7 @@ export default function NoteEdit({ close, editNoteId }) {
         }
         if (res?.response?.status === 201){
             toast.success('Note updated successfully');
-            fetchNotes(); //fetch today's notes again to update the note
+            fetchNotes(new Date()); //fetch today's notes again to update the note
         }else{
             console.log(res?.data?.msg)
         }

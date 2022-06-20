@@ -26,6 +26,7 @@ app.use("/user", userRouter);
 app.use("/notes", notesRouter);
 app.use("/stats", statsRouter);
 app.use("/profile", profileRouter);
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
