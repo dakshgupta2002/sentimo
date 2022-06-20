@@ -46,6 +46,7 @@ export default function NoteStat() {
 
   return (
     <Box>
+      <Sidebar />
       <VictoryPie
         height={200}
         radius={({ datum }) => 40 + datum.y / 10}
@@ -54,7 +55,6 @@ export default function NoteStat() {
         style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
         labels={({ datum }) => `${datum.x}: ${datum.y}`}
       />
-      <Sidebar />
       <h1>{title}</h1>
       <h2>{content} </h2>
       <span>

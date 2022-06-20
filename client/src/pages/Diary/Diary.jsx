@@ -61,7 +61,9 @@ export default function Diary() {
           ) : (
             <div className="arrow right" onClick={() => next()}></div>
           )}
+          <div></div>
         </div>
+
       </div>
     </div>
   );

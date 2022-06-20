@@ -1,6 +1,6 @@
-*::-webkit-scrollbar {
+/* *::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .diary-container {
   border: 1px solid black;
@@ -60,8 +60,12 @@
   border-right-width: 10px;
 }
 
-.left, .right {
+.left {
   transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
 }
 
 .add-icon {

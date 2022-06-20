@@ -108,7 +108,7 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
 
       <Box
         component="span"
-        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "0.75 1 auto", overflowY: "scroll" }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "0.7 1 auto", overflowY: "scroll" }}
       >
         <Typography>
           <span>{content}</span>
