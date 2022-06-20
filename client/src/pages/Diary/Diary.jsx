@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "@mui/material/";
 import { ModalContainer, Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
-import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
+import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import NoteInput from "./NoteInput";
 import Page from "./Page";
 import "./Diary.css";
@@ -54,10 +54,9 @@ export default function Diary() {
           <Button variant="contained">Filter</Button>
 
           {today ? (
-            <AddBoxRoundedIcon
+            <AddCircleOutlinedIcon
               className="add-icon"
               onClick={() => setInputOpen(true)}
-              display={false}
             />
           ) : (
             <div className="arrow right" onClick={() => next()}></div>

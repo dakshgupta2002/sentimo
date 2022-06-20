@@ -5,7 +5,7 @@ import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from "../../utils/api/stats";
 
 export default function Statistics() {
-  const [date] = useDate();
+  const {date} = useDate();
   //recommendation is major here
   useEffect( () => {
     const res = fetchStats(date);
