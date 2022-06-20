@@ -35,8 +35,7 @@ export default function Diary() {
 
         {/* Flex Item-2 (Title Content) */}
         <div className="diary-mid-container" >
-          <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded}>
-          </Page>
+          <Page date={date} notesAdded={notesAdded} setNotesAdded={setNotesAdded} />
         </div>
 
         {/* Flex Item-3 (Filter, Next, ADD BUTTON) */}
@@ -48,7 +47,6 @@ export default function Diary() {
             <AddBoxRoundedIcon
               className="add-icon"
               onClick={() => setOpen(true)}
-              display={false}
             />
           : <div></div>}
 
