@@ -14,24 +14,24 @@ import {
 import { Cards } from "../../elements";
 
 import './index.css';
+import { fetchNoteSingle } from "../../utils/api/notes";
 //fetch stats for particulary only this note Id
 //and stats should be converted to graphs and illustrations
 
 export default function NoteStat() {
   const noteId = useParams().noteId;
   const [emotion, setEmotion] = useState({});
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [note, setNote] = useState({});
   const [pieData, setPieData] = useState([]);
   const [lineData, setLineData] = useState([{ x: "", y: 0 }]);
 
   useEffect(() => {
     const fetchStat = async () => {
+      const note = await fetchNoteSingle(noteId);
+      setNote(note?.data);
       const res = await fetchNoteStats(noteId);
       if (res?.response?.status === 201 || res?.response?.status === 200) {
         setEmotion(res?.data?.emotion);
-        setTitle(res?.data?.title);
-        setContent(res?.data?.content);
       } else {
         console.log(res?.data?.msg);
       }
@@ -58,17 +58,16 @@ export default function NoteStat() {
 
     const refreshLineData = () => {
       const data = [];
-      if (emotion.Sad) data.push({ x: 1, y: Math.round(emotion?.Sad * 100) });
+      if (emotion.Sad) data.push({ x: 1, y: Math.round(emotion?.Sad * 360) });
       if (emotion.Angry)
-        data.push({ x: 2, y: Math.round(emotion?.Angry * 100) });
+        data.push({ x: 2, y: Math.round(emotion?.Angry * 360) });
       if (emotion.Surprise)
-        data.push({ x: 3, y: Math.round(emotion?.Surprise * 100) });
-      if (emotion.Fear) data.push({ x: 4, y: Math.round(emotion?.Fear * 100) });
+        data.push({ x: 3, y: Math.round(emotion?.Surprise * 360) });
+      if (emotion.Fear) data.push({ x: 4, y: Math.round(emotion?.Fear * 360) });
       if (emotion.Happy)
-        data.push({ x: 5, y: Math.round(emotion?.Happy * 100) });
+        data.push({ x: 5, y: Math.round(emotion?.Happy * 360) });
       setLineData(data);
     };
-    console.log(lineData);
 
     refreshPieData();
     refreshLineData();
@@ -80,10 +79,10 @@ export default function NoteStat() {
       <div className="noteInfo">
         <Cards
           noteId={noteId}
-          date={null}
-          time={null}
-          title={title}
-          content={content}
+          date={new Date(note?.updatedAt).toLocaleDateString()}
+          time={new Date(note?.updatedAt).toLocaleTimeString()}
+          title={note?.title}
+          content={note?.content}
           favourite={-1}
           protect={-1}
           maxwidth={"80vw"}
@@ -110,9 +109,7 @@ export default function NoteStat() {
         />
         <VictoryAxis
           theme={VictoryTheme.material}
-          height={300}
           dependentAxis
-          tickFormat={(x) => x}
         />
         <VictoryBar
           theme={VictoryTheme.material}
