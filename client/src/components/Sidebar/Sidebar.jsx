@@ -134,7 +134,7 @@ const Sidebar = () => {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
-              <Button
+              <MenuItem
                 key={page}
                 component={Link}
                 to={`/${generateHref(page)}`}
@@ -142,17 +142,27 @@ const Sidebar = () => {
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
-              </Button>
+              </MenuItem>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <ListItemButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                <Typography>{localStorage.getItem("name")} &#160; </Typography>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </ListItemButton>
-            </Tooltip>
+            {localStorage.getItem("jwt")? 
+              <Tooltip title="Open settings">
+                <ListItemButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
+                  <Typography>{localStorage.getItem("name")} &#160; </Typography>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </ListItemButton>
+              </Tooltip>:
+              <MenuItem
+                component={Link}
+                to="/login"
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: "white", display: "block" }}
+              >
+                Login
+              </MenuItem>
+            }
             <Menu
               sx={{ mt: "45px" }}
               id="menu-appbar"
