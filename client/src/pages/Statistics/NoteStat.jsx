@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import { fetchNoteStats } from "../../utils/api/stats";
 import { VictoryPie } from "victory";
 import { Cards } from "../../elements";
+
+import './index.css';
 //fetch stats for particulary only this note Id
 //and stats should be converted to graphs and illustrations
 
@@ -34,12 +36,16 @@ export default function NoteStat() {
   useEffect(() => {
     const refreshPieData = () => {
       const data = [];
-      if (emotion.Happy) data.push({ x: "Happy", y: Math.round(emotion?.Happy * 360) });
-      if (emotion.Sad) data.push({ x: "Sad", y: Math.round(emotion?.Sad * 360) });
-      if (emotion.Angry) data.push({ x: "Angry", y: Math.round(emotion?.Angry * 360) });
+      if (emotion.Happy)
+        data.push({ x: "Happy", y: Math.round(emotion?.Happy * 360) });
+      if (emotion.Sad)
+        data.push({ x: "Sad", y: Math.round(emotion?.Sad * 360) });
+      if (emotion.Angry)
+        data.push({ x: "Angry", y: Math.round(emotion?.Angry * 360) });
       if (emotion.Surprise)
         data.push({ x: "Surprise", y: Math.round(emotion?.Surprise * 360) });
-      if (emotion.Fear) data.push({ x: "Fear", y: Math.round(emotion?.Fear * 360) });
+      if (emotion.Fear)
+        data.push({ x: "Fear", y: Math.round(emotion?.Fear * 360) });
       setPieData(data);
     };
     refreshPieData();
@@ -58,27 +64,35 @@ export default function NoteStat() {
       />
       {/* <h1>{title}</h1>
       <h2>{content} </h2> */}
-      <Cards noteId={noteId} date={null} time={null} title={title} content={content} favourite={-1} protect={-1} />
-      <span>
-        <h4>Happy</h4>: {emotion.Happy}{" "}
-      </span>{" "}
-      <br />
-      <span>
-        <h4>Sad</h4>: {emotion.Sad}{" "}
-      </span>{" "}
-      <br />
-      <span>
-        <h4>Angry</h4>: {emotion.Angry}{" "}
-      </span>{" "}
-      <br />
-      <span>
-        <h4>Surprise</h4>: {emotion.Surprise}{" "}
-      </span>{" "}
-      <br />
-      <span>
-        <h4>Fear</h4>: {emotion.Fear}{" "}
-      </span>{" "}
-      <br />
+      <div className="noteInfo">
+        <Cards
+          noteId={noteId}
+          date={null}
+          time={null}
+          title={title}
+          content={content}
+          favourite={-1}
+          protect={-1}
+          maxwidth={"80vw"}
+        />
+        {/* <div className="happinessMeasure">
+          <span>
+            <h4>Happy</h4>: {emotion.Happy}{" "}
+          </span>
+          <span>
+            <h4>Sad</h4>: {emotion.Sad}{" "}
+          </span>
+          <span>
+            <h4>Angry</h4>: {emotion.Angry}{" "}
+          </span>
+          <span>
+            <h4>Surprise</h4>: {emotion.Surprise}{" "}
+          </span>
+          <span>
+            <h4>Fear</h4>: {emotion.Fear}{" "}
+          </span>
+        </div> */}
+      </div>
     </Box>
   );
 }

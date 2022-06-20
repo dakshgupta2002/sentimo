@@ -1,0 +1,12 @@
+.noteInfo {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.happinessMeasure {
+    display: flex;
+    flex-wrap: wrap;
+}
