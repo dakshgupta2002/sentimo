@@ -74,6 +74,8 @@ export default function NoteStat() {
         style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
         labels={({ datum }) => `${datum.x}: ${datum.y}`}
       />
+
+      
     </Box>
   );
 }
