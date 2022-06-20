@@ -54,16 +54,6 @@ export default function NoteStat() {
   return (
     <Box>
       <Sidebar />
-      <VictoryPie
-        height={200}
-        radius={({ datum }) => 40 + datum.y / 10}
-        innerRadius={10}
-        data={pieData}
-        style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
-        labels={({ datum }) => `${datum.x}: ${datum.y}`}
-      />
-      {/* <h1>{title}</h1>
-      <h2>{content} </h2> */}
       <div className="noteInfo">
         <Cards
           noteId={noteId}
@@ -75,24 +65,15 @@ export default function NoteStat() {
           protect={-1}
           maxwidth={"80vw"}
         />
-        {/* <div className="happinessMeasure">
-          <span>
-            <h4>Happy</h4>: {emotion.Happy}{" "}
-          </span>
-          <span>
-            <h4>Sad</h4>: {emotion.Sad}{" "}
-          </span>
-          <span>
-            <h4>Angry</h4>: {emotion.Angry}{" "}
-          </span>
-          <span>
-            <h4>Surprise</h4>: {emotion.Surprise}{" "}
-          </span>
-          <span>
-            <h4>Fear</h4>: {emotion.Fear}{" "}
-          </span>
-        </div> */}
       </div>
+      <VictoryPie
+        height={200}
+        radius={({ datum }) => 40 + datum.y / 10}
+        innerRadius={10}
+        data={pieData}
+        style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
+        labels={({ datum }) => `${datum.x}: ${datum.y}`}
+      />
     </Box>
   );
 }

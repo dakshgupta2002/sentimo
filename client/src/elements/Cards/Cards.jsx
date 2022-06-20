@@ -56,8 +56,7 @@ export default function RecipeReviewCard({
       if (!prot) toast.success("Note protected!")
       else toast.success("Note removed from protected!")
     }
-
-    setProt(!prot);
+    setProt(prot^1);
   }
 
   return (
