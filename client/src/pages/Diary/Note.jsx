@@ -14,7 +14,7 @@ import { ModalContainer } from "../../components";
 import NoteEdit from "./NoteEdit";
 import "./Diary.css";
 
-export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt}) {
+export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt, notesEdited, setNotesEdited}) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
@@ -86,7 +86,8 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
       <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
         <NoteEdit
           close={() => {setEditNoteId(null); setEditOpen(false)}}
-          editNoteId={editNoteId}
+          editNoteId={editNoteId} 
+          notesEdited={notesEdited} setNotesEdited={setNotesEdited}
         />
       </ModalContainer>
 
