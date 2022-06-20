@@ -12,7 +12,7 @@
 
 .login-form-image {
   height: 95vh;
-  background-image: url("../../assets//images/selftimeisolation.jpg");
+  background-image: url("../../assets/images/selftimeisolation.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   transform: scaleX(-1);
