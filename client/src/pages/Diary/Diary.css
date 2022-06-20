@@ -1,6 +1,10 @@
-/* *::-webkit-scrollbar {
+.diaryBody {
+  overflow: hidden;
+}
+
+.diary-mid-container::-webkit-scrollbar {
   display: none;
-} */
+}
 
 .diary-container {
   border: 1px solid black;

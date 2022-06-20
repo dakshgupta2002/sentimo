@@ -1,8 +1,21 @@
 * {
-    font-family: 'Ubuntu Mono', monospace;
+  font-family: "Ubuntu", monospace;
 }
 body html {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 0.2em;
+}
+
+*::-webkit-scrollbar-button {
+    height: 12px;
+  }
+
+*::-webkit-scrollbar-thumb {
+  background-color: #8e8e8e;
+  border-radius: 9999px;
 }

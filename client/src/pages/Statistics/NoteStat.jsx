@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchNoteStats } from "../../utils/api/stats";
 import { VictoryPie } from "victory";
+import { Cards } from "../../elements";
 //fetch stats for particulary only this note Id
 //and stats should be converted to graphs and illustrations
 
@@ -55,8 +56,9 @@ export default function NoteStat() {
         style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
         labels={({ datum }) => `${datum.x}: ${datum.y}`}
       />
-      <h1>{title}</h1>
-      <h2>{content} </h2>
+      {/* <h1>{title}</h1>
+      <h2>{content} </h2> */}
+      <Cards noteId={noteId} date={null} time={null} title={title} content={content} favourite={-1} protect={-1} />
       <span>
         <h4>Happy</h4>: {emotion.Happy}{" "}
       </span>{" "}

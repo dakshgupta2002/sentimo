@@ -61,7 +61,8 @@ export default function RecipeReviewCard({
 
   return (
     <Card className="card">
-      <CardHeader title={title} subheader={`Last updated: ${date} ${time}`} />
+      <CardHeader title={title} subheader={date === null || time === null 
+                                              ? `Last updated: ${date} ${time}` : ``} />
 
       {!expanded? <CardContent>
         <Typography className="previewContent" gutterbottom>

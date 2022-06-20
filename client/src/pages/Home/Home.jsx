@@ -9,7 +9,6 @@ import "./Home.css";
 export default function Home() {
   
   return (
-    <>
       <div className="home-container">
         <Sidebar />
         <div className="home-heading">
@@ -57,6 +56,5 @@ export default function Home() {
             </div>
         </div>
       </div>
-    </>
   );
 }
