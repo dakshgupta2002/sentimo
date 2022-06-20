@@ -7,7 +7,7 @@ import Note from "./Note.jsx";
 import { fetchNotes } from "../../utils/api/notes.js";
 import './Diary.css';
 
-export default function Page({date, notesAdded, setNotesAdded}) {
+export default function Page({date, notesAdded, setNotesAdded }) {
   const {setLoading} = useLoading();
   const [notes, setNotes] = useState([]);
 
@@ -32,8 +32,8 @@ export default function Page({date, notesAdded, setNotesAdded}) {
           return (
             <section className="note-container">
               <Note key={_id} title={title} content={content} noteId={_id} 
-              favourite={favourite} createdAt={createdAt} updatedAt={updatedAt}
-              notesAdded={notesAdded} setNotesAdded={setNotesAdded} protect={protect} />
+                favourite={favourite} createdAt={createdAt} updatedAt={updatedAt}
+                notesAdded={notesAdded} setNotesAdded={setNotesAdded} protect={protect} />
             </section>
           );
         })

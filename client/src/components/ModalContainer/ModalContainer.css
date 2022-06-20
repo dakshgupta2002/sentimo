@@ -21,10 +21,11 @@
     left: 0;
     width: 90%;
     height: 90vh;
-    max-width: 400px;
+    max-width: 500px;
     border-radius: 16px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 10px 20px;
     margin: auto;
     background-color: white;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }

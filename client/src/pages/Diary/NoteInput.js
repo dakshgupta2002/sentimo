@@ -33,21 +33,22 @@ export default function NoteInput(props) {
             <TextField
                 id="outlined-basic"
                 variant="outlined"
-                label="Title" 
+                placeholder="Title" 
                 color="secondary"
                 fullWidth
                 value={title}
                 onChange={(e) => { setTitle(e.target.value) }}
                 margin="normal"
             />
+
             <TextField
                 id="outlined-basic"
-                label="Content"
+                placeholder="Content"
                 variant="outlined"
                 color="secondary"
                 fullWidth
                 multiline
-                rows = {18}
+                rows={15}
                 margin="normal"
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}

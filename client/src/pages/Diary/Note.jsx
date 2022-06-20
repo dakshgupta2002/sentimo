@@ -1,31 +1,25 @@
 import React, { useState } from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, IconButton } from "@mui/material";
 import {
   FavoriteBorderOutlined,
   EnhancedEncryption,
 } from "@mui/icons-material";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import EditIcon from '@mui/icons-material/Edit';
 import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { ModalContainer } from "../../components";
+import NoteEdit from "./NoteEdit";
 import "./Diary.css";
 
-export default function Note({
-  title,
-  content,
-  noteId,
-  notesAdded,
-  setNotesAdded,
-  favourite,
-  protect,
-  createdAt,
-  updatedAt,
-}) {
+export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt}) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
+  const [editOpen, setEditOpen] = useState(false);
+  const [editNoteId, setEditNoteId] = useState(null);
 
   const deleteNote = () => {
     removeNote(noteId, notesAdded, setNotesAdded);
@@ -33,118 +27,88 @@ export default function Note({
 
   const handleFavourite = async () => {
     const res = await updateFav(noteId); //update on BE for future ref
-
-    // No Toast needed to show success message
-    // if (!fav) toast.success("Note added to your likes!")
-    // else toast.success("Note removed from your likes!")
-
-    if (res?.response?.status !== 200) 
-    {
-      // var msg = (fav ? "Removing notes from likes failed! <br /> Try again" : "Adding Note in likes failed! <br /> Try again");
+    if (res?.response?.status !== 200) {
       toast.error(
-        (fav ? <div>Failed to remove note from likes. <br /> Try again</div>
-             : <div>Failed to add note in likes. <br /> Try again</div>)
-        , {
-        duration: 2000,
-        style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
-        icon: "❌",
-
-        ariaProps: {
-          role: "status",
-          "aria-live": "polite",
-        },
-      });
-    }
-    else // Note change success so change icon color
-      setFav(!fav); // update on FE, to show chage
+        fav ? (<div>Failed to remove note from likes. <br /> Try again</div>
+        ) : (<div>Failed to add note in likes. <br /> Try again</div> ), {
+          duration: 2000,
+          style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
+          icon: "❌",
+          ariaProps: {role: "status", "aria-live": "polite"},
+        }
+      );
+    } // Note change success so change icon color
+    else setFav(!fav); // update on FE, to show chage
   };
 
   const handleProtect = async () => {
     //update on backend
     const res = await updateProtect(noteId);
-    if (res?.response?.status === 200) 
-    {
-      var msg = (!prot ? "Note Added in protected!" : "Note removed from protected!");
+    if (res?.response?.status === 200) {
+      var msg = !prot
+        ? "Note Added in protected!"
+        : "Note removed from protected!";
 
       toast.success(msg, {
         duration: 2000,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '✅',
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
+        style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
+        icon: "✅",
+        ariaProps: { role: "status", "aria-live": "polite", },
       });
 
       setProt(!prot);
+    } else {
+      var errMsg = prot
+        ? "Failed to remove from protection"
+        : "Failed to add in protection!";
+      toast.error(errMsg, {
+        duration: 2000,
+        style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
+        icon: "❌",
+        ariaProps: { role: "status", "aria-live": "polite"},
+      });
     }
-    else
-    {
-        var errMsg = (prot ? "Failed to remove from protection" : "Failed to add in protection!");
-        toast.error(errMsg, {
-          duration: 2000,
-          style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
-          icon: "❌",
-  
-          ariaProps: {
-            role: "status",
-            "aria-live": "polite",
-          },
-        });
-      }
   };
 
   if (prot) {
     return <></>;
   }
-
   return (
-    <Box sx = 
-        {{ display: "flex", 
+    <Box
+      sx={{
+        display: "flex",
         flexFlow: "column",
-        width: "100%", 
-        height: "100vh"
-        }}>
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      
+      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
+        <NoteEdit
+          close={() => {setEditNoteId(null); setEditOpen(false)}}
+          editNoteId={editNoteId}
+        />
+      </ModalContainer>
 
-      <Typography variant="h6">Title</Typography>
+      <Box sx={{display: 'flex', justifyContent: 'space-between'}}>
+        <Typography variant="h6">Title</Typography>
+        {new Date(createdAt).toDateString() === new Date().toDateString() ? <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
+          <EditIcon sx={{ fontSize: "2.4rem" }} />
+        </IconButton> : null }
+      </Box>
       <Box
         component="span"
-        sx={{
-          display: "flex",
-          p: 1,
-          m: 1,
-          bgcolor: "#101010",
-          color: "grey.300",
-          border: "1px solid",
-          borderColor: "grey.800",
-          borderRadius: 2,
-          fontSize: "0.875rem",
-          fontWeight: "700",
-        }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700" }}
       >
-        <Typography>
-          <span>{title}</span>
-        </Typography>
+        <Typography>{title}</Typography>
       </Box>
+
 
       <Typography variant="h6">Content</Typography>
 
       <Box
         component="span"
-        sx={{
-          display: "flex",
-          p: 1,
-          m: 1,
-          bgcolor: "#101010",
-          color: "grey.300",
-          border: "1px solid",
-          borderColor: "grey.800",
-          borderRadius: 2,
-          fontSize: "0.875rem",
-          fontWeight: "700",
-          flex: "0.75 1 auto",
-          overflowY: "scroll",
-        }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "0.75 1 auto", overflowY: "scroll" }}
       >
         <Typography>
           <span>{content}</span>
@@ -162,12 +126,13 @@ export default function Note({
           // flex: "0 1 40px"
         }}
       >
-        <Box style={{
-           display: "flex", 
-           justifyContent: "space-evenly", 
-           marginBottom: "20px", 
-           marginTop: "5px",
-           flex: "0 1 auto"}}>
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
+            flex: "0 1 auto",
+          }}
+        >
           <Button
             variant="contained"
             color="secondary"
@@ -177,22 +142,26 @@ export default function Note({
           </Button>
 
           {fav ? (
-            <FavoriteRoundedIcon
-              onClick={handleFavourite}
-              color="error"
-              sx={{ fontSize: "2.4rem", marginLeft: "10px" }}
-            />
+            <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
+              <FavoriteRoundedIcon
+                color="error"
+                sx={{ fontSize: "2.4rem" }}
+              />
+            </IconButton>
           ) : (
-            <FavoriteBorderOutlined
-              onClick={handleFavourite}
-              sx={{ fontSize: "2.4rem", marginLeft: "10px" }}
-            />
+            <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
+              <FavoriteBorderOutlined sx={{ fontSize: "2.4rem" }} />
+            </IconButton>
           )}
         </Box>
 
-        <Box style={{display: "flex", justifyContent: "space-around"}}>
-          <EnhancedEncryption onClick={handleProtect} sx={{ fontSize: "2.4rem", marginRight: "10px" }} />
-          <DeleteIcon onClick={deleteNote} sx={{ fontSize: "2.4rem", color: "#398AB9" }} />
+        <Box style={{ display: "flex", justifyContent: "space-around" }}>
+          <IconButton sx={{ marginLeft: "10px" }} onClick={handleProtect}>
+            <EnhancedEncryption sx={{ fontSize: "2.4rem" }} />
+          </IconButton>
+          <IconButton onClick={deleteNote}>
+            <DeleteIcon sx={{ fontSize: "2.4rem", color: "#398AB9" }} />
+          </IconButton>
         </Box>
       </Box>
     </Box>
