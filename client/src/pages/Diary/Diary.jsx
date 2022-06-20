@@ -11,6 +11,7 @@ export default function Diary() {
   const {date, previous, next, today} = useDate();
   const [inputOpen, setInputOpen] = useState(true);
   const [notesAdded, setNotesAdded] = useState(0);
+  const [notesEdited, setNotesEdited] = useState(0);
 
   return (
     <div className="diaryBody">
@@ -44,6 +45,8 @@ export default function Diary() {
             date={date}
             notesAdded={notesAdded}
             setNotesAdded={setNotesAdded}
+            notesEdited={notesEdited}
+            setNotesEdited={setNotesEdited}
           />
         </div>
 
