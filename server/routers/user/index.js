@@ -10,6 +10,9 @@ userRouter.route("*")
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Content-Type", "application/json");
         next();
+
+        console.log("This is the userRouter");
+        console.log(req.url)
     });
 
 userRouter.use("/register", registerRouter);
