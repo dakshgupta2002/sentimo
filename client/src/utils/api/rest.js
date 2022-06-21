@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:3001/";
+const baseUrl = "http://ec2-3-84-60-142.compute-1.amazonaws.com:3001/";
 
 export const get = async (url) => {
     try{

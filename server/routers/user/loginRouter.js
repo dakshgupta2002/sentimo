@@ -8,7 +8,7 @@ import { jwtGenerator } from '../../auth/authenticate.js';
 loginRouter.route("/")
     .post((req, res) => {        
         const { username, password } = req.body;
-
+        console.log({username, password});
         User.findOne({username}, (err, user) => {            
             if (err){
                 res.status(500).json({err});
@@ -17,6 +17,7 @@ loginRouter.route("/")
                 if (user){
                     if (bcrypt.compareSync(password, user.password)){
                         const token = jwtGenerator(user._id);
+                        console.log({token})
                         res.json({token, username, firstName: user.firstName, lastName: user.lastName}).status(201);
                     }else{
                         res.status(400).json({"msg": "Incorrect password"});

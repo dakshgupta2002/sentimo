@@ -13,8 +13,9 @@ noteRouter.route("/")
         const filteredNotes = req?.notes?.filter(note => {
             return new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
         })
-            
+        
         filteredNotes.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).reverse();
+        console.log("Sending users notes...")
         res.status(200).json({ notes: filteredNotes });
     })
     .post(async (req, res) => {
