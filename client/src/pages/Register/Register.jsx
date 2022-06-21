@@ -12,7 +12,7 @@ import {
   PasswordSharp,
 } from "@mui/icons-material";
 
-export default function Resgiter(props) {
+export default function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [firstName, setFirstName] = useState("");

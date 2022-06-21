@@ -44,6 +44,7 @@
   background-size: cover;
   overflow: hidden;
   background-repeat: no-repeat;
+  width: 50vw;
 }
 
 .button-container {
@@ -165,7 +166,7 @@
   }
 
   .large-text {
-    font-size: 18px;
+    font-size: px;
     letter-spacing: 1px;
     line-height: 20px;
   }
