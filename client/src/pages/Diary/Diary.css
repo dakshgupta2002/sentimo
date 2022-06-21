@@ -1,4 +1,8 @@
-*::-webkit-scrollbar {
+.diaryBody {
+  overflow: hidden;
+}
+
+.diary-mid-container::-webkit-scrollbar {
   display: none;
 }
 
@@ -60,8 +64,12 @@
   border-right-width: 10px;
 }
 
-.left, .right {
+.left {
   transform: rotate(135deg);
+}
+
+.right {
+  transform: rotate(-45deg);
 }
 
 .add-icon {

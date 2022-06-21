@@ -1,0 +1,13 @@
+.noteInfo {
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 10px 0px;
+}
+
+.happinessMeasure {
+    display: flex;
+    flex-wrap: wrap;
+}

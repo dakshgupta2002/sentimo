@@ -7,10 +7,8 @@ import whatWeDoAnimation from "../../assets/lottieSvg/whatWeDoAnimation.json";
 import "./Home.css";
 
 export default function Home() {
-  document.body.style.overflow = "scroll";
   
   return (
-    <>
       <div className="home-container">
         <Sidebar />
         <div className="home-heading">
@@ -58,6 +56,5 @@ export default function Home() {
             </div>
         </div>
       </div>
-    </>
   );
 }

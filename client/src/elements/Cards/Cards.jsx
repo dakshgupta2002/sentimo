@@ -28,6 +28,7 @@ export default function RecipeReviewCard({
   content,
   favourite,
   protect,
+  maxwidth = "400px"
 }) {
   const [expanded, setExpanded] = useState(false);
   const [fav, setFav] = useState(favourite);
@@ -55,13 +56,13 @@ export default function RecipeReviewCard({
       if (!prot) toast.success("Note protected!")
       else toast.success("Note removed from protected!")
     }
-
-    setProt(!prot);
+    setProt(prot^1);
   }
 
   return (
-    <Card className="card">
-      <CardHeader title={title} subheader={`Last updated: ${date} ${time}`} />
+    <Card className="card" style={{maxWidth: maxwidth}}>
+      <CardHeader title={title} subheader={date === null || time === null ? ``
+                                              : `Last updated: ${date} ${time}`} />
 
       {!expanded? <CardContent>
         <Typography className="previewContent" gutterbottom>

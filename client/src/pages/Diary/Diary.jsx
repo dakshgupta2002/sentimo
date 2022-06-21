@@ -8,14 +8,13 @@ import Page from "./Page";
 import "./Diary.css";
 
 export default function Diary() {
-  document.body.style.overflow = "hidden";
-
   const {date, previous, next, today} = useDate();
   const [inputOpen, setInputOpen] = useState(true);
   const [notesAdded, setNotesAdded] = useState(0);
+  const [notesEdited, setNotesEdited] = useState(0);
 
   return (
-    <div>
+    <div className="diaryBody">
       <Sidebar />
       <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
         <NoteInput
@@ -46,6 +45,8 @@ export default function Diary() {
             date={date}
             notesAdded={notesAdded}
             setNotesAdded={setNotesAdded}
+            notesEdited={notesEdited}
+            setNotesEdited={setNotesEdited}
           />
         </div>
 
@@ -61,7 +62,9 @@ export default function Diary() {
           ) : (
             <div className="arrow right" onClick={() => next()}></div>
           )}
+          <div></div>
         </div>
+
       </div>
     </div>
   );

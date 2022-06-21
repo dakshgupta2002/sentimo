@@ -5,7 +5,6 @@ import { fetchFavourite } from "../../utils/api/notes";
 import "./Favorite.css";
 
 export default function Favorite({ setLoading }) {
-  document.body.style.overflow = "scroll";
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
@@ -21,7 +20,7 @@ export default function Favorite({ setLoading }) {
   }, []);
 
   return (
-    <div>
+    <div className="favoriteBody">
       <Sidebar />
 
       <div className="favourite-container">
