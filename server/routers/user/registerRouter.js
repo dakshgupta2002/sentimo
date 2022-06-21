@@ -6,6 +6,7 @@ import { jwtGenerator } from '../../auth/authenticate.js';
 
 registerRouter.route("/")
     .post( (req, res) => {
+        console.log("Registering user...");
         const { username, password, firstName, lastName } = req.body;
         
         User.findOne({username}, (err, user) => {
