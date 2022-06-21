@@ -1,4 +1,5 @@
-const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://sentimo.surge.sh', 'http://sentimo.surge.sh/'];
+const whitelist = ['http://localhost:3000', 'http://localhost:3001', 'https://sentimo.surge.sh', 'http://sentimo.surge.sh/',
+'https://sentimo.vercel.app'];
 
 export const corsOptions = {
     origin: (origin, callback) => {
