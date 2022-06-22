@@ -24,35 +24,36 @@ statRouter.route("/note")
         let text = note.title + " " + note.content;
         let data = encodeURI(text);
         let emotion;
-        
         // spawn new child process to call the python script
-        const python = spawn('python', ['scripts/emotion.py', data]);
+        const python = spawn('python', ['scripts/test.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();
         });
 
         python.on('close', async () => {
-            var obj = "";
-            for (var i = 0; i < emotion.length; i++) {
-                if (emotion[i] === "'") {
-                    obj += '"';
-                } else obj += emotion[i];
-            }
-            // emotion is a string, parse it to JSON
-            obj = JSON.parse(obj);
-            // save the emotion to the database
-            const newNoteEmotion = new NoteEmotion({
-                note: noteId,
-                emotion: obj
-            });
+            res.send(emotion);
+            return;
+            // var obj = "";
+            // for (var i = 0; i < emotion.length; i++) {
+            //     if (emotion[i] === "'") {
+            //         obj += '"';
+            //     } else obj += emotion[i];
+            // }
+            // // emotion is a string, parse it to JSON
+            // obj = JSON.parse(obj);
+            // // save the emotion to the database
+            // const newNoteEmotion = new NoteEmotion({
+            //     note: noteId,
+            //     emotion: obj
+            // });
 
-            newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion.emotion });
-                return;
-            }).catch(() => {
-                res.status(400).json({ message: "Error generating emotion" });
-            })
+            // newNoteEmotion.save().then(noteEmotion => {
+            //     res.status(201).json({ emotion: noteEmotion.emotion });
+            //     return;
+            // }).catch(() => {
+            //     res.status(400).json({ message: "Error generating emotion" });
+            // })
         });
     })
 

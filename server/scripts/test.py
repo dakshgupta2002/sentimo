@@ -1,7 +1,5 @@
 import sys
 import urllib.parse 
-import nltk
-nltk.download('omw-1.4')
 import text2emotion as te
 
 def emotion_output(text):
