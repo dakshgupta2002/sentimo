@@ -78,7 +78,7 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
       sx={{
         display: "flex",
         flexFlow: "column",
-        width: "100%",
+        width: "97.5%",
         height: "85vh",
         padding: '10vh 0px 5vh 0px'
       }}
@@ -93,15 +93,17 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
       </ModalContainer>
 
       <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-        <Typography variant="h4">{title}</Typography>
-        {new Date(createdAt).toDateString() === new Date().toDateString() ? <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
+        <Typography className={'title'} variant="h4" sx={{overflowX: 'scroll', whiteSpace: 'nowrap'}}>{title}</Typography>
+
+        {new Date(createdAt).toDateString() === new Date().toDateString() ? 
+        <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
           <EditIcon sx={{ fontSize: "2rem" }} />
         </IconButton> : null }
       </Box>
 
       <Box
         component="span"
-        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "0.5 1 auto", overflowY: "scroll" }}
+        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "1 auto", overflowY: "scroll" }}
       >
         <Typography sx={{wordWrap: 'break-word', width: '100%'}}>
           <span>{content}</span>
