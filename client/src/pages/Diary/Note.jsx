@@ -79,8 +79,8 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
         display: "flex",
         flexFlow: "column",
         width: "100%",
-        height: "90vh",
-        padding: '5vh 0px'
+        height: "85vh",
+        padding: '10vh 0px 5vh 0px'
       }}
     >
       
@@ -93,20 +93,11 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
       </ModalContainer>
 
       <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-        <Typography variant="h6">Title</Typography>
+        <Typography variant="h4">{title}</Typography>
         {new Date(createdAt).toDateString() === new Date().toDateString() ? <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
           <EditIcon sx={{ fontSize: "2rem" }} />
         </IconButton> : null }
       </Box>
-      <Box
-        component="span"
-        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700" }}
-      >
-        <Typography>{title}</Typography>
-      </Box>
-
-
-      <Typography variant="h6">Content</Typography>
 
       <Box
         component="span"
@@ -125,7 +116,6 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
           flexDirection: "row",
           justifyContent: "space-between",
           alignItems: "center",
-          // flex: "0 1 40px"
         }}
       >
         <Box

@@ -12,10 +12,9 @@ export default function Diary() {
   const [inputOpen, setInputOpen] = useState(true);
   const [notesAdded, setNotesAdded] = useState(0);
   const [notesEdited, setNotesEdited] = useState(0);
-  const [addClass, setAddClass] = useState("hideNav")
   return (
     <div className="diaryBody">
-      <Sidebar className={addClass} onMouseEnter={() =>setAddClass("showNav")} onMouseLeave={()=>setAddClass("hideNav")}/>
+      <Sidebar/>
       <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
         <NoteInput
           close={() => setInputOpen(false)}
