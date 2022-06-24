@@ -17,12 +17,6 @@
 	align-items: center;
 }
 
-.personData > * {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-}
-
 .personName {
 	margin: 0;
 	padding-bottom: 0.1em;
@@ -38,8 +32,7 @@
 }
 
 .personContent {
-	overflow: scroll;
-	/* flex-wrap: wrap; */
+	word-break: break-all;
 }
 
 .profileCardSocial {
@@ -60,8 +53,8 @@
 .avatars {
 	max-width: 60vw;
     max-height: 60vh;
-	min-width: 40vw;
-	min-height: 40vh;
+	min-width: 30vw;
+	min-height: 30vh;
 
 	object-fit: contain;
 }

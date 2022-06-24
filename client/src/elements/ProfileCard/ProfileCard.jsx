@@ -15,14 +15,14 @@ export default function ProfileCard({
   profileImg,
 }) {
   return (
-    <div className="profileCardContainer fullSize">
+    <div className="profileCardContainer">
       <div className="personData">
 
+        <h4 className="personWhatWork">{whatWork}</h4>
         <h1 className="personName">{name}.</h1>
-        <h3 className="personWhatWork">{whatWork}</h3>
         <h2 className="personWhoAreYou">{whoAreYou}</h2>
         <div className="personContent">{content}</div>
-
+      
         <div className="profileCardSocial">
           <a href={socialLinks[0]}>
             <MailOutlinedIcon sx={{ color: "black", fontSize: "40px" }} />
