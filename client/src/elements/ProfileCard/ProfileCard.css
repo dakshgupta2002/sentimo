@@ -1,0 +1,11 @@
+.profileCardContainer
+{
+	font-family: 'Noto Sans', sans-serif;
+	height: 100%;
+	width: 100%;
+}
+
+.profileCardSocial > a {
+	text-decoration: none;
+	color: black;
+}
