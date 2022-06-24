@@ -15,7 +15,7 @@ export default function ProfileCard({
   profileImg,
 }) {
   return (
-    <div className="profileCardContainer">
+    <div className="profileCardContainer fullSize">
       <div className="personData">
 
         <h1 className="personName">{name}.</h1>

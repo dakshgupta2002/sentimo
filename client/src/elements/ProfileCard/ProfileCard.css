@@ -2,18 +2,19 @@
 {
 	display: flex;
 	font-family: 'Noto Sans', sans-serif;
+	flex-wrap: wrap-reverse;
+	justify-content: space-evenly;
+	align-items: center;
 	height: 100%;
 	width: 100%;
-	flex-wrap: wrap-reverse;
 }
 
 .personData {
 	display: flex;
+	flex-basis: 50%;
 	flex-direction: column;
-	flex-basis: 40%;
 	justify-content: center;
 	align-items: center;
-	padding: 10px 5rem;
 }
 
 .personData > * {
@@ -41,21 +42,20 @@
 
 .profileCardSocial > a {
 	text-decoration: none;
-}
-
-.profileCardSocial {
-	display: flex;
-	justify-content: space-evenly;
+	margin: 0px 10px;
 }
 
 .pfpContainer {
-	flex-basis: 50%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
 
 .avatars {
-	max-width: 100%;
-    max-height: 100%;
+	max-width: 70vw;
+    max-height: 70vh;
+	min-width: 40vw;
+	min-height: 40vh;
+
+	object-fit: contain;
 }
