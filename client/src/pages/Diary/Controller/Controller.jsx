@@ -11,17 +11,20 @@ export default function Controller({
   today,
   setInputOpen,
 }) {
-
   return (
     <div className="controller">
       <Button onClick={previous}>PREVIOUS</Button>
-      <span>Date: {`${date.toLocaleDateString()}`}</span>
-      
+      <span>{`${date.toLocaleDateString()}`}</span>
+
       {today ? (
         <Button onClick={() => setInputOpen(true)}>ADD</Button>
       ) : (
-        <Button onClick={next}>NEXT</Button>
+        <>
+          <Button onClick={next}>NEXT</Button>
+          <Button onClick={reset}>TODAY</Button>
+        </>
       )}
+
     </div>
   );
 }
