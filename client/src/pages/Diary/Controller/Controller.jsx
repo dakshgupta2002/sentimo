@@ -25,7 +25,7 @@ export default function Controller({
   return (
     <div className="controller">
       <div className="redirectHome">
-        {width < 600 ? (
+        {width < 915 ? (
           <IconButton onClick={() => navigate("/")}><Adb/></IconButton>
         ) : (
           <MenuItem component={Link} to="/">

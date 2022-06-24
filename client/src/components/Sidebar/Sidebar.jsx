@@ -16,12 +16,11 @@ import { ListItemButton } from "@mui/material";
 import './Sidebar.css';
 
 const pages = [
-  "Home",
-  "About Us",
   "Diary",
   "Statistics",
+  "Recommendation",
   "Favorites",
-  "Protected",
+  "About Us"
 ];
 
 const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
@@ -130,7 +129,7 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
               textDecoration: "none",
             }}
           >
-            LOGO
+            SENTIMO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             {pages.map((page) => (
@@ -182,7 +181,10 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
               <MenuItem onClick={handleCloseUserMenu} component={Link} to='/profile'>
                 <Typography textAlign="center">Profile</Typography>
               </MenuItem>
-              <MenuItem onClick={() => {handleCloseUserMenu(); localStorage.clear();}} component={Link} to="/login">
+              <MenuItem component={Link} to="/protected">
+                <Typography textAlign="center">Protected Notes</Typography>
+              </MenuItem>
+              <MenuItem onClick={() => {localStorage.clear();}} component={Link} to="/login">
                 <Typography textAlign="center">Logout</Typography>
               </MenuItem>
             </Menu>
