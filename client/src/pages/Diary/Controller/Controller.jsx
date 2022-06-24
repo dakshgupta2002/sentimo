@@ -1,8 +1,8 @@
-import { Button } from "@mui/material";
+import { Button, IconButton } from "@mui/material";
 import React from "react";
 import { InputDate } from "../../../components";
 import "./Controller.css";
-
+import { ChevronLeft, FastForward, ChevronRight, Add } from "@mui/icons-material";
 export default function Controller({
   date,
   setDate,
@@ -14,17 +14,15 @@ export default function Controller({
 }) {
   return (
     <div className="controller">
-      <Button onClick={previous}>PREVIOUS</Button>
-      <InputDate date={date} setDate={setDate} />
 
-      {today ? (
-        <Button onClick={() => setInputOpen(true)}>ADD</Button>
-      ) : (
-        <>
-          <Button onClick={next}>NEXT</Button>
-          <Button onClick={reset}>TODAY</Button>
-        </>
-      )}
+      <div className="dateController">
+        <IconButton onClick={previous}><ChevronLeft /></IconButton>
+        <InputDate date={date} setDate={setDate} />
+        <IconButton disabled={today} onClick={next}>{" "}<ChevronRight />{" "}</IconButton>
+        <IconButton disabled={today} onClick={reset}>{" "}<FastForward />{" "}</IconButton>
+      </div>
+
+      <IconButton disabled={!today} onClick={()=> setInputOpen(true)}><Add/></IconButton>
 
     </div>
   );
