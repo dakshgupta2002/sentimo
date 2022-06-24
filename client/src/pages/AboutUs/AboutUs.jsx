@@ -1,6 +1,7 @@
 import React from "react";
 import { ProfileCard } from "./../../elements";
 import { Sidebar } from "./../../components";
+import data from './aboutUsdata.js';
 
 import "./AboutUs.css";
 
@@ -16,22 +17,34 @@ export default function AboutUs() {
       <div className="profileCardParent">
         <div className="profileCard">
           <ProfileCard
-            profileImg={dakshImg}
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia esse mollitia, tempore eveniet delectus nisi sit, laborum molestias dolorum voluptate ipsum. Voluptatum illum nobis blanditiis ratione magni laudantium ad."
+            name={data.daksh.name}
+            whatWork={data.daksh.whatWork}
+            whoAreYou={data.daksh.whoAreYou}
+            content={data.daksh.content}
+            socialLinks={data.daksh.socialLink}
+            profileImg={data.daksh.img}
           />
         </div>
 
         <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
-          <ProfileCard
-            profileImg={ishwarImg}
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia esse mollitia, tempore eveniet delectus nisi sit, laborum molestias dolorum voluptate ipsum. Voluptatum illum nobis blanditiis ratione magni laudantium ad."
+        <ProfileCard
+            name={data.ishwar.name}
+            whatWork={data.ishwar.whatWork}
+            whoAreYou={data.ishwar.whoAreYou}
+            content={data.ishwar.content}
+            socialLinks={data.ishwar.socialLink}
+            profileImg={data.ishwar.img}
           />
         </div>
 
         <div className="profileCard">
-          <ProfileCard
-            profileImg={shirazImg}
-            content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni officia esse mollitia, tempore eveniet delectus nisi sit, laborum molestias dolorum voluptate ipsum. Voluptatum illum nobis blanditiis ratione magni laudantium ad."
+        <ProfileCard
+            name={data.shiraz.name}
+            whatWork={data.daksh.whatWork}
+            whoAreYou={data.shiraz.whoAreYou}
+            content={data.shiraz.content}
+            socialLinks={data.shiraz.socialLink}
+            profileImg={data.shiraz.img}
           />
         </div>
       </div>
