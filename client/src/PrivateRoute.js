@@ -15,11 +15,13 @@ const PrivateRoute = (props) => {
             return null;
         }
     };
-    if (!validJwt()){
-        toast.info("Session expired! Login again...")
+    const expire = jwt? !validJwt(jwt): false;
+
+    if (expire){
+        toast.info("Session expired! Login again")
     }
     // If authorized, return an outlet that will render child elements
-    return jwt && validJwt() ? <Outlet /> 
+    return jwt && !expire ? <Outlet /> 
     : <Navigate to="/login" replace="true" />;
 }
 
