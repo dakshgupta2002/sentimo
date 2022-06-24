@@ -55,34 +55,42 @@
     margin-top: 10px 10px 10px 10px;
 }
 
-.confused-header, .how-it-works-header {
-    font-size: 3rem;
+.confused-header, .how-it-works-header, .extra-features-heading {
+    font-size: 3.2rem;
     display: flex;
     justify-content: center;
-    padding-bottom: 4rem;
+    padding: 3rem 0;
     font-weight: bold;
     letter-spacing: 5px;
     text-transform: uppercase;
 }
 
-.confused-point-container {
+.confused-point-container, .solution-container, .extra-features-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     background-color: #87bbd5;
     flex-wrap: column;
+    margin-bottom: 4rem;
+}
+
+.solution-container, .extra-features-container {
+    background-color: #fff;
+}
+
+.extra-features-container {
+    flex-direction: column;
 }
 
 .confused-points {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 .confused-point {
     font-size: 1.5rem;
     line-height: 2rem;
-    margin-bottom: 10px;
+    margin-bottom: 1.5rem;
 }
 
 .confused-lottie {
@@ -93,8 +101,9 @@
 .how-it-works-container {
     display: flex;
     flex-direction: column;
-    margin: 3rem 0;
-    justify-content: first baseline;
+    margin-top: 5rem;
+    background-color: #87bbd5;
+    padding: 4rem 0;
 }
 
 .how-it-works-steps {
@@ -103,10 +112,10 @@
     flex-wrap: wrap;  
 }
 
-.step {
+.step, .extra-features-content {
     display: flex;
     flex-direction: column;
-    word-break: break-all;
+    /* word-break: break-all; */
     margin: 0 2rem;
     max-width: 20rem;
 }
@@ -127,4 +136,9 @@
     font-weight: bold;
     font-size: 1.5rem;
     padding: 1rem;
+}
+
+.extra-features {
+    width: 80vw;
+    display: flex;
 }
