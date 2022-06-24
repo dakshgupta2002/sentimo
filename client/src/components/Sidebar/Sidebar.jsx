@@ -24,7 +24,7 @@ const pages = [
   "Protected",
 ];
 
-const Sidebar = () => {
+const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
   const generateHref = (page) => {
     let link = "";
     for (let i = 0; i < page.length; i++) {
@@ -53,7 +53,7 @@ const Sidebar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={className} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
