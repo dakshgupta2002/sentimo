@@ -1,4 +1,4 @@
-const data = {
+export const data = {
   daksh: {
     name: "Daksh Gupta",
     whatWork: "whatWork",
