@@ -20,6 +20,7 @@
 .personData > * {
 	display: flex;
 	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .personName {
@@ -34,6 +35,11 @@
 
 .personWhoAreYou {
 	margin: 0;
+}
+
+.personContent {
+	overflow: scroll;
+	/* flex-wrap: wrap; */
 }
 
 .profileCardSocial {
@@ -52,8 +58,8 @@
 }
 
 .avatars {
-	max-width: 70vw;
-    max-height: 70vh;
+	max-width: 60vw;
+    max-height: 60vh;
 	min-width: 40vw;
 	min-height: 40vh;
 

@@ -21,7 +21,7 @@ export default function ProfileCard({
         <h1 className="personName">{name}.</h1>
         <h3 className="personWhatWork">{whatWork}</h3>
         <h2 className="personWhoAreYou">{whoAreYou}</h2>
-        <p className="person3Content">{content}</p>
+        <div className="personContent">{content}</div>
 
         <div className="profileCardSocial">
           <a href={socialLinks[0]}>
