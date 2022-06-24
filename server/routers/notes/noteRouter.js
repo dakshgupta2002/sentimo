@@ -11,10 +11,11 @@ noteRouter.route("/")
     .get(async (req, res) => {
         const date = req?.query?.date;
         const filteredNotes = req?.notes?.filter(note => {
-            return new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
+            return !note?.protect &&
+             new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
         })
             
-        filteredNotes.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)).reverse();
+        filteredNotes.sort((a, b) => new Date(a?.createdAt) - new Date(b?.createdAt)).reverse();
         res.status(200).json({ notes: filteredNotes });
     })
     .post(async (req, res) => {

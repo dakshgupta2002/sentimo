@@ -1,5 +1,9 @@
 .controller{
-    background-color: indianred;
+    background-color: indigo;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     width: 100vw;
     margin: 0px;
     height: fit-content;
