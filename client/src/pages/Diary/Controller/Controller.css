@@ -1,0 +1,9 @@
+.controller{
+    width: 100vw;
+    margin: 0px;
+    height: fit-content;
+    min-height: 68px;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+}

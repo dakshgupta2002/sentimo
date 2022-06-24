@@ -8,12 +8,12 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "react-router-dom";
 import { ListItemButton } from "@mui/material";
+import './Sidebar.css';
 
 const pages = [
   "Home",
@@ -24,7 +24,7 @@ const pages = [
   "Protected",
 ];
 
-const Sidebar = () => {
+const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
   const generateHref = (page) => {
     let link = "";
     for (let i = 0; i < page.length; i++) {
@@ -53,7 +53,7 @@ const Sidebar = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className={className} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />

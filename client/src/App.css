@@ -9,11 +9,8 @@ body html {
 
 *::-webkit-scrollbar {
   width: 0.2em;
+  height: 0.1em;
 }
-
-*::-webkit-scrollbar-button {
-    height: 12px;
-  }
 
 *::-webkit-scrollbar-thumb {
   background-color: #8e8e8e;
