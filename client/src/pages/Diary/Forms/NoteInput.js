@@ -1,8 +1,7 @@
 import React from 'react'
 import { TextField, Button } from '@mui/material'
-import { postNote } from '../../utils/api/notes';
-
-import "./Diary.css";
+import { postNote } from '../../../utils/api/notes';
+import "../Diary.css";
 import { toast } from 'react-toastify';
 
 export default function NoteInput(props) {

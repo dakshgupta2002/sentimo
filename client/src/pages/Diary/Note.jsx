@@ -11,7 +11,7 @@ import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { ModalContainer } from "../../components";
-import NoteEdit from "./NoteEdit";
+import NoteEdit from "./Forms/NoteEdit";
 import "./Diary.css";
 
 export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt, notesEdited, setNotesEdited}) {
