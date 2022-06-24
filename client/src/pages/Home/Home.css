@@ -30,7 +30,7 @@
     height: 85vh;
 }
 
-.home-title-container {
+.home-title-container, .confused-point {
     color: black;
     flex-basis: 60%;
     margin: 0 0 0 30px;
@@ -55,49 +55,76 @@
     margin-top: 10px 10px 10px 10px;
 }
 
-.sign-in-button-container {
-    display: flex;
-    width: 100%;
-    margin-top: 30px;
-    justify-content: space-around;
-}
-
-.home-diary-info-container {
-    display: flex;
-    background-color: #bfd8f0;
-    flex-direction: column;
-    align-items: center;
-    margin: 0px 10px;
-}
-
-.home-diary-info-list {
-    display: flex;
-}
-
-.home-diary-info {
-    display: flex;
-    justify-content: space-around;
-}
-
-.home-diary-info-heading {
-    font-size: xx-large;
-    letter-spacing: 2px;
-}
-
-.diary-info-svg {
-    flex-basis: 50%;
-}
-
-.what-we-do-lottie {
-    height: 100%;
-    width: 100%;
-    position: relative;
-    top: -80px;
-}
-
-.problem-list {
+.confused-header, .how-it-works-header {
+    font-size: 3rem;
     display: flex;
     justify-content: center;
+    padding-bottom: 4rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+.confused-point-container {
+    display: flex;
+    justify-content: space-evenly;
     align-items: center;
-    margin: 0px 10px;
+    background-color: #87bbd5;
+    flex-wrap: column;
+}
+
+.confused-points {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.confused-point {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    margin-bottom: 10px;
+}
+
+.confused-lottie {
+    flex-basis: 60%;
+    min-width: 40vw;
+}
+
+.how-it-works-container {
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 0;
+    justify-content: first baseline;
+}
+
+.how-it-works-steps {
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;  
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+    margin: 0 2rem;
+    max-width: 20rem;
+}
+
+.icon {
+    max-height: 20vh;
+    max-width: 20vw;
+    margin: 0 auto;
+}
+
+
+.step-content, .step-header {
+    display: flex;
+    justify-content: center;
+}
+
+.step-header {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1rem;
 }
