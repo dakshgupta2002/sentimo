@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { InputDate } from "../../../components";
 import "./Controller.css";
 
 export default function Controller({
@@ -14,7 +15,7 @@ export default function Controller({
   return (
     <div className="controller">
       <Button onClick={previous}>PREVIOUS</Button>
-      <span>{`${date.toLocaleDateString()}`}</span>
+      <InputDate date={date} setDate={setDate} />
 
       {today ? (
         <Button onClick={() => setInputOpen(true)}>ADD</Button>
