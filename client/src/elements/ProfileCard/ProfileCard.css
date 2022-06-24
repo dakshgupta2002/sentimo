@@ -17,11 +17,6 @@
 	align-items: center;
 }
 
-.personData > * {
-	display: flex;
-	justify-content: center;
-}
-
 .personName {
 	margin: 0;
 	padding-bottom: 0.1em;
@@ -34,6 +29,10 @@
 
 .personWhoAreYou {
 	margin: 0;
+}
+
+.personContent {
+	word-break: break-all;
 }
 
 .profileCardSocial {
@@ -52,10 +51,10 @@
 }
 
 .avatars {
-	max-width: 70vw;
-    max-height: 70vh;
-	min-width: 40vw;
-	min-height: 40vh;
+	max-width: 60vw;
+    max-height: 60vh;
+	min-width: 30vw;
+	min-height: 30vh;
 
 	object-fit: contain;
 }
