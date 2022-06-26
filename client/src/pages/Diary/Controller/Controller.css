@@ -1,5 +1,5 @@
 .controller{
-    background-color: #c158dc;
+    background-color: #39393a;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -17,8 +17,4 @@
     display: flex;
     flex-direction: row;
 
-}
-
-IconButton * {
-    font-size: 2.4rem;
 }
