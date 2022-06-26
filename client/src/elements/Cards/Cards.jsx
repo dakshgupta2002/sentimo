@@ -46,7 +46,7 @@ export default function RecipeReviewCard({
       else toast.success("Note removed from your likes!");
     }
 
-    setFav(!fav); // update on FE, to show chage
+    setFav(!fav); // update on FE, to show change
   };
 
   const handleProtected = async () => {

@@ -1,5 +1,5 @@
 import {Routes, Route} from 'react-router-dom'
-import { Diary, Home, Login, Register, Statistics, NoteStat, Profile, AboutUs } from './pages';
+import { Diary, Home, Login, Register, Statistics, NoteStat, Profile, AboutUs, Recommendation } from './pages';
 import { useLoading } from './utils/hooks/useLoading';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -46,6 +46,10 @@ function App() {
 
         <Route path="/statistics/note/:noteId" location="/diary" element={<PrivateRoute/>} >
           <Route path="/statistics/note/:noteId" element={<NoteStat />} />
+        </Route>
+
+        <Route path="/recommendation" location="/recommendation" element={<PrivateRoute/>} >
+          <Route path="/recommendation" element={<Recommendation />} />
         </Route>
 
       </Routes>
