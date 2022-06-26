@@ -22,23 +22,22 @@ export default function Controller({
 }) {
   const { width } = useWidth();
   const navigate = useNavigate();
+  const IconStyle = {fontSize: '1.4rem', color: '#FDFBF9'}
   return (
     <div className="controller">
-      <div className="redirectHome">
+      <div className="redirectHome">  
         {width < 915 ? (
-          <IconButton onClick={() => navigate("/")}><Adb/></IconButton>
+          <IconButton sx={IconStyle} onClick={() => navigate("/")}><Adb/></IconButton>
         ) : (
           <MenuItem component={Link} to="/">
             <Typography
-              variant="h6"
-              noWrap
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "flex" },
+                fontSize: '1.4rem',
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",
-                color: "inherit",
+                color: "#FDFBF9",
                 textDecoration: "none",
               }}
             >
@@ -50,21 +49,23 @@ export default function Controller({
 
       <div className="dateController">
         <IconButton onClick={previous}>
-          <ChevronLeft />
+          <ChevronLeft sx={IconStyle} /> { "  " }
         </IconButton>
+
         <InputDate date={date} setDate={setDate} />
+
         <IconButton disabled={today} onClick={next}>
-          {" "}
-          <ChevronRight />{" "}
+          {"  "}
+          <ChevronRight sx={IconStyle} />{" "}
         </IconButton>
         <IconButton disabled={today} onClick={reset}>
-          {" "}
-          <FastForward />{" "}
+          {"  "}
+          <FastForward sx={IconStyle} />{" "}
         </IconButton>
       </div>
 
       <IconButton disabled={!today} onClick={() => setInputOpen(true)}>
-        <Add />
+        <Add sx={IconStyle} />
       </IconButton>
     </div>
   );

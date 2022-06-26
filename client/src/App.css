@@ -1,10 +1,9 @@
 * {
   font-family: "Ubuntu", monospace;
 }
-body html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+:root{
+  --matte-black: '#28282B';
+  --matte-white: '#FDFBF9';
 }
 
 *::-webkit-scrollbar {

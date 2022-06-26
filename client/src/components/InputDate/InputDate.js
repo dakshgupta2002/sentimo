@@ -1,31 +1,35 @@
 import React, { useEffect, useState } from 'react'
+import { ModalContainer } from '../ModalContainer';
+import { IconButton, TextField } from '@mui/material';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
+import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import './InputDate.css';
 
-export default function InputDate({date, setDate}) {
-  const [dd, setdd] = useState(date.getDate());
-  const [mm, setmm] = useState(date.getMonth()+1);
-  const [yyyy, setyyyy] = useState(date.getFullYear());
-  const [invalid, setInvalid] = useState(false);
-
-  const dateIsValid = (date) => {
-    return date instanceof Date && !isNaN(date);
-  }
-
-  useEffect( () => {
-    const date = mm + "/" + dd + "/" + yyyy;
-    if (dateIsValid(new Date(date))){
-      setDate( new Date(date) );
-      setInvalid(false);
-    } else{
-      setInvalid(true);
-    }
-  }, [dd, mm, yyyy]);
-
+export default function InputDate({ date, setDate }) {
   return (
-    <div className={`calendar ${invalid && "invalid"}`}>
-      <input className="unit" value={date.getDate()} onChange={(e)=> setdd(e.target.value)}/>
-      <input className="unit" value={date.getMonth()+1} onChange={(e)=> setmm(e.target.value)}/>
-      <input className="unit" value={date.getFullYear()} onChange={(e)=> setyyyy(e.target.value)}/>
+    <div >
+      <LocalizationProvider dateAdapter={AdapterMoment}>
+        <MobileDatePicker
+          className='date'
+          inputFormat="DD/MM/YYYY"
+          value={date}
+          onChange={(e) => setDate(new Date(e?._d))}
+          renderInput={(params) => <TextField {...params} />}
+        />
+      </LocalizationProvider>
+
+      <IconButton>
+        <div className='calendar'>
+
+          <div className='date'>
+            {`${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()} `}
+          </div>
+          <div className='label'>
+            DD MM YYYY
+          </div>
+        </div>
+      </IconButton>
     </div>
   )
 }
