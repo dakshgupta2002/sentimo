@@ -12,6 +12,7 @@ noteSingleRouter.route("/")
         }
         res.status(200).json(note);
     })
+
     .put(async (req, res) => {
         const { title, content } = req.body;
         const noteId = req.query.noteId;
@@ -24,7 +25,7 @@ noteSingleRouter.route("/")
         note.title=title;
         note.content=content;
         await note.save();
-        
+        console.log("===Updated the User's Note")
         res.status(201).json(note);
     })
 

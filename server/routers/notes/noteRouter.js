@@ -14,10 +14,11 @@ noteRouter.route("/")
             return !note?.protect &&
              new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
         })
-            
+        console.log("===Sending User's Note of the Date===");
         filteredNotes.sort((a, b) => new Date(a?.createdAt) - new Date(b?.createdAt)).reverse();
         res.status(200).json({ notes: filteredNotes });
     })
+
     .post(async (req, res) => {
         const { title, content } = req.body;
         if (!title || !content) {
@@ -29,17 +30,17 @@ noteRouter.route("/")
         const note = new Note({ title, content });
         const noteId = note._id;
         await note.save()
-        console.log("note", note);
         const diary = await Diary.findOne({ user: userId }).exec();
 
         if (diary) {
             diary.notes.push(noteId);
             await diary.save();
         } else {
+            console.log("===Creating a New Diary===");
             const newDiary = new Diary({ user: userId, notes: [noteId] });
             await newDiary.save();
         }
-
+        console.log("===Creating a New Note===");
         res.status(201).json(note);
     })
 
@@ -54,6 +55,7 @@ noteRouter.route("/")
         await Note.deleteOne({ _id: noteId }).exec();
         await NoteEmotion.deleteOne({ note: noteId }).exec();
         //remove document from collection
+        console.log("===Deleting the User's Note===");
         res.status(200).json({ "msg": "Note deleted" });
 
     })

@@ -17,6 +17,7 @@ statRouter.route("/note")
         const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
         
         if (noteStat) {
+            console.log("===Found Note's Emotion saved already===")
             res.status(200).json({emotion: noteStat.emotion});
             return;
         }
@@ -32,7 +33,8 @@ statRouter.route("/note")
             emotion = data.toString();
         });
 
-        python.on('close', async () => {
+        python.on('close', async (code) => {
+            console.log("Exiting with", code);
             var obj = "";
             for (var i = 0; i < emotion.length; i++) {
                 if (emotion[i] === "'") {
