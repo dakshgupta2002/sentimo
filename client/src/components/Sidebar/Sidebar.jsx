@@ -103,9 +103,9 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => {
+              {pages.map((page, key) => {
                 return (
-                  <MenuItem component={Link} to={`/${generateHref(page)}`}>
+                  <MenuItem component={Link} to={`/${generateHref(page)}`} key={key} >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 );
