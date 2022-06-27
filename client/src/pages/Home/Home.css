@@ -34,8 +34,8 @@
 
 .home-heading {
     display: flex;
-    height: 100vh;
     justify-content: center;
+    align-items: center;
 }
 
 .home-title-container, .confused-point {
@@ -76,7 +76,6 @@
     justify-content: center;
     align-items: center;
     background-color: #87bbd5;
-    flex-wrap: wrap-reverse;
     margin-bottom: 4rem;
 }
 

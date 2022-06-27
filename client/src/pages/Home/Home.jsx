@@ -36,8 +36,8 @@ export default function Home() {
           />
 
           <div className="home-title-container">
-            <div className="home-title popup-anim">SENTIMO</div>
-            <div className="home-title-desc popup-anim">
+            <div className="home-title popup-anim text--center">SENTIMO</div>
+            <div className="home-title-desc popup-anim text--center">
               Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
               similique!
             </div>
