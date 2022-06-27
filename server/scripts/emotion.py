@@ -1,17 +1,16 @@
 import sys
-import urllib.parse 
-import nltk
-nltk.download('omw-1.4')
+import requests
 import text2emotion as te
 
 def emotion_output(text):
-    dcde = urllib.parse.unquote(text)
+    dcde = (requests.utils.unquote(text))
     emotion_dict = te.get_emotion(dcde)
 
-    return emotion_dict
+    print(f"{emotion_dict['Happy']},{emotion_dict['Angry']},{emotion_dict['Surprise']},{emotion_dict['Sad']},{emotion_dict['Fear']}", end="")
 
 
 text = sys.argv[1]
 text.replace('\r', '')
-text.replace('\n', '')
-print(emotion_output(text))
+text.replace('\n', ' ')
+
+emotion_output(text)

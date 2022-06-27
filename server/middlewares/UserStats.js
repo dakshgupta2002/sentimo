@@ -1,4 +1,4 @@
-import Stat from "../models/Stat";
+import Stat from "../models/Stat.js";
 
 export const UserStats = async (req, res, next) => {
     const user = req?.user?._id;
