@@ -5,8 +5,9 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('59 23 * * *', async () => {
+var dailyStat = schedule('* * * * * *', async () => {
   const date = new Date();
+  console.log("===Starting CRON job===")
   //at 11:59pm of every day
   //create and save emotions of every user 
   //for that date
@@ -31,21 +32,26 @@ var dailyStat = schedule('59 23 * * *', async () => {
           let emotion;
 
           // spawn new child process to call the python script
-          const python = spawn('python', ['scripts/emotion.py', data]);
+          console.log("===Calling python script===");
+          const python = spawn('python3', ['scripts/emotion.py', data]);
 
           python.stdout.on('data', data => {
             emotion = data.toString();
+            console.log("===Emotion fetched from Python===");
           });
 
-          python.on('close', async () => {
-            var obj = "";
-            for (var i = 0; i < emotion.length; i++) {
-              if (emotion[i] === "'") {
-                obj += '"';
-              } else obj += emotion[i];
-            }
-            // emotion is a string, parse it to JSON
-            obj = JSON.parse(obj);
+          python.on('close', async (code) => {
+            console.log("===Exiting with", code + "===");
+
+            const arr = emotion.split(',')
+            let obj = {};
+            obj['Happy'] = parseFloat(arr[0]);
+            obj['Angry'] = parseFloat(arr[1]);
+            obj['Surprise'] = parseFloat(arr[2]);
+            obj['Sad'] = parseFloat(arr[3]);
+            obj['Fear'] = parseFloat(arr[4]);
+
+            console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
             const dailyStat = new Stat({
               user: user._id,
