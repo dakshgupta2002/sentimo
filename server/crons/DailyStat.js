@@ -5,7 +5,7 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('* * * * *', async () => {
+var dailyStat = schedule('59 23 * * *', async () => {
   const date = new Date();
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
