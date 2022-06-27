@@ -6,7 +6,8 @@ export const get = async (url) => {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": localStorage.getItem("jwt")
+                "Authorization": localStorage.getItem("jwt"),
+                'Access-Control-Allow-Origin': '*'
             }
         });
         
