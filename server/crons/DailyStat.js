@@ -53,13 +53,20 @@ var dailyStat = schedule('* * * * *', async () => {
 
             console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
-            const dailyStat = new Stat({
-              user: user._id,
-              date: (new Date(date)).toISOString(),
-              emotion: obj
-            });
-            console.log("===Stats saved for future use!===")
-            await dailyStat.save();
+            const oldStat = await Stat.findOne({user: user._id, date: new Date(date).toISOString()});
+            if (oldStat){
+              oldStat.emotion = obj;
+              console.log("===Stats updated for future use!===")
+              await oldStat.save();
+            }else{
+              const dailyStat = new Stat({
+                user: user._id,
+                date: (new Date(date)).toISOString(),
+                emotion: obj
+              });
+              console.log("===New stats saved for future use!===")
+              await dailyStat.save();
+            }
           })
 
         })
