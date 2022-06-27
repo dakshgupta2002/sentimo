@@ -23,12 +23,12 @@ statRouter.route("/note")
             return;
         }
 
-        // let text = note?.title + " " + note?.content;
-        // let data = encodeURI(text);
+        let text = note?.title + " " + note?.content;
+        let data = encodeURI(text);
         let emotion;
         // // spawn new child process to call the python script
-        // console.log("===Calling python script===");
-        const python = spawn('python', ['scripts/emotion.py']);
+        console.log("===Calling python script===");
+        const python = spawn('python', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();

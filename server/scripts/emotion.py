@@ -1,6 +1,6 @@
 import sys
-import urllib.parse 
-import text2emotion as te
+# import urllib.parse 
+# import text2emotion as te
 
 def emotion_output(text):
     dcde = urllib.parse.unquote(text)
@@ -9,10 +9,10 @@ def emotion_output(text):
     return emotion_dict
 
 
-# text = sys.argv[1]
+text = sys.argv[1]
 # text.replace('\r', '')
 # text.replace('\n', '')
 #print(text)
 # print(emotion_output(text))
 
-print("Hellloooooooooooooo")
+print(text)
