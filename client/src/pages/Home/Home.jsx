@@ -24,6 +24,8 @@ export default function Home() {
       <Fade>
         <Sidebar />
       </Fade>
+
+      {/* HEADING SENTIMO AND ONE LINER */}
       <Fade direction="up" cascade triggerOnce>
         <div className="home-heading">
           <Lottie
@@ -43,6 +45,7 @@ export default function Home() {
         </div>
       </Fade>
 
+      {/* CONFUSED PERSON AND QUESTIONS */}
       <Slide direction="right" cascade triggerOnce>
         <div className="confused-point-container">
           <div className="confused-points">
@@ -71,7 +74,12 @@ export default function Home() {
       <Slide direction="left" cascade triggerOnce>
         <div className="solution-container">
           <div className="confused-lottie">
-            <Lottie animationData={answers} loop play />
+            <Lottie
+              style={{alignSelf: "center"}}
+              animationData={answers}
+              loop
+              play
+            />
           </div>
           <div className="confused-points">
             <div className="confused-header">Answers</div>
@@ -149,7 +157,7 @@ export default function Home() {
       </Slide>
 
       <Fade triggerOnce>
-        <footer>no</footer>
+        <footer className="text--center">Footer</footer>
       </Fade>
     </div>
   );
