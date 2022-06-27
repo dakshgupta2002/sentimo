@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 import Note from '../../models/Note.js';
 import Stat from '../../models/Stat.js';
 import NoteEmotion from '../../models/NoteEmotion.js';
-import { UserStats } from '../../middlewares/UserStats'
+import { UserStats } from '../../middlewares/UserStats.js'
 
 const statRouter = Router();
 
@@ -28,16 +28,17 @@ statRouter.route("/note")
         console.log("===", data, "===");
         let emotion;
         // spawn new child process to call the python script
-        const python = spawn('python', ['scripts/test.py', data]);
+        const python = spawn('python', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();
+	    console.log("===Emotion fetched from Python===");
         });
-
+	
         python.on('close', async (code) => {
             console.log("Exiting with", code);
             var obj = "";
-            for (var i = 0; i < emotion.length; i++) {
+            for (var i = 0; i < emotion?.length; i++) {
                 if (emotion[i] === "'") {
                     obj += '"';
                 } else obj += emotion[i];
@@ -51,7 +52,7 @@ statRouter.route("/note")
             });
 
             newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion.emotion });
+                res.status(201).json({ emotion: noteEmotion?.emotion });
                 return;
             }).catch(() => {
                 res.status(400).json({ message: "Error generating emotion" });
