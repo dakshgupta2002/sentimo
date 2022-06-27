@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button } from '@mui/material'
-import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../utils/api/notes';
+import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../../utils/api/notes';
 import { toast } from 'react-toastify';
 
 export default function NoteEdit({ close, editNoteId, setNotesEdited, notesEdited }) {

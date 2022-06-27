@@ -15,6 +15,5 @@ statsRouter.route('*')
     });
 
 statsRouter.use("/", statRouter); //complete history
-statsRouter.use("/note", statRouter); //of a single note (body)
 
 export default statsRouter;

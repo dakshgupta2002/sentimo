@@ -20,7 +20,7 @@ const ExpandMore = styled((props) => {
 }));
 
 // Date, Time, Title, Content
-export default function RecipeReviewCard({
+export default function Cards({
   noteId,
   date,
   time,
@@ -46,7 +46,7 @@ export default function RecipeReviewCard({
       else toast.success("Note removed from your likes!");
     }
 
-    setFav(!fav); // update on FE, to show chage
+    setFav(!fav); // update on FE, to show change
   };
 
   const handleProtected = async () => {
@@ -65,7 +65,7 @@ export default function RecipeReviewCard({
                                               : `Last updated: ${date} ${time}`} />
 
       {!expanded? <CardContent>
-        <Typography className="previewContent" gutterbottom>
+        <Typography className="previewContent" gutterbottom="true">
           {content}
         </Typography>
       </CardContent> : null}

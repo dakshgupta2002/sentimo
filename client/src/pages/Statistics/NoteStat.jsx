@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Sidebar } from "../../components";
 import { useParams } from "react-router-dom";
@@ -88,43 +88,49 @@ export default function NoteStat() {
           content={note?.content}
           favourite={-1}
           protect={-1}
-          maxwidth={"80vw"}
+          maxwidth={"60vw"}
         />
       </div>
-      <VictoryPie
-        theme={VictoryTheme.material}
-        height={200}
-        radius={({ datum }) => 40 + datum.y / 10}
-        innerRadius={10}
-        data={pieData}
-        style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
-        labels={({ datum }) => `${datum.x}: ${datum.y}`}
-      />
-      <VictoryChart
-        domainPadding={20}
-        height={200}
-        theme={VictoryTheme.material}
-      >
-        <VictoryAxis
-          theme={VictoryTheme.material}
-          tickValues={[1, 2, 3, 4, 5]}
-          tickFormat={["Sad", "Angry", "Surprise", "Fear", "Happy"]}
-        />
-        <VictoryAxis
-          theme={VictoryTheme.material}
-          dependentAxis
-        />
-        <VictoryBar
-          theme={VictoryTheme.material}
-          data={lineData}
-          x="x"
-          y="y"
-          animate={{
-            duration: 200,
-            onLoad: { duration: 100 },
-          }}
-        />
-      </VictoryChart>
+
+      {pieData.length===0 && lineData.length===0
+        ? <Typography>No emotion generated for this note.</Typography>
+        : <>
+            <VictoryPie
+              theme={VictoryTheme.material}
+              height={200}
+              radius={({ datum }) => 40 + datum.y / 10}
+              innerRadius={10}
+              data={pieData}
+              style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
+              labels={({ datum }) => `${datum.x}: ${datum.y}`}
+            />
+          <VictoryChart
+            domainPadding={20}
+            height={200}
+            theme={VictoryTheme.material}
+          >
+            <VictoryAxis
+              theme={VictoryTheme.material}
+              tickValues={[1, 2, 3, 4, 5]}
+              tickFormat={["Sad", "Angry", "Surprise", "Fear", "Happy"]}
+            />
+            <VictoryAxis
+              theme={VictoryTheme.material}
+              dependentAxis
+            />
+            <VictoryBar
+              theme={VictoryTheme.material}
+              data={lineData}
+              x="x"
+              y="y"
+              animate={{
+                duration: 200,
+                onLoad: { duration: 100 },
+              }}
+            />
+          </VictoryChart>
+      </>
+      }
     </Box>
   );
 }

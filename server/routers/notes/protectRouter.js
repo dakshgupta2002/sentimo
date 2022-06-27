@@ -10,7 +10,7 @@ protectRouter.route("/")
             const filteredNotes = req?.notes?.filter(note => {
                 return note && note?.protect;
             });
-
+            console.log("===Sending User's Protected Note===");
             res.status(200).json({ notes: filteredNotes });
         }catch(err) {
             res.status(500).json({ "msg": err });
@@ -21,7 +21,8 @@ protectRouter.route("/")
             const note = await Note.findById(req?.body?.noteId).exec();
             note.protect = !note.protect;
             await note.save();
-            res.status(200).json({protected: note.protected});
+            console.log("===Updating Note's Protected status===");
+            res.status(200).json({protected: note?.protect});
         }catch(err){
             res.status(500).json({"msg":"failed"});
         }

@@ -1,0 +1,20 @@
+.controller{
+    background-color: #39393a;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    margin: 0px;
+    height: fit-content;
+    min-height: 68px;
+    z-index: 1;
+    position: absolute;
+    top: 0px;
+}
+
+.dateController{
+    display: flex;
+    flex-direction: row;
+
+}
