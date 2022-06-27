@@ -8,5 +8,8 @@ def emotion_output(text):
 
     return emotion_dict
 
+text="Hello%20Everyone%20Iamvery%20sad%20sad%20sad%20sad"
+text.replace('\r', '')
+text.replace('\n', '')
 
-print(emotion_output("Hello%20Everyone%20Iamvery%20sad%20sad%20sad%20sad"))
+print(emotion_output(text))
