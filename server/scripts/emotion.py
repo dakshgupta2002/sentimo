@@ -13,4 +13,6 @@ text = sys.argv[1]
 text.replace('\r', '')
 text.replace('\n', '')
 #print(text)
-print(emotion_output(text))
+# print(emotion_output(text))
+
+print("Hellloooooooooooooo")

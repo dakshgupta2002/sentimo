@@ -11,54 +11,54 @@ statRouter.route("/note")
     .post(async (req, res) => {
         const noteId = req.body.noteId;
         const note = await Note.findById(noteId).exec();
-        if (!note){
+        if (!note) {
             res.status(404).json({ "msg": "Note not found" });
             return;
         }
         const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
-        
+
         if (noteStat) {
             console.log("===Found Note's Emotion saved already===")
-            res.status(200).json({emotion: noteStat.emotion});
+            res.status(200).json({ emotion: noteStat.emotion });
             return;
         }
 
-        let text = note?.title + " " + note?.content;
-        let data = encodeURI(text);
-        let emotion;
-        // spawn new child process to call the python script
-	console.log("===Calling python script===");
+        // let text = note?.title + " " + note?.content;
+        // let data = encodeURI(text);
+        // let emotion;
+        // // spawn new child process to call the python script
+        // console.log("===Calling python script===");
         const python = spawn('python', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();
-	    console.log("===Emotion fetched from Python===");
+            console.log("===Emotion fetched from Python===");
         });
-	
-        python.on('close', async (code) => {
-	    console.log({emotion});
-            console.log("Exiting with", code);
-            var obj = "";
-            for (var i = 0; i < emotion?.length; i++) {
-                if (emotion[i] === "'") {
-                    obj += '"';
-                } else obj += emotion[i];
-            }
-            // emotion is a string, parse it to JSON
-	    console.log({obj});
-            obj = JSON.parse(obj);
-            // save the emotion to the database
-            const newNoteEmotion = new NoteEmotion({
-                note: noteId,
-                emotion: obj
-            });
 
-            newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion?.emotion });
-                return;
-            }).catch(() => {
-                res.status(400).json({ message: "Error generating emotion" });
-            })
+        python.on('close', async (code) => {
+            console.log({ emotion });
+            console.log("Exiting with", code);
+        //     var obj = "";
+        //     for (var i = 0; i < emotion?.length; i++) {
+        //         if (emotion[i] === "'") {
+        //             obj += '"';
+        //         } else obj += emotion[i];
+        //     }
+        //     // emotion is a string, parse it to JSON
+        //     console.log({ obj });
+        //     obj = JSON.parse(obj);
+        //     // save the emotion to the database
+        //     const newNoteEmotion = new NoteEmotion({
+        //         note: noteId,
+        //         emotion: obj
+        //     });
+
+        //     newNoteEmotion.save().then(noteEmotion => {
+        //         res.status(201).json({ emotion: noteEmotion?.emotion });
+        //         return;
+        //     }).catch(() => {
+        //         res.status(400).json({ message: "Error generating emotion" });
+        //     })
         });
     })
 
@@ -71,13 +71,13 @@ statRouter.route("/")
         console.log("===Fetching User's Stats===")
         //all stats of the user saved in req
         const filteredStats = await req?.stats?.filter(stat => {
-            console.log({lastDate: new Date(lastDate).toLocaleDateString(), statDate: new Date(stat?.date).toLocaleDateString()})
+            console.log({ lastDate: new Date(lastDate).toLocaleDateString(), statDate: new Date(stat?.date).toLocaleDateString() })
             return new Date(lastDate).toLocaleDateString() <=
-            new Date(stat?.date).toLocaleDateString()
+                new Date(stat?.date).toLocaleDateString()
         })
         console.log(filteredStats)
         await Promise.all(filteredStats).then(filteredStats => {
-            res.status(200).json(filteredStats) 
+            res.status(200).json(filteredStats)
         })
     })
 
