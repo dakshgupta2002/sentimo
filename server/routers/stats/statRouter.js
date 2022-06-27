@@ -23,11 +23,11 @@ statRouter.route("/note")
             return;
         }
 
-        let text = note.title + " " + note.content;
+        let text = note?.title + " " + note?.content;
         let data = encodeURI(text);
-        console.log("===", data, "===");
         let emotion;
         // spawn new child process to call the python script
+	console.log("===Calling python script===");
         const python = spawn('python', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
@@ -36,6 +36,7 @@ statRouter.route("/note")
         });
 	
         python.on('close', async (code) => {
+	    console.log({emotion});
             console.log("Exiting with", code);
             var obj = "";
             for (var i = 0; i < emotion?.length; i++) {
@@ -44,6 +45,7 @@ statRouter.route("/note")
                 } else obj += emotion[i];
             }
             // emotion is a string, parse it to JSON
+	    console.log({obj});
             obj = JSON.parse(obj);
             // save the emotion to the database
             const newNoteEmotion = new NoteEmotion({

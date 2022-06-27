@@ -12,4 +12,5 @@ def emotion_output(text):
 text = sys.argv[1]
 text.replace('\r', '')
 text.replace('\n', '')
+#print(text)
 print(emotion_output(text))
