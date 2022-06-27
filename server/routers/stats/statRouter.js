@@ -36,29 +36,29 @@ statRouter.route("/note")
         });
 
         python.on('close', async (code) => {
-            console.log({ emotion });
-            console.log("Exiting with", code);
-            var obj = "";
-            for (var i = 0; i < emotion?.length; i++) {
-                if (emotion[i] === "'") {
-                    obj += '"';
-                } else obj += emotion[i];
-            }
-            // emotion is a string, parse it to JSON
-            console.log({ obj });
-            obj = JSON.parse(obj);
-            // save the emotion to the database
-            const newNoteEmotion = new NoteEmotion({
-                note: noteId,
-                emotion: obj
-            });
+            console.log("===Exiting with", code + "===");
 
-            newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion?.emotion });
-                return;
-            }).catch(() => {
-                res.status(400).json({ message: "Error generating emotion" });
-            })
+            const arr = emotion.split(',')
+            let obj = {};
+            obj['Happy'] = parseFloat(arr[0]);
+            obj['Angry'] = parseFloat(arr[1]);
+            obj['Surprise'] = parseFloat(arr[2]);
+            obj['Sad'] = parseFloat(arr[3]);
+            obj['Fear'] = parseFloat(arr[4]);
+
+            console.log(obj)
+            // save the emotion to the database
+            // const newNoteEmotion = new NoteEmotion({
+            //     note: noteId,
+            //     emotion: obj
+            // });
+
+            // newNoteEmotion.save().then(noteEmotion => {
+            //     res.status(201).json({ emotion: noteEmotion?.emotion });
+            //     return;
+            // }).catch(() => {
+            //     res.status(400).json({ message: "Error generating emotion" });
+            // })
         });
     })
 
