@@ -25,10 +25,10 @@ statRouter.route("/note")
 
         // let text = note?.title + " " + note?.content;
         // let data = encodeURI(text);
-        // let emotion;
+        let emotion;
         // // spawn new child process to call the python script
         // console.log("===Calling python script===");
-        const python = spawn('python', ['scripts/emotion.py', data]);
+        const python = spawn('python', ['scripts/emotion.py']);
 
         python.stdout.on('data', data => {
             emotion = data.toString();

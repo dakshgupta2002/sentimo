@@ -9,9 +9,9 @@ def emotion_output(text):
     return emotion_dict
 
 
-text = sys.argv[1]
-text.replace('\r', '')
-text.replace('\n', '')
+# text = sys.argv[1]
+# text.replace('\r', '')
+# text.replace('\n', '')
 #print(text)
 # print(emotion_output(text))
 
