@@ -76,7 +76,6 @@ statRouter.route("/")
             return new Date(lastDate).toLocaleDateString() <=
                 new Date(stat?.date).toLocaleDateString()
         })
-        console.log(filteredStats)
         await Promise.all(filteredStats).then(filteredStats => {
             res.status(200).json(filteredStats)
         })

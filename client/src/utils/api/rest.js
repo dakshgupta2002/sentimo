@@ -1,4 +1,4 @@
-const baseUrl = "http://13.233.160.50:3001/";
+const baseUrl = "http://localhost:8000/";
 
 export const get = async (url) => {
     try{
