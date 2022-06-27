@@ -3,7 +3,7 @@ import { spawn } from "child_process";
 import Note from '../../models/Note.js';
 import Stat from '../../models/Stat.js';
 import NoteEmotion from '../../models/NoteEmotion.js';
-import { UserStats } from '../../middlewares/UserStats'
+import { UserStats } from '../../middlewares/UserStats.js'
 
 const statRouter = Router();
 
