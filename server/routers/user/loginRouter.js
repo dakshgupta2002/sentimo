@@ -8,7 +8,6 @@ import { jwtGenerator } from '../../auth/authenticate.js';
 loginRouter.route("/")
     .post((req, res) => {        
         const { username, password } = req.body;
-
         User.findOne({username}, (err, user) => {            
             if (err){
                 res.status(500).json({err});
