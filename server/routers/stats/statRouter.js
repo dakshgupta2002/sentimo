@@ -3,6 +3,7 @@ import { spawn } from "child_process";
 import Note from '../../models/Note.js';
 import Stat from '../../models/Stat.js';
 import NoteEmotion from '../../models/NoteEmotion.js';
+import { UserStats } from '../../middlewares/UserStats'
 
 const statRouter = Router();
 
@@ -58,11 +59,23 @@ statRouter.route("/note")
         });
     })
 
-
+statRouter.use(UserStats)
 statRouter.route("/")
-    .get((req, res) => {
-        const timespan = req.body.timespan;
-        //give the stats of the user of given time span
+    .get(async (req, res) => {
+        const days = req.query.days;
+        const date = new Date(req.query.date);
+        const lastDate = date.setDate(date.getDate() - days)
+        console.log("===Fetching User's Stats===")
+        //all stats of the user saved in req
+        const filteredStats = await req?.stats?.filter(stat => {
+            console.log({lastDate: new Date(lastDate).toLocaleDateString(), statDate: new Date(stat?.date).toLocaleDateString()})
+            return new Date(lastDate).toLocaleDateString() <=
+            new Date(stat?.date).toLocaleDateString()
+        })
+        console.log(filteredStats)
+        await Promise.all(filteredStats).then(filteredStats => {
+            res.status(200).json(filteredStats) 
+        })
     })
 
 
