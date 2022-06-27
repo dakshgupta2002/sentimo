@@ -20,7 +20,7 @@ const ExpandMore = styled((props) => {
 }));
 
 // Date, Time, Title, Content
-export default function RecipeReviewCard({
+export default function Cards({
   noteId,
   date,
   time,
@@ -28,6 +28,7 @@ export default function RecipeReviewCard({
   content,
   favourite,
   protect,
+  maxwidth = "400px"
 }) {
   const [expanded, setExpanded] = useState(false);
   const [fav, setFav] = useState(favourite);
@@ -45,7 +46,7 @@ export default function RecipeReviewCard({
       else toast.success("Note removed from your likes!");
     }
 
-    setFav(!fav); // update on FE, to show chage
+    setFav(!fav); // update on FE, to show change
   };
 
   const handleProtected = async () => {
@@ -55,16 +56,16 @@ export default function RecipeReviewCard({
       if (!prot) toast.success("Note protected!")
       else toast.success("Note removed from protected!")
     }
-
-    setProt(!prot);
+    setProt(prot^1);
   }
 
   return (
-    <Card className="card">
-      <CardHeader title={title} subheader={`Last updated: ${date} ${time}`} />
+    <Card className="card" style={{maxWidth: maxwidth}}>
+      <CardHeader title={title} subheader={date === null || time === null ? ``
+                                              : `Last updated: ${date} ${time}`} />
 
       {!expanded? <CardContent>
-        <Typography className="previewContent" gutterbottom>
+        <Typography className="previewContent" gutterbottom="true">
           {content}
         </Typography>
       </CardContent> : null}

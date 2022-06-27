@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button } from '@mui/material'
-import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../utils/api/notes';
+import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../../utils/api/notes';
 import { toast } from 'react-toastify';
 
-export default function NoteEdit({ close, editNoteId }) {
-    const [title, setTitle] = useState();
-    const [content, setContent] = useState();
+export default function NoteEdit({ close, editNoteId, setNotesEdited, notesEdited }) {
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
 
     const editNote = async () => {
         const res = await updateNoteSingle(title, content, editNoteId);
@@ -15,7 +15,7 @@ export default function NoteEdit({ close, editNoteId }) {
         }
         if (res?.response?.status === 201){
             toast.success('Note updated successfully');
-            fetchNotes(); //fetch today's notes again to update the note
+            setNotesEdited(notesEdited+1);
         }else{
             console.log(res?.data?.msg)
         }

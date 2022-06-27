@@ -29,3 +29,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
 }
+
+.modalBox::-webkit-scrollbar {
+    display: none;
+}

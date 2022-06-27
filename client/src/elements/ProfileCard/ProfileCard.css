@@ -1,0 +1,60 @@
+.profileCardContainer
+{
+	display: flex;
+	font-family: 'Noto Sans', sans-serif;
+	flex-wrap: wrap-reverse;
+	justify-content: space-evenly;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.personData {
+	display: flex;
+	flex-basis: 50%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.personName {
+	margin: 0;
+	padding-bottom: 0.1em;
+}
+
+.personWhatWork {
+	margin: 0;
+	margin-bottom: 0.4em;
+}
+
+.personWhoAreYou {
+	margin: 0;
+}
+
+.personContent {
+	word-break: break-all;
+}
+
+.profileCardSocial {
+	margin-top: 0.2em;
+}
+
+.profileCardSocial > a {
+	text-decoration: none;
+	margin: 0px 10px;
+}
+
+.pfpContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.avatars {
+	max-width: 60vw;
+    max-height: 60vh;
+	min-width: 30vw;
+	min-height: 30vh;
+
+	object-fit: contain;
+}

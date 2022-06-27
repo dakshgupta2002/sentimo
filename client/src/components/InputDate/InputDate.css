@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Digital-7';
+    src: url('../../assets/fonts/digital-7.ttf');
+}
+
+.calendar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 0px 1rem;
+}
+
+.date {
+    font-family: 'Digital-7';
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: #FDFBF9;
+}
+
+.label {
+    color: #FDFBF9;
+    font-size: 0.7rem;
+    font-weight: 250;
+}

@@ -16,7 +16,7 @@ registerRouter.route("/")
             const newUser = new User({username, password: hashedPassword, firstName, lastName});
             newUser.save((err, user) => {
                 if (err){ res.status(500).json({err}); return;};
-
+                console.log("===Registered User===");
                 const token = jwtGenerator(user._id);
                 res.json({token, username, firstName, lastName}).status(201);
             });

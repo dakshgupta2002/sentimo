@@ -9,11 +9,16 @@ const statRouter = Router();
 statRouter.route("/note")
     .post(async (req, res) => {
         const noteId = req.body.noteId;
-        const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
         const note = await Note.findById(noteId).exec();
+        if (!note){
+            res.status(404).json({ "msg": "Note not found" });
+            return;
+        }
+        const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
         
         if (noteStat) {
-            res.status(200).json({emotion: noteStat.emotion, title: note.title, content: note.content});
+            console.log("===Found Note's Emotion saved already===")
+            res.status(200).json({emotion: noteStat.emotion});
             return;
         }
 
@@ -28,7 +33,8 @@ statRouter.route("/note")
             emotion = data.toString();
         });
 
-        python.on('close', async () => {
+        python.on('close', async (code) => {
+            console.log("Exiting with", code);
             var obj = "";
             for (var i = 0; i < emotion.length; i++) {
                 if (emotion[i] === "'") {
@@ -44,7 +50,7 @@ statRouter.route("/note")
             });
 
             newNoteEmotion.save().then(noteEmotion => {
-                res.status(201).json({ emotion: noteEmotion.emotion, title: note.title, content: note.content });
+                res.status(201).json({ emotion: noteEmotion.emotion });
                 return;
             }).catch(() => {
                 res.status(400).json({ message: "Error generating emotion" });
