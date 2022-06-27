@@ -5,12 +5,11 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('* * * * * *', async () => {
+var dailyStat = schedule('* * * * *', async () => {
   const date = new Date();
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
-  //create and save emotions of every user 
-  //for that date
+  //create and save emotions of every user for that date
   const users = await User.find({}).exec(); //get all users
   users.forEach(async user => {
     const diary = await Diary.findOne({ user: user._id }).exec();
@@ -22,7 +21,8 @@ var dailyStat = schedule('* * * * * *', async () => {
           notes.filter(note => {
             return (new Date(note?.createdAt)).toLocaleDateString() === date.toLocaleDateString();
           });
-
+          
+          console.log("===User's notes have been found===")
           let text = "";
           notes.forEach(note => {
             text += note?.title + " " + note?.content + " ";
@@ -30,7 +30,7 @@ var dailyStat = schedule('* * * * * *', async () => {
 
           let data = encodeURI(text);
           let emotion;
-
+          console.log(data)
           // spawn new child process to call the python script
           console.log("===Calling python script===");
           const python = spawn('python3', ['scripts/emotion.py', data]);
@@ -43,7 +43,7 @@ var dailyStat = schedule('* * * * * *', async () => {
           python.on('close', async (code) => {
             console.log("===Exiting with", code + "===");
 
-            const arr = emotion.split(',')
+            const arr = emotion?.split(',')
             let obj = {};
             obj['Happy'] = parseFloat(arr[0]);
             obj['Angry'] = parseFloat(arr[1]);
@@ -58,6 +58,7 @@ var dailyStat = schedule('* * * * * *', async () => {
               date: (new Date(date)).toISOString(),
               emotion: obj
             });
+            console.log("===Stats saved for future use!===")
             await dailyStat.save();
           })
 
