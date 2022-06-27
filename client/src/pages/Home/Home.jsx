@@ -1,5 +1,5 @@
 import React from "react";
-import { Slide } from "react-awesome-reveal";
+import { Slide, Fade } from "react-awesome-reveal";
 import Lottie from "react-lottie-player";
 import { Sidebar } from "../../components";
 import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
@@ -21,10 +21,17 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home-container">
-      <Sidebar />
-      <Slide direction="left" cascade triggerOnce>
+      <Fade>
+        <Sidebar />
+      </Fade>
+      <Fade direction="up" cascade triggerOnce>
         <div className="home-heading">
-          <Lottie animationData={landingPageAnimation} loop play />
+          <Lottie
+            className="lottie-animation"
+            animationData={landingPageAnimation}
+            loop
+            play
+          />
 
           <div className="home-title-container">
             <div className="home-title popup-anim">SENTIMO</div>
@@ -34,12 +41,12 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Slide>
+      </Fade>
 
       <Slide direction="right" cascade triggerOnce>
         <div className="confused-point-container">
           <div className="confused-points">
-            <div className="confused-header">Question</div>
+            <div className="confused-header">Questions</div>
             <div className="confused-point">
               ❓Tired and exhausted from your entire day's work?
             </div>
@@ -47,14 +54,17 @@ export default function Home() {
               ❓Or did something exciting and fascinating happen?
             </div>
 
-            {/* TODO: Some issue with this 3rd div. Shifted to a bit righst need to check */}
+            {/* TODO: Some issue with this 3rd div. Shifted to a bit right need to check */}
             <div className="confused-point">
               ❓Lest you're fearful or sad about anything?
             </div>
           </div>
-          <div className="confused-lottie">
-            <Lottie animationData={confusedGuy} loop play />
-          </div>
+          <Lottie
+            className="lottie-animation"
+            animationData={confusedGuy}
+            loop
+            play
+          />
         </div>
       </Slide>
 
@@ -137,6 +147,10 @@ export default function Home() {
           </div>
         </div>
       </Slide>
+
+      <Fade triggerOnce>
+        <footer>no</footer>
+      </Fade>
     </div>
   );
 }

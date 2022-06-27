@@ -1,60 +1,65 @@
-.profileCardContainer
-{
-	display: flex;
-	font-family: 'Noto Sans', sans-serif;
-	flex-wrap: wrap-reverse;
-	justify-content: space-evenly;
-	align-items: center;
-	height: 100%;
-	width: 100%;
+.profileCardContainer {
+  display: flex;
+  font-family: "Noto Sans", sans-serif;
+  flex-wrap: wrap-reverse;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 .personData {
-	display: flex;
-	flex-basis: 50%;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-.personName {
-	margin: 0;
-	padding-bottom: 0.1em;
-}
-
-.personWhatWork {
-	margin: 0;
-	margin-bottom: 0.4em;
-}
-
-.personWhoAreYou {
-	margin: 0;
+.personData div {
+	margin-bottom: 20px;
 }
 
 .personContent {
-	word-break: break-all;
+ text-align: center;
+ margin-top: 0;
+ word-break: break-all;
 }
 
 .profileCardSocial {
-	margin-top: 0.2em;
+  margin-top: 0;
 }
 
 .profileCardSocial > a {
-	text-decoration: none;
-	margin: 0px 10px;
+  text-decoration: none;
+  margin: 0px 10px;
 }
 
 .pfpContainer {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .avatars {
-	max-width: 60vw;
-    max-height: 60vh;
-	min-width: 30vw;
-	min-height: 30vh;
+  max-height: 350px;
+  max-width: 350px;
+}
 
-	object-fit: contain;
+@media (max-width: 700px) {
+  .avatars {
+    height: 300px;
+    width: 300px;
+  }
+
+  .personData {
+	max-width: 100%;
+	margin: 0 1rem;
+  }
+}
+
+@media (max-width: 300px) {
+	.avatars {
+	  height: 250px;
+	  width: 250px;
+	}
 }

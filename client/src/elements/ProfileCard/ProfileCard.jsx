@@ -18,10 +18,10 @@ export default function ProfileCard({
     <div className="profileCardContainer">
       <div className="personData">
 
-        <h4 className="personWhatWork">{whatWork}</h4>
-        <h1 className="personName">{name}.</h1>
-        <h2 className="personWhoAreYou">{whoAreYou}</h2>
-        <div className="personContent">{content}</div>
+        <div className="personWhatWork small-text text--center">{whatWork}</div>
+        <div className="personName large-text text--center">{name}.</div>
+        <div className="personWhoAreYou medium-text text--center">{whoAreYou}</div>
+        <div className="personContent small-text text--center">{content}</div>
       
         <div className="profileCardSocial">
           <a href={socialLinks[0]}>
