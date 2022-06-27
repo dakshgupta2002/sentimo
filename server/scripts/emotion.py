@@ -6,7 +6,7 @@ def emotion_output(text):
     dcde = (requests.utils.unquote(text))
     emotion_dict = te.get_emotion(dcde)
 
-    return dcde
+    return emotion_dict
 
 
 text = sys.argv[1]
