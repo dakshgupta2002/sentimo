@@ -8,6 +8,7 @@ import answers from "../../assets/lottieSvg/answers.json";
 import Filter1RoundedIcon from "@mui/icons-material/Filter1Rounded";
 import Filter2RoundedIcon from "@mui/icons-material/Filter2Rounded";
 import Filter3RoundedIcon from "@mui/icons-material/Filter3Rounded";
+import { Link } from "react-router-dom";
 
 import "./Home.css";
 
@@ -21,7 +22,7 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home-container">
-      <Fade>
+      <Fade triggerOnce>
         <Sidebar />
       </Fade>
 
@@ -73,7 +74,7 @@ export default function Home() {
 
       <Slide direction="left" cascade triggerOnce>
         <div className="solution-container">
-          <div className="confused-lottie">
+          <div className="confused-lottie lottie-animation">
             <Lottie
               style={{alignSelf: "center"}}
               animationData={answers}
@@ -157,7 +158,9 @@ export default function Home() {
       </Slide>
 
       <Fade triggerOnce>
-        <footer className="text--center">Footer</footer>
+        <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
+          <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About Us</Link>
+        </footer>
       </Fade>
     </div>
   );
