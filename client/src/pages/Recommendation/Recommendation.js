@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
-import { Tab, Tabs } from "@mui/material";
-import { TabPanel } from "../../elements/TabPanel";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
