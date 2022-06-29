@@ -7,13 +7,12 @@ import { toast } from 'react-toastify';
 export default function NoteInput(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [textLimit, setTextLimit] = useState(800)
+    const [textLimit, setTextLimit] = useState(800);
     
     const addNote = async () => {
         if (title.trim()==="" || content.trim()===""){
             toast.error("Title and content are required", {
                 duration: 2500,
-                icon: '❌',
             });
         }
         if (content.length > textLimit){

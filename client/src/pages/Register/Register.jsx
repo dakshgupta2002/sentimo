@@ -69,8 +69,6 @@ export default function Register(props) {
 
       toast.success("Registration Successful", {
         duration: 2000,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '✅',
 
         ariaProps: {
           role: 'status',
