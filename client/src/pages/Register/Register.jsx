@@ -51,8 +51,6 @@ export default function Register(props) {
 
       toast.error(errorMsg, {
         duration: 2500,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '❌',
 
         ariaProps: {
           role: 'status',
@@ -81,8 +79,6 @@ export default function Register(props) {
       console.log("error", res.data.msg);
       toast.error("Username already Taken", {
         duration: 2000,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '❌',
         
         ariaProps: {
           role: 'status',
