@@ -4,7 +4,7 @@ import { Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from "../../utils/api/stats";
 import { Tab, Tabs } from "@mui/material";
-import { TabPanel } from "../../elements";
+import { TabPanel } from "../../elements/TabPanel";
 
 export default function Statistics() {
   const { date } = useDate();
