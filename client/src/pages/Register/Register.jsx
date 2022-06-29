@@ -15,6 +15,7 @@ import {
 export default function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   /* <TextField id="filled-basic" label="Filled" variant="filled" sx={{input: {color: "#fdfdfd", backgroundColor: "#323644"} }}
@@ -213,6 +214,27 @@ export default function Register(props) {
                     fullWidth
                     required
                     value={password}
+                  />
+                </div>
+
+                <div className="password-field mh mv">
+                  <TextField
+                    label="Confirm Password"
+                    variant="outlined"
+                    type="password"
+                    onChange={(e) => setConfirmPassword(e.target.value.trim())}
+                    sx={specialTextField}
+                    InputLabelProps={specialLabel}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PasswordSharp color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
+                    fullWidth
+                    required
+                    value={confirmPassword}
                   />
                 </div>
               </div>

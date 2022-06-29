@@ -14,7 +14,6 @@ import "./Login.css";
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   var navigate = useNavigate();
 
@@ -97,26 +96,6 @@ export default function Login(props) {
               required
               fullWidth
               value={password}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <PasswordSharp color="primary" />
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </div>
-
-          <div className="input-container">
-            <TextField
-              label="Confirm Password"
-              text="password"
-              name="password"
-              type="password"
-              onChange={(e) => setConfirmPassword(e.target.value.trim())}
-              required
-              fullWidth
-              value={confirmPassword}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
