@@ -76,7 +76,7 @@
     justify-content: center;
     align-items: center;
     background-color: #87bbd5;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
 }
 
 .solution-container, .extra-features-container {
@@ -110,6 +110,7 @@
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;  
+    padding: 0 10px;
 }
 
 .step, .extra-features-content {
@@ -139,7 +140,8 @@
 }
 
 .extra-features {
-    width: 90vw;
+    /* width: 90vw; */
+    padding: 0 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -161,7 +163,7 @@ footer {
         min-width: 70%;
     }
 
-    .home-title, .confused-header {
+    .home-title, .confused-header, .how-it-works-header, .extra-features-heading {
         font-size: 3rem;
     }
 
@@ -181,9 +183,15 @@ footer {
 
 @media (max-width: 500px) {
     .home-title, 
-    .confused-header {
+    .confused-header, .extra-features-heading {
         font-size: 2rem;
         line-height: 3rem;
+    }
+
+    .how-it-works-header {
+        font-size: 1.8rem;
+        line-height: 2.5rem;
+        letter-spacing: 3px;
     }
 
     .home-title-desc, 
