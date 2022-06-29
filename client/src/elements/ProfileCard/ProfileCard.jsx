@@ -8,9 +8,9 @@ import "./ProfileCard.css";
 
 export default function ProfileCard({
   name = "Name",
-  whatWork = "whatWork",
-  whoAreYou = "whoAreYou",
-  content = "content",
+  whatWork = "What Work do you do",
+  whoAreYou = "Who Are You",
+  content = "More about you",
   socialLinks = ["#", "#", "#", "#"] /*Mail, Linkedin, Twitter, Github */,
   profileImg,
 }) {
