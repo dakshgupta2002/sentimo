@@ -7,6 +7,8 @@ import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 
 import "./Login.css";
 
+const loginImage = require("../../assets/images/loginBanner.svg");
+
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -33,7 +35,7 @@ export default function Login(props) {
     } else {
       console.log("error: ", res.data.msg);
 
-      toast.error("Incorrect Username or Password", {
+      `toast`.error("Incorrect Username or Password", {
         duration: 2500,
       });
     }
@@ -48,14 +50,14 @@ export default function Login(props) {
     <div className="login-form-container">
       {/* Hidden in Mobile */}
       <div className="login-form-header">
-        <section className="login-form-image"></section>
-        {/* This class Only for Desktop */}
+        {/* <section className="login-form-image"></section> */}
+        <img src={loginImage} alt="Welcome" style={{height: "100%", width: "100%"}} />
       </div>
 
       <div className="login-input-container">
         <div className="login-logo-header">LOGO SENTIMO</div>
         <div className="login-text-header heading large-login-text">
-          Login<span className="login-dot">.</span>
+          Welcome Back<span className="login-dot">.</span>
         </div>
         <div className="input-field-container medium-text">
           <div>Log in to your account</div>
