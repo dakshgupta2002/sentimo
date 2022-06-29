@@ -33,9 +33,7 @@ export default function Login(props) {
     } else {
       console.log("error: ", res.data.msg);
 
-      toast.error("Incorrect Username or Password", {
-        duration: 2500,
-      });
+      toast.error("Incorrect Username or Password");
     }
   };
 
