@@ -6,7 +6,7 @@ import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
 var dailyStat = schedule('59 23 * * *', async () => {
-  const date = new Date();
+  const date = new Date((new Date()).getTime() + (330 * 60 * 1000));
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
   //create and save emotions of every user for that date
@@ -21,14 +21,14 @@ var dailyStat = schedule('59 23 * * *', async () => {
           notes.filter(note => {
             return (new Date(note?.createdAt)).toLocaleDateString() === date.toLocaleDateString();
           });
-          
+
           console.log("===User's notes have been found===")
           let text = "";
           notes.forEach(note => {
             text += note?.title + " " + note?.content + " ";
           })
           let data = encodeURI(text);
-
+          data.slice(0, 5000) // sending a string of more than 5k chars can break the server
           let emotion;
           // spawn new child process to call the python script
           console.log("===Calling python script===");
@@ -41,7 +41,7 @@ var dailyStat = schedule('59 23 * * *', async () => {
 
           python.on('close', async (code, signal) => {
             console.log("===Exiting with", code + " signal", signal, "===");
-	    if (code===null) return; 
+            if (code === null) return;
 
             const arr = emotion?.split(',')
             let obj = {};
@@ -53,12 +53,12 @@ var dailyStat = schedule('59 23 * * *', async () => {
 
             console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
-            const oldStat = await Stat.findOne({user: user._id, date: (new Date(date)).toLocaleDateString()});
-            if (oldStat){
+            const oldStat = await Stat.findOne({ user: user._id, date: (new Date(date)).toLocaleDateString() });
+            if (oldStat) {
               oldStat.emotion = obj;
               console.log("===Stats UPDATED!===")
               await oldStat.save();
-            }else{
+            } else {
               const dailyStat = new Stat({
                 user: user._id,
                 date: (new Date(date)).toLocaleDateString(),
