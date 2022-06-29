@@ -5,7 +5,7 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('59 23 * * *', async () => {
+var dailyStat = schedule('4 13 * * *', async () => {
   const date = new Date();
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
@@ -55,7 +55,7 @@ var dailyStat = schedule('59 23 * * *', async () => {
             const oldStat = await Stat.findOne({user: user._id, date: new Date(date).toLocaleDateString()});
             if (oldStat){
               oldStat.emotion = obj;
-              console.log("===Stats updated for future use!===")
+              console.log("===Stats UPDATED!===")
               await oldStat.save();
             }else{
               const dailyStat = new Stat({
@@ -63,7 +63,7 @@ var dailyStat = schedule('59 23 * * *', async () => {
                 date: (new Date(date)).toLocaleDateString(),
                 emotion: obj
               });
-              console.log("===New stats saved for future use!===")
+              console.log("===Stats CREATED!===")
               await dailyStat.save();
             }
           })
