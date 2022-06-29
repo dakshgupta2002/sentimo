@@ -6,6 +6,7 @@ import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import './InputDate.css';
 
+
 export default function InputDate({ date, setDate }) {
   return (
     <div >

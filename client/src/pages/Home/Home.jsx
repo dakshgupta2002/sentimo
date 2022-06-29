@@ -85,15 +85,15 @@ export default function Home() {
           <div className="confused-points">
             <div className="confused-header">Answers</div>
             <div className="confused-point">
-              ✅ Do not stress yourself out as you can pour your heart out to us
+              💡 Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!
             </div>
             <div className="confused-point">
-              ✅ This is your personalised diary and you can keep all types of
+              💡 This is your personalised diary and you can keep all types of
               notes you want to!
             </div>
             <div className="confused-point">
-              ✅ Instead, we'll recommend you entertainment material according
+              💡 Instead, we'll recommend you entertainment material according
               to your mood.
             </div>
           </div>
