@@ -27,10 +27,9 @@ var dailyStat = schedule('59 23 * * *', async () => {
           notes.forEach(note => {
             text += note?.title + " " + note?.content + " ";
           })
-
           let data = encodeURI(text);
+
           let emotion;
-          console.log(data)
           // spawn new child process to call the python script
           console.log("===Calling python script===");
           const python = spawn('python3', ['scripts/emotion.py', data]);
@@ -53,7 +52,7 @@ var dailyStat = schedule('59 23 * * *', async () => {
 
             console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
-            const oldStat = await Stat.findOne({user: user._id, date: new Date(date).toISOString()});
+            const oldStat = await Stat.findOne({user: user._id, date: new Date(date).toLocaleDateString()});
             if (oldStat){
               oldStat.emotion = obj;
               console.log("===Stats updated for future use!===")
@@ -61,7 +60,7 @@ var dailyStat = schedule('59 23 * * *', async () => {
             }else{
               const dailyStat = new Stat({
                 user: user._id,
-                date: (new Date(date)).toISOString(),
+                date: (new Date(date)).toLocaleDateString(),
                 emotion: obj
               });
               console.log("===New stats saved for future use!===")
