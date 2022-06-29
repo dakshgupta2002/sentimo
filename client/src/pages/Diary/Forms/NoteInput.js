@@ -8,22 +8,22 @@ export default function NoteInput(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [textLimit, setTextLimit] = useState(800)
-    
+
     const addNote = async () => {
-        if (title.trim()==="" || content.trim()===""){
+        if (title.trim() === "" || content.trim() === "") {
             toast.error("Title and content are required", {
                 duration: 2500,
                 icon: '❌',
             });
         }
-        if (content.length > textLimit){
+        if (content.length + title.length > textLimit) {
             toast.warn("Text limit reached.")
         }
         const res = await postNote(title, content, props.date, props.notesAdded, props.setNotesAdded);
         if (res.response.status === 200 || res.response.status === 201) {
             console.log("Note posted");
             props.close();
-        }else{
+        } else {
             console.log("err", res.data.msg);
         }
     }
@@ -36,9 +36,10 @@ export default function NoteInput(props) {
                 autoComplete='off'
                 id="outlined-basic"
                 variant="outlined"
-                placeholder="Title" 
-                color="secondary"
+                placeholder="Title"
+                color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
+                focused="true"
                 value={title}
                 onChange={(e) => { setTitle(e.target.value) }}
                 margin="normal"
@@ -49,8 +50,9 @@ export default function NoteInput(props) {
                 id="outlined-basic"
                 placeholder="Content"
                 variant="outlined"
-                color="secondary"
+                color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
+                focused="true"
                 multiline
                 rows={15}
                 margin="normal"
@@ -59,12 +61,16 @@ export default function NoteInput(props) {
                 /* Title length used with content only */
                 onChange={(e) => setContent(e.target.value)}
             />
-            <div style={{display: 'flex', justifyContent: 'flex-end', fontSize: '1rem', width: '100%'}}>
-                {content.length}/{textLimit}
+            <div style={{
+                display: 'flex', justifyContent: 'flex-end', fontSize: '0.85rem', width: '100%',
+                color: content.length + title.length > textLimit ? 'red' : 'black'
+            }}>
+                {content.length + title.length}/{textLimit}
             </div>
             <br />
             <div className="form-footer">
-                <Button size="large" color="secondary" variant='outlined' onClick={addNote}>Submit</Button>
+                <Button size="large" color={content.length + title.length > textLimit ? "warning" : "secondary"}
+                    variant='outlined' onClick={addNote}>Submit</Button>
             </div>
         </div>
     )
