@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField, Box } from "@mui/material";
+import { Button, InputAdornment, TextField } from "@mui/material";
 import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
-import loginImage from "../../assets/images/loginBanner.svg";
 import { toast } from "react-toastify";
 
+import loginImage from "../../assets/images/loginBanner.svg";
 import logo from "../../assets/images/logo.png";
 
 import "./Login.css";

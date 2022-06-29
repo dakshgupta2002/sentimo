@@ -1,10 +1,11 @@
 .register-container {
   display: flex;
   padding: 10px;
+  flex-wrap: wrap-reverse;
   /* overflow: hidden; */
   position: relative;
-  justify-content: space-between;
-  height: 90vh;
+  justify-content: center;
+  align-items: center;
 }
 
 .header {
@@ -18,7 +19,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 90vh;
 }
 
 .register-header {
@@ -37,14 +37,6 @@
 .name-data-container {
   display: flex;
   margin-top: 30px;
-}
-
-.register-side-image {
-  background-image: url("../../assets/images/welldoing.webp");
-  background-size: cover;
-  overflow: hidden;
-  background-repeat: no-repeat;
-  width: 50vw;
 }
 
 .button-container {
@@ -89,6 +81,13 @@
   color: #508afa;
 }
 
+@media (max-width: 990px)
+{
+  .register-header {
+    display: none;
+  }
+}
+
 @media (max-width: 780px) {
   .register-form-container {
     margin-left: 60px;
@@ -107,10 +106,6 @@
     flex-direction: column;
   }
 
-  .register-container {
-    overflow: scroll;
-  }
-
   .fname-field {
     margin-top: 5px;
     margin-bottom: 5px;
@@ -121,12 +116,8 @@
     margin-bottom: 5px;
   }
 
-  .register-side-image {
-    background-image: none;
-    overflow: hidden;
-    height: 0vh;
-    width: 0vw;
-    flex-basis: 0%;
+  .register-header {
+    display: none;
   }
 
   .header {
