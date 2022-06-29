@@ -6,20 +6,27 @@ import {
 } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
-import EditIcon from '@mui/icons-material/Edit';
+import EditIcon from "@mui/icons-material/Edit";
 import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import { ModalContainer } from "../../components";
-import NoteEdit from "./Forms/NoteEdit";
 import "./Diary.css";
 
-export default function Note({title, content, noteId, notesAdded, setNotesAdded, favourite, protect, createdAt, updatedAt, notesEdited, setNotesEdited}) {
+export default function Note({
+  title,
+  content,
+  noteId,
+  notesAdded,
+  setNotesAdded,
+  favourite,
+  protect,
+  createdAt,
+  setEditOpen,
+  setEditNoteId,
+}) {
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
-  const [editOpen, setEditOpen] = useState(false);
-  const [editNoteId, setEditNoteId] = useState(null);
 
   const deleteNote = () => {
     removeNote(noteId, notesAdded, setNotesAdded);
@@ -29,11 +36,18 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
     const res = await updateFav(noteId); //update on BE for future ref
     if (res?.response?.status !== 200) {
       toast.error(
-        fav ? (<div>Failed to remove note from likes. <br /> Try again</div>
-        ) : (<div>Failed to add note in likes. <br /> Try again</div> )
+        fav ? (
+          <div>
+            Failed to remove note from likes. <br /> Try again
+          </div>
+        ) : (
+          <div>
+            {" "}
+            Failed to add note in likes. <br /> Try again{" "}
+          </div>
+        )
       );
-    } // Note change success so change icon color
-    else setFav(!fav); // update on FE, to show chage
+    } else setFav(!fav); // update on FE, to show chage
   };
 
   const handleProtect = async () => {
@@ -43,21 +57,13 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
       var msg = !prot
         ? "Note Added in protected!"
         : "Note removed from protected!";
-
-      toast.success(msg, {
-        duration: 2000,
-        ariaProps: { role: "status", "aria-live": "polite", },
-      });
-
-      setProt(!prot);
+      toast.success(msg, { duration: 2000 });
+      setProt(!prot); //locally update the status
     } else {
       var errMsg = prot
         ? "Failed to remove from protection"
         : "Failed to add in protection!";
-      toast.error(errMsg, {
-        duration: 2000,
-        ariaProps: { role: "status", "aria-live": "polite"},
-      });
+      toast.error(errMsg, { duration: 2000 });
     }
   };
 
@@ -71,32 +77,54 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
         flexFlow: "column",
         width: "97.5%",
         height: "85vh",
-        padding: '10vh 0px 5vh 0px'
+        padding: "10vh 0px 5vh 0px",
       }}
     >
-      
-      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
-        <NoteEdit
-          close={() => {setEditNoteId(null); setEditOpen(false)}}
-          editNoteId={editNoteId} 
-          notesEdited={notesEdited} setNotesEdited={setNotesEdited}
-        />
-      </ModalContainer>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
+        <Typography
+          className={"title"}
+          variant="h4"
+          sx={{ overflowX: "scroll", whiteSpace: "nowrap" }}
+        >
+          {title}
+        </Typography>
 
-      <Box sx={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-        <Typography className={'title'} variant="h4" sx={{overflowX: 'scroll', whiteSpace: 'nowrap'}}>{title}</Typography>
-
-        {new Date(createdAt).toDateString() === new Date().toDateString() ? 
-        <IconButton onClick={() => {setEditNoteId(noteId); setEditOpen(true);}}>
-          <EditIcon sx={{ fontSize: "2rem" }} />
-        </IconButton> : null }
+        {new Date(createdAt).toDateString() === new Date().toDateString() ? (
+          <IconButton
+            onClick={() => {
+              setEditNoteId(noteId);
+              setEditOpen(true);
+            }}
+          >
+            <EditIcon sx={{ fontSize: "2rem" }} />
+          </IconButton>
+        ) : null}
       </Box>
 
       <Box
         component="span"
-        sx={{ display: "flex", p: 1, m: 1, bgcolor: "#101010", color: "grey.300", border: "1px solid", borderColor: "grey.800", borderRadius: 2, fontSize: "0.875rem", fontWeight: "700", flex: "1 auto", overflowY: "scroll" }}
+        sx={{
+          display: "flex",
+          p: 1,
+          m: 1,
+          bgcolor: "#101010",
+          color: "grey.300",
+          border: "1px solid",
+          borderColor: "grey.800",
+          borderRadius: 2,
+          fontSize: "0.875rem",
+          fontWeight: "700",
+          flex: "1 auto",
+          overflowY: "scroll",
+        }}
       >
-        <Typography sx={{wordWrap: 'break-word', width: '100%'}}>
+        <Typography sx={{ wordWrap: "break-word", width: "100%" }}>
           <span>{content}</span>
         </Typography>
       </Box>
@@ -129,10 +157,7 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
 
           {fav ? (
             <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
-              <FavoriteRoundedIcon
-                color="error"
-                sx={{ fontSize: "2.4rem" }}
-              />
+              <FavoriteRoundedIcon color="error" sx={{ fontSize: "2.4rem" }} />
             </IconButton>
           ) : (
             <IconButton sx={{ marginLeft: "10px" }} onClick={handleFavourite}>
@@ -141,7 +166,13 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
           )}
         </Box>
 
-        <Box style={{ display: "flex", justifyContent: "space-around", alignItems: 'center' }}>
+        <Box
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            alignItems: "center",
+          }}
+        >
           <IconButton sx={{ marginLeft: "10px" }} onClick={handleProtect}>
             <EnhancedEncryption sx={{ fontSize: "2rem" }} />
           </IconButton>
