@@ -49,14 +49,7 @@ export default function Register(props) {
       for (var i = 0; i < missing.length; i++)
         errorMsg += ` ${missing[i]}` + (i !== missing.length - 1 ? ", " : ".");
 
-      toast.error(errorMsg, {
-        duration: 2500,
-
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
-      });
+      toast.error(errorMsg, {icon: '❌'});
       return;
     }
     const res = await userRegister(username, password, firstName, lastName);
@@ -65,26 +58,11 @@ export default function Register(props) {
       const name = (((res?.data?.firstName || "") + " "+ (res?.data?.lastName || "")).trim() || res?.data?.username)
       localStorage.setItem("name", name);
 
-      toast.success("Registration Successful", {
-        duration: 2000,
-
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
-      });
-
+      toast.success("Registration Successful", {duration: 2000});
       navigate("/");
     } else {
       console.log("error", res.data.msg);
-      toast.error("Username already Taken", {
-        duration: 2000,
-        
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
-      });
+      toast.error("Username already Taken", {icon: '❌'});
     }
   };
 
