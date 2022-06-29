@@ -5,7 +5,7 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('4 13 * * *', async () => {
+var dailyStat = schedule('59 23 * * *', async () => {
   const date = new Date();
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
@@ -39,8 +39,9 @@ var dailyStat = schedule('4 13 * * *', async () => {
             console.log("===Emotion fetched from Python===");
           });
 
-          python.on('close', async (code) => {
-            console.log("===Exiting with", code + "===");
+          python.on('close', async (code, signal) => {
+            console.log("===Exiting with", code + " signal", signal, "===");
+	    if (code===null) return; 
 
             const arr = emotion?.split(',')
             let obj = {};
@@ -52,7 +53,7 @@ var dailyStat = schedule('4 13 * * *', async () => {
 
             console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
-            const oldStat = await Stat.findOne({user: user._id, date: new Date(date).toLocaleDateString()});
+            const oldStat = await Stat.findOne({user: user._id, date: (new Date(date)).toLocaleDateString()});
             if (oldStat){
               oldStat.emotion = obj;
               console.log("===Stats UPDATED!===")
