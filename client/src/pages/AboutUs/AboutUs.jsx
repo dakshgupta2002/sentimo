@@ -18,40 +18,40 @@ export default function AboutUs() {
       <Sidebar />
       </Fade>
       <div className="profileCardParent">
-        <Slide triggerOnce>
+        <Slide direction="up" triggerOnce>
         <div className="profileCard">
           <ProfileCard
             name={data?.daksh?.name}
             whatWork={data?.daksh?.whatWork}
             whoAreYou={data?.daksh?.whoAreYou}
             content={data?.daksh?.content}
-            socialLinks={data?.daksh?.socialLink}
+            socialLinks={data?.daksh?.socialLinks}
             profileImg={dakshImg}
           />
         </div>
         </Slide>
 
-        <Slide triggerOnce direction="right" delay={800}>
+        <Slide triggerOnce direction="up">
         <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
         <ProfileCard
             name={data?.ishwar?.name}
             whatWork={data?.ishwar?.whatWork}
             whoAreYou={data?.ishwar?.whoAreYou}
             content={data?.ishwar?.content}
-            socialLinks={data?.ishwar?.socialLink}
+            socialLinks={data?.ishwar?.socialLinks}
             profileImg={ishwarImg}
-          />
+            />
         </div>
         </Slide>
 
-      <Slide triggerOnce>
+      <Slide direction="up" triggerOnce>
         <div className="profileCard">
         <ProfileCard
             name={data?.shiraz?.name}
-            whatWork={data?.daksh?.whatWork}
+            whatWork={data?.shiraz?.whatWork}
             whoAreYou={data?.shiraz?.whoAreYou}
             content={data?.shiraz?.content}
-            socialLinks={data?.shiraz?.socialLink}
+            socialLinks={data?.shiraz?.socialLinks}
             profileImg={shirazImg}
           />
         </div>
