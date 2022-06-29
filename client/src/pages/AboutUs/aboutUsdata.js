@@ -22,7 +22,7 @@ export const data = {
     whatWork: "Data Scientist",
     whoAreYou: "Pursuing B.Tech. CSE from PEC, Chd",
     content: "I am a Machine Learning and Data Science enthusiast. I am an individual who wants to inculcate my learnings to incorporate efficient and useful end results. I handled the ML portion & wrote Python scripts for emotion analysis in Sentimo. Also supported the designing part & performed Team Management.",
-    socialLinks: ["smangat1435@gmail.com", "https://www.linkedin.com/in/shiraz-mangat-33b4ba220/", "https://www.instagram.com/mangatshiraz/", "https://github.com/shiraz-30"],
+    socialLinks: ["mailto:smangat1435@gmail.com", "https://www.linkedin.com/in/shiraz-mangat-33b4ba220/", "https://www.instagram.com/mangatshiraz/", "https://github.com/shiraz-30"],
     img: require("./../../assets/avatars/shiraz_avatar.png")
   },
 };
