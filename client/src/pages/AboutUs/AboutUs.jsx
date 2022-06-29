@@ -2,6 +2,7 @@ import React from "react";
 import { ProfileCard } from "./../../elements";
 import { Sidebar } from "./../../components";
 import { data } from './aboutUsdata.js';
+import { Fade, Slide } from "react-awesome-reveal";
 
 import "./AboutUs.css";
 
@@ -13,8 +14,11 @@ export default function AboutUs() {
   return (
     //make about us card in components and make 3 of them here
     <div className="aboutUsBody">
+      <Fade>
       <Sidebar />
+      </Fade>
       <div className="profileCardParent">
+        <Slide triggerOnce>
         <div className="profileCard">
           <ProfileCard
             name={data?.daksh?.name}
@@ -25,7 +29,9 @@ export default function AboutUs() {
             profileImg={dakshImg}
           />
         </div>
+        </Slide>
 
+        <Slide triggerOnce direction="right" delay={800}>
         <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
         <ProfileCard
             name={data?.ishwar?.name}
@@ -36,7 +42,9 @@ export default function AboutUs() {
             profileImg={ishwarImg}
           />
         </div>
+        </Slide>
 
+      <Slide triggerOnce>
         <div className="profileCard">
         <ProfileCard
             name={data?.shiraz?.name}
@@ -47,6 +55,7 @@ export default function AboutUs() {
             profileImg={shirazImg}
           />
         </div>
+        </Slide>
       </div>
     </div>
   );

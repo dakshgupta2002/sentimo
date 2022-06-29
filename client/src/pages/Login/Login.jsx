@@ -35,13 +35,6 @@ export default function Login(props) {
 
       toast.error("Incorrect Username or Password", {
         duration: 2500,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '❌',
-
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
       });
     }
   };

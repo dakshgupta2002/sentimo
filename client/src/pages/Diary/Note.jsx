@@ -30,12 +30,7 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
     if (res?.response?.status !== 200) {
       toast.error(
         fav ? (<div>Failed to remove note from likes. <br /> Try again</div>
-        ) : (<div>Failed to add note in likes. <br /> Try again</div> ), {
-          duration: 2000,
-          style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
-          icon: "❌",
-          ariaProps: {role: "status", "aria-live": "polite"},
-        }
+        ) : (<div>Failed to add note in likes. <br /> Try again</div> )
       );
     } // Note change success so change icon color
     else setFav(!fav); // update on FE, to show chage
@@ -51,8 +46,6 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
 
       toast.success(msg, {
         duration: 2000,
-        style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
-        icon: "✅",
         ariaProps: { role: "status", "aria-live": "polite", },
       });
 
@@ -63,8 +56,6 @@ export default function Note({title, content, noteId, notesAdded, setNotesAdded,
         : "Failed to add in protection!";
       toast.error(errMsg, {
         duration: 2000,
-        style: { fontWeight: 400, fontFamily: `"Ubuntu", sans-serif` },
-        icon: "❌",
         ariaProps: { role: "status", "aria-live": "polite"},
       });
     }

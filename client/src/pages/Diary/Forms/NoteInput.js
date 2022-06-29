@@ -13,7 +13,6 @@ export default function NoteInput(props) {
         if (title.trim() === "" || content.trim() === "") {
             toast.error("Title and content are required", {
                 duration: 2500,
-                icon: '❌',
             });
         }
         if (content.length + title.length > textLimit) {
