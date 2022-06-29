@@ -1,17 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField } from "@mui/material";
-import { toast } from "react-toastify";
+import { Button, InputAdornment, TextField, Box } from "@mui/material";
 import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
+import loginImage from "../../assets/images/loginBanner.svg";
+import { toast } from "react-toastify";
+
+import logo from "../../assets/images/logo.png";
 
 import "./Login.css";
 
-const loginImage = require("../../assets/images/loginBanner.svg");
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   var navigate = useNavigate();
 
@@ -51,11 +54,13 @@ export default function Login(props) {
       {/* Hidden in Mobile */}
       <div className="login-form-header">
         {/* <section className="login-form-image"></section> */}
-        <img src={loginImage} alt="Welcome" style={{height: "100%", width: "100%"}} />
+        <img src={loginImage} alt="Welcome" style={{height: "100%", width: "100%", maxWidth: '60vw', maxHeight: '60vh'}} />
       </div>
 
       <div className="login-input-container">
-        <div className="login-logo-header">LOGO SENTIMO</div>
+        <div className="login-logo-header">
+          <img src={logo} alt="" style={{maxHeight: '20vh', maxWidth: '20vw', minWidth: '100px', minHeight: '100px'}} />
+        </div>
         <div className="login-text-header heading large-login-text">
           Welcome Back<span className="login-dot">.</span>
         </div>
@@ -92,6 +97,26 @@ export default function Login(props) {
               required
               fullWidth
               value={password}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <PasswordSharp color="primary" />
+                  </InputAdornment>
+                ),
+              }}
+            />
+          </div>
+
+          <div className="input-container">
+            <TextField
+              label="Confirm Password"
+              text="password"
+              name="password"
+              type="password"
+              onChange={(e) => setConfirmPassword(e.target.value.trim())}
+              required
+              fullWidth
+              value={confirmPassword}
               InputProps={{
                 startAdornment: (
                   <InputAdornment position="start">
