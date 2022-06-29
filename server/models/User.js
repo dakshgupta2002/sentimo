@@ -33,10 +33,11 @@ const userSchema = new Schema({
     admin: {
         type: Boolean,
         default: false
+    },
+    premium: {
+        type: Boolean,
+        deafult: false
     }
-
-
-
 },
 {timestamps: true});
 

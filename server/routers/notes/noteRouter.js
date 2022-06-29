@@ -4,6 +4,7 @@ import Note from '../../models/Note.js';
 import Diary from '../../models/Diary.js';
 import NoteEmotion from '../../models/NoteEmotion.js';
 import { isNoteOwner } from '../../auth/authorize.js';
+import { canAddMoreNote } from "../../middlewares/UserNotes.js";
 
 const noteRouter = Router();
 
@@ -19,7 +20,7 @@ noteRouter.route("/")
         res.status(200).json({ notes: filteredNotes });
     })
 
-    .post(async (req, res) => {
+    .post(canAddMoreNote, async (req, res) => {
         const { title, content } = req.body;
         if (!title || !content) {
             res.status(400).json({ "msg": "Missing title or content" });
@@ -44,9 +45,8 @@ noteRouter.route("/")
         res.status(201).json(note);
     })
 
-noteRouter.use(isNoteOwner);
 noteRouter.route("/")
-    .delete(async (req, res) => {
+    .delete(isNoteOwner, async (req, res) => {
         const noteId = req.query.noteId;
 
         const diary = await Diary.findOne({ user: req.user._id }).exec();
