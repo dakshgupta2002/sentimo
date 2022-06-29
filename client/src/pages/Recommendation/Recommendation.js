@@ -36,28 +36,7 @@ export default function Recommendation() {
   return (
     <div>
       <Sidebar />
-      
-      <Tabs
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-      >
-        <Tab label="Last Week" />
-        <Tab label="Last Month"  />
-        <Tab label="Last Year"  />
-      </Tabs>
-
-      <TabPanel value={value} index={0}>
-        Recommendation for last Week
-      </TabPanel>
-
-      <TabPanel value={value} index={1}>
-        Recommendation for Last Month
-      </TabPanel>
-
-      <TabPanel value={value} index={2}>
-        Recommendation for Last Year
-      </TabPanel>
+      <h1>Recommendation</h1>
     </div>
   );
 }
