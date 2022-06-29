@@ -24,6 +24,7 @@ export default function InputDate({ date, setDate }) {
 
           <div className='date'>
             {`${date.getDate()} ${date.getMonth() + 1} ${date.getFullYear()} `}
+
           </div>
           <div className='label'>
             DD MM YYYY
