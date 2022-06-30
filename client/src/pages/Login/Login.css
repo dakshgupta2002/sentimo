@@ -24,7 +24,8 @@
 
 .login-logo-header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
+    align-items: center;
     width: 100%;
   }
   
@@ -75,7 +76,7 @@
 }
 
 .large-login-text {
-  font-size: 3em;
+  font-size: xx-large;
   letter-spacing: 2px;
   line-height: 40px;
 }
@@ -86,12 +87,11 @@
 }
 
 @media (max-width: 780px) {
-    .login-form-header {
-      /* margin: 5vh; */
-      justify-content: center;
+    .login-logo-header {
+      margin-top: 1rem;
     }
     
-    .login-logo-header {
+    .login-logo-header img {
       display: none;
     }
 
@@ -127,6 +127,6 @@
     }
 
     .login-dot {
-        font-size: 50px;
+        font-size: 40px;
     }
 }

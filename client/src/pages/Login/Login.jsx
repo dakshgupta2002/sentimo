@@ -10,6 +10,7 @@ import logo from "../../assets/images/logo.png";
 
 import "./Login.css";
 
+
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -36,9 +37,9 @@ export default function Login(props) {
     }
   };
 
-  // const signUpButtonClick = (event) => {
-  //   navigate("/register", { replace: true });
-  // };
+  const signUpButtonClick = (event) => {
+    navigate("/register", { replace: true });
+  };
 
   // Mobile: background IMG, Desktop show on left
   return (
@@ -46,33 +47,16 @@ export default function Login(props) {
       {/* Hidden in Mobile */}
       <div className="login-form-header">
         {/* <section className="login-form-image"></section> */}
-        <img
-          src={loginImage}
-          alt="Welcome"
-          style={{
-            height: "100%",
-            width: "100%",
-            maxWidth: "60vw",
-            maxHeight: "60vh",
-          }}
-        />
+        <img src={loginImage} alt="Welcome" style={{height: "100%", width: "100%", maxWidth: '60vw', maxHeight: '60vh'}} />
       </div>
 
       <div className="login-input-container">
+        
         <div className="login-logo-header">
-          <img
-            src={logo}
-            alt=""
-            style={{
-              maxHeight: "20vh",
-              maxWidth: "20vw",
-              minWidth: "100px",
-              minHeight: "100px",
-            }}
-          />
+          <img src={logo} alt="" style={{maxHeight: '20vh', maxWidth: '20vw', minWidth: '100px', minHeight: '100px'}} />
           <div className="login-text-header heading large-login-text">
-            Welcome Back<span className="login-dot">.</span>
-          </div>
+          Welcome Back<span className="login-dot">.</span>
+        </div>
         </div>
         <div className="input-field-container medium-text">
           <div>Log in to your account</div>
@@ -128,7 +112,7 @@ export default function Login(props) {
           <div className="sign-up-text">Don't Have an account yet? &nbsp;</div>
           <Button>
           <Link href="/register">
-            create a free account
+            Create one for free
           </Link>
           </Button>
         </div>
