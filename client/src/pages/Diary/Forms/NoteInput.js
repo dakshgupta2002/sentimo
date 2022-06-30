@@ -39,7 +39,7 @@ export default function NoteInput(props) {
                 placeholder="Title"
                 color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
-                focused="true"
+                focused={true}
                 value={title}
                 onChange={(e) => { setTitle(e.target.value) }}
                 margin="normal"
@@ -52,7 +52,7 @@ export default function NoteInput(props) {
                 variant="outlined"
                 color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
-                focused="true"
+                focused={true}
                 multiline
                 rows={15}
                 margin="normal"

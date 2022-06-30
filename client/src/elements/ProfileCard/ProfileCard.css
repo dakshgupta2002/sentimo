@@ -36,9 +36,10 @@
 
 .personName {
   font-weight: bold;
-  font-size: 60px;
+  font-size: 6rem;
   text-transform: uppercase;
   letter-spacing: 4px;
+  padding-bottom: 4rem;
 }
 
 .personWhatWork {
@@ -54,6 +55,7 @@
 
 .personContent {
   margin-top: 0;
+  font-size: larger;
   /* word-break: break-all; */
 }
 
@@ -88,7 +90,7 @@
   }
 
   .personName {
-    font-size: 40px;
+    font-size: 4rem;
     letter-spacing: 3.5px;
   }
 

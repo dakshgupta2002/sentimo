@@ -14,9 +14,7 @@ export default function AboutUs() {
   return (
     //make about us card in components and make 3 of them here
     <div className="aboutUsBody">
-      <Fade>
-        <Sidebar />
-      </Fade>
+      <Sidebar />
       <div className="profileCardParent">
         <Slide direction="up" triggerOnce>
         <div className="profileCard">

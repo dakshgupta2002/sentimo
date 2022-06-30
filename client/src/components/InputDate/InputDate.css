@@ -12,22 +12,13 @@
     padding: 0px 1rem;
 }
 
-.date > {
+.date * {
     font-family: 'Digital-7' !important;
-    font-size: 2.5rem !important;
+    font-size: 1.85rem !important;
     font-weight: 500 !important;
     color: #FDFBF9 !important;
-}
-/* .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root{
-    font-family: 'Digital-7' !important;
-    font-size: 2.5rem !important;
-    font-weight: 500 !important;
-    color: #FDFBF9 !important;
-
-} */
-
-.label {
-    color: #FDFBF9;
-    font-size: 0.7rem;
-    font-weight: 250;
+    border: 0px !important;
+    margin: 0px !important;
+    padding: 0px !important;
+    width: 150px !important;
 }
