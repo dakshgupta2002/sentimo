@@ -15,7 +15,7 @@ export const data = {
     name: "Ishwarendra Jha",
     whatWork: "Front End Developer",
     whoAreYou: "Pursuing B.Tech CSE from PEC, Chandigarh",
-    content: " ヾ(＠⌒ー⌒＠)ノ I am a full time Competitive Programmer and part time Web Developer. I am an individual which likes to be consistent and attain perfection in my work for the team. I worked on making an attractive UI and coding of the FrontEnd part of Sentimo. Also helped in debugging Pythonic code and NodeJS Linking issues.",
+    content: " ヾ(＠⌒ー⌒＠)ノ I am a full time Competitive Programmer and part time Web Developer. I am an individual who likes to be consistent and attain perfection in my work for the team. I worked on making an attractive UI and coding of the FrontEnd part of Sentimo. Also helped in debugging Pythonic code and NodeJS Linking issues.",
     socialLinks: ["mailto:ishwarendra27@gmail.com", "https://www.linkedin.com/in/ishwarendra-jha-900545202/", "https://www.instagram.com/ishwarendra_/", "https://github.com/Ishwarendra"],
     // img: require("./../../assets/avatars/ishwar_avatar.png")
   },
