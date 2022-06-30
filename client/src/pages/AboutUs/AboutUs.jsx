@@ -32,7 +32,7 @@ export default function AboutUs() {
         </Slide>
 
         <Slide triggerOnce direction="up">
-        <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
+        <div className="profileCard" style={{ border: 1 }}>
         <ProfileCard
             name={data?.ishwar?.name}
             whatWork={data?.ishwar?.whatWork}

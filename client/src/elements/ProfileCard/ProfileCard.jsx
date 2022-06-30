@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import Divider from '@mui/material/Divider';
+import Divider from './../../elements/Divider/Divider';
 
 import "./ProfileCard.css";
 
@@ -17,30 +18,30 @@ export default function ProfileCard({
 }) {
   return (
     <div className="profileCardContainer">
+      <Divider text={` . `} /> 
       <div className="personData">
 
         <div className="personWhatWork small-text">{whatWork}</div>
         <div className="personName">{name}.</div>
-        <Divider /> 
         <div className="personWhoAreYou medium-text">{whoAreYou}</div>
         <div className="personContent small-text">{content}</div>
       
         <div className="profileCardSocial">
-          <a href={socialLinks[0]}>
+          <Link to={socialLinks[0]}>
             <MailOutlinedIcon sx={{ color: "black", fontSize: "40px" }} />
-          </a>
+          </Link>
 
-          <a href={socialLinks[1]}>
+          <Link to={socialLinks[1]}>
             <LinkedInIcon sx={{ color: "black", fontSize: "40px" }} />
-          </a>
+          </Link>
 
-          <a href={socialLinks[2]}>
+          <Link to={socialLinks[2]}>
             <InstagramIcon sx={{ color: "black", fontSize: "40px" }} />
-          </a>
+          </Link>
 
-          <a href={socialLinks[3]}>
+          <Link to={socialLinks[3]}>
             <GitHubIcon sx={{ color: "black", fontSize: "40px" }} />
-          </a>
+          </Link>
         </div>
       </div>
 

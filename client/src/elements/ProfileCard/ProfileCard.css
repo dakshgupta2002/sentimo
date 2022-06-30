@@ -8,6 +8,7 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: #e7eeed;
+  padding: 2rem 0;
 }
 
 .personData {
@@ -84,12 +85,29 @@
   .personData {
     width: 80%;
   }
+
+  .personName {
+    font-size: 40px;
+    letter-spacing: 3.5px;
+  }
+
+  .personWhatWork {
+    font-size: 15px;
+    padding-bottom: 5px;
+    padding-top: 10px;
+  }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 400px) {
   .avatars {
     height: 250px;
     width: 250px;
   }
- 
+  
+  .personName {
+    font-size: 25px;
+    letter-spacing: 2px;
+  }
+
+  
 }
