@@ -11,6 +11,7 @@ import { removeNote, updateFav, updateProtect } from "../../utils/api/notes";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./Diary.css";
+import { useLoading } from "../../utils/hooks/useLoading";
 
 export default function Note({
   title,
@@ -27,10 +28,13 @@ export default function Note({
   const navigate = useNavigate();
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
+  const { setError, setLoading } = useLoading();
 
   const deleteNote = async () => {
+    setLoading(true); setError('Removing Note...')
     await removeNote(noteId);
     setNotesAdded(notesAdded-1);
+    setLoading(false);
   };
 
   const handleFavourite = async () => {

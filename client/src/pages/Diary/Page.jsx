@@ -8,12 +8,12 @@ import { fetchNotes } from "../../utils/api/notes.js";
 import './Diary.css';
 
 export default function Page({date, notesAdded, setNotesAdded, notesEdited, setNotesEdited, setEditOpen, setEditNoteId}) {
-  const { setLoading, LoadingScreen} = useLoading();
+  const { setLoading, LoadingScreen, setError } = useLoading();
   const [notes, setNotes] = useState([]);
 
   useEffect(() => {
     const getNotes = async () => {
-      setLoading(true);
+      setLoading(true); setError('Fetching Notes')
       const res = await fetchNotes(date);
       if (res.response.status === 200) {
         setNotes(res.data.notes);
@@ -25,7 +25,7 @@ export default function Page({date, notesAdded, setNotesAdded, notesEdited, setN
 
   return (
     <div className="page-container">
-      <LoadingScreen/>
+      <LoadingScreen />
       {notes?.length === 0 ? (
         <h1>No notes for this date</h1>
       ) : (

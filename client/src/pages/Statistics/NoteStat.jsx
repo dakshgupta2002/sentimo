@@ -14,7 +14,7 @@ import {
 import { Cards } from "../../elements";
 
 import "./index.css";
-import { useLoading } from '../../utils/hooks/useLoading'
+import { useLoading } from "../../utils/hooks/useLoading";
 import { fetchNoteSingle } from "../../utils/api/notes";
 //fetch stats for particulary only this note Id
 //and stats should be converted to graphs and illustrations
@@ -25,26 +25,31 @@ export default function NoteStat() {
   const [note, setNote] = useState({});
   const [pieData, setPieData] = useState([]);
   const [lineData, setLineData] = useState([{ x: "", y: 0 }]);
-  const { LoadingScreen, setLoading } = useLoading();
+  const { LoadingScreen, setLoading, setError } = useLoading();
   useEffect(() => {
     const fetchNote = async () => {
+      setLoading(true);
+      setError("Fetching Note Data");
       const note = await fetchNoteSingle(noteId);
       if (note?.response?.status === 404) {
         return;
       }
       setNote(note?.data);
+      setLoading(false);
     };
     fetchNote();
   }, [noteId]);
+
   const fetchEmotion = async () => {
     setLoading(true);
+    setError("Generating Stats");
     const res = await fetchNoteStats(noteId);
     if (res?.response?.status === 201 || res?.response?.status === 200) {
       setEmotion(res?.data?.emotion);
     } else {
       console.log(res?.data?.msg);
     }
-    setLoading(false)
+    setLoading(false);
   };
   useEffect(() => {
     const refreshPieData = () => {
@@ -69,7 +74,8 @@ export default function NoteStat() {
         data.push({ x: 2, y: Math.round(emotion?.Angry * 360) });
       if (emotion?.Surprise)
         data.push({ x: 3, y: Math.round(emotion?.Surprise * 360) });
-      if (emotion?.Fear) data.push({ x: 4, y: Math.round(emotion?.Fear * 360) });
+      if (emotion?.Fear)
+        data.push({ x: 4, y: Math.round(emotion?.Fear * 360) });
       if (emotion?.Happy)
         data.push({ x: 5, y: Math.round(emotion?.Happy * 360) });
       setLineData(data);
@@ -81,6 +87,7 @@ export default function NoteStat() {
 
   return (
     <Box>
+      <LoadingScreen/>
       <Sidebar />
       <div className="noteInfo">
         <Cards
@@ -107,7 +114,9 @@ export default function NoteStat() {
       {!!emotion === false ? (
         <Typography>..</Typography>
       ) : pieData.length === 0 && lineData.length === 0 ? (
-        <Typography>Content not sufficient to generate emotions for this note. Try Harder</Typography>
+        <Typography>
+          Content not sufficient to generate emotions for this note. Try Harder
+        </Typography>
       ) : (
         <>
           <VictoryPie
