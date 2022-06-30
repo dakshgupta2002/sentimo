@@ -97,11 +97,11 @@ export default function Cards({
 
         {prot === -1 ? null : prot === 1 ? (
           <IconButton onClick={handleProtected}>
-            <EnhancedEncryption sx={{ color: "black" }} />
+            <EnhancedEncryption sx={{ color: "white" }} />
           </IconButton>
         ) : (
           <IconButton onClick={handleProtected}>
-            <LockOpen sx={{ color: "black" }} />
+            <LockOpen sx={{ color: "white" }} />
           </IconButton>
         )}
 
