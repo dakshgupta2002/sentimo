@@ -31,7 +31,7 @@ export default function AboutUs() {
         </div>
         </Slide>
 
-        <Slide triggerOnce direction="up">
+        <Slide triggerOnce direction="up">Icon
         <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
         <ProfileCard
             name={data?.ishwar?.name}
