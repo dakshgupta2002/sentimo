@@ -5,7 +5,7 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('*/10 * * * * *', async () => { // run every 8 hours to manage all timezones
+var dailyStat = schedule('59 23 * * *', async () => { // run every 8 hours to manage all timezones
   const date = new Date().toLocaleDateString(); //the aws ami is set to default Asia/Calcutta
   console.log("===Starting CRON job===", date)
   //at 11:59pm of every day
