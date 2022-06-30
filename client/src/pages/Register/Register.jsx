@@ -117,8 +117,10 @@ export default function Register(props) {
             </div>
 
             <div className="login-container mv mob-mid">
-              <span className="small-text">Already a member? </span>
-              <Link href="/login"> Login</Link>
+              <span className="mui-btn-like">Already a member? </span>
+              <Button>
+                <Link href="/login">Login</Link>
+              </Button>
             </div>
           </div>
 

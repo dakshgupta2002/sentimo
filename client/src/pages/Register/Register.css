@@ -45,6 +45,15 @@
 }
 
 /* Small useful classes */
+.mui-btn-like {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  min-width: 64px;
+  padding: 6px 0 6px 8px;
+}
+
 .mv {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -81,8 +90,7 @@
   color: #508afa;
 }
 
-@media (max-width: 990px)
-{
+@media (max-width: 990px) {
   .register-header {
     display: none;
   }
