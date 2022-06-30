@@ -111,7 +111,7 @@ export default function Login(props) {
           <div className="sign-up-text">Don't Have an account yet? &nbsp;</div>
           <Button>
           <Link href="/register">
-            Create one for free
+            create a free account
           </Link>
           </Button>
         </div>
