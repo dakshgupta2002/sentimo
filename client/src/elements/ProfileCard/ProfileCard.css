@@ -18,7 +18,7 @@
   justify-content: flex-start;
   align-items: center;
   box-sizing: border-box;
-  margin: 1vw 0 0 0;
+  margin: 1vw 0 0 1vw;
   width: 50%;
 }
 
@@ -36,7 +36,7 @@
 
 .personName {
   font-weight: bold;
-  font-size: 6rem;
+  font-size: 6vw;
   text-transform: uppercase;
   letter-spacing: 4px;
   padding-bottom: 4rem;
@@ -47,6 +47,7 @@
   padding-bottom: 10px;
   text-transform: uppercase;
   font-weight: 700;
+  font-size: 2vw;
 }
 
 .personWhoAreYou {
@@ -75,8 +76,8 @@
 }
 
 .avatars {
-  max-height: 350px;
-  max-width: 350px;
+  max-height: 330px;
+  max-width: 330px;
 }
 
 @media (max-width: 700px) {
@@ -90,7 +91,7 @@
   }
 
   .personName {
-    font-size: 4rem;
+    font-size: 10vw;
     letter-spacing: 3.5px;
   }
 

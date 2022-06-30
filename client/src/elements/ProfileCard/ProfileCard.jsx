@@ -20,7 +20,7 @@ export default function ProfileCard({
     <div className="profileCardContainer">
       <Divider text={` . `} />
       <div className="personData">
-        <div className="personWhatWork small-text">{whatWork}</div>
+        <div className="personWhatWork">{whatWork}</div>
         <div className="personName">{name}.</div>
         <div className="personWhoAreYou medium-text">{whoAreYou}</div>
         <div className="personContent small-text">{content}</div>
