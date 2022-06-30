@@ -76,9 +76,9 @@
 }
 
 .large-login-text {
-  font-size: xx-large;
+  font-size: 3em;
   letter-spacing: 2px;
-  line-height: 40px;
+  line-height: 3.2rem;
 }
 
 .login-dot {

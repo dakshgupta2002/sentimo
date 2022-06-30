@@ -39,7 +39,7 @@ export default function Home() {
           <div className="home-title-container">
             <div className="home-title popup-anim text--center">SENTIMO</div>
             <div className="home-title-desc popup-anim text--left">
-              Write down your deep down feelings in our secure notes app and <br/> <br/>
+              Write down your deep down feelings in our secure note app<br/> <br/>
               Watch the movies that match your sentiments and reduce time surfing OTTs.
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function Home() {
       <Slide direction="right" cascade triggerOnce>
         <div className="confused-point-container">
           <div className="confused-points">
-            <div className="confused-header">Questions</div>
+            <div className="confused-header text--center">Questions</div>
             <div className="confused-point">
               ❓Tired and exhausted from your entire day's work?
             </div>
@@ -83,7 +83,7 @@ export default function Home() {
             />
           </div>
           <div className="confused-points">
-            <div className="confused-header">Answers</div>
+            <div className="confused-header text--center">Answers</div>
             <div className="confused-point">
               💡 Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!
@@ -103,7 +103,7 @@ export default function Home() {
       {/* TODO: CHANGE ICON IMAGES */}
       <Slide direction="right" cascade triggerOnce>
         <div className="how-it-works-container">
-          <div className="how-it-works-header">HOW IT WORKS !</div>
+          <div className="how-it-works-header text--center">HOW IT WORKS !</div>
 
           <div className="how-it-works-steps">
             <div className="step">

@@ -91,7 +91,7 @@ export default function Register(props) {
       {/* Form Container contains logo and necessary textfield and buttons */}
       <div className="register-form-container">
         {/* Contains Logo and App Name */}
-        <div className="register-header">
+        <div className="register-header text--center">
           {/* <span className="logo">LOGO </span>
           <span className="heading">SENTIMO</span> */}
           <img
@@ -104,17 +104,16 @@ export default function Register(props) {
               minHeight: "100px",
             }}
           />
+            <div className="large-text heading mv mob-mid">
+              Create new account
+              <span className="dot">.</span>
+            </div>
         </div>
 
         {/* Create Account Headings mv = margin vertical */}
         <div className="only-form">
           <div className="register-text-container">
-            <div className="medium-text mv mob-mid">START FOR FREE</div>
 
-            <div className="large-text heading mv mob-mid">
-              Create new account
-              <span className="dot">.</span>
-            </div>
 
             <div className="login-container mv mob-mid">
               <span className="mui-btn-like">Already a member? </span>
