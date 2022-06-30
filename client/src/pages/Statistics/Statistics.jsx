@@ -48,48 +48,38 @@ export default function Statistics() {
   useEffect(() => {
     /* Score out of 10 for each day and each emotion separate line chart */
     const refreshLineData = () => {
-      var lineHappyData = [],
-        lineAngryData = [],
-        lineSurpriseData = [];
-      var lineSadData = [],
-        lineFearData = [];
-
-      var lineData = [];
-
+      var lineHappyData = [], lineAngryData = [], lineSurpriseData = [], lineSadData = [], lineFearData = [];
+      
       for (let i = 0; i < emotions?.length; i++) {
-        /* TODO: What if emotions[1] is empty or some bug do ask Daksh don't forget! */
-        var emotion = emotions[1];
-
+        let emotion = emotions[i][1]; //emotions of each day are stored in index 1
+        
         emotion.Happy
-          ? lineHappyData.push(Math.round(emotion.Happy * 10))
-          : lineHappyData.push(0);
+        ? lineHappyData.push(Math.round(emotion.Happy * 100))
+        : lineHappyData.push(0);
         emotion.Angry
-          ? lineAngryData.push(Math.round(emotion.Angry * 10))
-          : lineAngryData.push(0);
+        ? lineAngryData.push(Math.round(emotion.Angry * 100))
+        : lineAngryData.push(0);
         emotion.Surprise
-          ? lineSurpriseData.push(Math.round(emotion.Surprise * 10))
+          ? lineSurpriseData.push(Math.round(emotion.Surprise * 100))
           : lineSurpriseData.push(0);
-        emotion.Sad
-          ? lineSadData.push(Math.round(emotion.Sad * 10))
+          emotion.Sad
+          ? lineSadData.push(Math.round(emotion.Sad * 100))
           : lineSadData.push(0);
-        emotion.Fear
-          ? lineFearData.push(Math.round(emotion.Fear * 10))
+          emotion.Fear
+          ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
+      
+      var lineData = [];
+      for (let i=0; i<5; i++)lineData.push([]);
 
-      /* Since all line(some)Data is of same length */
       for (let i = 0; i < lineHappyData?.length; i++) {
-        if (lineHappyData[i] !== 0)
-          lineData[0].push({ x: i, y: lineHappyData[i] });
-        if (lineAngryData[i] !== 0)
-          lineData[1].push({ x: i, y: lineAngryData[i] });
-        if (lineSurpriseData[i] !== 0)
-          lineData[2].push({ x: i, y: lineSurpriseData[i] });
-        if (lineSadData[i] !== 0) lineData[3].push({ x: i, y: lineSadData[i] });
-        if (lineFearData[i] !== 0)
-          lineData[4].push({ x: i, y: lineFearData[i] });
+        lineData[0].push({ x: i, y: lineHappyData[i] });
+        lineData[1].push({ x: i, y: lineAngryData[i] });
+        lineData[2].push({ x: i, y: lineSurpriseData[i] });
+        lineData[3].push({ x: i, y: lineSadData[i] });
+        lineData[4].push({ x: i, y: lineFearData[i] });
       }
-
       setLineChartData(lineData);
     };
 
@@ -99,7 +89,7 @@ export default function Statistics() {
       var totalCount = [1.0, 1.0, 1.0, 1.0, 1.0];
 
       for (let i = 0; i < emotions?.length; i++) {
-        var emotion = emotions[1];
+        let emotion = emotions[i][1];
         if (emotion.Happy) {
           data[0] += emotion.Happy;
           totalCount[0] += 1;
@@ -150,7 +140,7 @@ export default function Statistics() {
       // console.log("pieData:", pieData[0].y + pieData[1].y + pieData[2].y + pieData[3].y + pieData[4].y)
     };
 
-    refreshPieData();
+    // refreshPieData();
     refreshLineData();
   }, [emotions]); // update the data required when new emotions are created
 
