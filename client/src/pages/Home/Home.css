@@ -27,9 +27,13 @@
 
 .lottie-animation {
     display: flex;
-    width: 50%;
+    width: 100%;
     height: 50%;
-    justify-content: flex-start;
+    /* justify-content: flex-start; */
+}
+
+img.lottie-animation {
+    margin-bottom: 10px;
 }
 
 .home-heading {
@@ -66,7 +70,7 @@
     font-size: 3.2rem;
     display: flex;
     justify-content: center;
-    padding: 2rem 0;
+    padding: 2rem 5px;
     font-weight: bold;
     letter-spacing: 5px;
     text-transform: uppercase;
