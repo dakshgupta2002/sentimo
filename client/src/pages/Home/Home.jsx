@@ -24,9 +24,12 @@ export default function Home() {
   return (
     <div className="home-container">
       <Sidebar />
-
+      <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
+        <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
+      </footer>
+          
       {/* HEADING SENTIMO AND ONE LINER */}
-      <Slide direction="up" cascade triggerOnce>
+      <Fade triggerOnce>
         <div className="home-heading">
           <Lottie
             className="lottie-animation"
@@ -45,7 +48,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </Slide>
+      </Fade>
 
       {/* CONFUSED PERSON AND QUESTIONS */}
       <div className="confused-point-container">
@@ -136,19 +139,19 @@ export default function Home() {
 
               <div className="step-header">That's It</div>
               <div className="step-content">
-                Start writing your diaries and watch movies at your lowest
+                Start writing your diaries and watch movies at your lowest points of life!
               </div>
             </div>
           </div>
         </Fade>
       </div>
 
-        <div className="extra-features-container">
-      <Fade triggerOnce>
+      <div className="extra-features-container">
+        <Fade triggerOnce>
           <div className="extra-features-heading">benefits</div>
-          </Fade>
-          <div className="extra-features">
-            <Fade triggerOnce>
+        </Fade>
+        <div className="extra-features">
+          <Fade triggerOnce>
             <div className="extra-features-content">
               <Filter1RoundedIcon sx={{ fontSize: "3rem" }} />
               Wanna see how you feel throughout the week or so, we have your
@@ -164,18 +167,9 @@ export default function Home() {
               Surf only the movies filtered specially for you to cheer up at the
               moments you need love the most.
             </div>
-            </Fade>
-          </div>
+          </Fade>
         </div>
-
-      <footer
-        className="text--center"
-        style={{ paddingTop: "10px", paddingBottom: "10px" }}
-      >
-        <Link to="/aboutUs" style={{ color: "#fff", textDecoration: "none" }}>
-          About the Developers
-        </Link>
-      </footer>
+      </div>
     </div>
   );
 }

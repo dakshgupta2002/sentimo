@@ -12,7 +12,7 @@
         opacity: 0.1;
     }
     50% {
-        opacity: 0.2;
+        opacity: 0.5;
         transform: translateY(0%);
     }
     100% {
@@ -22,7 +22,7 @@
 }
 
 .popup-anim {
-    animation: popup 3s ease-out;
+    animation: popup 0.5s ease-in-out;
 }
 
 .lottie-animation {
@@ -57,7 +57,7 @@ img.lottie-animation {
     /* font-size: 70px; */
     font-size: 60px;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     line-height: 100px;
     margin: 0px;
 }
@@ -74,7 +74,7 @@ img.lottie-animation {
     justify-content: center;
     padding: 2rem 5px;
     font-weight: bold;
-    letter-spacing: 5px;
+    letter-spacing: 3px;
     text-transform: uppercase;
 }
 
@@ -192,19 +192,19 @@ footer {
 @media (max-width: 450px) {
     .home-title, 
     .confused-header, .extra-features-heading {
-        font-size: clamp(1rem, 2rem, 3rem);
-        line-height: 3rem;
+        font-size: clamp(2rem, 3rem, 4rem);
+        line-height: 8rem;
     }
 
     .how-it-works-header {
-        font-size: 1.8rem;
-        line-height: 2.5rem;
-        letter-spacing: 3px;
+        font-size: 2.6rem;
+        line-height: 3rem;
+        letter-spacing: 2px;
     }
 
     .home-title-desc, 
     .confused-point {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
         margin: 0 10px;
     }
 }

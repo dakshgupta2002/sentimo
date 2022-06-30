@@ -69,7 +69,7 @@ statRouter.route("/")
         const lastDate = new Date(date.setDate(date.getDate() - days)).toLocaleDateString();
         //all stats of the user saved in req latest in the days
         const filteredStats = await req?.stats?.filter(stat => {
-            return lastDate <= stat?.date;
+            return lastDate <= (new Date(stat?.date)).toLocaleDateString();
         })
         await Promise.all(filteredStats).then(filteredStats => {
             res.status(200).json(filteredStats)
