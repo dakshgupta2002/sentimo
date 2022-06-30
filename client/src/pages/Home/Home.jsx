@@ -1,14 +1,15 @@
 import React from "react";
 import { Slide, Fade } from "react-awesome-reveal";
-import Lottie from "react-lottie-player";
-import { Sidebar } from "../../components";
-import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
-import confusedGuy from "../../assets/lottieSvg/confused.json";
-import answers from "../../assets/lottieSvg/answers.json";
 import Filter1RoundedIcon from "@mui/icons-material/Filter1Rounded";
 import Filter2RoundedIcon from "@mui/icons-material/Filter2Rounded";
 import Filter3RoundedIcon from "@mui/icons-material/Filter3Rounded";
 import { Link } from "react-router-dom";
+import Lottie from "react-lottie-player";
+import { Sidebar } from "../../components";
+import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
+// import confusedGuy from "../../assets/lottieSvg/confused.json";
+import answers from "../../assets/lottieSvg/answers.json";
+import thinking from "../../assets/images/thinking.svg"
 
 import "./Home.css";
 
@@ -22,15 +23,13 @@ import "./Home.css";
 export default function Home() {
   return (
     <div className="home-container">
-      <Fade triggerOnce>
-        <Sidebar />
-        <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
-         <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
-        </footer>
-      </Fade>
-    
+      <Sidebar />
+      <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
+        <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
+      </footer>
+          
       {/* HEADING SENTIMO AND ONE LINER */}
-      <Fade direction="up" cascade triggerOnce>
+      <Fade triggerOnce>
         <div className="home-heading">
           <Lottie
             className="lottie-animation"
@@ -42,16 +41,18 @@ export default function Home() {
           <div className="home-title-container">
             <div className="home-title popup-anim text--center">SENTIMO</div>
             <div className="home-title-desc popup-anim text--left">
-              Write down your deep down feelings in our secure note app<br/> <br/>
-              Watch the movies that match your sentiments and reduce time surfing OTTs.
+              Write down your deep down feelings in our secure note app.
+              <br /> <br />
+              Watch the movies that match your sentiments and reduce time
+              surfing OTTs.
             </div>
           </div>
         </div>
       </Fade>
 
       {/* CONFUSED PERSON AND QUESTIONS */}
-      <Slide direction="right" cascade triggerOnce>
-        <div className="confused-point-container">
+      <div className="confused-point-container">
+        <Fade triggerOnce>
           <div className="confused-points">
             <div className="confused-header text--center">Questions</div>
             <div className="confused-point">
@@ -61,30 +62,35 @@ export default function Home() {
               ❓Or did something exciting and fascinating happen?
             </div>
 
-            {/* TODO: Some issue with this 3rd div. Shifted to a bit right need to check */}
             <div className="confused-point">
               ❓Lest you're fearful or sad about anything?
             </div>
           </div>
+        </Fade>
+
+        <Fade triggerOnce>
+        {/* <Lottie
+          className="lottie-animation"
+          animationData={confusedGuy}
+          loop
+          play
+        /> */}
+        <img src={thinking} alt="" className="lottie-animation" />
+        </Fade>
+      </div>
+
+      <div className="solution-container">
+        <div className="confused-lottie lottie-animation">
+        <Fade triggerOnce>
           <Lottie
-            className="lottie-animation"
-            animationData={confusedGuy}
+            style={{ alignSelf: "center" }}
+            animationData={answers}
             loop
             play
           />
+          </Fade>
         </div>
-      </Slide>
-
-      <Slide direction="left" cascade triggerOnce>
-        <div className="solution-container">
-          <div className="confused-lottie lottie-animation">
-            <Lottie
-              style={{alignSelf: "center"}}
-              animationData={answers}
-              loop
-              play
-            />
-          </div>
+        <Fade triggerOnce>
           <div className="confused-points">
             <div className="confused-header text--center">Answers</div>
             <div className="confused-point">
@@ -100,14 +106,15 @@ export default function Home() {
               to your mood.
             </div>
           </div>
-        </div>
-      </Slide>
+        </Fade>
+      </div>
 
       {/* TODO: CHANGE ICON IMAGES */}
-      <Slide direction="right" cascade triggerOnce>
-        <div className="how-it-works-container">
+      <div className="how-it-works-container">
+        <Fade triggerOnce>
           <div className="how-it-works-header text--center">HOW IT WORKS !</div>
-
+        </Fade>
+        <Fade triggerOnce>
           <div className="how-it-works-steps">
             <div className="step">
               <img
@@ -118,7 +125,8 @@ export default function Home() {
 
               <div className="step-header">CONNECT DEVICE</div>
               <div className="step-content">
-                One step login/signup to unlocking doors to complete emotional regeneration!
+                One step login/signup to unlocking doors to complete emotional
+                regeneration!
               </div>
             </div>
 
@@ -130,16 +138,20 @@ export default function Home() {
               ></img>
 
               <div className="step-header">That's It</div>
-              <div className="step-content">Start writing your diaries and watch movies at your lowest</div>
+              <div className="step-content">
+                Start writing your diaries and watch movies at your lowest points of life!
+              </div>
             </div>
           </div>
-        </div>
-      </Slide>
+        </Fade>
+      </div>
 
-      <Slide direction="left" cascade triggerOnce>
-        <div className="extra-features-container">
+      <div className="extra-features-container">
+        <Fade triggerOnce>
           <div className="extra-features-heading">benefits</div>
-          <div className="extra-features">
+        </Fade>
+        <div className="extra-features">
+          <Fade triggerOnce>
             <div className="extra-features-content">
               <Filter1RoundedIcon sx={{ fontSize: "3rem" }} />
               Wanna see how you feel throughout the week or so, we have your
@@ -152,12 +164,12 @@ export default function Home() {
             </div>
             <div className="extra-features-content">
               <Filter3RoundedIcon sx={{ fontSize: "3rem" }} />
-              Surf only the movies filtered specially for you to 
-              cheer up at the moments you need love the most.
+              Surf only the movies filtered specially for you to cheer up at the
+              moments you need love the most.
             </div>
-          </div>
+          </Fade>
         </div>
-      </Slide>
+      </div>
     </div>
   );
 }
