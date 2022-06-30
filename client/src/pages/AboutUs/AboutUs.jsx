@@ -15,7 +15,7 @@ export default function AboutUs() {
     //make about us card in components and make 3 of them here
     <div className="aboutUsBody">
       <Fade>
-      <Sidebar />
+        <Sidebar />
       </Fade>
       <div className="profileCardParent">
         <Slide direction="up" triggerOnce>
@@ -31,8 +31,8 @@ export default function AboutUs() {
         </div>
         </Slide>
 
-        <Slide triggerOnce direction="up">Icon
-        <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
+        <Slide triggerOnce direction="up">
+        <div className="profileCard" style={{ border: 1 }}>
         <ProfileCard
             name={data?.ishwar?.name}
             whatWork={data?.ishwar?.whatWork}
