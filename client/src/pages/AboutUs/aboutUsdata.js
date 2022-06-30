@@ -3,8 +3,8 @@ export const data = {
     name: "Daksh Gupta",
     whatWork: "Full Stack Developer",
     whoAreYou: "Pursuing B.Tech. CSE from PEC, Chandigarh",
-    content: "I am MERN developer with special interest in data modelling for more efficiency. I am a growth orientated individual who believes in learning at every stage of life and overcoming challenges as they come! Single handedly created and hosted the complete backend of Sentimo with Node.js and AWS EC2 respectively.\nAlso performed supportive and managerial roles for Sentimo.",
-    socialLinks: ["https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=dakshgupta2002@gmail.com",
+    content: "I am MERN developer with special interest in data modelling for more efficiency. I am a growth orientated individual who believes in learning at every stage of life and overcoming challenges as they come. Single handedly created and hosted the complete backend of Sentimo with Node.js and AWS EC2 respectively. Also performed supportive and managerial roles for Sentimo.",
+    socialLinks: ["mailto:dakshgupta2002@gmail.com",
       "https://www.linkedin.com/in/dakshgupta1511/",
       "https://www.instagram.com/dakshgupta2002/",
       "https://github.com/dakshgupta2002"],
@@ -14,9 +14,9 @@ export const data = {
   ishwar: {
     name: "Ishwarendra Jha",
     whatWork: "Front End Developer",
-    whoAreYou: "3rd Year Under-Graduate, pursuing B.Tech from PEC, Chandigarh",
-    content: " ヾ(＠⌒ー⌒＠)ノ Full time Competitive Programmer, Part Time Web Developer. I worked on making UI for the app and helped in debugging python and Node Linking issue.",
-    socialLinks: ["#", "#", "#", "#"],
+    whoAreYou: "Pursuing B.Tech CSE from PEC, Chandigarh",
+    content: " ヾ(＠⌒ー⌒＠)ノ I am a full time Competitive Programmer and part time Web Developer. I am an individual who likes to be consistent and attain perfection in my work for the team. I worked on making an attractive UI and coding of the FrontEnd part of Sentimo. Also helped in debugging Pythonic code and NodeJS Linking issues.",
+    socialLinks: ["mailto:ishwarendra27@gmail.com", "https://www.linkedin.com/in/ishwarendra-jha-900545202/", "https://www.instagram.com/ishwarendra_/", "https://github.com/Ishwarendra"],
     // img: require("./../../assets/avatars/ishwar_avatar.png")
   },
 
