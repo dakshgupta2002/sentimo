@@ -4,7 +4,7 @@ export const data = {
     whatWork: "Full Stack Developer",
     whoAreYou: "Pursuing B.Tech. CSE from PEC, Chandigarh",
     content: "I am MERN developer with special interest in data modelling for more efficiency. I am a growth orientated individual who believes in learning at every stage of life and overcoming challenges as they come. Single handedly created and hosted the complete backend of Sentimo with Node.js and AWS EC2 respectively. Also performed supportive and managerial roles for Sentimo.",
-    socialLinks: ["https://mail.google.com/mail/u/0/?fs=1&tf=cm&source=mailto&to=dakshgupta2002@gmail.com",
+    socialLinks: ["mailto:dakshgupta2002@gmail.com",
       "https://www.linkedin.com/in/dakshgupta1511/",
       "https://www.instagram.com/dakshgupta2002/",
       "https://github.com/dakshgupta2002"],
