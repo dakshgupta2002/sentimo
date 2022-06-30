@@ -23,6 +23,7 @@
 
 .register-header {
   width: 100%;
+  display: flex;
 }
 
 .register-text-container {
@@ -91,7 +92,7 @@
 }
 
 @media (max-width: 990px) {
-  .register-header {
+  .register-header img {
     display: none;
   }
 }
@@ -125,7 +126,7 @@
   }
 
   .register-header {
-    display: none;
+    justify-content: center;
   }
 
   .header {
