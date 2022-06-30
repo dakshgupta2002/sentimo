@@ -30,7 +30,7 @@ export default function NoteStat() {
     const fetchNote = async () => {
       const note = await fetchNoteSingle(noteId);
       if (note?.response?.status === 404) {
-        //no such note exist, redirect to error page
+        return;
       }
       setNote(note?.data);
     };

@@ -16,7 +16,8 @@ export default function NoteInput(props) {
         if (content.length + title.length > textLimit) {
             toast.warn("Text limit reached."); return;
         }
-        const res = await postNote(title, content, props.date, props.notesAdded, props.setNotesAdded);
+        const res = await postNote(title, content, props.date);
+        props.setNotesAdded(props.notesAdded+1)
         if (res.response.status === 200 || res.response.status === 201) {
             console.log("Note posted");
             props.close();

@@ -29,7 +29,8 @@ export default function Note({
   const [prot, setProt] = useState(protect);
 
   const deleteNote = () => {
-    removeNote(noteId, notesAdded, setNotesAdded);
+    removeNote(noteId);
+    setNotesAdded(notesAdded-1);
   };
 
   const handleFavourite = async () => {
