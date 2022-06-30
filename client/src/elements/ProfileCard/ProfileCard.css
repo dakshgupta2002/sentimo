@@ -8,7 +8,7 @@
   justify-content: space-evenly;
   align-items: center;
   background-color: #e7eeed;
-  padding: 2rem 0;
+  padding: 1rem 0;
   /* min-height: 80vh; */
 }
 
@@ -52,6 +52,7 @@
 
 .personWhoAreYou {
   font-weight: 600;
+  font-size: max(2vmax, 25px);
 }
 
 .personContent {
@@ -109,7 +110,6 @@
   }
   
   .personName {
-    font-size: 25px;
     letter-spacing: 2px;
   }
 }
