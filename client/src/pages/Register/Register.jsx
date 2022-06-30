@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import logo from "../../assets/images/logo.png";
@@ -45,9 +45,7 @@ export default function Register(props) {
       for (var i = 0; i < missing.length; i++)
         errorMsg += ` ${missing[i]}` + (i !== missing.length - 1 ? ", " : ".");
 
-      toast.error(errorMsg, {
-        duration: 2500,
-      });
+      toast.error(errorMsg, {icon: '❌'});
       return;
     }
 
@@ -75,16 +73,11 @@ export default function Register(props) {
         ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
 
-      toast.success("Registration Successful", {
-        duration: 2000,
-      });
-
+      toast.success("Registration Successful", {duration: 2000});
       navigate("/");
     } else {
       console.log("error", res.data.msg);
-      toast.error("Username already Taken", {
-        duration: 2000,
-      });
+      toast.error("Username already Taken", {icon: '❌'});
     }
   };
 
@@ -125,13 +118,7 @@ export default function Register(props) {
 
             <div className="login-container mv mob-mid">
               <span className="small-text">Already a member? </span>
-              <Button
-                variant="standard"
-                onClick={logInButtonClick}
-                sx={{ color: "#508afa", margin: "0", padding: "0" }}
-              >
-                Log In
-              </Button>
+              <Link href="/login"> Login</Link>
             </div>
           </div>
 

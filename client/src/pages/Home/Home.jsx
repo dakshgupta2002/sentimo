@@ -38,9 +38,9 @@ export default function Home() {
 
           <div className="home-title-container">
             <div className="home-title popup-anim text--center">SENTIMO</div>
-            <div className="home-title-desc popup-anim text--center">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quasi,
-              similique!
+            <div className="home-title-desc popup-anim text--left">
+              Write down your deep down feelings in our secure notes app and <br/> <br/>
+              Watch the movies that match your sentiments and reduce time surfing OTTs
             </div>
           </div>
         </div>
@@ -85,15 +85,15 @@ export default function Home() {
           <div className="confused-points">
             <div className="confused-header">Answers</div>
             <div className="confused-point">
-              ✅ Do not stress yourself out as you can pour your heart out to us
+              💡 Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!
             </div>
             <div className="confused-point">
-              ✅ This is your personalised diary and you can keep all types of
+              💡 This is your personalised diary and you can keep all types of
               notes you want to!
             </div>
             <div className="confused-point">
-              ✅ Instead, we'll recommend you entertainment material according
+              💡 Instead, we'll recommend you entertainment material according
               to your mood.
             </div>
           </div>
@@ -115,8 +115,7 @@ export default function Home() {
 
               <div className="step-header">CONNECT DEVICE</div>
               <div className="step-content">
-                Need username and password ... big bi gbi gbibi more big big big
-                line other one small
+                One step login/signup to unlocking doors to complete emotional regeneration!
               </div>
             </div>
 
@@ -127,8 +126,8 @@ export default function Home() {
                 alt=""
               ></img>
 
-              <div className="step-header">DONEE</div>
-              <div className="step-content">Yes get started with diary ...</div>
+              <div className="step-header">That's It</div>
+              <div className="step-content">Start writing your diaries and watch movies at your lowest</div>
             </div>
           </div>
         </div>
@@ -150,8 +149,8 @@ export default function Home() {
             </div>
             <div className="extra-features-content">
               <Filter3RoundedIcon sx={{ fontSize: "3rem" }} />
-              Feeling lethargic to type it out? You can also speak out your
-              feelings in a minute.
+              Surf only the movies filtered specially for you to 
+              cheer up at the moments you need love the most.
             </div>
           </div>
         </div>

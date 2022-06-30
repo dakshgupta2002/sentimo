@@ -11,12 +11,10 @@ export default function NoteInput(props) {
 
     const addNote = async () => {
         if (title.trim() === "" || content.trim() === "") {
-            toast.error("Title and content are required", {
-                duration: 2500,
-            });
+            toast.error("Title and content are required"); return;
         }
         if (content.length + title.length > textLimit) {
-            toast.warn("Text limit reached.")
+            toast.warn("Text limit reached."); return;
         }
         const res = await postNote(title, content, props.date, props.notesAdded, props.setNotesAdded);
         if (res.response.status === 200 || res.response.status === 201) {

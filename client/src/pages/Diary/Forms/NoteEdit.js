@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import { TextField, Button } from '@mui/material'
-import { fetchNotes, fetchNoteSingle, updateNoteSingle } from '../../../utils/api/notes';
+import { fetchNoteSingle, updateNoteSingle } from '../../../utils/api/notes';
 import { toast } from 'react-toastify';
 
 export default function NoteEdit({ close, editNoteId, setNotesEdited, notesEdited }) {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
-
+    const [textLimit, setTextLimit] = useState(800)
+    
     const editNote = async () => {
+        if (title.trim() === "" || content.trim() === "") {
+            toast.error("Title and content are required"); return;
+        }
+        if (content.length + title.length > textLimit) {
+            toast.warn("Text limit reached."); return;
+        }
         const res = await updateNoteSingle(title, content, editNoteId);
         if (res?.response?.status===200){
-            toast.error("No updates made. Please try again.");
+            toast.info("No updates made. Please try again.");
             return;
         }
         if (res?.response?.status === 201){
@@ -45,8 +52,9 @@ export default function NoteEdit({ close, editNoteId, setNotesEdited, notesEdite
                 id="outlined-basic"
                 variant="outlined"
                 placeholder="Title"
-                color="warning"
+                color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
+                focused
                 value={title}
                 onChange={(e) => { setTitle(e.target.value) }}
                 margin="normal"
@@ -56,17 +64,24 @@ export default function NoteEdit({ close, editNoteId, setNotesEdited, notesEdite
                 id="outlined-basic"
                 placeholder="Content"
                 variant="outlined"
-                color="warning"
+                color={content.length + title.length > textLimit ? "warning" : "secondary"}
                 fullWidth
                 multiline
+                focused
                 rows={15}
                 margin="normal"
                 value={content}
                 onChange={(e) => { setContent(e.target.value) }}
             />
             <br />
+            <div style={{
+                display: 'flex', justifyContent: 'flex-end', fontSize: '0.85rem', width: '100%',
+                color: content.length + title.length > textLimit ? 'red' : 'black'
+            }}>
+                {content.length + title.length}/{textLimit}
+            </div>
             <div className="form-footer">
-                <Button size="large" color="warning" variant='outlined' onClick={editNote}>Update</Button>
+                <Button size="large" color={content.length + title.length > textLimit ? "warning" : "secondary"} variant='outlined' onClick={editNote}>Update</Button>
             </div>
         </div>
     )

@@ -4,7 +4,7 @@ import User from "../models/User.js";
 
 export const UserNotes = async (req, res, next) => {
     const userId = req?.user?._id;
-    console.log("Getting user's notes...")
+    console.log("===Getting user's notes===")
     const diary = await Diary.findOne({ user: userId }).exec();
     if (!diary || diary.notes.length === 0) { req.notes = []; next(); return; };
     const notes = await diary?.notes?.map(noteId => Note.findById(noteId).exec())
@@ -23,7 +23,7 @@ export const canAddMoreNote = async (req, res, next) => {
     if (user.admin) return true;
 
     const notesAddedToday = req?.notes?.filter(note => {
-        return new Date().toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
+        return req?.body?.date.toLocaleDateString() === new Date(note?.date).toLocaleDateString()
     }).length;
 
     if (user.premium && notesAddedToday < 8){

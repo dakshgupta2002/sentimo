@@ -63,18 +63,15 @@ statRouter.route("/note")
         });
     })
 
-statRouter.use(UserStats)
 statRouter.route("/")
-    .get(async (req, res) => {
-        const days = req.query.days;
-        const date = new Date(req.query.date);
-        const lastDate = date.setDate(date.getDate() - days)
+    .get(UserStats, async (req, res) => {
         console.log("===Fetching User's Stats===")
-        //all stats of the user saved in req
+        const days = req?.query?.days;
+        const date = new Date(req?.query?.date);
+        const lastDate = new Date(date.setDate(date.getDate() - days)).toLocaleDateString();
+        //all stats of the user saved in req latest in the days
         const filteredStats = await req?.stats?.filter(stat => {
-            console.log({ lastDate: new Date(lastDate).toLocaleDateString(), statDate: new Date(stat?.date).toLocaleDateString() })
-            return new Date(lastDate).toLocaleDateString() <=
-                new Date(stat?.date).toLocaleDateString()
+            return lastDate <= stat?.date;
         })
         await Promise.all(filteredStats).then(filteredStats => {
             res.status(200).json(filteredStats)

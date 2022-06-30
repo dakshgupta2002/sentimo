@@ -149,7 +149,7 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
             {localStorage.getItem("jwt")? 
               <Tooltip title="Open settings">
                 <ListItemButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                  <Typography>{localStorage.getItem("name")} &#160; </Typography>
+                  <Typography sx={{display:{xs:'none',sm:'inline'}}}>{localStorage.getItem("name")} &#160; </Typography>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </ListItemButton>
               </Tooltip>:
