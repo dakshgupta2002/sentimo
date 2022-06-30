@@ -22,7 +22,7 @@ export default function Controller({
 }) {
   const { width } = useWidth();
   const navigate = useNavigate();
-  const IconStyle = {fontSize: '1.4rem', color: '#FDFBF9'}
+  const IconStyle = {fontSize: '1.6rem', color: '#FDFBF9'}
   return (
     <div className="controller">
       <div className="redirectHome">  

@@ -20,7 +20,7 @@ export default function InputDate({ date, setDate }) {
         />
       </LocalizationProvider>
 
-      <IconButton>
+      {/* <IconButton>
         <div className='calendar'>
 
           <div className='date'>
@@ -31,7 +31,7 @@ export default function InputDate({ date, setDate }) {
             DD MM YYYY
           </div>
         </div>
-      </IconButton>
+      </IconButton> */}
     </div>
   )
 }

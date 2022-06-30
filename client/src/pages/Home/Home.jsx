@@ -158,7 +158,7 @@ export default function Home() {
 
       <Fade triggerOnce>
         <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
-          <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About Us</Link>
+         <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
         </footer>
       </Fade>
     </div>
