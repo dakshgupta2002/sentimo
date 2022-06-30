@@ -104,7 +104,6 @@ export default function NoteStat() {
           </Button>
         </Cards>
       </div>
-      <LoadingScreen/>
       {!!emotion === false ? (
         <Typography>..</Typography>
       ) : pieData.length === 0 && lineData.length === 0 ? (

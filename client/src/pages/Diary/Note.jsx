@@ -28,8 +28,8 @@ export default function Note({
   const [fav, setFav] = useState(favourite);
   const [prot, setProt] = useState(protect);
 
-  const deleteNote = () => {
-    removeNote(noteId);
+  const deleteNote = async () => {
+    await removeNote(noteId);
     setNotesAdded(notesAdded-1);
   };
 

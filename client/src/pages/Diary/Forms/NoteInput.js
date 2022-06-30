@@ -3,13 +3,16 @@ import { TextField, Button } from '@mui/material'
 import { postNote } from '../../../utils/api/notes';
 import "../Diary.css";
 import { toast } from 'react-toastify';
+import { useLoading } from '../../../utils/hooks/useLoading';
 
 export default function NoteInput(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const [textLimit, setTextLimit] = useState(800)
+    const {setLoading} = useLoading();
 
     const addNote = async () => {
+        setLoading(true);
         if (title.trim() === "" || content.trim() === "") {
             toast.error("Title and content are required"); return;
         }
@@ -27,6 +30,7 @@ export default function NoteInput(props) {
         } else {
             console.log("err", res.data.msg);
         }
+        setLoading(false)
     }
 
     return (

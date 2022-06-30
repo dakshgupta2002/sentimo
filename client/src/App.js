@@ -9,12 +9,12 @@ import Favorite from './pages/Favorite/Favorite';
 import Protected from './pages/Protected/Protected';
 
 function App() {
-  const {loading, error} = useLoading();
+  const {LoadingScreen} = useLoading();
 
   return (
     <div>
       <ToastContainer/>
-      {loading && <div>{error || `Loading...`}</div>}
+      <LoadingScreen/>
       <Routes>
         <Route path="/" element={<Home/>} />
 
