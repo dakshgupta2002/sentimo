@@ -33,9 +33,9 @@ export default function Login(props) {
     }
   };
 
-  const signUpButtonClick = (event) => {
-    navigate("/register", { replace: true });
-  };
+  // const signUpButtonClick = (event) => {
+  //   navigate("/register", { replace: true });
+  // };
 
   // Mobile: background IMG, Desktop show on left
   return (
