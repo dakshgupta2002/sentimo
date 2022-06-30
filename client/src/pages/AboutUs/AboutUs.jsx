@@ -2,6 +2,7 @@ import React from "react";
 import { ProfileCard } from "./../../elements";
 import { Sidebar } from "./../../components";
 import { data } from './aboutUsdata.js';
+import { Slide } from "react-awesome-reveal";
 
 import "./AboutUs.css";
 
@@ -15,38 +16,44 @@ export default function AboutUs() {
     <div className="aboutUsBody">
       <Sidebar />
       <div className="profileCardParent">
+        <Slide direction="up" triggerOnce>
         <div className="profileCard">
           <ProfileCard
             name={data?.daksh?.name}
             whatWork={data?.daksh?.whatWork}
             whoAreYou={data?.daksh?.whoAreYou}
             content={data?.daksh?.content}
-            socialLinks={data?.daksh?.socialLink}
+            socialLinks={data?.daksh?.socialLinks}
             profileImg={dakshImg}
           />
         </div>
+        </Slide>
 
-        <div className="profileCard" style={{ backgroundColor: "#DFF6FF" }}>
+        <Slide triggerOnce direction="up">
+        <div className="profileCard" style={{ border: 1 }}>
         <ProfileCard
             name={data?.ishwar?.name}
             whatWork={data?.ishwar?.whatWork}
             whoAreYou={data?.ishwar?.whoAreYou}
             content={data?.ishwar?.content}
-            socialLinks={data?.ishwar?.socialLink}
+            socialLinks={data?.ishwar?.socialLinks}
             profileImg={ishwarImg}
-          />
+            />
         </div>
+        </Slide>
 
+      <Slide direction="up" triggerOnce>
         <div className="profileCard">
         <ProfileCard
             name={data?.shiraz?.name}
-            whatWork={data?.daksh?.whatWork}
+            whatWork={data?.shiraz?.whatWork}
             whoAreYou={data?.shiraz?.whoAreYou}
             content={data?.shiraz?.content}
-            socialLinks={data?.shiraz?.socialLink}
+            socialLinks={data?.shiraz?.socialLinks}
             profileImg={shirazImg}
           />
         </div>
+        </Slide>
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import Note from '../../models/Note.js';
 import Diary from '../../models/Diary.js';
 import NoteEmotion from '../../models/NoteEmotion.js';
 import { isNoteOwner } from '../../auth/authorize.js';
+import { canAddMoreNote } from "../../middlewares/UserNotes.js";
 
 const noteRouter = Router();
 
@@ -12,22 +13,22 @@ noteRouter.route("/")
         const date = req?.query?.date;
         const filteredNotes = req?.notes?.filter(note => {
             return !note?.protect &&
-             new Date(date).toLocaleDateString() === new Date(note?.createdAt).toLocaleDateString()
+             new Date(date).toLocaleDateString() === new Date(note?.date).toLocaleDateString()
         })
         console.log("===Sending User's Note of the Date===");
-        filteredNotes.sort((a, b) => new Date(a?.createdAt) - new Date(b?.createdAt)).reverse();
+        filteredNotes.sort((a, b) => new Date(a?.date) - new Date(b?.date)).reverse();
         res.status(200).json({ notes: filteredNotes });
     })
 
-    .post(async (req, res) => {
-        const { title, content } = req.body;
+    .post(canAddMoreNote, async (req, res) => {
+        const { title, content, date } = req.body;
         if (!title || !content) {
             res.status(400).json({ "msg": "Missing title or content" });
             return;
         }
         const userId = req.user._id;
 
-        const note = new Note({ title, content });
+        const note = new Note({ title, content, date });
         const noteId = note._id;
         await note.save()
         const diary = await Diary.findOne({ user: userId }).exec();
@@ -44,9 +45,8 @@ noteRouter.route("/")
         res.status(201).json(note);
     })
 
-noteRouter.use(isNoteOwner);
 noteRouter.route("/")
-    .delete(async (req, res) => {
+    .delete(isNoteOwner, async (req, res) => {
         const noteId = req.query.noteId;
 
         const diary = await Diary.findOne({ user: req.user._id }).exec();

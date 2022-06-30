@@ -22,7 +22,9 @@ export default function Controller({
 }) {
   const { width } = useWidth();
   const navigate = useNavigate();
-  const IconStyle = {fontSize: '1.4rem', color: '#FDFBF9'}
+  const IconStyle = {fontSize: '1.7rem', color: '#FDFBF9'}
+  const DisabledIcon = {cursor: 'not-allowed', fontSize: '1.6rem'}
+  
   return (
     <div className="controller">
       <div className="redirectHome">  
@@ -56,16 +58,16 @@ export default function Controller({
 
         <IconButton disabled={today} onClick={next}>
           {"  "}
-          <ChevronRight sx={IconStyle} />{" "}
+          <ChevronRight sx={today? DisabledIcon: IconStyle} />{" "}
         </IconButton>
         <IconButton disabled={today} onClick={reset}>
           {"  "}
-          <FastForward sx={IconStyle} />{" "}
+          <FastForward sx={today? DisabledIcon: IconStyle} />{" "}
         </IconButton>
       </div>
 
       <IconButton disabled={!today} onClick={() => setInputOpen(true)}>
-        <Add sx={IconStyle} />
+        <Add sx={!today? DisabledIcon: IconStyle} />
       </IconButton>
     </div>
   );

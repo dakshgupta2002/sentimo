@@ -14,14 +14,12 @@ export const updateNoteSingle = async (title, content, noteId) => {
     return res;
 }
 
-export const postNote = async (title, content, date, notesAdded, setNotesAdded) => {
-    const res = await post("notes", { title, content }, 'POST');
-    setNotesAdded(notesAdded + 1);      
+export const postNote = async (title, content, date) => {
+    const res = await post("notes", { title, content, date: date.toLocaleDateString() }, 'POST');
     return res;
 }
-export const removeNote = async (id, notesAdded, setNotesAdded) => {
+export const removeNote = async (id) => {
     const res = await post(`notes?noteId=${id}`, {}, 'DELETE');
-    setNotesAdded(notesAdded-1);
     return res;
 }
 

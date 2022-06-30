@@ -16,7 +16,7 @@ statRouter.route("/note")
             return;
         }
         const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
-
+        console.log({noteStat})
         if (noteStat) {
             console.log("===Found Note's Emotion saved already===")
             res.status(200).json({ emotion: noteStat.emotion });
@@ -32,7 +32,6 @@ statRouter.route("/note")
 
         python.stdout.on('data', data => {
             emotion = data.toString();
-            console.log("===Emotion fetched from Python===");
         });
 
         python.on('close', async (code) => {
@@ -46,35 +45,31 @@ statRouter.route("/note")
             obj['Sad'] = parseFloat(arr[3]);
             obj['Fear'] = parseFloat(arr[4]);
 
-            console.log("===Emotion parsed to objected===")
             // save the emotion to the database
             const newNoteEmotion = new NoteEmotion({
                 note: noteId,
                 emotion: obj
             });
 
-            newNoteEmotion.save().then(noteEmotion => {
+            await newNoteEmotion.save().then(noteEmotion => {
                 console.log("===Emotion of this note saved for future")
                 res.status(201).json({ emotion: noteEmotion?.emotion });
                 return;
             }).catch(() => {
-                res.status(400).json({ message: "Error generating emotion" });
+                res.status(400).json({ message: "Error generating emotion" }); 
             })
         });
     })
 
-statRouter.use(UserStats)
 statRouter.route("/")
-    .get(async (req, res) => {
-        const days = req.query.days;
-        const date = new Date(req.query.date);
-        const lastDate = date.setDate(date.getDate() - days)
+    .get(UserStats, async (req, res) => {
         console.log("===Fetching User's Stats===")
-        //all stats of the user saved in req
+        const days = req?.query?.days;
+        const date = new Date(req?.query?.date);
+        const lastDate = new Date(date.setDate(date.getDate() - days)).toLocaleDateString();
+        //all stats of the user saved in req latest in the days
         const filteredStats = await req?.stats?.filter(stat => {
-            console.log({ lastDate: new Date(lastDate).toLocaleDateString(), statDate: new Date(stat?.date).toLocaleDateString() })
-            return new Date(lastDate).toLocaleDateString() <=
-                new Date(stat?.date).toLocaleDateString()
+            return lastDate <= (new Date(stat?.date)).toLocaleDateString();
         })
         await Promise.all(filteredStats).then(filteredStats => {
             res.status(200).json(filteredStats)

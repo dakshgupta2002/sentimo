@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     z-index: 2000;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,7 +19,7 @@
     z-index: 2001;
     top: 0;
     left: 0;
-    width: 90%;
+    width: 80%;
     height: 90vh;
     max-width: 500px;
     border-radius: 16px;

@@ -28,7 +28,8 @@ export default function Cards({
   content,
   favourite,
   protect,
-  maxwidth = "400px"
+  maxwidth = "400px",
+  children
 }) {
   const [expanded, setExpanded] = useState(false);
   const [fav, setFav] = useState(favourite);
@@ -83,6 +84,8 @@ export default function Cards({
           <IconButton onClick={handleProtected}><EnhancedEncryption sx={{color:"black"}}/></IconButton> :
           <IconButton onClick={handleProtected}><LockOpen sx={{color:"black"}}/></IconButton>
         }
+
+        {children}
 
         <ExpandMore
           expand={expanded}

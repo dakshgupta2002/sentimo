@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { ModalContainer } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import NoteInput from "./Forms//NoteInput";
+import NoteEdit from "./Forms/NoteEdit";
 import Page from "./Page";
 import "./Diary.css";
 import Controller from "./Controller/Controller";
@@ -11,6 +12,8 @@ export default function Diary() {
   const [inputOpen, setInputOpen] = useState(true);
   const [notesAdded, setNotesAdded] = useState(0);
   const [notesEdited, setNotesEdited] = useState(0);
+  const [editOpen, setEditOpen] = useState(false);
+  const [editNoteId, setEditNoteId] = useState(null);
 
   return (
     <div className="diary-body">
@@ -23,6 +26,14 @@ export default function Diary() {
         setDate={setDate}
         setInputOpen={setInputOpen}
       />
+      <ModalContainer isOpen={editOpen} close={() => {setEditNoteId(null); setEditOpen(false);}}>
+        <NoteEdit
+          close={() => { setEditNoteId(null); setEditOpen(false);}}
+          editNoteId={editNoteId}
+          notesEdited={notesEdited}
+          setNotesEdited={setNotesEdited}
+        />
+      </ModalContainer>
 
       <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
         <NoteInput
@@ -40,6 +51,8 @@ export default function Diary() {
           setNotesAdded={setNotesAdded}
           notesEdited={notesEdited}
           setNotesEdited={setNotesEdited}
+          setEditOpen={setEditOpen}
+          setEditNoteId={setEditNoteId}
         />
       </div>
     </div>

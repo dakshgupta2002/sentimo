@@ -18,9 +18,8 @@ import './Sidebar.css';
 const pages = [
   "Diary",
   "Statistics",
-  "Recommendation",
   "Favorites",
-  "About Us"
+  "Movies",
 ];
 
 const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
@@ -103,9 +102,9 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
                 display: { xs: "block", md: "none" },
               }}
             >
-              {pages.map((page) => {
+              {pages.map((page, key) => {
                 return (
-                  <MenuItem component={Link} to={`/${generateHref(page)}`}>
+                  <MenuItem component={Link} to={`/${generateHref(page)}`} key={key} >
                     <Typography textAlign="center">{page}</Typography>
                   </MenuItem>
                 );
@@ -149,7 +148,7 @@ const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {
             {localStorage.getItem("jwt")? 
               <Tooltip title="Open settings">
                 <ListItemButton onClick={handleOpenUserMenu} sx={{ p: 1 }}>
-                  <Typography>{localStorage.getItem("name")} &#160; </Typography>
+                  <Typography sx={{display:{xs:'none',sm:'inline'}}}>{localStorage.getItem("name")} &#160; </Typography>
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </ListItemButton>
               </Tooltip>:

@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField } from "@mui/material";
-import { toast } from "react-toastify";
+import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
+import { toast } from "react-toastify";
+
+import loginImage from "../../assets/images/loginBanner.svg";
+import logo from "../../assets/images/logo.png";
 
 import "./Login.css";
+
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
@@ -16,7 +20,6 @@ export default function Login(props) {
   const login = async (e) => {
     e.preventDefault();
     const res = await userLogin(username, password);
-    console.log(res);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
       const name =
@@ -26,23 +29,11 @@ export default function Login(props) {
           (res?.data?.lastName || "")
         ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
-      
       // don't keep any toast for successful login!
 
       navigate("/");
     } else {
-      console.log("error: ", res.data.msg);
-
-      toast.error("Incorrect Username or Password", {
-        duration: 2500,
-        style: {fontWeight: 400, fontFamily: `"Ubuntu", sans-serif`},
-        icon: '❌',
-
-        ariaProps: {
-          role: 'status',
-          'aria-live': 'polite',
-        },
-      });
+      toast.error("Incorrect Username or Password");
     }
   };
 
@@ -55,14 +46,17 @@ export default function Login(props) {
     <div className="login-form-container">
       {/* Hidden in Mobile */}
       <div className="login-form-header">
-        <section className="login-form-image"></section>
-        {/* This class Only for Desktop */}
+        {/* <section className="login-form-image"></section> */}
+        <img src={loginImage} alt="Welcome" style={{height: "100%", width: "100%", maxWidth: '60vw', maxHeight: '60vh'}} />
       </div>
 
       <div className="login-input-container">
-        <div className="login-logo-header">LOGO SENTIMO</div>
-        <div className="login-text-header heading large-login-text">
-          Login<span className="login-dot">.</span>
+        
+        <div className="login-logo-header">
+          <img src={logo} alt="" style={{maxHeight: '20vh', maxWidth: '20vw', minWidth: '100px', minHeight: '100px'}} />
+          <div className="login-text-header heading large-login-text">
+          Welcome Back<span className="login-dot">.</span>
+        </div>
         </div>
         <div className="input-field-container medium-text">
           <div>Log in to your account</div>
@@ -114,14 +108,12 @@ export default function Login(props) {
           </div>
         </div>
 
-        <div className="sign-up-btn">
+        <div className="sign-up-button">
           <div className="sign-up-text">Don't Have an account yet? &nbsp;</div>
-          <Button
-            onClick={signUpButtonClick}
-            sx={{ color: "#508afa", margin: "0", padding: "0" }}
-            fullWidth
-          >
-            Register
+          <Button>
+          <Link href="/register">
+            Create one for free
+          </Link>
           </Button>
         </div>
       </div>

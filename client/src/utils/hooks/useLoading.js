@@ -8,5 +8,10 @@ export const useLoading = () => {
         setError(message);
     }
 
-    return {loading, setLoading, error, setErrorMessage};
+    const LoadingScreen = () => {
+        return <div>
+            {loading? <h6>Loading...</h6>: ""}
+        </div>
+    }
+    return {loading, setLoading, error, setErrorMessage, LoadingScreen};
 }

@@ -19,7 +19,11 @@ const noteSchema = new Schema({
     protect: {
         type: Boolean,
         default: false
+    },
+    date: { // timezone matches the client side 
+        type: String,
+        required: true
     }
-}, {timestamps: true});
+}, { timestamps: true });
 
 export default mongoose.model("Note", noteSchema);
