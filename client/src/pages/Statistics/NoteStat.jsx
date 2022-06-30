@@ -98,7 +98,7 @@ export default function NoteStat() {
             color="secondary"
             size="normal"
             onClick={fetchEmotion}
-            sx={{ margin: "auto" }}
+            // sx={{ margin: "auto" }}
           >
             Generate Stats Now
           </Button>
