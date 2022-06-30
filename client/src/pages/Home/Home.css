@@ -83,7 +83,8 @@ img.lottie-animation {
     justify-content: center;
     align-items: center;
     background-color: #87bbd5;
-    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    padding-top: 2rem;
 }
 
 .solution-container, .extra-features-container {
