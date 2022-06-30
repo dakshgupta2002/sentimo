@@ -18,9 +18,8 @@ import './Sidebar.css';
 const pages = [
   "Diary",
   "Statistics",
-  "Recommendation",
   "Favorites",
-  "About Us"
+  "Movies",
 ];
 
 const Sidebar = ({className, onMouseEnter, onMouseLeave}) => {

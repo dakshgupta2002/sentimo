@@ -48,8 +48,8 @@ function App() {
           <Route path="/statistics/note/:noteId" element={<NoteStat />} />
         </Route>
 
-        <Route path="/recommendation" location="/recommendation" element={<PrivateRoute/>} >
-          <Route path="/recommendation" element={<Recommendation />} />
+        <Route path="/movies" location="/movies" element={<PrivateRoute/>} >
+          <Route path="/movies" element={<Recommendation />} />
         </Route>
 
       </Routes>
