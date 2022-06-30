@@ -5,9 +5,9 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('0 */8 * * *', async () => { // run every 8 hours to manage all timezones
-  const date = new Date(); 
-  console.log("===Starting CRON job===")
+var dailyStat = schedule('59 23 * * *', async () => { // run every 8 hours to manage all timezones
+  const date = new Date((new Date()).getTime() + (330 * 60 * 1000)); // converting UTC to IST
+  console.log("===Starting CRON job===", date)
   //at 11:59pm of every day
   //create and save emotions of every user for that date
   const users = await User.find({}).exec(); //get all users
@@ -18,7 +18,7 @@ var dailyStat = schedule('0 */8 * * *', async () => { // run every 8 hours to ma
       if (notes) {
         await Promise.all(notes).then(notes => {
           notes.filter(note => {
-            return (note?.date === date.toLocaleDateString()) // notes date is in local client format
+            return ((new Date(note?.date)).toLocaleDateString() === date.toLocaleDateString()) // notes date is in local client format
           });
 
           console.log("===User's notes have been found===")
@@ -28,14 +28,13 @@ var dailyStat = schedule('0 */8 * * *', async () => { // run every 8 hours to ma
           })
           let data = encodeURI(text);
           data.slice(0, 5000) // sending a string of more than 5k chars can break the server
+
           let emotion;
           // spawn new child process to call the python script
-          console.log("===Calling python script===");
           const python = spawn('python3', ['scripts/emotion.py', data]);
 
           python.stdout.on('data', data => {
             emotion = data.toString();
-            console.log("===Emotion fetched from Python===");
           });
 
           python.on('close', async (code, signal) => {
@@ -50,7 +49,6 @@ var dailyStat = schedule('0 */8 * * *', async () => { // run every 8 hours to ma
             obj['Sad'] = parseFloat(arr[3]);
             obj['Fear'] = parseFloat(arr[4]);
 
-            console.log("===Stats parsed to object Id===")
             // save the stat of the date to the database
             const oldStat = await Stat.findOne({ user: user._id, date: (new Date(date)).toLocaleDateString() });
             if (oldStat) {

@@ -13,7 +13,7 @@ noteRouter.route("/")
         const date = req?.query?.date;
         const filteredNotes = req?.notes?.filter(note => {
             return !note?.protect &&
-             new Date(date).toLocaleDateString() === note?.date
+             new Date(date).toLocaleDateString() === new Date(note?.date).toLocaleDateString()
         })
         console.log("===Sending User's Note of the Date===");
         filteredNotes.sort((a, b) => new Date(a?.date) - new Date(b?.date)).reverse();

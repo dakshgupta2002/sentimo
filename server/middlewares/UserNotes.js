@@ -23,7 +23,7 @@ export const canAddMoreNote = async (req, res, next) => {
     if (user.admin) return true;
 
     const notesAddedToday = req?.notes?.filter(note => {
-        return req?.body?.date.toLocaleDateString() === new Date(note?.date).toLocaleDateString()
+        return new Date(req?.body?.date).toLocaleDateString() === new Date(note?.date).toLocaleDateString()
     }).length;
 
     if (user.premium && notesAddedToday < 8){

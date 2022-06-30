@@ -16,7 +16,7 @@ statRouter.route("/note")
             return;
         }
         const noteStat = await NoteEmotion.findOne({ note: noteId }).exec();
-
+        console.log({noteStat})
         if (noteStat) {
             console.log("===Found Note's Emotion saved already===")
             res.status(200).json({ emotion: noteStat.emotion });
@@ -28,11 +28,10 @@ statRouter.route("/note")
         let emotion;
         // // spawn new child process to call the python script
         console.log("===Calling python script===");
-        const python = spawn('python3', ['scripts/emotion.py', data]);
+        const python = spawn('python', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();
-            console.log("===Emotion fetched from Python===");
         });
 
         python.on('close', async (code) => {
@@ -46,19 +45,18 @@ statRouter.route("/note")
             obj['Sad'] = parseFloat(arr[3]);
             obj['Fear'] = parseFloat(arr[4]);
 
-            console.log("===Emotion parsed to objected===")
             // save the emotion to the database
             const newNoteEmotion = new NoteEmotion({
                 note: noteId,
                 emotion: obj
             });
 
-            newNoteEmotion.save().then(noteEmotion => {
+            await newNoteEmotion.save().then(noteEmotion => {
                 console.log("===Emotion of this note saved for future")
                 res.status(201).json({ emotion: noteEmotion?.emotion });
                 return;
             }).catch(() => {
-                res.status(400).json({ message: "Error generating emotion" });
+                res.status(400).json({ message: "Error generating emotion" }); 
             })
         });
     })
