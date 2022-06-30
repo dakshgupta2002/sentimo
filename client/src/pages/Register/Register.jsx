@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
 
 import AccountCircle from "@mui/icons-material/AccountCircle";
@@ -93,13 +93,7 @@ export default function Register(props) {
 
             <div className="login-container mv mob-mid">
               <span className="small-text">Already a member? </span>
-              <Button
-                variant="standard"
-                onClick={logInButtonClick}
-                sx={{ color: "#508afa", margin: "0", padding: "0" }}
-              >
-                Log In
-              </Button>
+              <Link href="/login"> Login</Link>
             </div>
           </div>
 
