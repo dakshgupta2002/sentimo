@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
-import {Card, CardHeader, CardContent, CardActions, Collapse, IconButton, Typography} from "@mui/material";
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  CardActions,
+  Collapse,
+  IconButton,
+  Typography,
+} from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { EnhancedEncryption, LockOpen } from "@mui/icons-material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { updateFav, updateProtect } from "../../utils/api/notes";
 import { toast } from "react-toastify";
-import './Cards.css';
+import "./Cards.css";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -29,7 +37,7 @@ export default function Cards({
   favourite,
   protect,
   maxwidth = "400px",
-  children
+  children,
 }) {
   const [expanded, setExpanded] = useState(false);
   const [fav, setFav] = useState(favourite);
@@ -51,39 +59,51 @@ export default function Cards({
   };
 
   const handleProtected = async () => {
-    //update on backend 
+    //update on backend
     const res = await updateProtect(noteId);
-    if (res?.response?.status === 200){
-      if (!prot) toast.success("Note protected!")
-      else toast.success("Note removed from protected!")
+    if (res?.response?.status === 200) {
+      if (!prot) toast.success("Note protected!");
+      else toast.success("Note removed from protected!");
     }
-    setProt(prot^1);
-  }
+    setProt(prot ^ 1);
+  };
 
   return (
-    <Card className="card" style={{maxWidth: maxwidth}}>
-      <CardHeader title={title} subheader={date === null || time === null ? ``
-                                              : `Last updated: ${date} ${time}`} />
+    <Card className="card" style={{ maxWidth: maxwidth }}>
+      <CardHeader
+        title={title}        
+        subheader={
+          <Typography className="createdAt">
+            {date === null || time === null ? `` : `Last updated: ${date} ${time}`}
+          </Typography>
+          
+        }
+      />
 
-      {!expanded? <CardContent>
-        <Typography className="previewContent" gutterbottom="true">
-          {content}
-        </Typography>
-      </CardContent> : null}
+      {!expanded ? (
+        <CardContent>
+          <Typography className="previewContent" gutterbottom="true">
+            {content}
+          </Typography>
+        </CardContent>
+      ) : null}
 
       <CardActions disableSpacing>
         {fav === -1 ? null : (
           <IconButton aria-label="add to favorites" onClick={handleFavourite}>
-            <FavoriteIcon sx={fav ? { color: "red" } : { color: "black" }}/>
+            <FavoriteIcon sx={fav ? { color: "red" } : { color: "black" }} />
           </IconButton>
         )}
 
-        {prot === -1 ? 
-          null:
-          prot===1 ? 
-          <IconButton onClick={handleProtected}><EnhancedEncryption sx={{color:"black"}}/></IconButton> :
-          <IconButton onClick={handleProtected}><LockOpen sx={{color:"black"}}/></IconButton>
-        }
+        {prot === -1 ? null : prot === 1 ? (
+          <IconButton onClick={handleProtected}>
+            <EnhancedEncryption sx={{ color: "black" }} />
+          </IconButton>
+        ) : (
+          <IconButton onClick={handleProtected}>
+            <LockOpen sx={{ color: "black" }} />
+          </IconButton>
+        )}
 
         {children}
 
