@@ -27,13 +27,15 @@
 
 .lottie-animation {
     display: flex;
-    width: 100%;
+    width: 50%;
     height: 50%;
     /* justify-content: flex-start; */
 }
 
 img.lottie-animation {
-    margin-bottom: 10px;
+    margin: 2vmin;
+    width: 90%;
+    height: 50%;
 }
 
 .home-heading {
