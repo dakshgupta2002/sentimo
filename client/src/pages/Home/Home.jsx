@@ -1,5 +1,5 @@
 import React from "react";
-import { Slide, Fade } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import Filter1RoundedIcon from "@mui/icons-material/Filter1Rounded";
 import Filter2RoundedIcon from "@mui/icons-material/Filter2Rounded";
 import Filter3RoundedIcon from "@mui/icons-material/Filter3Rounded";
@@ -7,18 +7,9 @@ import { Link } from "react-router-dom";
 import Lottie from "react-lottie-player";
 import { Sidebar } from "../../components";
 import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
-// import confusedGuy from "../../assets/lottieSvg/confused.json";
 import answers from "../../assets/lottieSvg/answers.json";
 import thinking from "../../assets/images/thinking.svg"
-
 import "./Home.css";
-
-/* TODO: 
-1. Fonts change
-2. Images change
-3. Icons check if ok or change
-4. Content Check and Changeks
-*/
 
 export default function Home() {
   return (
