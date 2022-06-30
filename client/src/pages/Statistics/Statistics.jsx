@@ -6,28 +6,26 @@ import { fetchStats } from "../../utils/api/stats";
 import { Tab, Tabs } from "@mui/material";
 import { TabPanel } from "../../elements/TabPanel";
 import { VictoryChart, VictoryLine, VictoryPie, VictoryTheme } from "victory";
+import { useLoading } from "../../utils/hooks/useLoading";
 
 export default function Statistics() {
   const { date } = useDate();
   const [tab, setTab] = useState(0);
   const numOfDays = [7, 30, 365];
-  const [emotions, setEmotions] = useState(
-    []
-  ); /* Emotions of last `tab` days */
+  const [emotions, setEmotions] = useState([]); /* Emotions of last `tab` days */
   const [pieChartData, setPieChartData] = useState([]);
-
-  /* [HappyData, AngryData, Surprise, Sad, Fear]: each ele is an array containing array of objects 
-     [ [{x: 1, y: 2}, {x: 3, y: 4}], [{x: 1, y: 2}, {x: 3, y: 4}] ]
-  */
   const [lineChartData, setLineChartData] = useState([]);
 
   const handleChange = (event, newValue) => {
     setTab(newValue);
   };
 
+  const { setLoading, setError, LoadingScreen } = useLoading();
+
   // fetch the statistics created from past days
   useEffect(() => {
     const getStats = async () => {
+      setLoading(true); setError('Fetching the stats')
       const res = await fetchStats(date, numOfDays[tab]);
       if (res?.response?.status === 201 || res?.response?.status === 200) {
         //clear and update the emotions array
@@ -37,7 +35,6 @@ export default function Statistics() {
           return e;
         });
         setEmotions(updatedEmotion);
-        console.log(updatedEmotion);
       } else {
         console.log(res?.data?.msg);
       }
@@ -69,7 +66,7 @@ export default function Statistics() {
           ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
-      
+
       var lineData = [];
       for (let i=0; i<5; i++)lineData.push([]);
 
@@ -140,13 +137,15 @@ export default function Statistics() {
       // console.log("pieData:", pieData[0].y + pieData[1].y + pieData[2].y + pieData[3].y + pieData[4].y)
     };
 
-    // refreshPieData();
+    refreshPieData();
     refreshLineData();
+    setLoading(false);
   }, [emotions]); // update the data required when new emotions are created
 
   return (
     <div>
       <Sidebar />
+      <LoadingScreen/>
       <Tabs variant="scrollable" value={tab} onChange={handleChange}>
         <Tab label="Last Week" />
         <Tab label="Last Month" />
@@ -155,18 +154,50 @@ export default function Statistics() {
 
       {/* Last 7 Days */}
       <TabPanel value={tab} index={0}>
-        <VictoryChart theme={VictoryTheme.material}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
           
           <VictoryLine
             style={{
               data: { stroke: "#c43a31" },
               parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
             }}
-            data={[]} /* No graphs when Empty Array TODO */
+            data={lineChartData[0]} /* No graphs when Empty Array TODO */
           />
         </VictoryChart>
-        
-        {pieChartData.length
+      </TabPanel>
+      
+      {/* Last 1 Month */}
+      <TabPanel value={tab} index={1}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
+          <VictoryLine
+            
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
+            }}
+            data={lineChartData[0]} /* This should be empty graph.. TODO */
+          />
+        </VictoryChart>
+      </TabPanel>
+
+      {/* Last 1 Year */}
+      <TabPanel value={tab} index={2}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
+            }}
+            data={lineChartData[0]} 
+          />
+        </VictoryChart>
+      </TabPanel>
+
+
+      {pieChartData.length
         ? <VictoryPie
               theme={VictoryTheme.material}
               height={200}
@@ -179,39 +210,7 @@ export default function Statistics() {
         : <h2>NO PIE DATA</h2>
         }
 
-      </TabPanel>
-      
-      {/* Last 1 Month */}
-      <TabPanel value={tab} index={1}>
-
-        <VictoryChart theme={VictoryTheme.material} width={400} height={400}>
-          <VictoryLine
-            
-            style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" },
-            }}
-            data={lineChartData[0]} /* This should be empty graph.. TODO */
-          />
-        </VictoryChart>
-
-      </TabPanel>
-
-      {/* Last 1 Year */}
-      <TabPanel value={tab} index={2}>
-
-        <VictoryChart theme={VictoryTheme.material}>
-          <VictoryLine
-            style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" },
-            }}
-            data={lineChartData[0]} 
-          />
-        </VictoryChart>
-
-      </TabPanel>
-
+              
       {emotions?.length === 0 ? (
         <h1>No emotions fetched... </h1>
       ) : (
