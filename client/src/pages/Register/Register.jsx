@@ -3,18 +3,17 @@ import { useNavigate } from "react-router-dom";
 import { userRegister } from "../../utils/api/userPost";
 import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
-
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import logo from "../../assets/images/logo.png";
+import signUpImage from "../../assets/images/ClubSignUp.svg";
 
 import "./Register.css";
-import {
-  ContactMailSharp,
-  PasswordSharp,
-} from "@mui/icons-material";
+import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 
 export default function Register(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   /* <TextField id="filled-basic" label="Filled" variant="filled" sx={{input: {color: "#fdfdfd", backgroundColor: "#323644"} }}
@@ -33,17 +32,14 @@ export default function Register(props) {
 
   const register = async (e) => {
     e.preventDefault();
-    if (!username || !password || !firstName || !lastName) {
+    if (!username || !password || !firstName || !lastName || !confirmPassword) {
       var missing = [];
 
-      if (!firstName)
-      missing.push("First Name");
-      if (!lastName)
-      missing.push("Last Name");
-      if (!username) 
-      missing.push("Username");
-      if (!password)
-      missing.push("Password");
+      if (!firstName) missing.push("First Name");
+      if (!lastName) missing.push("Last Name");
+      if (!username) missing.push("Username");
+      if (!password) missing.push("Password");
+      if (password && !confirmPassword) missing.push("Confirm Password");
 
       var errorMsg = `Missing:`;
       for (var i = 0; i < missing.length; i++)
@@ -52,10 +48,29 @@ export default function Register(props) {
       toast.error(errorMsg, {icon: '❌'});
       return;
     }
+
+    if (password !== confirmPassword)
+    {
+      errorMsg = `Password and Confirm password do not match!`;
+      toast.error(errorMsg, {
+        duration: 2500,
+      });
+
+      // document.getElementById("registerPassword").color = "error"; 
+      // Change color of TextField need to search up a little more will add!!
+
+      return;
+    }
+
     const res = await userRegister(username, password, firstName, lastName);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
-      const name = (((res?.data?.firstName || "") + " "+ (res?.data?.lastName || "")).trim() || res?.data?.username)
+      const name =
+        (
+          (res?.data?.firstName || "") +
+          " " +
+          (res?.data?.lastName || "")
+        ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
 
       toast.success("Registration Successful", {duration: 2000});
@@ -72,13 +87,23 @@ export default function Register(props) {
 
   return (
     // Main container contains image and form
-    <div className="register-container header mv">
+    <div className="register-container mv">
       {/* Form Container contains logo and necessary textfield and buttons */}
       <div className="register-form-container">
         {/* Contains Logo and App Name */}
         <div className="register-header">
-          <span className="logo"></span>
-          <span className="heading">SENTIMO</span>
+          {/* <span className="logo">LOGO </span>
+          <span className="heading">SENTIMO</span> */}
+          <img
+            src={logo}
+            alt=""
+            style={{
+              maxHeight: "20vh",
+              maxWidth: "20vw",
+              minWidth: "100px",
+              minHeight: "100px",
+            }}
+          />
         </div>
 
         {/* Create Account Headings mv = margin vertical */}
@@ -165,6 +190,7 @@ export default function Register(props) {
 
                 <div className="password-field mh mv">
                   <TextField
+                    if="registerPassword"
                     label="Password"
                     variant="outlined"
                     type="password"
@@ -183,6 +209,28 @@ export default function Register(props) {
                     value={password}
                   />
                 </div>
+
+                <div className="password-field mh mv">
+                  <TextField
+                    id="registerConfirmPassword"
+                    label="Confirm Password"
+                    variant="outlined"
+                    type="password"
+                    onChange={(e) => setConfirmPassword(e.target.value.trim())}
+                    sx={specialTextField}
+                    InputLabelProps={specialLabel}
+                    InputProps={{
+                      startAdornment: (
+                        <InputAdornment position="start">
+                          <PasswordSharp color="primary" />
+                        </InputAdornment>
+                      ),
+                    }}
+                    fullWidth
+                    required
+                    value={confirmPassword}
+                  />
+                </div>
               </div>
 
               <div className="button-container">
@@ -194,6 +242,7 @@ export default function Register(props) {
                     pt: 2,
                     pb: 2,
                     mt: 2,
+                    mb: 2,
                     fontSize: "15px",
                     borderRadius: "30px",
                   }}
@@ -206,12 +255,19 @@ export default function Register(props) {
             </form>
           </div>
         </div>
-
-        {/* Blank Div */}
-        <div></div>
       </div>
-
-      <section className="register-side-image"></section>
+      <div className="register-side-image">
+        <img
+          src={signUpImage}
+          alt="Welcome"
+          style={{
+            height: "100%",
+            width: "100%",
+            maxWidth: "60vw",
+            maxHeight: "60vh",
+          }}
+        />
+      </div>
     </div>
   );
 }

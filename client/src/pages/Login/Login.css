@@ -1,22 +1,26 @@
 .login-form-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .login-form-header {
   display: flex;
   flex-direction: column;
-  width: 50vw;
+  /* width: 50vw; */
+  justify-content: center;
+  align-items: center;
 }
 
-.login-form-image {
+/* Instead of giving div background using img tag now! */
+/* .login-form-image {
   height: 95vh;
-  background-image: url("../../assets/images/selftimeisolation.jpg");
+  background-image: url("../../assets/images/loginBanner.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  transform: scaleX(-1);
-}
+  transform: scaleX(-1); 
+} */
 
 .login-logo-header {
     display: flex;
@@ -25,16 +29,14 @@
   }
   
   .login-input-container {
-    height: 95vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     flex-basis: 50%;
 }
 
 .login-input-container * {
-  margin-top: 9px;
   margin-bottom: 9px;
 }
 
@@ -72,28 +74,33 @@
 }
 
 .large-login-text {
-  font-size: 40px;
+  font-size: 3em;
   letter-spacing: 2px;
   line-height: 40px;
 }
 
 .login-dot {
-    font-size: 40px;
+    font-size: 1em;
     color: #508afa;
 }
 
 @media (max-width: 780px) {
     .login-form-header {
-      width: 0vw;
+      /* margin: 5vh; */
+      justify-content: center;
     }
-    .login-form-image {
-        flex-basis: 0;
-        width: 0%;
+    
+    .login-logo-header {
+      display: none;
     }
 
     .login-input-container {
-        flex-basis: 80%;
-    }
+      flex-basis: 80%;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    } 
 }
 
 @media (max-width: 460px) {
@@ -103,6 +110,12 @@
 
     .login-input-container {
       flex-basis: 100%;
+  }
+
+  .large-login-text {
+    font-size: 2em;
+    letter-spacing: 2px;
+    line-height: 30px;
   }
 }
 

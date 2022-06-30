@@ -40,7 +40,7 @@ export default function Home() {
             <div className="home-title popup-anim text--center">SENTIMO</div>
             <div className="home-title-desc popup-anim text--left">
               Write down your deep down feelings in our secure notes app and <br/> <br/>
-              Watch the movies that match your sentiments and reduce time surfing OTTs
+              Watch the movies that match your sentiments and reduce time surfing OTTs.
             </div>
           </div>
         </div>

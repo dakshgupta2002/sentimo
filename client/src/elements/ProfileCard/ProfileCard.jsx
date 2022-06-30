@@ -3,6 +3,7 @@ import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import Divider from '@mui/material/Divider';
 
 import "./ProfileCard.css";
 
@@ -18,10 +19,11 @@ export default function ProfileCard({
     <div className="profileCardContainer">
       <div className="personData">
 
-        <div className="personWhatWork small-text text--center">{whatWork}</div>
-        <div className="personName large-text text--center">{name}.</div>
-        <div className="personWhoAreYou medium-text text--center">{whoAreYou}</div>
-        <div className="personContent small-text text--center">{content}</div>
+        <div className="personWhatWork small-text">{whatWork}</div>
+        <div className="personName">{name}.</div>
+        <Divider /> 
+        <div className="personWhoAreYou medium-text">{whoAreYou}</div>
+        <div className="personContent small-text">{content}</div>
       
         <div className="profileCardSocial">
           <a href={socialLinks[0]}>
