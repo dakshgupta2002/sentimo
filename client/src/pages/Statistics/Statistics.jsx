@@ -6,28 +6,26 @@ import { fetchStats } from "../../utils/api/stats";
 import { Tab, Tabs } from "@mui/material";
 import { TabPanel } from "../../elements/TabPanel";
 import { VictoryChart, VictoryLine, VictoryPie, VictoryTheme } from "victory";
+import { useLoading } from "../../utils/hooks/useLoading";
 
 export default function Statistics() {
   const { date } = useDate();
   const [tab, setTab] = useState(0);
   const numOfDays = [7, 30, 365];
-  const [emotions, setEmotions] = useState(
-    []
-  ); /* Emotions of last `tab` days */
+  const [emotions, setEmotions] = useState([]); /* Emotions of last `tab` days */
   const [pieChartData, setPieChartData] = useState([]);
-
-  /* [HappyData, AngryData, Surprise, Sad, Fear]: each ele is an array containing array of objects 
-     [ [{x: 1, y: 2}, {x: 3, y: 4}], [{x: 1, y: 2}, {x: 3, y: 4}] ]
-  */
   const [lineChartData, setLineChartData] = useState([]);
 
   const handleChange = (event, newValue) => {
     setTab(newValue);
   };
 
+  const { setLoading, setError, LoadingScreen } = useLoading();
+
   // fetch the statistics created from past days
   useEffect(() => {
     const getStats = async () => {
+      setLoading(true); setError('Fetching the stats')
       const res = await fetchStats(date, numOfDays[tab]);
       if (res?.response?.status === 201 || res?.response?.status === 200) {
         //clear and update the emotions array
@@ -37,7 +35,6 @@ export default function Statistics() {
           return e;
         });
         setEmotions(updatedEmotion);
-        console.log(updatedEmotion);
       } else {
         console.log(res?.data?.msg);
       }
@@ -48,48 +45,38 @@ export default function Statistics() {
   useEffect(() => {
     /* Score out of 10 for each day and each emotion separate line chart */
     const refreshLineData = () => {
-      var lineHappyData = [],
-        lineAngryData = [],
-        lineSurpriseData = [];
-      var lineSadData = [],
-        lineFearData = [];
-
-      var lineData = [];
-
+      var lineHappyData = [], lineAngryData = [], lineSurpriseData = [], lineSadData = [], lineFearData = [];
+      
       for (let i = 0; i < emotions?.length; i++) {
-        /* TODO: What if emotions[1] is empty or some bug do ask Daksh don't forget! */
-        var emotion = emotions[1];
-
+        let emotion = emotions[i][1]; //emotions of each day are stored in index 1
+        
         emotion.Happy
-          ? lineHappyData.push(Math.round(emotion.Happy * 10))
-          : lineHappyData.push(0);
+        ? lineHappyData.push(Math.round(emotion.Happy * 100))
+        : lineHappyData.push(0);
         emotion.Angry
-          ? lineAngryData.push(Math.round(emotion.Angry * 10))
-          : lineAngryData.push(0);
+        ? lineAngryData.push(Math.round(emotion.Angry * 100))
+        : lineAngryData.push(0);
         emotion.Surprise
-          ? lineSurpriseData.push(Math.round(emotion.Surprise * 10))
+          ? lineSurpriseData.push(Math.round(emotion.Surprise * 100))
           : lineSurpriseData.push(0);
-        emotion.Sad
-          ? lineSadData.push(Math.round(emotion.Sad * 10))
+          emotion.Sad
+          ? lineSadData.push(Math.round(emotion.Sad * 100))
           : lineSadData.push(0);
-        emotion.Fear
-          ? lineFearData.push(Math.round(emotion.Fear * 10))
+          emotion.Fear
+          ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
 
-      /* Since all line(some)Data is of same length */
-      for (let i = 0; i < lineHappyData?.length; i++) {
-        if (lineHappyData[i] !== 0)
-          lineData[0].push({ x: i, y: lineHappyData[i] });
-        if (lineAngryData[i] !== 0)
-          lineData[1].push({ x: i, y: lineAngryData[i] });
-        if (lineSurpriseData[i] !== 0)
-          lineData[2].push({ x: i, y: lineSurpriseData[i] });
-        if (lineSadData[i] !== 0) lineData[3].push({ x: i, y: lineSadData[i] });
-        if (lineFearData[i] !== 0)
-          lineData[4].push({ x: i, y: lineFearData[i] });
-      }
+      var lineData = [];
+      for (let i=0; i<5; i++)lineData.push([]);
 
+      for (let i = 0; i < lineHappyData?.length; i++) {
+        lineData[0].push({ x: i, y: lineHappyData[i] });
+        lineData[1].push({ x: i, y: lineAngryData[i] });
+        lineData[2].push({ x: i, y: lineSurpriseData[i] });
+        lineData[3].push({ x: i, y: lineSadData[i] });
+        lineData[4].push({ x: i, y: lineFearData[i] });
+      }
       setLineChartData(lineData);
     };
 
@@ -99,7 +86,7 @@ export default function Statistics() {
       var totalCount = [1.0, 1.0, 1.0, 1.0, 1.0];
 
       for (let i = 0; i < emotions?.length; i++) {
-        var emotion = emotions[1];
+        let emotion = emotions[i][1];
         if (emotion.Happy) {
           data[0] += emotion.Happy;
           totalCount[0] += 1;
@@ -152,11 +139,13 @@ export default function Statistics() {
 
     refreshPieData();
     refreshLineData();
+    setLoading(false);
   }, [emotions]); // update the data required when new emotions are created
 
   return (
     <div>
       <Sidebar />
+      <LoadingScreen/>
       <Tabs variant="scrollable" value={tab} onChange={handleChange}>
         <Tab label="Last Week" />
         <Tab label="Last Month" />
@@ -165,18 +154,50 @@ export default function Statistics() {
 
       {/* Last 7 Days */}
       <TabPanel value={tab} index={0}>
-        <VictoryChart theme={VictoryTheme.material}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
           
           <VictoryLine
             style={{
               data: { stroke: "#c43a31" },
               parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
             }}
-            data={[]} /* No graphs when Empty Array TODO */
+            data={lineChartData[0]} /* No graphs when Empty Array TODO */
           />
         </VictoryChart>
-        
-        {pieChartData.length
+      </TabPanel>
+      
+      {/* Last 1 Month */}
+      <TabPanel value={tab} index={1}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
+          <VictoryLine
+            
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
+            }}
+            data={lineChartData[0]} /* This should be empty graph.. TODO */
+          />
+        </VictoryChart>
+      </TabPanel>
+
+      {/* Last 1 Year */}
+      <TabPanel value={tab} index={2}>
+        <VictoryChart theme={VictoryTheme.material} height={200}>
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+              labels: {fontSize: "1px"}
+            }}
+            data={lineChartData[0]} 
+          />
+        </VictoryChart>
+      </TabPanel>
+
+
+      {pieChartData.length
         ? <VictoryPie
               theme={VictoryTheme.material}
               height={200}
@@ -189,39 +210,7 @@ export default function Statistics() {
         : <h2>NO PIE DATA</h2>
         }
 
-      </TabPanel>
-      
-      {/* Last 1 Month */}
-      <TabPanel value={tab} index={1}>
-
-        <VictoryChart theme={VictoryTheme.material} width={400} height={400}>
-          <VictoryLine
-            
-            style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" },
-            }}
-            data={lineChartData[0]} /* This should be empty graph.. TODO */
-          />
-        </VictoryChart>
-
-      </TabPanel>
-
-      {/* Last 1 Year */}
-      <TabPanel value={tab} index={2}>
-
-        <VictoryChart theme={VictoryTheme.material}>
-          <VictoryLine
-            style={{
-              data: { stroke: "#c43a31" },
-              parent: { border: "1px solid #ccc" },
-            }}
-            data={lineChartData[0]} 
-          />
-        </VictoryChart>
-
-      </TabPanel>
-
+              
       {emotions?.length === 0 ? (
         <h1>No emotions fetched... </h1>
       ) : (
