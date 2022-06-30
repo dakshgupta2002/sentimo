@@ -1,3 +1,7 @@
+.aboutUsBody {
+  background-color: #e7eeed;
+}
+
 .profileCardParent {
   display: flex;
   flex-direction: column;
