@@ -1,0 +1,44 @@
+:root {
+    --headerFontSize: 20vmin;
+}
+
+.movieCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: wheat;
+}
+
+.posterContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.posterContainer > img {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.overviewContainer {
+  display: flex;
+  border-radius: 1em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.header {
+    font-weight: bold;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: var(--headerFontSize);
+    line-height: calc(var(--headerFontSize) + 1);
+    letter-spacing: 3px;
+}
+
+.movieOverview {
+    font-size: 1.5rem;
+    letter-spacing: 1.8px;
+}

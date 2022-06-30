@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
+import {MovieCard} from "../../elements";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
@@ -34,7 +35,7 @@ export default function Recommendation() {
   return (
     <div>
       <Sidebar />
-      <h1>Recommendation</h1>
+      <MovieCard />
     </div>
   );
 }
