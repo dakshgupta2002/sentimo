@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { userLogin } from "../../utils/api/userPost";
-import { Button, InputAdornment, TextField } from "@mui/material";
+import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
 import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 
@@ -16,7 +16,6 @@ export default function Login(props) {
   const login = async (e) => {
     e.preventDefault();
     const res = await userLogin(username, password);
-    console.log(res);
     if (res.response.status === 200 || res.response.status === 201) {
       localStorage.setItem("jwt", res.data.token);
       const name =
@@ -26,13 +25,10 @@ export default function Login(props) {
           (res?.data?.lastName || "")
         ).trim() || res?.data?.username;
       localStorage.setItem("name", name);
-      
       // don't keep any toast for successful login!
 
       navigate("/");
     } else {
-      console.log("error: ", res.data.msg);
-
       toast.error("Incorrect Username or Password");
     }
   };
@@ -51,7 +47,7 @@ export default function Login(props) {
       </div>
 
       <div className="login-input-container">
-        <div className="login-logo-header">LOGO SENTIMO</div>
+        <div className="login-logo-header">SENTIMO</div>
         <div className="login-text-header heading large-login-text">
           Login<span className="login-dot">.</span>
         </div>
@@ -107,13 +103,9 @@ export default function Login(props) {
 
         <div className="sign-up-btn">
           <div className="sign-up-text">Don't Have an account yet? &nbsp;</div>
-          <Button
-            onClick={signUpButtonClick}
-            sx={{ color: "#508afa", margin: "0", padding: "0" }}
-            fullWidth
-          >
-            Register
-          </Button>
+          <Link href="/register">
+            Create a free account
+          </Link>
         </div>
       </div>
     </div>

@@ -5,8 +5,8 @@ import Diary from '../models/Diary.js';
 import Note from '../models/Note.js';
 import { spawn } from 'child_process';
 
-var dailyStat = schedule('59 23 * * *', async () => {
-  const date = new Date((new Date()).getTime() + (330 * 60 * 1000));
+var dailyStat = schedule('0 */8 * * *', async () => { // run every 8 hours to manage all timezones
+  const date = new Date(); 
   console.log("===Starting CRON job===")
   //at 11:59pm of every day
   //create and save emotions of every user for that date
@@ -14,12 +14,11 @@ var dailyStat = schedule('59 23 * * *', async () => {
   users.forEach(async user => {
     const diary = await Diary.findOne({ user: user._id }).exec();
     if (diary) {
-      const notes = await diary?.notes?.map(noteId => Note.findById(noteId).exec())
+      const notes = diary?.notes?.map(noteId => Note.findById(noteId).exec())
       if (notes) {
-        //notes is an array of promises, resolve all 
         await Promise.all(notes).then(notes => {
           notes.filter(note => {
-            return (new Date(note?.createdAt)).toLocaleDateString() === date.toLocaleDateString();
+            return (note?.date === date.toLocaleDateString()) // notes date is in local client format
           });
 
           console.log("===User's notes have been found===")

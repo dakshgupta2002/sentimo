@@ -77,7 +77,7 @@ export default function Register(props) {
       <div className="register-form-container">
         {/* Contains Logo and App Name */}
         <div className="register-header">
-          <span className="logo">LOGO </span>
+          <span className="logo"></span>
           <span className="heading">SENTIMO</span>
         </div>
 

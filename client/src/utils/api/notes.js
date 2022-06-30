@@ -15,7 +15,7 @@ export const updateNoteSingle = async (title, content, noteId) => {
 }
 
 export const postNote = async (title, content, date, notesAdded, setNotesAdded) => {
-    const res = await post("notes", { title, content }, 'POST');
+    const res = await post("notes", { title, content, date: date.toLocaleDateString() }, 'POST');
     setNotesAdded(notesAdded + 1);      
     return res;
 }
