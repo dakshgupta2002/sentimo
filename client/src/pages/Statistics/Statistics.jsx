@@ -37,7 +37,7 @@ export default function Statistics() {
           return e;
         });
         setEmotions(updatedEmotion);
-        console.log(updatedEmotion[0]);
+        console.log(updatedEmotion);
       } else {
         console.log(res?.data?.msg);
       }

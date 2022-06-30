@@ -24,8 +24,11 @@ export default function Home() {
     <div className="home-container">
       <Fade triggerOnce>
         <Sidebar />
+        <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
+         <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
+        </footer>
       </Fade>
-
+    
       {/* HEADING SENTIMO AND ONE LINER */}
       <Fade direction="up" cascade triggerOnce>
         <div className="home-heading">
@@ -155,12 +158,6 @@ export default function Home() {
           </div>
         </div>
       </Slide>
-
-      <Fade triggerOnce>
-        <footer className="text--center" style={{paddingTop: "10px", paddingBottom: "10px"}}>
-         <Link to="/aboutUs" style={{color: "#fff", textDecoration: "none"}}>About the Developers</Link>
-        </footer>
-      </Fade>
     </div>
   );
 }
