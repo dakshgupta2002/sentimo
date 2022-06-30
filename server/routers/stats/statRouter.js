@@ -28,7 +28,7 @@ statRouter.route("/note")
         let emotion;
         // // spawn new child process to call the python script
         console.log("===Calling python script===");
-        const python = spawn('python', ['scripts/emotion.py', data]);
+        const python = spawn('python3', ['scripts/emotion.py', data]);
 
         python.stdout.on('data', data => {
             emotion = data.toString();
