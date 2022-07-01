@@ -64,8 +64,8 @@ export default function Profile() {
       <Sidebar />
       <div className="profileFormContainer">
         <div className="avatarContainer">
-          <Input accept="image/*" type="file" />
-          <label htmlFor="contained-button-file">
+          <input accept="image/*" type="file" />
+          <label htmlFor="contained-button-file" style={{display: "flex", justifyContent: "center"}} >
             <IconButton>
               <Avatar
                 img={image}
