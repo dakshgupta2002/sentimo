@@ -1,8 +1,6 @@
 import React from "react";
 import "./MovieCard.css";
 
-import { RatingCircle } from "./../../elements";
-
 /*
  * original_title / title (any one)
  * overview = content
@@ -14,15 +12,11 @@ import { RatingCircle } from "./../../elements";
  */
 function MovieCard() {
   return (
-    // This sucks but Will work tom.. 
     <div className="movieCardContainer">
       <div className="posterContainer">
         <img src="https://m.media-amazon.com/images/I/71s4cikZfeL._AC_SY879_.jpg" alt="Movie Poster" />
       </div>
 
-      {/* Make This disappear for small device Some button to show and hide for small device
-      Read some blog else you fail again :sed:
-      */}
       <div className="overviewContainer">
         <div className="header">Synopsis</div>
         <div className="movieOverview">Overview of movie here.</div>
