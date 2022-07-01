@@ -5,16 +5,16 @@ import { fetchUserProfile } from "../../utils/api/user";
 import { useLoading } from "../../utils/hooks/useLoading";
 
 export default function Profile() {
-  const [username, setUsername] = useState();
-  const [password, setPassword] = useState();
-  const [email, setEmail] = useState();
-  const [firstName, setFirstName] = useState();
-  const [lastName, setLastName] = useState();
-  const [phone, setPhone] = useState();
-  const [address, setAddress] = useState();
-  const [image, setImage] = useState();
-  const [gender, setGender] = useState();
-  const [age, setAge] = useState();
+  const [username, setUsername] = useState(null);
+  const [password, setPassword] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [firstName, setFirstName] = useState(null);
+  const [lastName, setLastName] = useState(null);
+  const [phone, setPhone] = useState(null);
+  const [address, setAddress] = useState(null);
+  const [image, setImage] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [age, setAge] = useState(null);
 
   const { setLoading, LoadingScreen, setError } = useLoading();
 
