@@ -9,7 +9,6 @@ import {
   VictoryLine,
   VictoryPie,
   VictoryTheme,
-  VictoryTheme,
 } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 import { max } from "moment";
