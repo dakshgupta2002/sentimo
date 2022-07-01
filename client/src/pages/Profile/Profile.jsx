@@ -6,7 +6,9 @@ export default function Profile() {
   return (
     <Box>
         <Sidebar/>
-        <h1>Profile page</h1>
+        <div>
+          
+        </div>
     </Box>
   )
 }
