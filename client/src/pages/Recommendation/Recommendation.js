@@ -35,7 +35,10 @@ export default function Recommendation() {
   return (
     <div>
       <Sidebar />
+      <div style={{width: '100vw'}}>
       <MovieCard />
+      </div>
+        
     </div>
   );
 }

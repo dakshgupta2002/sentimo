@@ -1,0 +1,24 @@
+
+:root {
+    --ratingCircleRating: 50px;
+}
+
+.ratingCircle__Container, .ratingCircle__Internal {
+    border: 1.7px solid black;
+    border-radius: 50%;
+    height: var(--ratingCircleRating);
+    width: var(--ratingCircleRating);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ratingCircle__Internal {
+    background-color: black;
+    color: white;
+    max-height: 150px;
+    max-width: 150px;
+    
+    height: calc(var(--ratingCircleRating) - 15px);
+    width: calc(var(--ratingCircleRating) - 15px);
+}

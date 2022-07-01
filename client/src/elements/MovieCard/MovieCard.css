@@ -1,0 +1,65 @@
+.movieCardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.posterContainer {
+    max-width: 100%;
+}
+
+.posterContainer img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.overviewContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.movieDetailContainer {
+    padding: 2vmin;
+}
+
+.overviewHeader {
+    display: flex;
+    width: 100vw;
+    justify-content: flex-start;
+    padding-left: 2vmin;
+}
+
+.genreAndTime {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.movieName {
+    font-size: 8vmin;
+}
+
+/* Content Box.. Remove color later */
+.movieData {
+    background-color: palevioletred;
+}
+
+.movieOverview {
+    display: flex;
+    justify-content: flex-start;
+    width: 100vw;
+}
+
+.synopsis {
+    padding-left: 3%;
+    align-self: center;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.pipe {
+    font-weight: bold;
+    margin: 0 10px;
+}
