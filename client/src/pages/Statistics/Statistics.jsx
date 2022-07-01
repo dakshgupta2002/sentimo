@@ -4,7 +4,6 @@ import { Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from "../../utils/api/stats";
 import { Tab, Tabs } from "@mui/material";
-import { TabPanel } from "../../elements/TabPanel";
 import { VictoryChart, VictoryLine, VictoryPie, VictoryTheme } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 
@@ -52,11 +51,13 @@ export default function Statistics() {
         lineAngryData = [],
         lineSurpriseData = [],
         lineSadData = [],
-        lineFearData = [];
+        lineFearData = [],
+        lineDateData = [];
 
       for (let i = 0; i < emotions?.length; i++) {
         let emotion = emotions[i][1]; //emotions of each day are stored in index 1
 
+        lineDateData.push(emotions[i][0]);
         emotion.Happy
           ? lineHappyData.push(Math.round(emotion.Happy * 100))
           : lineHappyData.push(0);
@@ -73,6 +74,9 @@ export default function Statistics() {
           ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
+
+      lineDateData[1] = lineDateData[lineDateData.length - 1];
+      lineDateData.splice(2 - lineDateData.length); // Now array size is only two [startDate, endDate]
 
       var lineData = [];
       for (let i = 0; i < 5; i++) lineData.push([]);
