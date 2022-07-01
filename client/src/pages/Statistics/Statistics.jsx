@@ -9,6 +9,7 @@ import {
   VictoryLine,
   VictoryPie,
   VictoryTheme,
+  VictoryAxis,
 } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 import { max } from "moment";
@@ -177,7 +178,7 @@ export default function Statistics() {
                 dependentAxis
                 tickFormat={(tick) => `${Math.round(tick)}`}
               />
-              <VictoryLine data={sampleData} />
+              <VictoryLine data={lineChartData[0]} />
             </VictoryChart>
           </div>
 
