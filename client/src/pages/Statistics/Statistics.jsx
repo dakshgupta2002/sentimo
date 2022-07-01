@@ -4,8 +4,15 @@ import { Sidebar } from "../../components";
 import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from "../../utils/api/stats";
 import { Tab, Tabs } from "@mui/material";
-import { VictoryChart, VictoryLine, VictoryPie, VictoryTheme } from "victory";
+import {
+  VictoryChart,
+  VictoryLine,
+  VictoryPie,
+  VictoryTheme,
+  VictoryTheme,
+} from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
+import { max } from "moment";
 
 export default function Statistics() {
   const { date } = useDate();
@@ -16,6 +23,7 @@ export default function Statistics() {
   ); /* Emotions of last `tab` days */
   const [pieChartData, setPieChartData] = useState([]);
   const [lineChartData, setLineChartData] = useState([]);
+  const [lineTickData, setLineTickData] = useState([]); // same for all line chart not neeeded in pie
 
   const handleChange = (event, newValue) => {
     setTab(newValue);
@@ -74,9 +82,10 @@ export default function Statistics() {
           ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
-
-      lineDateData[1] = lineDateData[lineDateData.length - 1];
-      lineDateData.splice(2 - lineDateData.length); // Now array size is only two [startDate, endDate]
+      
+      for (let i = 1; i < lineDateData.length - 1; i++) {
+        lineDateData[i] = "";
+      }
 
       var lineData = [];
       for (let i = 0; i < 5; i++) lineData.push([]);
@@ -89,7 +98,7 @@ export default function Statistics() {
         lineData[4].push({ x: i, y: lineFearData[i] });
       }
       setLineChartData(lineData);
-      console.log({lineData})
+      // console.log({lineData})
     };
 
     /* Get all notes data from emotions and then push it in data vector */
@@ -159,19 +168,19 @@ export default function Statistics() {
         <h1>No emotions fetched... </h1>
       ) : (
         <div>
-          <VictoryChart
-            domain={{ y: [0, 100], x: [0, numOfDays[tab]] }}
-            theme={VictoryTheme.material}
-            height={200}
-            style={{
-              data: { stroke: "#c43a31" },
-              labels: { fontSize: "5px" },
-            }}
-          >
-            <VictoryLine
-              data={lineChartData[0]} /* No graphs when Empty Array TODO */
-            />
-          </VictoryChart>
+          <div class="victoryLine">
+            <VictoryChart domain={[0, 10]}>
+              <VictoryAxis
+                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
+                tickFormat={lineTickData} // First two label rest empty
+              />
+              <VictoryAxis
+                dependentAxis
+                tickFormat={(tick) => `${Math.round(tick)}`}
+              />
+              <VictoryLine data={sampleData} />
+            </VictoryChart>
+          </div>
 
           <VictoryPie
             theme={VictoryTheme.material}

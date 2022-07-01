@@ -11,3 +11,9 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.victoryLine svg {
+    margin: 0px auto;
+    max-height: calc(40rem);
+    max-width: calc(40rem);
+  }
