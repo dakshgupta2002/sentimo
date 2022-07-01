@@ -113,7 +113,7 @@ export default function Cards({
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon />
+          <ExpandMoreIcon sx={{color: 'white'}}/>
         </ExpandMore>
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -128,7 +128,7 @@ export default function Cards({
                 aria-expanded={expanded}
                 aria-label="show less"
               >
-                <ExpandMoreIcon />
+                <ExpandMoreIcon sx={{color: 'white'}}/>
               </ExpandMore>
             </CardActions>
           </Typography>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userLogin } from "../../utils/api/userPost";
+import { userLogin } from "../../utils/api/user";
 import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 import { toast } from "react-toastify";

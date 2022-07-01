@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { userRegister } from "../../utils/api/userPost";
+import { userRegister } from "../../utils/api/user";
 import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
 import AccountCircle from "@mui/icons-material/AccountCircle";
