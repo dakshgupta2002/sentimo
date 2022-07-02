@@ -4,8 +4,9 @@
   flex-wrap: wrap-reverse;
   /* overflow: hidden; */
   position: relative;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  min-height: 100vh;
 }
 
 .header {
@@ -104,11 +105,11 @@
   }
 
   .only-form {
-    width: 100%;
+    width: 70vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
   }
 
   .name-data-container {
@@ -160,6 +161,10 @@
 }
 
 @media (max-width: 460px) {
+  .only-form {
+    width: 100%;
+  }
+
   .register-form-container {
     margin-left: 10px;
     margin-right: 10px;

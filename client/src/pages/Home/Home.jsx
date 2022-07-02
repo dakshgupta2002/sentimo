@@ -83,7 +83,7 @@ export default function Home() {
         </div>
         <Fade triggerOnce>
           <div className="confused-points">
-            <div className="confused-header text--center">Answers</div>
+            <div className="confused-header text--center">Solutions</div>
             <div className="confused-point">
               💡 Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!

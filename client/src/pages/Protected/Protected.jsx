@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
 import { Cards } from "../../elements";
 import { fetchProtected } from "../../utils/api/notes";
-
+import { useLoading } from '../../utils/hooks/useLoading'
 import "./Protected.css";
 
-export default function Protected({ setLoading }) {
+export default function Protected() {
   const [notes, setNotes] = useState([]);
-
+  const { setLoading, setError, LoadingScreen } = useLoading();
   useEffect(() => {
     const getNotes = async () => {
-      // setLoading(true);
+      setLoading(true); setError('Fetch Protected Notes')
       const res = await fetchProtected();
       if (res.response.status === 200) {
         setNotes(res.data.notes);
       }
-      // setLoading(false);
+      setLoading(false);
     };
     getNotes();
   }, []);
@@ -23,7 +23,7 @@ export default function Protected({ setLoading }) {
   return (
     <div>
       <Sidebar />
-
+      <LoadingScreen/>
       <div className="protected-container">
         {notes?.length === 0 ? (
           <h1>No notes to display</h1>

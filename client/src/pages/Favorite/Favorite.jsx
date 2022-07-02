@@ -4,25 +4,25 @@ import { Cards } from "./../../elements";
 import { fetchFavourite } from "../../utils/api/notes";
 import { Tab, Tabs } from "@mui/material";
 import { TabPanel } from "../../elements/TabPanel";
-
+import { useLoading } from "../../utils/hooks/useLoading";
 import "./Favorite.css";
 
-export default function Favorite({ setLoading }) {
+export default function Favorite() {
   const [notes, setNotes] = useState([]);
   const [value, setValue] = React.useState(0);
-
+  const { setLoading, setError, LoadingScreen } = useLoading();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   useEffect(() => {
     const getNotes = async () => {
-      // setLoading(true);
+      setLoading(true); setError('Fetching Favourite Notes')
       const res = await fetchFavourite();
       if (res.response.status === 200) {
         setNotes(res.data.notes);
       }
-      // setLoading(false);
+      setLoading(false);
     };
     getNotes();
   }, []);
@@ -30,7 +30,7 @@ export default function Favorite({ setLoading }) {
   return (
     <div className="favoriteBody">
       <Sidebar />
-
+      <LoadingScreen/>
       <Tabs variant="scrollable" value={value} onChange={handleChange}>
         <Tab label="Favorite Note" />
         <Tab label="Favorite Movie" />

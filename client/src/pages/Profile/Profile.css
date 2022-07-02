@@ -1,0 +1,56 @@
+.profileFormContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-self: center;
+    /* flex-wrap: wrap; wrapping not occuring at right time */
+}
+
+.profileFormContainer > * {
+    flex-basis: 50%;
+}
+
+.avatarContainer {
+    display: flex;
+    flex-direction: column-reverse;
+    align-self: flex-start;
+    flex-basis: 40%;
+}
+
+.profileData {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50vw;
+}
+
+.profileData * {
+    width: 100%;
+}
+
+input[type='file'] {
+    color: transparent;
+    margin-left: 42%;
+  }
+
+@media (max-width: 700px) {
+    .profileFormContainer {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .avatarContainer {
+        align-self: center;
+    }
+
+    input[type="file"] {
+        margin-left: 35%;
+    }
+}
+
+@media (max-width: 900px) {
+    input[type="file"] {
+        margin-left: 38%;
+    }
+}
