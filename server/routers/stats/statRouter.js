@@ -66,10 +66,11 @@ statRouter.route("/")
         console.log("===Fetching User's Stats===")
         const days = req?.query?.days;
         const date = new Date(req?.query?.date);
-        const lastDate = new Date(date.setDate(date.getDate() - days)).toLocaleDateString();
+        const lastDate = new Date(date.setDate(date.getDate() - days)).toISOString().split('T')[0]; 
         //all stats of the user saved in req latest in the days
         const filteredStats = await req?.stats?.filter(stat => {
-            return lastDate <= (new Date(stat?.date)).toLocaleDateString();
+            //comparison of date strings in format YYYY-MM-DD is valid
+            return lastDate <= (new Date(stat?.date)).toISOString().split('T')[0];
         })
         await Promise.all(filteredStats).then(filteredStats => {
             res.status(200).json(filteredStats)
