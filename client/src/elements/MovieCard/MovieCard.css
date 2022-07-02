@@ -1,65 +1,83 @@
+:root {
+  --movieCardHeight: max(50vh, 200px);
+  --movieCardWidth: 100%;
+  --posterImageUrl : "";
+}
+
 .movieCardContainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: var(--movieCardWidth);
+  max-height: var(--movieCardHeight);
 }
 
 .posterContainer {
-    max-width: 100%;
+  width: var(--movieCardWidth);
+  height: var(--movieCardHeight);
 }
 
-.posterContainer img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: cover;
-}
+/* .posterContainer img {
+  max-width: 100%;
+  max-height: 100%;
+} */
 
 .overviewContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
-
-.movieDetailContainer {
-    padding: 2vmin;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .overviewHeader {
-    display: flex;
-    width: 100vw;
-    justify-content: flex-start;
-    padding-left: 2vmin;
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2vmin;
 }
 
-.genreAndTime {
-    display: flex;
-    justify-content: flex-start;
+.genre {
+    display: flex;    
 }
 
-.movieName {
-    font-size: 8vmin;
+.genre-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
 
 /* Content Box.. Remove color later */
 .movieData {
-    background-color: palevioletred;
+  background-color: palevioletred;
+  display: flex;
+  flex-direction: column;
+  padding-left: min(12px, 2vmin);
+  width: var(--movieCardWidth);
+}
+
+
+.movieName {
+  font-size: 8vmin;
 }
 
 .movieOverview {
-    display: flex;
-    justify-content: flex-start;
-    width: 100vw;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .synopsis {
-    padding-left: 3%;
-    align-self: center;
-    text-transform: uppercase;
-    font-weight: bold;
+  padding-left: 3%;
+  align-self: center;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-.pipe {
-    font-weight: bold;
-    margin: 0 10px;
+.center-dot {
+  height: min(2vmin, 5px);
+  width: min(2vmin, 5px);
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  align-self: center;
+  margin: auto min(2vmin, 8px);
 }

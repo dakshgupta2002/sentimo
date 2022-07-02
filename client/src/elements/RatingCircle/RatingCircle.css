@@ -1,6 +1,6 @@
 
 :root {
-    --ratingCircleRating: 50px;
+    --ratingCircleRating: 40px;
 }
 
 .ratingCircle__Container, .ratingCircle__Internal {
