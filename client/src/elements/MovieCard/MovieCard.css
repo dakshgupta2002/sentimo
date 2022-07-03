@@ -63,7 +63,7 @@
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   width: var(--movieCardWidth);
   height: 227px;
 }

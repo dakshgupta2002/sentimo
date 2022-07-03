@@ -33,7 +33,7 @@ export default function Recommendation() {
       const res = await fetch(discoverUrl);
       const body = await res.json();
       // console.log("movie:", body.results);
-      console.log(body.results[0].genre_ids);
+      console.log(body.results);
       setMovies(body);
     };
 
@@ -49,7 +49,7 @@ export default function Recommendation() {
           return (
             <div className="movieCard" key={i}>
               <MovieCard
-                poster_path={movie?.poster_path}
+                poster_path={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                 title={movie?.title}
                 genres={movie?.genre_ids?.map((genreID, i) => genre[genreID])}
                 release_data={movie?.release_date}
