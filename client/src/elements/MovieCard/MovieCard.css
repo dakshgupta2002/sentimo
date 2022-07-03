@@ -1,14 +1,18 @@
 :root {
   --movieCardHeight: max(50vh, 250px);
-  /* --movieCardHeight: 100%; */
   --movieCardWidth: 100%;
   --posterImageUrl : "";
 }
 
-/* @font-face {
-  font-family: 'trispace';
-  src: url("./../../assets/fonts/trispace.ttf");
-} */
+@font-face {
+  font-family: 'Coda';
+  src: url("./../../assets/fonts/Coda-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'Lalezar';
+  src: url("./../../assets/fonts/Lalezar-Regular.ttf")
+}
 
 .movieCardContainer {
   display: flex;
@@ -56,25 +60,21 @@
     align-items: center;
 }
 
-
-/* Content Box.. Remove color later */
 .movieData {
   background-color: rgb(47, 39, 39);
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
   width: var(--movieCardWidth);
   height: 227px;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
 .movieDetailContainer > * {
   padding: min(8px, 3vmin);
   font-family: 'Lalezar', cursive;
   font-size: min(9vmin, 18px);
 }
-@import url('https://fonts.googleapis.com/css2?family=Coda&display=swap');
+
 .movieName {
   font-size: min(10vmin, 25px);
   text-transform: uppercase;
