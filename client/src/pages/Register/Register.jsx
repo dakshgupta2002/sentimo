@@ -144,6 +144,7 @@ export default function Register(props) {
                       }}
                       required
                       fullWidth
+                      margin="normal"
                     />
                   </div>
 
@@ -164,6 +165,7 @@ export default function Register(props) {
                       }}
                       required
                       fullWidth
+                      margin="normal"
                     />
                   </div>
                 </div>
@@ -186,6 +188,7 @@ export default function Register(props) {
                     }}
                     fullWidth
                     required
+                    margin="normal"
                   />
                 </div>
 
@@ -208,6 +211,7 @@ export default function Register(props) {
                     fullWidth
                     required
                     value={password}
+                    margin="normal"
                   />
                 </div>
 
@@ -230,6 +234,7 @@ export default function Register(props) {
                     fullWidth
                     required
                     value={confirmPassword}
+                    margin="normal"
                   />
                 </div>
               </div>
