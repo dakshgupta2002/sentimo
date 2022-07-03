@@ -14,35 +14,31 @@ import { jsx } from "@emotion/react";
  *
  * Change these to prop
  */
-const poster_path =
-  "https://images.unsplash.com/photo-1656751609190-e0168efca2da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw1fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=600&q=60";
-const overview = "Overview of movie here.";
-const title = "Venom";
-const genres = ["Happy", "Action"];
-const release_data = "10-05-2018";
 
 function ItemSepWithDot(items)
 {
-  var f = items.length - 1;
+  var f = items?.length;
+  f -= 1;
   const jsx_items = []
-  for (let i = 0; i < items.length; i++)
+  for (let i = 0; i < items?.length; i++)
   {
     jsx_items.push(<div key={i} className="genre-list"> {items[i]} 
-    <span className={`{${f-- !== 0} ? ${`center-dot`} : ${""}}`}></span>
+    <span className={f-- !== 0 ? `center-dot` : ``}></span>
     </div>);
   }
 
   return jsx_items;
 };
 
-function MovieCard() {
+export function MovieCard({poster_path, title, genres, release_data, overview, rating}) {
 
   return (
     <div className="movieCardContainer">
 
-      <div className="posterContainer" style={{backgroundImage: `url(${poster_path})`}}> 
+      <div className="posterContainer" style={{backgroundImage: `url(${poster_path})`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat'}}> 
       
         {/* <img src={poster_path} alt="Poster" /> */}
+        <RatingCircle rating={rating} />
       </div>
 
       <div className="movieData">
@@ -51,16 +47,17 @@ function MovieCard() {
         <div className="movieDetailContainer">
           <div className="movieName">{title}</div>
             {/* Add comma sep values here later */}
-            <div className="genre genreFont">
+            <div className="genre">
               {
                 ItemSepWithDot(genres)
               }
             </div>
 
-            <div className="releaseDate genreFont">{release_data}</div>
+            <div className="releaseDate">{release_data}</div>
         </div>
 
-        <div className="overviewContainer">
+        {/* In Modal */}
+        {/* <div className="overviewContainer">
           <div className="overviewHeader">
             <div className="ratingCircle">
               <RatingCircle rating={8.3} />
@@ -68,7 +65,7 @@ function MovieCard() {
             <div className="synopsis">Synopsis</div>
           </div>
           <div className="movieOverview">{overview}</div>
-        </div>
+        </div> */}
       </div>
 
     </div>

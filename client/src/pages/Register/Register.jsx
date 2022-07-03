@@ -4,7 +4,7 @@ import { userRegister } from "../../utils/api/user";
 import { Button, InputAdornment, TextField, Link } from "@mui/material";
 import { toast } from "react-toastify";
 import AccountCircle from "@mui/icons-material/AccountCircle";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 import signUpImage from "../../assets/images/ClubSignUp.svg";
 
 import "./Register.css";

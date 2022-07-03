@@ -1,0 +1,15 @@
+.movieCardContainer {
+    display: flex;
+    flex-direction: row; /* Not coming in same row without this */
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    background: #121212;
+    align-items: stretch;
+}
+
+.movieCard {
+    width: 300px;
+    margin: 7px;
+    border: 2px solid #fff;
+    border-radius: 10px 10px 10px 10px;
+}

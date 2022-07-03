@@ -6,7 +6,7 @@ import { ContactMailSharp, PasswordSharp } from "@mui/icons-material";
 import { toast } from "react-toastify";
 
 import loginImage from "../../assets/images/loginBanner.svg";
-import logo from "../../assets/images/logo.png";
+import logo from "../../assets/images/logo.svg";
 
 import "./Login.css";
 

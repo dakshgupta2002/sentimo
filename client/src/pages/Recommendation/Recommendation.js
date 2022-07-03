@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
-import {MovieCard} from "../../elements";
+import { MovieCard } from "../../elements";
+
+import "./Recommendation.css";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState();
-  const [genre, setGenre] = useState();
+  const [genre, setGenre] = useState({});
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -19,13 +21,20 @@ export default function Recommendation() {
     const getGenre = async () => {
       const res = await fetch(genreUrl);
       const body = await res.json();
-      console.log(body);
+      // console.log("genre:", body);
+      const genreObj = {};
+      for (let i = 0; i < body?.genres?.length; i++) {
+        genreObj[body.genres[i].id] = body.genres[i].name;
+      }
+      setGenre(genreObj);
     };
 
     const getMovies = async () => {
       const res = await fetch(discoverUrl);
       const body = await res.json();
-      console.log(body);
+      // console.log("movie:", body.results);
+      console.log(body.results[0].genre_ids);
+      setMovies(body);
     };
 
     getGenre();
@@ -33,14 +42,24 @@ export default function Recommendation() {
   }, []);
 
   return (
-    <div>
+    <div className="reccomendationContain">
       <Sidebar />
-      <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
-        <MovieCard />
-        <MovieCard />
-        <MovieCard />
+      <div className="movieCardContainer">
+        {movies?.results?.map((movie, i) => {
+          return (
+            <div className="movieCard" key={i}>
+              <MovieCard
+                poster_path={movie?.poster_path}
+                title={movie?.title}
+                genres={movie?.genre_ids?.map((genreID, i) => genre[genreID])}
+                release_data={movie?.release_date}
+                rating={movie?.vote_average?.toFixed(1)} /* Only 1 decimal digit */
+                overview={movie?.overview}
+              />
+            </div>
+          );
+        })}
       </div>
-        
     </div>
   );
 }

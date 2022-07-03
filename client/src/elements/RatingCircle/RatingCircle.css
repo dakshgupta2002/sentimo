@@ -1,24 +1,27 @@
 
 :root {
-    --ratingCircleRating: 40px;
+    --ratingCircleRating: min((40px , var(--movieCardHeight)));
 }
 
 .ratingCircle__Container, .ratingCircle__Internal {
-    border: 1.7px solid black;
+    border: 2px solid white;
     border-radius: 50%;
-    height: var(--ratingCircleRating);
-    width: var(--ratingCircleRating);
+    height: calc(var(--ratingCircleRating) + 15px);
+    width: calc(var(--ratingCircleRating) + 15px);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 .ratingCircle__Internal {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     max-height: 150px;
     max-width: 150px;
-    
-    height: calc(var(--ratingCircleRating) - 15px);
-    width: calc(var(--ratingCircleRating) - 15px);
+    height: calc(var(--ratingCircleRating) - 5px);
+    width: calc(var(--ratingCircleRating) - 5px);
+
+    font-size: calc(var(--ratingCircleRating) - 20px);
+    font-family: 'Raleway', sans-serif;
 }

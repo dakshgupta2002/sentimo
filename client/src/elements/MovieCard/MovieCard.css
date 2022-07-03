@@ -1,15 +1,22 @@
 :root {
-  --movieCardHeight: max(50vh, 200px);
+  --movieCardHeight: max(50vh, 250px);
+  /* --movieCardHeight: 100%; */
   --movieCardWidth: 100%;
   --posterImageUrl : "";
 }
 
+/* @font-face {
+  font-family: 'trispace';
+  src: url("./../../assets/fonts/trispace.ttf");
+} */
+
 .movieCardContainer {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
   width: 100%;
   max-width: var(--movieCardWidth);
-  max-height: var(--movieCardHeight);
+  /* max-height: var(--movieCardHeight); */
 }
 
 .posterContainer {
@@ -21,7 +28,7 @@
   max-width: 100%;
   max-height: 100%;
 } */
-
+/* 
 .overviewContainer {
   display: flex;
   flex-direction: column;
@@ -33,10 +40,14 @@
   display: flex;
   justify-content: flex-start;
   padding-left: 2vmin;
-}
+} */
 
 .genre {
-    display: flex;    
+    display: flex;   
+    border: 2px solid #fff;
+    border-left: 0;
+    border-radius: 10px 0 10px 0;
+    flex-wrap: wrap;
 }
 
 .genre-list {
@@ -48,28 +59,32 @@
 
 /* Content Box.. Remove color later */
 .movieData {
-  background-color: palevioletred;
+  background-color: rgb(47, 39, 39);
+  color: #fff;
   display: flex;
   flex-direction: column;
-  padding-left: min(12px, 2vmin);
+  justify-content: center;
   width: var(--movieCardWidth);
+  height: 227px;
 }
 
-
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+.movieDetailContainer > * {
+  padding: min(8px, 3vmin);
+  font-family: 'Lalezar', cursive;
+  font-size: min(9vmin, 18px);
+}
+@import url('https://fonts.googleapis.com/css2?family=Coda&display=swap');
 .movieName {
-  font-size: 8vmin;
+  font-size: min(10vmin, 25px);
+  text-transform: uppercase;
+  font-family: 'Coda', cursive;
+  font-weight: bold;
 }
 
 .movieOverview {
   display: flex;
   justify-content: flex-start;
-}
-
-.synopsis {
-  padding-left: 3%;
-  align-self: center;
-  text-transform: uppercase;
-  font-weight: bold;
 }
 
 .center-dot {
