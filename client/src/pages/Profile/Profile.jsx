@@ -60,143 +60,111 @@ export default function Profile() {
   }, []);
 
   return (
-    <div className="ProfileRoot">
-      <Sidebar />
-      <div className="profileFormContainer">
-        <div className="avatarContainer">
-          <input accept="image/*" type="file" />
-          <label htmlFor="contained-button-file" style={{display: "flex", justifyContent: "center"}} >
-            <IconButton>
-              <Avatar
-                img={image}
-                style={{
-                  margin: "10px",
-                  width: "60px",
-                  height: "60px",
-                }}
-              >
-                {firstName ? firstName[0] : ""}
-                {lastName ? lastName[0] : ""}
-              </Avatar>
-            </IconButton>
-          </label>
-        </div>
+    <div className="profileFormContainer">
+      <div className="avatarContainer">
+        <input accept="image/*" type="file" />
+        <label
+          htmlFor="contained-button-file"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          <IconButton>
+            <Avatar
+              img={image}
+              style={{
+                margin: "10px",
+                width: "60px",
+                height: "60px",
+              }}
+            >
+              {firstName ? firstName[0] : ""}
+              {lastName ? lastName[0] : ""}
+            </Avatar>
+          </IconButton>
+        </label>
+      </div>
 
-        <div className="profileData mv">
-          <div className="mv mh">
-            <TextField
-              label="Username"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={`${username}`}
-            />
-          </div>
+      <div className="profileFormData">
+        <TextField
+          label="Username"
+          variant="outlined"
+          type="text"
+          InputProps={{
+            readOnly: true,
+          }}
+          fullWidth
+          margin="normal"
+          value={`${username}`}
+        />
 
-          <div className="mv mh">
-            <TextField
-              label="Email"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={email ? email : "Not yet set"}
-            />
-          </div>
-          
-          <div className="mv mh">
-            <TextField
-              label="First Name"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={firstName ? firstName : "Fetching..."}
-            />
-          </div>
+        <TextField
+          label="Email"
+          variant="outlined"
+          type="text"
+          fullWidth
+          margin="normal"
+          value={email ? email : ""}
+        />
 
-          <div className="mv mh">
-            <TextField
-              label="Last Name"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={lastName ? lastName : "Fetching..."}
-            />
-          </div>
-              
-          <div className="mv mh">
-            <TextField
-              label="Phone Number"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={phone ? phone : "Not yet set"}
-            />
-          </div>
+        <TextField
+          label="First Name"
+          variant="outlined"
+          type="text"
+          InputProps={{
+            readOnly: true,
+          }}
+          fullWidth
+          margin="normal"
+          value={firstName ? firstName : "Fetching..."}
+        />
 
-          <div className="mv mh">
-            <TextField
-              label="Gender"
-              variant="outlined"
-              type="text"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={gender ? gender : "Not yet set"}
-            />
-          </div>
-          
-          {/* Age from DOB maibi */}
-          <div className="mv mh">
-            <TextField
-              label="Age"
-              variant="outlined"
-              type="number"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={age ? age : "Not yet set"}
-            />
-          </div>
+        <TextField
+          label="Last Name"
+          variant="outlined"
+          type="text"
+          InputProps={{
+            readOnly: true,
+          }}
+          fullWidth
+          margin="normal"
+          value={lastName ? lastName : "Fetching..."}
+        />
 
-          <div className="mv mh">
-            <TextField
-              label="Address"
-              variant="outlined"
-              type="number"
-              InputProps={{
-                readOnly: true,
-              }}
-              fullWidth
-              // defaultValue={`${firstName}`} // doesn't work need to check
-              value={age ? age : "Not yet set"}
-            />
-          </div>
+        <TextField
+          label="Phone Number"
+          variant="outlined"
+          type="number"
+          fullWidth
+          margin="normal"
+          value={phone ? phone : "Not yet set"}
+        />
 
-        </div>
+        <TextField
+          label="Gender"
+          variant="outlined"
+          type="text"
+          fullWidth
+          margin="normal"
+          value={gender ? gender : "Not yet set"}
+        />
+
+        <TextField
+          label="Age"
+          variant="outlined"
+          type="number"
+          InputProps={{ inputProps: { min: 5 } }}
+          fullWidth
+          margin="normal"
+          value={age ? age : ""}
+        />
+
+        <TextField
+          label="Address"
+          variant="outlined"
+          type="text"
+          fullWidth
+          margin="normal"
+          value={address ? address : ""}
+        />
       </div>
     </div>
   );
