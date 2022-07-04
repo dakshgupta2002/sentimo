@@ -1,6 +1,7 @@
 import React from "react";
 import "./MovieCard.css";
 import RatingCircle from "../RatingCircle/RatingCircle";
+import Button from "@mui/material/Button";
 import { generateUtilityClasses } from "@mui/material";
 import { jsx } from "@emotion/react";
 /*
@@ -53,15 +54,18 @@ export function MovieCard({poster_path, title, genres, release_data, overview, r
               }
             </div>
 
-            <div className="releaseDate">{release_data}</div>
+
+            <div className="releaseDate">
+              <div className="content">{release_data}</div>
+
+              {/* onClick open MODAL :( */}
+              <Button variant="contained" sx={{margin: 0, padding: 0, color: 'white', fontWeight: 'bold', backgroundColor: '#EB5353'}}>More</Button>
+            </div>
         </div>
 
-        {/* In Modal */}
+        {/* In Modal everything + synopsis */}
         {/* <div className="overviewContainer">
           <div className="overviewHeader">
-            <div className="ratingCircle">
-              <RatingCircle rating={8.3} />
-            </div>
             <div className="synopsis">Synopsis</div>
           </div>
           <div className="movieOverview">{overview}</div>

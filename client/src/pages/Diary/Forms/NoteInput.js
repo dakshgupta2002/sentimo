@@ -8,7 +8,7 @@ import { useLoading } from '../../../utils/hooks/useLoading';
 export default function NoteInput(props) {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
-    const [textLimit, setTextLimit] = useState(800)
+    const [textLimit, setTextLimit] = useState(800);
     const {setLoading} = useLoading();
 
     const addNote = async () => {
