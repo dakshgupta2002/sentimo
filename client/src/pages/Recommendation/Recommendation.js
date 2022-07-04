@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
 import { MovieCard } from "../../elements";
+import { ModalContainer } from "../../components";
 
 import "./Recommendation.css";
 
@@ -9,6 +10,7 @@ export default function Recommendation() {
   const [movies, setMovies] = useState();
   const [genre, setGenre] = useState({});
   const [value, setValue] = React.useState(0);
+  const [inputOpen, setInputOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -48,6 +50,9 @@ export default function Recommendation() {
         {movies?.results?.map((movie, i) => {
           return (
             <div className="movieCard" key={i}>
+              <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
+
+              </ModalContainer>
               <MovieCard
                 poster_path={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                 title={movie?.title}
