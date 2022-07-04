@@ -35,11 +35,11 @@ export default function Profile() {
         setPassword(password);
         setFirstName(firstName);
         setLastName(lastName);
-        setEmail(email || "");
-        setPhone(phone || "");
-        setAddress(address || "");
+        setEmail(email);
+        setPhone(phone);
+        setAddress(address);
         setImage(image);
-        setGender(gender || "");
+        setGender(gender);
         setDOB(dob);
       }
       setLoading(false);
@@ -62,25 +62,33 @@ export default function Profile() {
     <div className="profileFormContainer">
       <LoadingScreen/>
       <div className="avatarContainer">
-        <input accept="image/*" type="file" />
-        <label
-          htmlFor="contained-button-file"
-          style={{ display: "flex", justifyContent: "center" }}
+        <div className="backdropAvatar">
+          <h1>S</h1>
+          <h1>E</h1>
+          <h1>N</h1>
+          <h1>T</h1>
+          <h1>I</h1>
+          <h1>M</h1>
+          <h1>O</h1>
+        </div>
+        <Button
+          variant="contained"
+          component="label"
+          color="warning"
+          sx={{borderRadius: '50%', height: '200px', width: '200px', top: '-50px'}}
         >
-          <IconButton>
-            <Avatar
-              img={image}
-              style={{
-                margin: "10px",
-                width: "60px",
-                height: "60px",
-              }}
-            >
-              {firstName ? firstName[0] : ""}
-              {lastName ? lastName[0] : ""}
-            </Avatar>
-          </IconButton>
-        </label>
+          {image? 
+            <Avatar img={image}/>: 
+            <>
+              <h1> {firstName ? firstName[0] : ""} {lastName ? lastName[0] : ""} </h1>
+            </>
+          }
+          <input
+            type="file"
+            accept="image/*"
+            hidden
+          />
+        </Button>
       </div>
 
       <div className="profileFormData">
@@ -92,27 +100,27 @@ export default function Profile() {
 
         <TextField InputLabelProps={{ shrink: true }} label="Last Name" required={true} variant="outlined" type="text" onChange={(e) => setLastName(e.target.value)} fullWidth margin="normal" value={lastName}
         />
-        <TextField label="Email" variant="outlined" type="text" fullWidth margin="normal" onChange={(e) => setEmail(e.target.value)} value={email}
+        <TextField label="Email" variant="outlined" type="text" fullWidth margin="normal" onChange={(e) => setEmail(e.target.value)} value={email? email: ''}
         />
 
-        <TextField label="Phone Number" variant="outlined" type="number" fullWidth margin="normal" onChange={(e) => setPhone(e.target.value)} value={phone}
+        <TextField label="Phone Number" variant="outlined" type="number" fullWidth margin="normal" onChange={(e) => setPhone(e.target.value)} value={phone? phone : ''}
         />
 
-        <TextField value={gender} onChange={(e) => setGender(e.target.value)} select fullWidth margin="normal" label="Gender"
+        <TextField value={gender? gender: ''} onChange={(e) => setGender(e.target.value)} select fullWidth margin="normal" label="Gender"
         >
           <MenuItem key={1} value="Male">Male</MenuItem>
           <MenuItem key={2} value="Female">Female</MenuItem>
-          <MenuItem key={2} value="Others">Others</MenuItem>
+          <MenuItem key={3} value="Others">Others</MenuItem>
         </TextField>
 
         <TextField label="Date of Birth" variant="outlined" type="Date" fullWidth margin="normal" onChange={e => setDOB(new Date(e.target.value).toLocaleDateString())} value={DOB?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0]}
         />
 
-        <TextField label="Address" multiline rows={2} variant="outlined" type="text" fullWidth margin="normal" onChange={e => setAddress(e.target.value)} value={address || ""}
+        <TextField label="Address" multiline rows={2} variant="outlined" type="text" fullWidth margin="normal" onChange={e => setAddress(e.target.value)} value={address? address : ''}
         />
       </div>
 
-      <Button variant="contained">Update Information</Button>
+      <Button variant="contained" color="warning" sx={{my: '30px'}} onClick={updateInformation}>Update Information</Button>
     </div>
   );
 }
