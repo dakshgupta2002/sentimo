@@ -69,6 +69,8 @@ img.lottie-animation {
 }
 
 .confused-header, .how-it-works-header, .extra-features-heading {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
     font-size: 3.2rem;
     display: flex;
     justify-content: center;
@@ -79,6 +81,8 @@ img.lottie-animation {
 }
 
 .confused-point-container, .solution-container, .extra-features-container {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -111,10 +115,11 @@ img.lottie-animation {
     display: flex;
     flex-direction: column;
     background-color: #87bbd5;
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .how-it-works-steps {
+    font-family: 'Montserrat', sans-serif;
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;  
@@ -139,11 +144,14 @@ img.lottie-animation {
 .step-content, .step-header {
     display: flex;
     justify-content: center;
+    text-transform: capitalize;
+    justify-content: center;
 }
 
 .step-header {
-    font-weight: bold;
+    text-transform: uppercase;
     font-size: 1.5rem;
+    font-weight: 900;
     padding: 1rem;
 }
 
@@ -191,20 +199,19 @@ footer {
 
 @media (max-width: 450px) {
     .home-title, 
-    .confused-header, .extra-features-heading {
-        font-size: clamp(2rem, 3rem, 4rem);
+    .confused-header, .extra-features-heading, .how-it-works-header {
+        font-size: 2.6rem;
         line-height: 8rem;
     }
 
     .how-it-works-header {
-        font-size: 2.6rem;
         line-height: 3rem;
         letter-spacing: 2px;
     }
 
     .home-title-desc, 
     .confused-point {
-        font-size: 1.2rem;
-        margin: 0 10px;
+        font-size: 0.9rem;
+        margin: 2px 10px;
     }
 }

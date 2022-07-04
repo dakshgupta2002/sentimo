@@ -9,6 +9,8 @@ import { Sidebar } from "../../components";
 import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
 import answers from "../../assets/lottieSvg/answers.json";
 import thinking from "../../assets/images/thinking.svg"
+import writing from "../../assets/images/writing.svg"
+import join from "../../assets/images/join.svg"
 import "./Home.css";
 
 export default function Home() {
@@ -110,12 +112,12 @@ export default function Home() {
             <div className="step">
               <img
                 className="icon"
-                src={`https://images.unsplash.com/photo-1651936716950-7aca46b99653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbm5lY3QlMjBkZXZpY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60`}
+                src={writing}
                 alt=""
               ></img>
 
-              <div className="step-header">CONNECT DEVICE</div>
-              <div className="step-content">
+              <div className="step-header text--center">CONNECT DEVICE</div>
+              <div className="step-content text--center">
                 One step login/signup to unlocking doors to complete emotional
                 regeneration!
               </div>
@@ -124,12 +126,12 @@ export default function Home() {
             <div className="step">
               <img
                 className="icon"
-                src={`https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dHJvcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60`}
+                src={join}
                 alt=""
               ></img>
 
-              <div className="step-header">That's It</div>
-              <div className="step-content">
+              <div className="step-header text--center">That's It</div>
+              <div className="step-content text--center">
                 Start writing your diaries and watch movies at your lowest points of life!
               </div>
             </div>
