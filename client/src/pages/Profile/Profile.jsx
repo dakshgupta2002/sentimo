@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Box, TextField } from "@mui/material";
-import { Sidebar } from "../../components";
-import { fetchUserProfile } from "../../utils/api/user";
+import { TextField, MenuItem, Button } from "@mui/material";
+import { fetchUserProfile, updateUserProfile } from "../../utils/api/user";
 import { useLoading } from "../../utils/hooks/useLoading";
-import { Avatar, IconButton, Input } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
+import { toast } from 'react-toastify';
 
 import "./Profile.css";
 
@@ -17,7 +17,7 @@ export default function Profile() {
   const [address, setAddress] = useState(null);
   const [image, setImage] = useState(null);
   const [gender, setGender] = useState(null);
-  const [age, setAge] = useState(null);
+  const [DOB, setDOB] = useState(null);
 
   const { setLoading, LoadingScreen, setError } = useLoading();
 
@@ -30,28 +30,17 @@ export default function Profile() {
       if (res?.response?.status === 401) {
         console.log(res?.data?.msg);
       } else {
-        const {
-          username,
-          password,
-          email,
-          firstName,
-          lastName,
-          phone,
-          address,
-          image,
-          gender,
-          age,
-        } = res?.data;
+        const { username, password, email, firstName, lastName, phone, address, image, gender, dob } = res?.data;
         setUsername(username);
         setPassword(password);
-        setEmail(email);
         setFirstName(firstName);
         setLastName(lastName);
-        setPhone(phone);
-        setAddress(address);
+        setEmail(email || "");
+        setPhone(phone || "");
+        setAddress(address || "");
         setImage(image);
-        setGender(gender);
-        setAge(age);
+        setGender(gender || "");
+        setDOB(dob);
       }
       setLoading(false);
     };
@@ -59,8 +48,19 @@ export default function Profile() {
     getUserProfile();
   }, []);
 
+  const updateInformation = async () => {
+    setLoading(true); setError("Updating Information");
+    const res = await updateUserProfile({ username, password, email, firstName, lastName, phone, address, image, gender})
+    if (res?.response?.status === 200){
+      toast.success("Information Updated");
+    }else{
+      console.log(res?.data?.msg);
+    }
+  }
+
   return (
     <div className="profileFormContainer">
+      <LoadingScreen/>
       <div className="avatarContainer">
         <input accept="image/*" type="file" />
         <label
@@ -84,88 +84,35 @@ export default function Profile() {
       </div>
 
       <div className="profileFormData">
-        <TextField
-          label="Username"
-          variant="outlined"
-          type="text"
-          InputProps={{
-            readOnly: true,
-          }}
-          fullWidth
-          margin="normal"
-          value={`${username}`}
+        <TextField InputLabelProps={{ shrink: true }} label="Username" required={true} variant="outlined" type="text" fullWidth margin="normal" value={username} onChange={(e) => setUsername(e.target.value.trim())} //no space in username
         />
 
-        <TextField
-          label="Email"
-          variant="outlined"
-          type="text"
-          fullWidth
-          margin="normal"
-          value={email ? email : ""}
+        <TextField InputLabelProps={{ shrink: true }} label="First Name" required={true} variant="outlined" type="text" onChange={(e) => setFirstName(e.target.value)} fullWidth margin="normal" value={firstName}
         />
 
-        <TextField
-          label="First Name"
-          variant="outlined"
-          type="text"
-          InputProps={{
-            readOnly: true,
-          }}
-          fullWidth
-          margin="normal"
-          value={firstName ? firstName : "Fetching..."}
+        <TextField InputLabelProps={{ shrink: true }} label="Last Name" required={true} variant="outlined" type="text" onChange={(e) => setLastName(e.target.value)} fullWidth margin="normal" value={lastName}
+        />
+        <TextField label="Email" variant="outlined" type="text" fullWidth margin="normal" onChange={(e) => setEmail(e.target.value)} value={email}
         />
 
-        <TextField
-          label="Last Name"
-          variant="outlined"
-          type="text"
-          InputProps={{
-            readOnly: true,
-          }}
-          fullWidth
-          margin="normal"
-          value={lastName ? lastName : "Fetching..."}
+        <TextField label="Phone Number" variant="outlined" type="number" fullWidth margin="normal" onChange={(e) => setPhone(e.target.value)} value={phone}
         />
 
-        <TextField
-          label="Phone Number"
-          variant="outlined"
-          type="number"
-          fullWidth
-          margin="normal"
-          value={phone ? phone : "Not yet set"}
+        <TextField value={gender} onChange={(e) => setGender(e.target.value)} select fullWidth margin="normal" label="Gender"
+        >
+          <MenuItem key={1} value="Male">Male</MenuItem>
+          <MenuItem key={2} value="Female">Female</MenuItem>
+          <MenuItem key={2} value="Others">Others</MenuItem>
+        </TextField>
+
+        <TextField label="Date of Birth" variant="outlined" type="Date" fullWidth margin="normal" onChange={e => setDOB(new Date(e.target.value).toLocaleDateString())} value={DOB?.toISOString().split('T')[0] || new Date().toISOString().split('T')[0]}
         />
 
-        <TextField
-          label="Gender"
-          variant="outlined"
-          type="text"
-          fullWidth
-          margin="normal"
-          value={gender ? gender : "Not yet set"}
-        />
-
-        <TextField
-          label="Age"
-          variant="outlined"
-          type="number"
-          InputProps={{ inputProps: { min: 5 } }}
-          fullWidth
-          margin="normal"
-          value={age ? age : ""}
-        />
-
-        <TextField
-          label="Address"
-          variant="outlined"
-          type="text"
-          fullWidth
-          margin="normal"
-          value={address ? address : ""}
+        <TextField label="Address" multiline rows={2} variant="outlined" type="text" fullWidth margin="normal" onChange={e => setAddress(e.target.value)} value={address || ""}
         />
       </div>
+
+      <Button variant="contained">Update Information</Button>
     </div>
   );
 }

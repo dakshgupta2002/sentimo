@@ -14,3 +14,8 @@ export const fetchUserProfile = async () => {
     const res = await get("profile/info");
     return res;
 }
+
+export const updateUserProfile = async (data) => {
+    const res = await post("profile/info", data, 'PUT');
+    return res;
+}

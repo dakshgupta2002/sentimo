@@ -5,6 +5,7 @@
     align-items: center;
     height: fit-content;
     min-height: 100vh;
+    margin-bottom: 20px;
 }
 
 .avatarContainer {
