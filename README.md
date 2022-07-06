@@ -26,7 +26,7 @@ ___
 2)  `npm install`   
 3)  `npm start`  
 
-## SERVER 
+## SERVER - Deployed over Amazon EC2 Linux Machine Image (Mumbai) 
 ___
 1) `cd server`  
 2) `npm install`   
