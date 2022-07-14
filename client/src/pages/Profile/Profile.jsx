@@ -18,6 +18,7 @@ export default function Profile() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
   const [image, setImage] = useState("");
+  const [previewImage, setPreviewImage] = useState(null);
   const [gender, setGender] = useState("");
   const [DOB, setDOB] = useState(new Date());
 
@@ -53,7 +54,7 @@ export default function Profile() {
         setAddress(address);
         setImage(image);
         setGender(gender);
-        if(dob) setDOB(dob);
+        if (dob) setDOB(dob);
       }
       setLoading(false);
     };
@@ -62,7 +63,7 @@ export default function Profile() {
   }, []);
 
   const updateInformation = async () => {
-    console.log("Updating...")
+    console.log("Updating...");
     setLoading(true);
     setError("Updating Information");
     const res = await updateUserProfile({
@@ -75,22 +76,47 @@ export default function Profile() {
       address,
       image,
       gender,
-      DOB
+      DOB,
     });
     if (res?.response?.status !== 204) {
       toast.error("Landed into a error. Try again.");
     } else {
-      toast.success("Your profile has been updated.")
+      toast.success("Your profile has been updated.");
     }
-    setLoading(false);  
+    setLoading(false);
   };
+
+  const saveImage = (e) => {
+    if (!e.target.files || e.target.files.length === 0) {
+      setImage(null);
+      return;
+    }
+    setImage(e.target.files[0]);
+  };
+
+  const previewImg = () => {
+    if (!image) {
+      setPreviewImage(null);
+      return;
+    }
+
+    const objectUrl = URL.createObjectURL(image);
+    setPreviewImage(objectUrl);
+
+    // free memory when ever this component is unmounted
+    return () => URL.revokeObjectURL(objectUrl);
+  };
+
+  useEffect(() => {
+    previewImg();
+  }, [image]);
 
   return (
     <div className="profileFormContainer">
       <LoadingScreen />
       <div className="avatarContainer">
         <div className="backdropAvatar">
-          <h1>S</h1> <h1>E</h1> <h1>N</h1> <h1>T</h1> <h1>I</h1> <h1>M</h1>{" "}
+          <h1>S</h1> <h1>E</h1> <h1>N</h1> <h1>T</h1> <h1>I</h1> <h1>M</h1>
           <h1>O</h1>
         </div>
         <Button
@@ -104,17 +130,28 @@ export default function Profile() {
             top: "-50px",
           }}
         >
-          {image ? (
-            <Avatar img={image} />
+          {previewImage ? (
+            <img
+              src={previewImage}
+              alt="User"
+              style={{
+                borderRadius: "50%",
+                height: "200px",
+                width: "200px",
+              }}
+            />
           ) : (
-            <>
-              <h1>
-                {" "}
-                {firstName ? firstName[0] : ""} {lastName ? lastName[0] : ""}{" "}
-              </h1>
-            </>
+            <h1>
+              {" "}
+              {firstName ? firstName[0] : ""} {lastName ? lastName[0] : ""}{" "}
+            </h1>
           )}
-          <input type="file" accept="image/*" hidden />
+          <TextField
+            type="file"
+            accept="[jpg, jpeg, png]"
+            sx={{ display: "none" }}
+            onChange={saveImage}
+          />
         </Button>
       </div>
 
