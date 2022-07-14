@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'varela';
+    src: url('./../../assets/fonts/varela.ttf');
+}
+
 .home-container {
     display: flex;
     flex-direction: column;
@@ -167,6 +172,7 @@ footer {
     background-color: #303846;
     color: #ffffff;
     font-weight: bold;
+    font-family: 'varela';
 }
 
 @media (max-width: 700px) {
