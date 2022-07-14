@@ -44,11 +44,11 @@ export default function Home() {
       </Fade>
 
       {/* CONFUSED PERSON AND QUESTIONS */}
-      <div className="confused-point-container">
+      <div className="confused-point-container altText">
         <Fade triggerOnce>
           <div className="confused-points">
             <div className="confused-header text--center">Questions</div>
-            <div className="confused-point">
+            <div className="confused-point altText">
               ❓Tired and exhausted from your entire day's work?
             </div>
             <div className="confused-point">
@@ -103,7 +103,7 @@ export default function Home() {
       </div>
 
       {/* TODO: CHANGE ICON IMAGES */}
-      <div className="how-it-works-container">
+      <div className="how-it-works-container altText">
         <Fade triggerOnce>
           <div className="how-it-works-header text--center">HOW IT WORKS !</div>
         </Fade>

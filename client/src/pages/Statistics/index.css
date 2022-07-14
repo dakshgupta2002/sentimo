@@ -17,3 +17,8 @@
     max-height: calc(40rem);
     max-width: calc(40rem);
   }
+
+  .nofetch__header {
+    font-family: 'Montserrat', sans-serif;
+    margin-left: 5px;
+  }

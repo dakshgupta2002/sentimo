@@ -95,7 +95,7 @@ export default function Note({
         <Typography
           className={"title"}
           variant="h4"
-          sx={{ overflowX: "scroll", whiteSpace: "nowrap" }}
+          sx={{ overflowX: "scroll", whiteSpace: "nowrap", m: 1, p: 0.5, fontFamily: 'Coda', fontSize: '24px', fontWeight: 600, letterSpacing: '1.5px'}}
         >
           {title}
         </Typography>
@@ -129,7 +129,7 @@ export default function Note({
           overflowY: "scroll",
         }}
       >
-        <Typography sx={{ wordWrap: "break-word", width: "100%" }}>
+        <Typography sx={{ wordWrap: "break-word", width: "100%", fontFamily: 'varela' }}>
           <span>{content}</span>
         </Typography>
       </Box>

@@ -50,9 +50,9 @@ export default function Recommendation() {
         {movies?.results?.map((movie, i) => {
           return (
             <div className="movieCard" key={i}>
-              <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
+              {/* <ModalContainer isOpen={inputOpen} close={() => setInputOpen(false)}>
 
-              </ModalContainer>
+              </ModalContainer> */}
               <MovieCard
                 poster_path={`https://image.tmdb.org/t/p/w185${movie?.poster_path}`}
                 title={movie?.title}
