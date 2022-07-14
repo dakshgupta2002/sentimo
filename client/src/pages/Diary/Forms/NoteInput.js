@@ -35,7 +35,7 @@ export default function NoteInput(props) {
 
     return (
         <div className="noteInputForm">
-            <h2>Add a new note</h2>
+            <h2 style={{fontFamily: 'varela', wordSpacing: '2px'}}>Add a new note</h2>
 
             <TextField
                 autoComplete='off'
@@ -62,7 +62,6 @@ export default function NoteInput(props) {
                 rows={15}
                 margin="normal"
                 value={content}
-
                 /* Title length used with content only */
                 onChange={(e) => setContent(e.target.value)}
             />

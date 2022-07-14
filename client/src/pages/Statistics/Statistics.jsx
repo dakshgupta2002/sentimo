@@ -13,6 +13,7 @@ import {
 } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 import { max } from "moment";
+import './index.css';
 
 export default function Statistics() {
   const { date } = useDate();
@@ -165,7 +166,7 @@ export default function Statistics() {
       </Tabs>
 
       {emotions?.length === 0 ? (
-        <h1>No emotions fetched... </h1>
+        <h1 className="nofetch__header">No emotions fetched... </h1>
       ) : (
         <div>
           <div class="victoryLine">

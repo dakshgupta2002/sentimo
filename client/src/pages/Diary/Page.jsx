@@ -27,7 +27,7 @@ export default function Page({date, notesAdded, setNotesAdded, notesEdited, setN
     <div className="page-container">
       <LoadingScreen />
       {notes?.length === 0 ? (
-        <h1>No notes for this date</h1>
+        <h1 style={{fontFamily: 'Montserrat', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '2px'}}>No notes for this date !</h1>
       ) : (
         notes?.map(({ title, content, _id, favourite, protect, createdAt, updatedAt }) => {
           return (
