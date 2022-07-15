@@ -6,7 +6,7 @@ import { useLoading } from "../../utils/hooks/useLoading";
 import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from '../../utils/api/stats';
 import { toast } from "react-toastify";
-
+import { MapGenre } from '../../utils/MapGenre'
 import { MovieCard } from "../../elements";
 
 export default function Recommendation() {
@@ -47,8 +47,8 @@ export default function Recommendation() {
     };
 
     const mapStatToGenre = () => {
-      //map the emotion to genre
-      
+      const genreSelected = MapGenre(emotion);
+      setUserGenre(genreSelected)
     }
 
     //maps the genre ID to genre name as used by TMDB
@@ -66,8 +66,8 @@ export default function Recommendation() {
     setLoading(true);
     setError("Finding the best results");
 
-    getStats();
     getGenreNames();
+    getStats();
     mapStatToGenre();
 
     setLoading(false);
