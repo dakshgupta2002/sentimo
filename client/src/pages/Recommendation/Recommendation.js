@@ -15,7 +15,7 @@ export default function Recommendation() {
   const [genreNames, setGenreNames] = useState({});
   const [emotion, setEmotion] = useState([0, 0, 0, 0, 0]);
   const [userGenre, setUserGenre] = useState()
-  const [genreModalOpen, setGenreModalOpen] = useState(false);
+  const [genreModalOpen, setGenreModalOpen] = useState(true);
   const [lazyFetch, setLazyFetch] = useState(0);
   const { setLoading, setError, LoadingScreen } = useLoading();
   const { date } = useDate();
@@ -29,7 +29,7 @@ export default function Recommendation() {
   }
 
   window.addEventListener('scroll', (e) => {
-    if (
+    if ( //buggy this code not working right
       document.documentElement.scrollTop +
       document.documentElement.clientHeight ===
       document.documentElement.scrollHeight) {
@@ -106,7 +106,8 @@ export default function Recommendation() {
       <Sidebar />
       <LoadingScreen />
       <ModalContainer isOpen={genreModalOpen} close={() => setGenreModalOpen(false)} style={{ backgroundColor: '#2A2323' }}>
-        <img src={`https://images.unsplash.com/photo-1535446937720-e4cad0145efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBvc3RlciUyMG1vdmllfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60`} alt="" style={{ height: 'fit-content' }} />
+        Show pie chart of emotion
+        show genre list selected
       </ModalContainer>
 
       <div className="movieCardContainer">
