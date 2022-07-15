@@ -27,13 +27,17 @@ export default function Statistics() {
   const [lineTickData, setLineTickData] = useState([]); // same for all line chart not neeeded in pie
   const { setLoading, setError, LoadingScreen } = useLoading();
 
-  const VictoryEmotionChart = ({ data }) => {
+  const VictoryEmotionChart = ({ data, label }) => {
     return (
-      <div class="victoryLine">
-        <VictoryChart domain={{ x: [0, numOfDays[tab]], y: [0, 100] }}>
+      <div className="victoryLine">
+        <VictoryChart
+          domain={{ x: [0, numOfDays[tab]], y: [0, 100] }}
+          theme={VictoryTheme.material}
+        >
           <VictoryAxis
             tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
             tickFormat={lineTickData} // First two label rest empty
+            label={label}
           />
           <VictoryAxis
             dependentAxis
@@ -111,7 +115,6 @@ export default function Statistics() {
         lineData[4].push({ x: i, y: lineFearData[i] });
       }
       setLineChartData(lineData);
-      // console.log({lineData})
     };
 
     /* Get all notes data from emotions and then push it in data vector */
@@ -130,7 +133,6 @@ export default function Statistics() {
       }
       for (let i = 0; i < 5; i++) {
         data[i] = Math.round((data[i] / totalCount) * 100);
-        console.log(data[i]);
       }
       var pieData = [];
       if (data[0])
@@ -185,12 +187,12 @@ export default function Statistics() {
         <h1 className="nofetch__header">No emotions fetched... </h1>
       ) : (
         <div>
-          <div>
-            <VictoryEmotionChart data={lineChartData[0]} />
-            <VictoryEmotionChart data={lineChartData[1]} />
-            <VictoryEmotionChart data={lineChartData[2]} />
-            <VictoryEmotionChart data={lineChartData[3]} />
-            <VictoryEmotionChart data={lineChartData[4]} />
+          <div className="lineChartContainer">
+            <VictoryEmotionChart data={lineChartData[0]} label="Happy" />
+            <VictoryEmotionChart data={lineChartData[1]} label="Angry" />
+            <VictoryEmotionChart data={lineChartData[2]} label="Surprise" />
+            <VictoryEmotionChart data={lineChartData[3]} label="Sad" />
+            <VictoryEmotionChart data={lineChartData[4]} label="Fear" />
           </div>
 
           <VictoryPie
