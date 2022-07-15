@@ -42,7 +42,7 @@ export default function Recommendation() {
         });
         setEmotion(updatedEmotion);
       } else {
-        // toast.error("Something went wrong.") UNCOMMENT DON't FORGET
+        toast.error("Something went wrong.")
       }
     };
 
@@ -91,10 +91,6 @@ export default function Recommendation() {
       <Sidebar />
       <LoadingScreen />
       <ModalContainer isOpen={genreModalOpen} close={() => setGenreModalOpen(false)} style={{backgroundColor: '#2A2323'}}>
-
-        {/* <div style={{backgroundImage: 'https://images.unsplash.com/photo-1535446937720-e4cad0145efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBvc3RlciUyMG1vdmllfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60',height: '100%', width: '100%'}}>
-          gh
-        </div> */}
     <img src={`https://images.unsplash.com/photo-1535446937720-e4cad0145efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBvc3RlciUyMG1vdmllfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60`} alt="" style={{height: 'fit-content'}}/>
       </ModalContainer>
 
