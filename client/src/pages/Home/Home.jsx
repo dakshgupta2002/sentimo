@@ -9,6 +9,8 @@ import { Sidebar } from "../../components";
 import landingPageAnimation from "../../assets/lottieSvg/landingPageAnimation.json";
 import answers from "../../assets/lottieSvg/answers.json";
 import thinking from "../../assets/images/thinking.svg"
+import writing from "../../assets/images/writing.svg"
+import join from "../../assets/images/join.svg"
 import "./Home.css";
 
 export default function Home() {
@@ -42,19 +44,19 @@ export default function Home() {
       </Fade>
 
       {/* CONFUSED PERSON AND QUESTIONS */}
-      <div className="confused-point-container">
+      <div className="confused-point-container altText">
         <Fade triggerOnce>
           <div className="confused-points">
             <div className="confused-header text--center">Questions</div>
             <div className="confused-point">
-              ❓Tired and exhausted from your entire day's work?
+              <span className="emotesBullet">❓</span> Tired and exhausted from your entire day's work?
             </div>
             <div className="confused-point">
-              ❓Or did something exciting and fascinating happen?
+              <span className="emotesBullet">❓</span> Or did something exciting and fascinating happen?
             </div>
 
             <div className="confused-point">
-              ❓Lest you're fearful or sad about anything?
+              <span className="emotesBullet">❓</span> Lest you're fearful or sad about anything?
             </div>
           </div>
         </Fade>
@@ -85,15 +87,15 @@ export default function Home() {
           <div className="confused-points">
             <div className="confused-header text--center">Solutions</div>
             <div className="confused-point">
-              💡 Do not stress yourself out as you can pour your heart out to us
+              <span className="emotesBullet">💡</span> Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!
             </div>
             <div className="confused-point">
-              💡 This is your personalised diary and you can keep all types of
+              <span className="emotesBullet">💡</span> This is your personalised diary and you can keep all types of
               notes you want to!
             </div>
             <div className="confused-point">
-              💡 Instead, we'll recommend you entertainment material according
+              <span className="emotesBullet">💡</span> Instead, we'll recommend you entertainment material according
               to your mood.
             </div>
           </div>
@@ -101,7 +103,7 @@ export default function Home() {
       </div>
 
       {/* TODO: CHANGE ICON IMAGES */}
-      <div className="how-it-works-container">
+      <div className="how-it-works-container altText">
         <Fade triggerOnce>
           <div className="how-it-works-header text--center">HOW IT WORKS !</div>
         </Fade>
@@ -110,12 +112,12 @@ export default function Home() {
             <div className="step">
               <img
                 className="icon"
-                src={`https://images.unsplash.com/photo-1651936716950-7aca46b99653?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvbm5lY3QlMjBkZXZpY2V8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60`}
+                src={writing}
                 alt=""
               ></img>
 
-              <div className="step-header">CONNECT DEVICE</div>
-              <div className="step-content">
+              <div className="step-header text--center">CONNECT DEVICE</div>
+              <div className="step-content text--center">
                 One step login/signup to unlocking doors to complete emotional
                 regeneration!
               </div>
@@ -124,12 +126,12 @@ export default function Home() {
             <div className="step">
               <img
                 className="icon"
-                src={`https://images.unsplash.com/photo-1578269174936-2709b6aeb913?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dHJvcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60`}
+                src={join}
                 alt=""
               ></img>
 
-              <div className="step-header">That's It</div>
-              <div className="step-content">
+              <div className="step-header text--center">That's It</div>
+              <div className="step-content text--center">
                 Start writing your diaries and watch movies at your lowest points of life!
               </div>
             </div>

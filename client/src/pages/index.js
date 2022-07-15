@@ -6,3 +6,5 @@ export { Statistics, NoteStat } from './Statistics'
 export { Profile } from './Profile';
 export { AboutUs } from './AboutUs';
 export { Recommendation } from './Recommendation'
+export { Favorite } from './Favorite'
+export { Protected } from './Protected'

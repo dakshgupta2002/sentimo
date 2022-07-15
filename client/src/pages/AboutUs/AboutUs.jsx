@@ -1,5 +1,4 @@
-import React from "react";
-import { ProfileCard } from "./../../elements";
+import React, {lazy} from "react";
 import { Sidebar } from "./../../components";
 import { data } from './aboutUsdata.js';
 import { Slide } from "react-awesome-reveal";
@@ -9,6 +8,8 @@ import "./AboutUs.css";
 import dakshImg from '../../assets/avatars/daksh_avatar.png'
 import ishwarImg from '../../assets/avatars/ishwar_avatar.png'
 import shirazImg from '../../assets/avatars/shiraz_avatar.png'
+import { ProfileCard } from "./../../elements";
+// const ProfileCard = lazy(() => import("./../../elements"));
 
 export default function AboutUs() {
   return (

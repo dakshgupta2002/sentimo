@@ -1,3 +1,27 @@
+:root {
+    /* --altColor: #3AB0FF; */
+    --altColorBgstart: #0073e6;
+    --altColorBgend: #86b4e2;
+    --altTextColor: #F2EBE9; /* Change to black to make it like before */
+}
+
+@font-face {
+    font-family: 'varela';
+    src: url('./../../assets/fonts/varela.ttf');
+}
+
+
+.altText {
+    color: var(--altTextColor);
+    background: linear-gradient(45deg, var(--altColorBgstart), var(--altColorBgend));
+}
+
+/* Maybe use for alternate if need..  
+.altText2 {
+    color: var(--altTextColor);
+    background: linear-gradient(-45deg, var(--altColor), transparent);
+} */
+
 .home-container {
     display: flex;
     flex-direction: column;
@@ -45,7 +69,6 @@ img.lottie-animation {
 }
 
 .home-title-container, .confused-point {
-    color: black;
     flex-basis: 60%;
     margin: 0 30px;
     display: flex;
@@ -69,6 +92,8 @@ img.lottie-animation {
 }
 
 .confused-header, .how-it-works-header, .extra-features-heading {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
     font-size: 3.2rem;
     display: flex;
     justify-content: center;
@@ -79,10 +104,12 @@ img.lottie-animation {
 }
 
 .confused-point-container, .solution-container, .extra-features-container {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #87bbd5;
+    /* background-color: var(--altColor); */
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
@@ -102,6 +129,8 @@ img.lottie-animation {
 }
 
 .confused-point {
+    display: flex;
+    flex-direction: row;
     font-size: 1.5rem;
     line-height: 2rem;
     margin-bottom: 1.5rem;
@@ -110,11 +139,11 @@ img.lottie-animation {
 .how-it-works-container {
     display: flex;
     flex-direction: column;
-    background-color: #87bbd5;
-    padding: 4rem 0;
+    padding: 2rem 0;
 }
 
 .how-it-works-steps {
+    font-family: 'Montserrat', sans-serif;
     display: flex; 
     justify-content: center;
     flex-wrap: wrap;  
@@ -130,20 +159,25 @@ img.lottie-animation {
 }
 
 .icon {
-    max-height: 20vh;
-    max-width: 20vw;
+    max-height: max(100px, 20vh);
     margin: 0 auto;
 }
 
+.emotesBullet {
+    font-size: 2rem;
+}
 
 .step-content, .step-header {
     display: flex;
     justify-content: center;
+    text-transform: capitalize;
+    justify-content: center;
 }
 
 .step-header {
-    font-weight: bold;
+    text-transform: uppercase;
     font-size: 1.5rem;
+    font-weight: 900;
     padding: 1rem;
 }
 
@@ -159,6 +193,7 @@ footer {
     background-color: #303846;
     color: #ffffff;
     font-weight: bold;
+    font-family: 'varela';
 }
 
 @media (max-width: 700px) {
@@ -185,26 +220,26 @@ footer {
     }
 
     .confused-point {
+        display: flex;
         margin: 5px 10px;
     }
 }
 
 @media (max-width: 450px) {
     .home-title, 
-    .confused-header, .extra-features-heading {
-        font-size: clamp(2rem, 3rem, 4rem);
+    .confused-header, .extra-features-heading, .how-it-works-header {
+        font-size: 2.6rem;
         line-height: 8rem;
     }
 
     .how-it-works-header {
-        font-size: 2.6rem;
         line-height: 3rem;
         letter-spacing: 2px;
     }
 
     .home-title-desc, 
     .confused-point {
-        font-size: 1.2rem;
-        margin: 0 10px;
+        font-size: 0.9rem;
+        margin: 2px 10px;
     }
 }

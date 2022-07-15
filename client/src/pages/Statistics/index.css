@@ -1,19 +1,31 @@
 .noteInfo {
-    display: flex;
-    flex-flow: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    width: 90%;
-    margin: 20px auto;
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  width: 90%;
+  margin: 20px auto;
 }
 
 .happinessMeasure {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .victoryLine svg {
-    margin: 0px auto;
-    max-height: calc(40rem);
-    max-width: calc(40rem);
-  }
+  margin: 0px auto;
+  max-height: calc(60rem);
+  max-width: calc(60rem);
+}
+
+.nofetch__header {
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 5px;
+}
+
+.lineChartContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
