@@ -46,7 +46,7 @@ export function MovieCard({
     return (
       <div className="overviewContainer">
         <div className="overviewHeader">
-          <div className="synopsis">Synopsis</div>
+          <div className="synopsis">a</div>
         </div>
         <div className="movieOverview">{overview}</div>
       </div>
