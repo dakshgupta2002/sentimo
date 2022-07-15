@@ -22,7 +22,8 @@ infoRouter.route("/")
                 return;
             }
     
-            const { username, password, email, firstName, lastName, phone, address, image, gender, dob } = res?.data;
+            const { username, password, email, firstName, lastName, phone, address, image, gender, dob } = req?.body;
+            console.log(lastName)
             user.username = username;
             user.password = password;
             user.email = email;

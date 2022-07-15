@@ -13,7 +13,7 @@ import {
 } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 import { max } from "moment";
-import './index.css';
+import "./index.css";
 
 export default function Statistics() {
   const { date } = useDate();
@@ -25,13 +25,29 @@ export default function Statistics() {
   const [pieChartData, setPieChartData] = useState([]);
   const [lineChartData, setLineChartData] = useState([]);
   const [lineTickData, setLineTickData] = useState([]); // same for all line chart not neeeded in pie
-
-  const handleChange = (event, newValue) => {
-    setTab(newValue);
-  };
-
   const { setLoading, setError, LoadingScreen } = useLoading();
 
+  const VictoryEmotionChart = ({ data, label }) => {
+    return (
+      <div className="victoryLine">
+        <VictoryChart
+          domain={{ x: [0, numOfDays[tab]], y: [0, 100] }}
+          theme={VictoryTheme.material}
+        >
+          <VictoryAxis
+            tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
+            tickFormat={lineTickData} // First two label rest empty
+            label={label}
+          />
+          <VictoryAxis
+            dependentAxis
+            tickFormat={(tick) => `${Math.round(tick)}`}
+          />
+          <VictoryLine data={data} />
+        </VictoryChart>
+      </div>
+    );
+  };
   // fetch the statistics created from past days
   useEffect(() => {
     const getStats = async () => {
@@ -83,7 +99,7 @@ export default function Statistics() {
           ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
-      
+
       for (let i = 1; i < lineDateData.length - 1; i++) {
         lineDateData[i] = "";
       }
@@ -99,7 +115,6 @@ export default function Statistics() {
         lineData[4].push({ x: i, y: lineFearData[i] });
       }
       setLineChartData(lineData);
-      // console.log({lineData})
     };
 
     /* Get all notes data from emotions and then push it in data vector */
@@ -117,8 +132,7 @@ export default function Statistics() {
         totalCount += 1;
       }
       for (let i = 0; i < 5; i++) {
-        data[i] = Math.round((data[i] / totalCount) * 360);
-        console.log(data[i]);
+        data[i] = Math.round((data[i] / totalCount) * 100);
       }
       var pieData = [];
       if (data[0])
@@ -159,7 +173,11 @@ export default function Statistics() {
     <div>
       <Sidebar />
       <LoadingScreen />
-      <Tabs variant="scrollable" value={tab} onChange={handleChange}>
+      <Tabs
+        variant="scrollable"
+        value={tab}
+        onChange={(e, newTab) => setTab(newTab)}
+      >
         <Tab label="Last Week" />
         <Tab label="Last Month" />
         <Tab label="Last Year" />
@@ -169,18 +187,12 @@ export default function Statistics() {
         <h1 className="nofetch__header">No emotions fetched... </h1>
       ) : (
         <div>
-          <div class="victoryLine">
-            <VictoryChart domain={[0, 10]}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[0]} />
-            </VictoryChart>
+          <div className="lineChartContainer">
+            <VictoryEmotionChart data={lineChartData[0]} label="Happy" />
+            <VictoryEmotionChart data={lineChartData[1]} label="Angry" />
+            <VictoryEmotionChart data={lineChartData[2]} label="Surprise" />
+            <VictoryEmotionChart data={lineChartData[3]} label="Sad" />
+            <VictoryEmotionChart data={lineChartData[4]} label="Fear" />
           </div>
 
           <VictoryPie
@@ -192,19 +204,6 @@ export default function Statistics() {
             style={{ labels: { fontSize: 5, fontWeight: "bold" } }}
             labels={({ datum }) => `${datum.x}: ${datum.y}`}
           />
-          {emotions.map((emote, i) => {
-            return (
-              <div key={i}>
-                <h2>{emote[0]}</h2>
-                <h6>Happy, Sad, Surprise, Angry, Fear</h6>
-                <h5>
-                  {emote[1].Happy}, {emote[1].Sad} {emote[1].Surprise},{" "}
-                  {emote[1].Angry}, {emote[1].Fear}
-                </h5>
-                <hr />
-              </div>
-            );
-          })}
         </div>
       )}
     </div>
