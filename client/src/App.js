@@ -1,12 +1,11 @@
+import React, {lazy} from 'react';
 import {Routes, Route} from 'react-router-dom'
-import { Diary, Home, Login, Register, Statistics, NoteStat, Profile, AboutUs, Recommendation } from './pages';
+import { Home, Diary, Login, Register, Statistics, NoteStat, Profile, AboutUs, Recommendation, Favorite, Protected } from './pages';
 import { useLoading } from './utils/hooks/useLoading';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import PrivateRoute from './PrivateRoute';
-import Favorite from './pages/Favorite/Favorite';
-import Protected from './pages/Protected/Protected';
 
 function App() {
   const {LoadingScreen} = useLoading();
