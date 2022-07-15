@@ -13,7 +13,7 @@ import {
 } from "victory";
 import { useLoading } from "../../utils/hooks/useLoading";
 import { max } from "moment";
-import './index.css';
+import "./index.css";
 
 export default function Statistics() {
   const { date } = useDate();
@@ -27,6 +27,23 @@ export default function Statistics() {
   const [lineTickData, setLineTickData] = useState([]); // same for all line chart not neeeded in pie
   const { setLoading, setError, LoadingScreen } = useLoading();
 
+  const VictoryEmotionChart = ({ data }) => {
+    return (
+      <div class="victoryLine">
+        <VictoryChart domain={{ x: [0, numOfDays[tab]], y: [0, 100] }}>
+          <VictoryAxis
+            tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
+            tickFormat={lineTickData} // First two label rest empty
+          />
+          <VictoryAxis
+            dependentAxis
+            tickFormat={(tick) => `${Math.round(tick)}`}
+          />
+          <VictoryLine data={data} />
+        </VictoryChart>
+      </div>
+    );
+  };
   // fetch the statistics created from past days
   useEffect(() => {
     const getStats = async () => {
@@ -78,7 +95,7 @@ export default function Statistics() {
           ? lineFearData.push(Math.round(emotion.Fear * 100))
           : lineFearData.push(0);
       }
-      
+
       for (let i = 1; i < lineDateData.length - 1; i++) {
         lineDateData[i] = "";
       }
@@ -154,7 +171,11 @@ export default function Statistics() {
     <div>
       <Sidebar />
       <LoadingScreen />
-      <Tabs variant="scrollable" value={tab} onChange={(e, newTab) => setTab(newTab)}>
+      <Tabs
+        variant="scrollable"
+        value={tab}
+        onChange={(e, newTab) => setTab(newTab)}
+      >
         <Tab label="Last Week" />
         <Tab label="Last Month" />
         <Tab label="Last Year" />
@@ -165,78 +186,13 @@ export default function Statistics() {
       ) : (
         <div>
           <div>
-          <div class="victoryLine happy">
-            <VictoryChart domain={{x: [0, numOfDays[tab]] ,y: [0, 100]}}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[0]} />
-            </VictoryChart>
+            <VictoryEmotionChart data={lineChartData[0]} />
+            <VictoryEmotionChart data={lineChartData[1]} />
+            <VictoryEmotionChart data={lineChartData[2]} />
+            <VictoryEmotionChart data={lineChartData[3]} />
+            <VictoryEmotionChart data={lineChartData[4]} />
           </div>
 
-          <div class="victoryLine angry">
-          <VictoryChart domain={{x: [0, numOfDays[tab]] ,y: [0, 100]}}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[1]} />
-            </VictoryChart>
-          </div>
-
-          <div class="victoryLine suprise">
-          <VictoryChart domain={{x: [0, numOfDays[tab]] ,y: [0, 100]}}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[2]} />
-            </VictoryChart>
-          </div>
-
-          <div class="victoryLine sad">
-          <VictoryChart domain={{x: [0, numOfDays[tab]] ,y: [0, 100]}}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[3]} />
-            </VictoryChart>
-          </div>
-
-          <div class="victoryLine fear">
-          <VictoryChart domain={{x: [0, numOfDays[tab]] ,y: [0, 100]}}>
-              <VictoryAxis
-                tickValues={[...Array(lineTickData.length).keys()]} // [0, 1, ..., n - 1]
-                tickFormat={lineTickData} // First two label rest empty
-              />
-              <VictoryAxis
-                dependentAxis
-                tickFormat={(tick) => `${Math.round(tick)}`}
-              />
-              <VictoryLine data={lineChartData[4]} />
-            </VictoryChart>
-          </div>
-
-          </div>
-          
           <VictoryPie
             theme={VictoryTheme.material}
             height={200}
