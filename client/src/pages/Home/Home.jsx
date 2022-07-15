@@ -48,15 +48,15 @@ export default function Home() {
         <Fade triggerOnce>
           <div className="confused-points">
             <div className="confused-header text--center">Questions</div>
-            <div className="confused-point altText">
-              ❓Tired and exhausted from your entire day's work?
+            <div className="confused-point">
+              <span className="emotesBullet">❓</span> Tired and exhausted from your entire day's work?
             </div>
             <div className="confused-point">
-              ❓Or did something exciting and fascinating happen?
+              <span className="emotesBullet">❓</span> Or did something exciting and fascinating happen?
             </div>
 
             <div className="confused-point">
-              ❓Lest you're fearful or sad about anything?
+              <span className="emotesBullet">❓</span> Lest you're fearful or sad about anything?
             </div>
           </div>
         </Fade>
@@ -87,15 +87,15 @@ export default function Home() {
           <div className="confused-points">
             <div className="confused-header text--center">Solutions</div>
             <div className="confused-point">
-              💡 Do not stress yourself out as you can pour your heart out to us
+              <span className="emotesBullet">💡</span> Do not stress yourself out as you can pour your heart out to us
               and we won't judge you at all!
             </div>
             <div className="confused-point">
-              💡 This is your personalised diary and you can keep all types of
+              <span className="emotesBullet">💡</span> This is your personalised diary and you can keep all types of
               notes you want to!
             </div>
             <div className="confused-point">
-              💡 Instead, we'll recommend you entertainment material according
+              <span className="emotesBullet">💡</span> Instead, we'll recommend you entertainment material according
               to your mood.
             </div>
           </div>

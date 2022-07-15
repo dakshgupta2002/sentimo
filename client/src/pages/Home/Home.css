@@ -1,5 +1,7 @@
 :root {
-    --altColor: #3AB0FF;
+    /* --altColor: #3AB0FF; */
+    --altColorBgstart: #0073e6;
+    --altColorBgend: #86b4e2;
     --altTextColor: #F2EBE9; /* Change to black to make it like before */
 }
 
@@ -10,8 +12,15 @@
 
 
 .altText {
-    color: var(--altTextColor)
+    color: var(--altTextColor);
+    background: linear-gradient(45deg, var(--altColorBgstart), var(--altColorBgend));
 }
+
+/* Maybe use for alternate if need..  
+.altText2 {
+    color: var(--altTextColor);
+    background: linear-gradient(-45deg, var(--altColor), transparent);
+} */
 
 .home-container {
     display: flex;
@@ -100,7 +109,7 @@ img.lottie-animation {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--altColor);
+    /* background-color: var(--altColor); */
     padding-bottom: 2rem;
     padding-top: 2rem;
 }
@@ -120,6 +129,8 @@ img.lottie-animation {
 }
 
 .confused-point {
+    display: flex;
+    flex-direction: row;
     font-size: 1.5rem;
     line-height: 2rem;
     margin-bottom: 1.5rem;
@@ -128,7 +139,6 @@ img.lottie-animation {
 .how-it-works-container {
     display: flex;
     flex-direction: column;
-    background-color: var(--altColor);
     padding: 2rem 0;
 }
 
@@ -153,6 +163,9 @@ img.lottie-animation {
     margin: 0 auto;
 }
 
+.emotesBullet {
+    font-size: 2rem;
+}
 
 .step-content, .step-header {
     display: flex;
@@ -207,6 +220,7 @@ footer {
     }
 
     .confused-point {
+        display: flex;
         margin: 5px 10px;
     }
 }

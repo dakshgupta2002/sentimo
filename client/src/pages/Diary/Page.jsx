@@ -3,9 +3,11 @@
 
 import React, { useEffect, useState } from "react";
 import { useLoading } from "../../utils/hooks/useLoading.js";
-import Note from "./Note.jsx";
+// import Note from "./Note.jsx";
 import { fetchNotes } from "../../utils/api/notes.js";
 import './Diary.css';
+
+const Note = React.lazy(() => import('./Note.jsx'));
 
 export default function Page({date, notesAdded, setNotesAdded, notesEdited, setNotesEdited, setEditOpen, setEditNoteId}) {
   const { setLoading, LoadingScreen, setError } = useLoading();

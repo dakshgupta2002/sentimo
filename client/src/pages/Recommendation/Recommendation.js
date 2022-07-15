@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar } from "../../components";
-import { MovieCard } from "../../elements";
 import { ModalContainer } from "../../components";
-
 import "./Recommendation.css";
+
+import { MovieCard } from "../../elements";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
