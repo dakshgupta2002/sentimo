@@ -26,6 +26,19 @@ export default function NoteStat() {
   const [pieData, setPieData] = useState([]);
   const [lineData, setLineData] = useState([{ x: "", y: 0 }]);
   const { LoadingScreen, setLoading, setError } = useLoading();
+
+  const fetchEmotion = async () => {
+    setLoading(true);
+    setError("Generating Stats");
+    const res = await fetchNoteStats(noteId);
+    if (res?.response?.status === 201 || res?.response?.status === 200) {
+      setEmotion(res?.data?.emotion);
+    } else {
+      console.log(res?.data?.msg);
+    }
+    setLoading(false);
+  };
+
   useEffect(() => {
     const fetchNote = async () => {
       setLoading(true);
@@ -40,44 +53,33 @@ export default function NoteStat() {
     fetchNote();
   }, [noteId]);
 
-  const fetchEmotion = async () => {
-    setLoading(true);
-    setError("Generating Stats");
-    const res = await fetchNoteStats(noteId);
-    if (res?.response?.status === 201 || res?.response?.status === 200) {
-      setEmotion(res?.data?.emotion);
-    } else {
-      console.log(res?.data?.msg);
-    }
-    setLoading(false);
-  };
   useEffect(() => {
     const refreshPieData = () => {
       const data = [];
       if (emotion?.Happy)
-        data.push({ x: "Happy", y: Math.round(emotion?.Happy * 360) });
+        data.push({ x: "Happy", y: Math.round(emotion?.Happy * 100) });
       if (emotion?.Sad)
-        data.push({ x: "Sad", y: Math.round(emotion?.Sad * 360) });
+        data.push({ x: "Sad", y: Math.round(emotion?.Sad * 100) });
       if (emotion?.Angry)
-        data.push({ x: "Angry", y: Math.round(emotion?.Angry * 360) });
+        data.push({ x: "Angry", y: Math.round(emotion?.Angry * 100) });
       if (emotion?.Surprise)
-        data.push({ x: "Surprise", y: Math.round(emotion?.Surprise * 360) });
+        data.push({ x: "Surprise", y: Math.round(emotion?.Surprise * 100) });
       if (emotion?.Fear)
-        data.push({ x: "Fear", y: Math.round(emotion?.Fear * 360) });
+        data.push({ x: "Fear", y: Math.round(emotion?.Fear * 100) });
       setPieData(data);
     };
 
     const refreshLineData = () => {
       const data = [];
-      if (emotion?.Sad) data.push({ x: 1, y: Math.round(emotion?.Sad * 360) });
+      if (emotion?.Sad) data.push({ x: 1, y: Math.round(emotion?.Sad * 100) });
       if (emotion?.Angry)
-        data.push({ x: 2, y: Math.round(emotion?.Angry * 360) });
+        data.push({ x: 2, y: Math.round(emotion?.Angry * 100) });
       if (emotion?.Surprise)
-        data.push({ x: 3, y: Math.round(emotion?.Surprise * 360) });
+        data.push({ x: 3, y: Math.round(emotion?.Surprise * 100) });
       if (emotion?.Fear)
-        data.push({ x: 4, y: Math.round(emotion?.Fear * 360) });
+        data.push({ x: 4, y: Math.round(emotion?.Fear * 100) });
       if (emotion?.Happy)
-        data.push({ x: 5, y: Math.round(emotion?.Happy * 360) });
+        data.push({ x: 5, y: Math.round(emotion?.Happy * 100) });
       setLineData(data);
     };
 
