@@ -7,7 +7,7 @@ import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from '../../utils/api/stats';
 import { toast } from "react-toastify";
 
-import { MovieCard } from "../../elements";
+import { MovieCard, ModalMovieCard } from "../../elements";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
@@ -90,8 +90,8 @@ export default function Recommendation() {
     <div className="reccomendationContain">
       <Sidebar />
       <LoadingScreen />
-      <ModalContainer isOpen={genreModalOpen} close={() => setGenreModalOpen(false)} style={{backgroundColor: '#2A2323'}}>
-    <img src={`https://images.unsplash.com/photo-1535446937720-e4cad0145efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fHBvc3RlciUyMG1vdmllfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60`} alt="" style={{height: 'fit-content'}}/>
+      <ModalContainer isOpen={genreModalOpen} close={() => setGenreModalOpen(false)} style={{backgroundColor: 'rgb(47 47 47 / 98%)'}}>
+        <ModalMovieCard />
       </ModalContainer>
 
       <div className="movieCardContainer">

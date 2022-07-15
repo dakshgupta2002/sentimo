@@ -1,0 +1,83 @@
+/* Root div -> It contains two div inside one for image and other for movie content */
+.movieCardRoot {
+  background-color: rgb(47 47 47 / 98%);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  /* not needed */
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Movie poster */
+.moviePoster {
+  height: 300px;
+  margin: min(5vmin, 20px);
+}
+
+/* Movie Details -> (Name, Rating hr) (Divider) (GenreList hr) 
+  (Overview Heading with thick orange underline) (overview) */
+.movieDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 100%;
+  max-width: 100%;
+}
+
+._movieData {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  font-family: 'Lalezar'
+}
+
+.nameAndRating {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* One liners */
+.genreList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.releaseDate {
+  color: grey;
+}
+
+.overviewHeader {
+  text-transform: uppercase;
+  margin-bottom: min(10px, 10vmin);
+  font-weight: 600;
+  font-family: 'Coda';
+}
+
+.movieOverview {
+  font-family: 'Montserrat', sans-serif;;
+}
+
+/* Utility */
+.center-dot {
+  height: min(2vmin, 5px);
+  width: min(2vmin, 5px);
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  align-self: center;
+  margin: auto min(2vmin, 8px);
+}
+
+.orangeLine {
+  display: inline-block;
+  border-bottom: 4px solid #de1818;
+  border-radius: 4px;
+  padding-bottom: 5px;
+}
+
+.pad-10 {
+  padding: 10px;
+}
