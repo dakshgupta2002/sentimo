@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MovieCard.css";
 import RatingCircle from "../RatingCircle/RatingCircle";
 import Button from "@mui/material/Button";
+import ModalMovieCard from "../ModalMovieCard/ModalMovieCard";
 import { ModalContainer } from "../../components";
 /*
  * original_title / title (any one)
@@ -41,22 +42,40 @@ export function MovieCard({
   rating,
 }) {
   const [open, setOpen] = useState(false);
-  
-  const MovieDescription = () => {
-    return (
-      <div className="overviewContainer">
-        <div className="overviewHeader">
-          <div className="synopsis">a</div>
-        </div>
-        <div className="movieOverview">{overview}</div>
-      </div>
-    );
-  };
+
+  // const MovieDescription = () => {
+  //   return (
+  // <div className="overviewContainer">
+  //   <div className="overviewHeader">
+  //     <div className="synopsis">a</div>
+  //   </div>
+  //   <div className="movieOverview">{overview}</div>
+  // </div>
+  // <ModalMovieCard
+  //   poster_path={poster_path}
+  //   original_title={title}
+  //   genre_ids={genres}
+  //   rating={rating}
+  //   overview={overview}
+  // />;
+  //   );
+  // };
 
   return (
     <div className="movieCardContainer">
-      <ModalContainer isOpen={open} close={() => setOpen(false)}>
-        <MovieDescription />
+      <ModalContainer
+        isOpen={open}
+        close={() => setOpen(false)}
+        style={{ backgroundColor: "rgb(47 47 47 / 98%)" }}
+      >
+        <ModalMovieCard
+          poster_path={poster_path}
+          title={title}
+          genres={genres}
+          rating={rating}
+          overview={overview}
+          release_data={release_data}
+        />
       </ModalContainer>
 
       <div

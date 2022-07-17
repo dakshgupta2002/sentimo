@@ -6,8 +6,9 @@ import { useLoading } from "../../utils/hooks/useLoading";
 import { useDate } from "../../utils/hooks/useDate";
 import { fetchStats } from '../../utils/api/stats';
 import { toast } from "react-toastify";
+
+import { MovieCard, ModalMovieCard } from "../../elements";
 import { MapGenre } from '../../utils/MapGenre'
-import { MovieCard } from "../../elements";
 
 export default function Recommendation() {
   const [page, setPage] = useState(1);
