@@ -1,5 +1,6 @@
 import React from "react";
 import {RatingCircle} from "./../RatingCircle";
+import {Divider} from "../Divider";
 
 import "./ModalMovieCard.css";
 
@@ -15,15 +16,15 @@ import "./ModalMovieCard.css";
  * Change these to prop
  */
 
-const poster_path =
-  "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW92aWUlMjBwb3N0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60";
-const original_title = "Spiderman: Something home";
-const genre_ids = ["Happy", "Action", "Sad"];
-const vote_average = 8.7;
-const overview =
-  "Spiderman not going home coz home not coming one thing or other thing make him stay away from home but to make it bigger let's talk about something which will never really happen but overview should be bigger so yes this a good movie but marvel going downhill these days..";
+// const poster_path =
+//   "https://images.unsplash.com/photo-1635805737707-575885ab0820?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8bW92aWUlMjBwb3N0ZXJ8ZW58MHx8MHx8&auto=format&fit=crop&w=600&q=60";
+// const title = "Spiderman: Something home";
+// const genres = ["Happy", "Action", "Sad"];
+// const vote_average = 8.7;
+// const overview =
+//   "Spiderman not going home coz home not coming one thing or other thing make him stay away from home but to make it bigger let's talk about something which will never really happen but overview should be bigger so yes this a good movie but marvel going downhill these days..";
 
-function ItemSepWithDot(items) {
+function DotSepPrint(items) {
   var f = items?.length;
   f -= 1;
   const jsx_items = [];
@@ -40,29 +41,28 @@ function ItemSepWithDot(items) {
   return jsx_items;
 }
 
-function ModalMovieCard() {
+function ModalMovieCard({poster_path, title, genres, rating, overview, release_data}) {
   return (
-    <div className="App">
+    <div>
       <div className="movieCardRoot">
 
-        <img src={poster_path} alt="" className="moviePoster" />
+        <img src={poster_path} alt={`${title} poster`} className="moviePoster" />
 
         <div className="movieDetails">
           <div className="_movieData pad-10">
             <div className="nameAndRating">
-              <div className="movieName">{original_title}</div>
+              <div className="movieName">{title}</div>
               <div>
-                <RatingCircle rating={vote_average} />
+                <RatingCircle rating={rating} />
               </div>
             </div>
 
-            <div className="releaseDate medium-text">01-09-2020</div>
+            <div className="releaseDate medium-text">{release_data}</div>
 
-            <div className="genreList medium-text">{ItemSepWithDot(genre_ids)}</div>
+            <div className="genreList medium-text">{DotSepPrint(genres)}</div>
           </div>
 
-          {/* Replace With divider */}
-          <hr style={{ width: "100%", borderBottom: "3px solid red" }} />
+          <div style={{ width: "100%", borderBottom: "4px solid #de1818" }} />
 
           <div className="overviewContainer pad-10">
             <div className="overviewHeader orangeLine">Overview</div>
