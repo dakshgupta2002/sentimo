@@ -23,7 +23,7 @@ export default function Home() {
           
       {/* HEADING SENTIMO AND ONE LINER */}
       <Fade triggerOnce>
-        <div className="home-heading">
+        <div className="home-heading normalBG">
           <Lottie
             className="lottie-animation"
             animationData={landingPageAnimation}
@@ -72,7 +72,7 @@ export default function Home() {
         </Fade>
       </div>
 
-      <div className="solution-container">
+      <div className="solution-container normalBG">
         <div className="confused-lottie lottie-animation">
         <Fade triggerOnce>
           <Lottie
@@ -139,7 +139,7 @@ export default function Home() {
         </Fade>
       </div>
 
-      <div className="extra-features-container">
+      <div className="extra-features-container normalBG">
         <Fade triggerOnce>
           <div className="extra-features-heading">benefits</div>
         </Fade>

@@ -1,5 +1,7 @@
 .aboutUsBody {
-  background-color: #e7eeed;
+  /* background-color: #e7eeed; */
+  background: url("../../assets/images/aboutUsBackground.svg");
+  background-size: cover;
 }
 
 .profileCardParent {
