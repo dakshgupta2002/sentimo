@@ -1,6 +1,6 @@
 import React from "react";
 import {RatingCircle} from "./../RatingCircle";
-import {Divider} from "../Divider";
+// import {Divider} from "../Divider";
 
 import "./ModalMovieCard.css";
 
@@ -66,7 +66,7 @@ function ModalMovieCard({poster_path, title, genres, rating, overview, release_d
 
           <div className="overviewContainer pad-10">
             <div className="overviewHeader orangeLine">Overview</div>
-            <div className="movieOverview">{overview}</div>
+            <div className="movieOverview">{overview?.length > 0 ? overview : `No overview available.`}</div>
           </div>
         </div>
       </div>
