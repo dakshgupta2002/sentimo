@@ -13,14 +13,15 @@
 
 .altText {
     color: var(--altTextColor);
-    background: linear-gradient(45deg, var(--altColorBgstart), var(--altColorBgend));
+    /* background: linear-gradient(45deg, var(--altColorBgstart), var(--altColorBgend)); */
+    background: url("../../assets/images/homeBG2.svg");
+    background-size: cover;
 }
 
-/* Maybe use for alternate if need..  
-.altText2 {
-    color: var(--altTextColor);
-    background: linear-gradient(-45deg, var(--altColor), transparent);
-} */
+.normalBG {
+    background: url("../../assets/images/homeBG1.svg");
+    background-size: cover;
+}
 
 .home-container {
     display: flex;
@@ -156,6 +157,10 @@ img.lottie-animation {
     /* word-break: break-all; */
     margin: 1.5rem;
     max-width: 20rem;
+}
+
+.extra-features-content {
+    font-weight: 600;
 }
 
 .icon {

@@ -16,6 +16,7 @@
     "react-awesome-reveal": "^3.8.1",
     "react-dom": "^18.1.0",
     "react-image-gallery": "^1.2.8",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-loader-spinner": "^5.1.5",
     "react-lottie-player": "^1.4.3",
     "react-router-dom": "^6.3.0",

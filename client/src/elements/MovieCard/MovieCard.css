@@ -1,5 +1,5 @@
 :root {
-  --movieCardHeight: max(50vh, 250px);
+  --movieCardHeight: max(50vh, 260px);
   --movieCardWidth: 100%;
   --posterImageUrl: "";
 }
@@ -47,7 +47,7 @@
   display: flex;
   flex-direction: column;
   width: var(--movieCardWidth);
-  height: 227px;
+  height: 240px;
 }
 
 .movieDetailContainer > * {
