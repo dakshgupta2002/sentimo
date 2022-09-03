@@ -61,12 +61,13 @@
   text-transform: uppercase;
   font-family: "Coda", cursive;
   font-weight: bold;
+  max-height: calc(min(10vmin, 25px) * 4);
+  overflow: hidden;
 
-  display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis; */
 }
 
 .movieOverview {
